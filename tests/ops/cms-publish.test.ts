@@ -56,6 +56,22 @@ describe("cms.publish_approved_version — artykuły TOP 3", () => {
     expect(again.every((x) => x.outcome === "already_done")).toBe(true);
   });
 
+  it("V3: materiał z klasą ryzyka (np. dobrostan/żywienie) z akceptacją AI => needs_human HUMAN_REVIEW_REQUIRED_FOR_RISK, zero zapisu", async () => {
+    const store = tempStore();
+    const { loadContentArticles } = await import("@/lib/demo/seed");
+    const { requiredReviewRole } = await import("@/lib/content/editorial");
+    const { riskBlocked } = await import("@/lib/ops/cms-publish");
+    const base = loadContentArticles().find((a) => a.slug === "kot-brytyjski-n66")!;
+    expect(requiredReviewRole(base)).toBe("editor"); // artykuły o rasach: klasa standard
+    const risky = { ...base, risk: "welfare" } as typeof base;
+    expect(requiredReviewRole(risky)).not.toBe("editor");
+    expect(riskBlocked(risky)).toBe(true);
+    expect(riskBlocked({ ...risky, editorialDecision: { ...risky.editorialDecision!, byKind: "human" } })).toBe(false);
+    const r = await publishApprovedArticles(store, livePolicy(), { now: NOW, fetchFn: async () => ({ status: 200 }), articles: [risky] });
+    expect(r).toEqual([expect.objectContaining({ slug: "kot-brytyjski-n66", outcome: "needs_human", reasons: expect.arrayContaining(["HUMAN_REVIEW_REQUIRED_FOR_RISK"]) })]);
+    expect(store.read().articles.find((a) => a.slug === "kot-brytyjski-n66")?.status).toBe("needs_review");
+  });
+
   it("artykuł edytowany po akceptacji nie jest publikowany", async () => {
     const store = tempStore();
     const { loadContentArticles } = await import("@/lib/demo/seed");

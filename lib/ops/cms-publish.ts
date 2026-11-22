@@ -5,7 +5,7 @@
 import type { Article } from "../types";
 import type { Store } from "../store/file-store";
 import { loadContentArticles } from "../demo/seed";
-import { checkArticlePolicy } from "../content/editorial";
+import { checkArticlePolicy, requiredReviewRole } from "../content/editorial";
 import { articleContentHash, isEditorialApprovalCurrent } from "./article-review";
 import { executeAction, operationKey, type ActionRequest, type Executor, type GatewayOutcome } from "./gateway";
 import { claim, complete, enqueue } from "./registry";
@@ -13,6 +13,11 @@ import type { ActivationPolicy } from "./policy";
 import type { OpsJobResult } from "./types";
 
 type FetchFn = (url: string) => Promise<{ status: number }>;
+
+/** Materiał o wpływie na dobrostan/zdrowie/prawo (klasa ryzyka != standard) wymaga recenzji człowieka z rolą — AI nie zatwierdza (V3). */
+export function riskBlocked(a: Article): boolean {
+  return requiredReviewRole(a) !== "editor" && a.editorialDecision?.byKind !== "human";
+}
 
 export class StoreCmsExecutor implements Executor {
   private keyToSlug = new Map<string, string>();
@@ -26,6 +31,7 @@ export class StoreCmsExecutor implements Executor {
     const slug = this.keyToSlug.get(key)!;
     const file = this.approved.get(slug)!;
     await this.store.transact((s) => {
+      if (riskBlocked(file)) throw Object.assign(new Error("HUMAN_REVIEW_REQUIRED_FOR_RISK"), { cls: "permanent", code: "HUMAN_REVIEW_REQUIRED_FOR_RISK" });
       const errors = checkArticlePolicy(file);
       if (errors.length) throw Object.assign(new Error(`POLICY:${errors.join(",")}`), { cls: "permanent", code: "ARTICLE_POLICY" });
       let a = s.articles.find((x) => x.slug === slug);
@@ -72,6 +78,7 @@ export async function publishApprovedArticles(store: Store, policy: ActivationPo
   const out: PublishReport[] = [];
   for (const file of files) {
     const hash = articleContentHash(file);
+    if (riskBlocked(file)) { out.push({ slug: file.slug, outcome: "needs_human", reasons: ["HUMAN_REVIEW_REQUIRED_FOR_RISK", `ROLE:${requiredReviewRole(file)}`], url: null }); continue; }
     const cur = store.read().articles.find((a) => a.slug === file.slug);
     if (cur?.status === "published" && articleContentHash(cur) === hash) { out.push({ slug: file.slug, outcome: "already_done", reasons: ["ALREADY_PUBLISHED"], url: null }); continue; }
     const dedupeKey = `content:publish:${file.slug}:${hash.slice(0, 16)}`;
