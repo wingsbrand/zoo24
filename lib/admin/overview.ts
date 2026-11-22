@@ -2,7 +2,7 @@
 import type { AppState, AuditEntry } from "../types";
 import { JOBS } from "../social/scheduler";
 import { effectiveMode, isPolicyApproved, type ActivationPolicy } from "../ops/policy";
-import { describeCron, nextSlot, OPS_SCHEDULE } from "../ops/schedule";
+import { describeCron, loadScheduleConfig, nextSlot, OPS_SCHEDULE } from "../ops/schedule";
 import { formatWarsaw } from "../time";
 import type { OpsJobResult, OpsMode, OpsRole } from "../ops/types";
 
@@ -23,14 +23,14 @@ export interface AutomationStatus {
   publishEnabled: boolean;
   socialMode: 0 | 1;
   channels: Record<string, boolean>;
-  schedulerActive: false;
+  schedulerActive: boolean;
   jobs: { id: string; proposedSchedule: string; description: string; lastRun: AuditEntry | null }[];
   lastErrors: AuditEntry[];
   ops: OpsOverview;
 }
 
 export interface OpsRoleRow {
-  role: OpsRole; agent: string; plan: string; enabled: false; nextLocal: string | null;
+  role: OpsRole; agent: string; plan: string; enabled: boolean; routineId: string | null; nextLocal: string | null;
   last: { at: string; status: OpsJobResult["status"]; reason: string | null; mode: string } | null;
 }
 export interface OpsOverview {
@@ -44,18 +44,21 @@ export interface OpsOverview {
   unknownOutcomes: number;
 }
 
-export function opsOverview(s: AppState, policy: ActivationPolicy | null, now = new Date()): OpsOverview {
+export function opsOverview(s: AppState, policy: ActivationPolicy | null, now = new Date(), schedule: ReturnType<typeof loadScheduleConfig> = null): OpsOverview {
+  const active = !!schedule && /^ACTIVE/.test(schedule.status);
   return {
     mode: effectiveMode(policy, s.ops.mode),
     policyStatus: policy?.status ?? "BRAK",
     policyApproved: isPolicyApproved(policy),
-    runtime: (policy?.runtime as { selected?: string | null } | undefined)?.selected ?? "brak — harmonogram nieaktywny",
+    runtime: active ? "zadania chmurowe Claude Code (6 ról, tryb shadow; wyniki na gałęziach ops/<rola>)" : "brak — harmonogram nieaktywny",
     pause: s.ops.pause.state,
     roles: OPS_SCHEDULE.map((e) => {
       const r = [...s.ops.results].reverse().find((x) => x.role === e.role);
       const next = nextSlot(e.cronLocal, now);
       return {
-        role: e.role, agent: e.jobKey, plan: describeCron(e.cronLocal), enabled: false,
+        role: e.role, agent: e.jobKey, plan: describeCron(e.cronLocal),
+        enabled: active && !!schedule?.jobs.find((j) => j.job_key === e.jobKey)?.enabled,
+        routineId: schedule?.jobs.find((j) => j.job_key === e.jobKey)?.routine_id ?? null,
         nextLocal: next ? formatWarsaw(next.toISOString()) : null,
         last: r ? { at: r.finished_at, status: r.status, reason: r.reason, mode: r.mode } : null,
       };
@@ -65,16 +68,16 @@ export function opsOverview(s: AppState, policy: ActivationPolicy | null, now = 
   };
 }
 
-export function automationStatus(s: AppState, policy: ActivationPolicy | null = null): AutomationStatus {
+export function automationStatus(s: AppState, policy: ActivationPolicy | null = null, schedule: ReturnType<typeof loadScheduleConfig> = null): AutomationStatus {
   const runs = s.audit.filter((a) => a.action === "job_run");
   return {
     publishEnabled: s.settings.publishEnabled,
     socialMode: s.settings.socialMode,
     channels: s.settings.channels,
-    schedulerActive: false, // runtime harmonogramu nie jest wybrany ani aktywny (ops/runtime/ADR-RUNTIME.md)
+    schedulerActive: !!schedule && /^ACTIVE/.test(schedule.status), // zadania chmurowe (ops/config/schedule.json)
     jobs: JOBS.map((j) => ({ ...j, lastRun: [...runs].reverse().find((r) => r.entityId === j.id) ?? null })),
     lastErrors: s.audit.filter((a) => /failed|blocked|held/.test(a.action)).slice(-3).reverse(),
-    ops: opsOverview(s, policy),
+    ops: opsOverview(s, policy, new Date(), schedule),
   };
 }
 

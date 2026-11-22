@@ -1,6 +1,14 @@
 # ADR-RUNTIME — gdzie będą działać role zoo24-ops
 
-**Data:** 2026-11-22 · **Status:** PROPONOWANE — nic nie zostało utworzone ani włączone · **Strefa:** Europe/Warsaw
+**Data:** 2026-11-22 · **Status:** WDROŻONE (aktualizacja 2026-11-22 17:03) — 6 zadań chmurowych Claude Code, tryb shadow · **Strefa:** Europe/Warsaw
+
+## Aktualizacja: stan wdrożony
+- Repozytorium: prywatne `wingsbrand/zoo24`; aplikacja GitHub „Claude” zainstalowana na koncie `wingsbrand` tylko dla `zoo24`; integracja GitHub włączona w organizacji przez właściciela.
+- 6 zadań (identyfikatory w `ops/config/schedule.json`): model Sonnet 5.5, środowisko Default, bez konektorów, polecenie = `ops/routines/<rola>.md` + `_common.md`; wyniki wyłącznie na gałęziach `ops/<rola>`, nigdy `main`.
+- Cron w UTC dla CET; od 28.03.2027 przesunąć o −1 h (test w `tests/ops/runtime.test.ts` pilnuje zgodności z czasem lokalnym zimą).
+- Koszt: w ramach subskrypcji konta (ADR-013), bez kluczy API.
+- Pauza: przełącznik przy zadaniu na https://claude.ai/code/routines (usunięcie tylko tam). Lokalny dispatcher shadow (`/admin`, `ops_shadow_tick`) pozostaje ręczny i używa innych kluczy (`manual:`), więc nie dubluje zadań.
+- Trwałość stanu: historia wyników w gałęziach git `ops/<rola>` (efemeryczne środowisko nie trzyma `.data/`).
 
 ## Stan faktyczny (sprawdzony)
 | Warunek | Wynik | Dowód |

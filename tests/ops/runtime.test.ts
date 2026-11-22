@@ -85,12 +85,22 @@ describe("R10/R11 harmonogram Europe/Warsaw", () => {
     expect(r.missedSlotsNotCaughtUp).toBeGreaterThan(20);
     expect(store.read().ops.jobs).toHaveLength(1);
   });
-  it("ops/config/schedule.json jest zgodny z OPS_SCHEDULE i wszystko jest wyłączone", () => {
+  it("ops/config/schedule.json: zgodny z OPS_SCHEDULE, jeden dispatcher (zadania chmurowe), cron UTC = czas lokalny zimą, usługi publikacji wyłączone", () => {
     const cfg = JSON.parse(fs.readFileSync(path.join(process.cwd(), "ops", "config", "schedule.json"), "utf8"));
-    expect(cfg.jobs.map((j: { job_key: string; cron_local: string }) => [j.job_key, j.cron_local])).toEqual(OPS_SCHEDULE.map((e) => [e.jobKey, e.cronLocal]));
-    expect(cfg.jobs.every((j: { enabled: boolean }) => j.enabled === false)).toBe(true);
+    type Job = { job_key: string; cron_local: string; cron_utc: string; routine_id: string; enabled: boolean };
+    expect(cfg.jobs.map((j: Job) => [j.job_key, j.cron_local])).toEqual(OPS_SCHEDULE.map((e) => [e.jobKey, e.cronLocal]));
+    expect(cfg.dispatcher).toBe("claude_code_cloud_routines");
+    expect(new Set(cfg.jobs.map((j: Job) => j.routine_id)).size).toBe(6);
+    // cron_utc musi trafiać w ten sam slot co cron_local w tygodniu zimowym (CET)
+    const from = new Date("2026-11-30T00:00:00Z"), to = new Date("2026-12-07T00:00:00Z");
+    for (const j of cfg.jobs as Job[]) {
+      const local = slotsBetween(j.cron_local, from, to).map((d) => d.toISOString());
+      const [m, h, , , dow] = j.cron_utc.split(" ");
+      const utc = local.map((iso) => new Date(iso)).every((d) => d.getUTCMinutes() === +m && d.getUTCHours() === +h);
+      expect(utc, j.job_key).toBe(true);
+      expect(local.length, `${j.job_key} dow ${dow}`).toBeGreaterThan(0);
+    }
     expect(cfg.non_agent_services.every((j: { enabled: boolean }) => j.enabled === false)).toBe(true);
-    expect(cfg.dispatcher).toBeNull();
   });
 });
 
