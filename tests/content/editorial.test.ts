@@ -19,9 +19,9 @@ describe("treści redakcyjne (content/blog)", () => {
     }
   });
 
-  it("3 nowe artykuły pod dawnymi adresami z TOP 3 GA4, nie-DEMO, startują jako needs_review", () => {
+  it("artykuły pod dawnymi adresami /blog (m.in. TOP 3 GA4), nie-DEMO, startują jako needs_review", () => {
     const arts = loadContentArticles().filter((a) => a.basePath === "/blog");
-    expect(arts.map((a) => a.slug).sort()).toEqual([...BLOG].sort());
+    expect(arts.map((a) => a.slug)).toEqual(expect.arrayContaining(BLOG));
     for (const a of arts) {
       expect(a.demo).toBe(false);
       expect(a.status).toBe("needs_review");

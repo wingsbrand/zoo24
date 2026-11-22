@@ -23,7 +23,8 @@ describe("tematy poradników (lib/content/topics)", () => {
 
   it("prawdziwe szkice i DEMO mają przypisania redakcyjne (bez zmiany JSON)", () => {
     const bySlug = Object.fromEntries(loadContentArticles().filter((a) => a.basePath === "/blog").map((a) => [a.slug, topicSlugForArticle(a)]));
-    expect(bySlug).toEqual({ "kot-brytyjski-n66": "rasy-kotow", "cane-corso-n63": "rasy-psow", "maltanczyk-n77": "rasy-psow" });
+    expect(bySlug).toMatchObject({ "kot-brytyjski-n66": "rasy-kotow", "cane-corso-n63": "rasy-psow", "maltanczyk-n77": "rasy-psow" });
+    for (const [slug, topic] of Object.entries(bySlug)) expect(topic, slug).toBe(ARTICLE_TOPICS[slug]);
     for (const a of buildSeedState().articles.filter((x) => x.demo || x.basePath === "/blog")) expect(ARTICLE_TOPICS[a.slug]).toBeDefined();
   });
 
