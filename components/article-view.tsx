@@ -14,6 +14,7 @@ import { ServiceInline, ServiceSection } from "@/components/editorial/service-li
 import { formatDatePl, readingMinutes } from "@/components/editorial/format";
 import { allArticles } from "@/components/editorial/queries";
 import { computeVisibility, isSpeciesPublic } from "@/lib/portal/visibility";
+import { storeServiceLinks } from "@/lib/portal/queries";
 import { FORMAT_LABEL, RISK_LABEL, ROLE_LABEL, needName, reviewStatus } from "@/lib/portal/labels";
 import { findSpecies, getGroup, isGroupSlug } from "@/lib/taxonomy/animals";
 
@@ -41,7 +42,10 @@ export function ArticleView({ a, preview = false, related }: { a: Article; previ
   const toc = buildToc(a.body);
   const idByIndex = new Map(toc.map((t) => [t.index, t.id]));
   const showToc = shouldShowToc(toc);
-  const midAt = a.relatedServicePaths.length ? midContentInsertIndex(a.body) : null;
+  // Tylko usługi z ≥1 realną opublikowaną firmą (bez linków do pustych kategorii, QA D-06).
+  const liveCategories = new Set(storeServiceLinks().categories.map((c) => c.category as string));
+  const servicePaths = a.relatedServicePaths.filter((p) => liveCategories.has(p.split("/")[2] ?? ""));
+  const midAt = servicePaths.length ? midContentInsertIndex(a.body) : null;
   const rel = related ?? relatedArticles(a, allArticles(), 3);
   const updated = formatDatePl(a.updatedAt);
   const published = formatDatePl(a.publishedAt);
@@ -92,9 +96,9 @@ export function ArticleView({ a, preview = false, related }: { a: Article; previ
                   <div className="flex gap-1"><dt className="sr-only">Status</dt><dd><Badge tone="warn">Nieopublikowany</Badge></dd></div>
                 )}
                 {a.reviewedBy ? (
-                  <div className="flex gap-1"><dt>Sprawdzone przez:</dt><dd className="font-medium text-ink">
+                  <div className="flex gap-1"><dt>Zatwierdzone przez:</dt><dd className="font-medium text-ink">
                     {/* Jawność: akceptacja redaktora-AI nie jest przedstawiana jako przegląd człowieka. */}
-                    {isAgentIdentity(a.reviewedBy) ? "redakcję ZOO24 z udziałem AI" : a.reviewedBy}
+                    {isAgentIdentity(a.reviewedBy) ? "redaktora AI ZOO24 (bez przeglądu człowieka)" : a.reviewedBy}
                   </dd></div>
                 ) : null}
                 <div className="flex items-center gap-1"><dt className="sr-only">Czas czytania</dt><dd className="flex items-center gap-1"><BookOpen aria-hidden size={16} /> ok. {minutes} min czytania</dd></div>
@@ -163,7 +167,7 @@ export function ArticleView({ a, preview = false, related }: { a: Article; previ
 
             <div className="prose-zoo">
               {a.body.map((p, i) => (
-                <FragmentWithInsert key={i} insert={midAt === i ? <ServiceInline paths={a.relatedServicePaths} slug={a.slug} preview={preview} /> : null}>
+                <FragmentWithInsert key={i} insert={midAt === i ? <ServiceInline paths={servicePaths} slug={a.slug} preview={preview} /> : null}>
                   {isH2(p) ? (
                     <h2 id={idByIndex.get(i)}>{headingText(p)}</h2>
                   ) : isH3(p) ? (
@@ -191,7 +195,7 @@ export function ArticleView({ a, preview = false, related }: { a: Article; previ
               </section>
             )}
 
-            <ServiceSection paths={a.relatedServicePaths} slug={a.slug} preview={preview} />
+            <ServiceSection paths={servicePaths} slug={a.slug} preview={preview} />
 
             {claims.length > 0 && (
               <section aria-labelledby="kluczowe-informacje">

@@ -53,6 +53,9 @@ Pełny cykl na jednym materiale (staging, test automatyczny `tests/content/publi
 - **Pełny zakres 10 grup** — użyteczna zawartość każdej grupy.
 Szkice i zapowiedzi nie są opublikowaną treścią. Brak wymaganego review zatrzymuje dany materiał — pozostałe prace trwają.
 
+## 5a. Social (Mode 0)
+Kalendarz V3 (`docs/social/calendar-v3-14d.json`, `docs/social/CALENDAR_V3.md`, 16 szkiców, start 30.11) **zastępuje** kalendarz relaunchu `docs/social/drafts-14d.json` w tych samych datach (decyzja orkiestratora 2026-11-22 — stary częściowo linkował do treści DEMO). Posty tylko do stron opublikowanych na zoo24.pl; publikacja wymaga Mode 1, uprawnień Meta i akceptacji copy.
+
 ## 6. Model pracy z redakcją i specjalistami (do decyzji właściciela — opcje kosztowe w raporcie)
 - Rola zewnętrznego **redaktora** (człowiek) dla klasy standard + **specjaliści per grupa** dla welfare (np. behawiorysta/zoolog/lekarz weterynarii egzotycznych).
 - Agenci: knowledge zbiera dowody, content pisze, orkiestrator integruje; publikacja automatyczna po zatwierdzeniu wersji; właściciel tylko decyzje i wyjątki (raport tygodniowy).

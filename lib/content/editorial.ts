@@ -67,7 +67,9 @@ export function approveArticle(state: AppState, slug: string, actor: string, now
   if (a.status !== "needs_review") throw new EditorialError("APPROVE_REQUIRES_NEEDS_REVIEW", [a.status]);
   const errors = [...checkArticlePolicy(a), ...reviewBlockers(a, reviewer)];
   if (errors.length) {
-    a.review = { ...(a.review ?? { required: requiredReviewRole(a), by: null, byKind: null, at: null }), required: requiredReviewRole(a), waitingReason: errors.join(", ") };
+    // Zachowaj opisowy powód (np. „potrzebna osoba z wiedzą o królikach”) i dopisz kod blokady.
+    const prev = a.review?.waitingReason?.replace(/ \[[A-Z_, ]+\]$/, "") ?? null;
+    a.review = { ...(a.review ?? { required: requiredReviewRole(a), by: null, byKind: null, at: null }), required: requiredReviewRole(a), waitingReason: `${prev ? `${prev} ` : ""}[${errors.join(", ")}]` };
     audit(state, actor, "approve_blocked", slug, { errors });
     throw new EditorialError("POLICY_BLOCKED", errors);
   }

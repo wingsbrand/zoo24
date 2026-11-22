@@ -291,7 +291,7 @@ function PrintView({ sheet }: { sheet: CaretakerSheet }) {
   const generated = new Date().toLocaleDateString("pl-PL");
   return (
     <div className="hidden text-[11pt] leading-snug text-black print:block" aria-hidden>
-      <h1 className="text-2xl font-bold text-black">Informacje dla opiekuna zwierzęcia</h1>
+      <p className="text-2xl font-bold text-black" role="heading" aria-level={2}>Informacje dla opiekuna zwierzęcia</p>
       <p className="mb-4 text-sm">Przygotowano: {generated}</p>
       {sheet.animals.map((a, i) => (
         <section key={a.id} className="mb-5 break-inside-avoid-page">

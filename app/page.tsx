@@ -164,7 +164,7 @@ export default function Home() {
                   <div className="flex items-start gap-4">
                     <span className="flex size-14 shrink-0 items-center justify-center rounded-[var(--radius-lg)] bg-brand-soft text-brand"><Icon aria-hidden size={28} /></span>
                     <div>
-                      <h3 className="text-xl font-bold"><Link href={`/uslugi/${cat}`} className="no-underline hover:underline">{CATEGORIES[cat].plural}</Link></h3>
+                      <h3 className="text-xl font-bold">{real ? <Link href={`/uslugi/${cat}`} className="no-underline hover:underline">{CATEGORIES[cat].plural}</Link> : CATEGORIES[cat].plural}</h3>
                       <p className="mt-1 text-ink-muted">{CAT_META[cat].text}</p>
                     </div>
                   </div>

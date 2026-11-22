@@ -4,7 +4,7 @@ import { cn } from "./cn";
 
 const control =
   "w-full min-h-11 rounded-[var(--radius-md)] border border-line-strong bg-surface px-3 py-2 text-base text-ink placeholder:text-ink-muted " +
-  "transition-colors hover:border-brand focus:border-brand focus:outline-none focus-visible:outline-3 focus-visible:outline-accent " +
+  "transition-colors hover:border-brand focus:border-brand focus-visible:outline-3 focus-visible:outline-offset-1 focus-visible:outline-accent " +
   "disabled:cursor-not-allowed disabled:bg-canvas disabled:text-ink-muted aria-[invalid=true]:border-danger aria-[invalid=true]:bg-danger-soft/40";
 
 /** Pole formularza: etykieta, podpowiedź i błąd powiązane przez id (aria-describedby). */
