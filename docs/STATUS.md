@@ -2,6 +2,19 @@
 
 **Aktualizacja:** 2026-11-22 — sesja 1 Claude Code (F0 + lokalne F1). **Tryb:** Mode 0 / MOCK. Nic nie jest live.
 
+## START 2026-11-22 ok. 19:15 — zoo24.pl w trybie produkcyjnym (decyzja właściciela: „GO”)
+| Element | Stan (zweryfikowany) |
+|---|---|
+| DNS (aftermarket, zmienił właściciel) | A `@` → 216.198.79.1 + 64.29.17.1; CNAME `www` → Vercel; MX/SPF bez zmian (sprawdzone na ns1.aftermarket.pl) |
+| Vercel Production | `ZOO24_ENV=production`, `ZOO24_SITE_URL=https://zoo24.pl`; Preview pozostaje `staging` |
+| Wdrożenie | `dpl_ELUQ1UVSwWQPqcAGiNrx7xQrCfXU` READY (fra1) |
+| Baza Supabase | `app_state` v3: 10 realnych firm, 0 DEMO, legacy pusty (sync produkcyjny zadziałał) |
+| zoo24.pl na serwerze Vercel (HTTP) | 200, robots `Allow` + sitemap, canonical https://zoo24.pl, sitemap 8 URL, 404 dla DEMO/admin/nieopublikowanych |
+| zoo24.vercel.app | `noindex` + `Disallow` (alias) |
+| Propagacja / HTTPS | **w toku** — publiczne DNS trzymają stary A (TTL 6 h); certyfikat Vercel po propagacji |
+| Klucz Supabase | wymieniony po wycieku fragmentu do logów builda (kod naprawiony: normalizacja + brak wartości w błędach) |
+Do zrobienia: GSC (usługa Domena + TXT), Ahrefs (import z GSC), publikacja 3 artykułów /blog/* (sesja ops, gateway), weryfikacja 7 firm.
+
 ## Aktualizacja 2026-11-22 (wieczór) — przygotowanie startu na zoo24.pl (ADR-014)
 Plan i kroki: `docs/GO_LIVE_RUNBOOK.md`. Bramka: `npm run preflight:live` — **GOTOWE** po uzupełnieniu danych operatora (WINGS RETAIL sp. z o.o., NIP 5423261087, office@zoo24.pl, dokumenty obowiązują od 23.11.2026). KRS, sąd rejestrowy i kapitał zakładowy celowo pominięte — decyzja właściciela 2026-11-22 (poinformowany o art. 206 KSH).
 - Tryb produkcyjny przetestowany lokalnie (`next build` + `next start` z `ZOO24_ENV=production`, Host zoo24.pl vs alias): 30/30 PASS — brak DEMO, sitemap 8 URL tylko https://zoo24.pl, robots/X-Robots-Tag zależne od hosta, meta GSC/Ahrefs, canonical, 404 dla /admin, /demo-legacy, dawnych URL sklepu; linki wewnętrzne z / bez błędów.
