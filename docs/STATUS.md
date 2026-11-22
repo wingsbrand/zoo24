@@ -14,7 +14,7 @@
 | Social / GSC / GA4 live | wyłączone (`ZOO24_SOCIAL_MODE=0`, flagi `*_LIVE=false`) |
 
 Smoke test `ZOO24_SITE_URL=https://zoo24.vercel.app node scripts/smoke-http.mjs`: 21/22 PASS; jedyny FAIL `/admin` → 404 był oczekiwanym zachowaniem — skrypt poprawiony (na hostingu oczekuje 404).
-Uwaga: funkcje działają w regionie `iad1` (USA), baza w `eu-central-1` — do przeniesienia na `fra1` przed włączeniem Supabase (opóźnienia, lokalizacja danych).
+Region funkcji: `vercel.json` → `fra1` (Frankfurt, obok bazy `eu-central-1`); pierwsze deploye były w `iad1`.
 
 ## Co jest MOCK, a co live
 | Obszar | Stan |
