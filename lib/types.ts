@@ -59,6 +59,8 @@ export interface Article {
   /** Notatki dla redaktora (nie są publikowane). */
   reviewNotes?: string[];
   reviewedBy?: string | null;
+  /** Decyzja redakcyjna związana z hashem treści (lib/ops/article-review.ts). */
+  editorialDecision?: import("./ops/article-review").EditorialDecision;
 }
 
 // ---------- SEO ----------
