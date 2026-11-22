@@ -7,6 +7,7 @@ const PATTERNS: [RegExp, string][] = [
   [/Bearer\s+[A-Za-z0-9\-._~+/]+=*/g, "Bearer [REDACTED]"],
   [/\bEAA[A-Za-z0-9]{10,}\b/g, "[REDACTED_META_TOKEN]"], // format tokenów Meta
   [/\bya29\.[A-Za-z0-9\-_]+/g, "[REDACTED_GOOGLE_TOKEN]"],
+  [/\bsb_(secret|publishable)_[A-Za-z0-9_\-\s]{4,}/g, "[REDACTED_SUPABASE_KEY]"], // klucze Supabase (także rozbite nową linią)
   [/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/g, "[REDACTED_EMAIL]"],
   [/(?<!\d)(?:\+?48[\s-]?)?(?:\d[\s-]?){9}(?!\d)/g, "[REDACTED_PHONE]"],
 ];
