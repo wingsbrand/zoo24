@@ -1,0 +1,155 @@
+{
+  "package": "zoo24-ops",
+  "version": "1.0",
+  "created_date": "2026-11-22",
+  "timezone": "Europe/Warsaw",
+  "status": "instructions_and_inactive_templates",
+  "agent_count": 6,
+  "files": [
+    {
+      "path": ".claude/agents/zoo24-ops-build.md",
+      "bytes": 2483,
+      "sha256": "e705cdbfb8ab3ae300b8750ade294013c2c4caea476213afbba614743721d1f7"
+    },
+    {
+      "path": ".claude/agents/zoo24-ops-content.md",
+      "bytes": 2540,
+      "sha256": "100a065ed8c9ccb21e3ff7c71e36cc141511bf96f56f60e02e258e030ab2b206"
+    },
+    {
+      "path": ".claude/agents/zoo24-ops-growth.md",
+      "bytes": 2509,
+      "sha256": "3c958983fafa620fa8b4e75fcab0c617a6d49a26e97b45361346d996f1546062"
+    },
+    {
+      "path": ".claude/agents/zoo24-ops-knowledge.md",
+      "bytes": 2530,
+      "sha256": "8324d9017d5980ab9f460c15c4be9951ccf7e5b223b8ef209cef375d439d2ecb"
+    },
+    {
+      "path": ".claude/agents/zoo24-ops-seo.md",
+      "bytes": 2692,
+      "sha256": "442699c04052a978bf33836b7d215269636774353a32dc82d794317118796ad3"
+    },
+    {
+      "path": ".claude/agents/zoo24-ops-social.md",
+      "bytes": 2690,
+      "sha256": "2fc8683a5c28053debf4870c2aa4d13df075277400d38b8cc4d42c6b467f7f73"
+    },
+    {
+      "path": "CLAUDE_OPS_APPENDIX.md",
+      "bytes": 1615,
+      "sha256": "77268cc49b2568f8b19d6bf7cf88258f7c324605dbf8dab0393adb1e26e5eb02"
+    },
+    {
+      "path": "README_OPERACJE.md",
+      "bytes": 2940,
+      "sha256": "cd27eec2c67174460a6e0815bfb3ee69b5915c5c0f934d8669b407462e436ece"
+    },
+    {
+      "path": "START_OPERACJE.txt",
+      "bytes": 4490,
+      "sha256": "ab064764a2c3eceb23de9b90e26cf2febcbd36039834bfd46844cf8ddd8a6da9"
+    },
+    {
+      "path": "ops/OPERATIONS.md",
+      "bytes": 41311,
+      "sha256": "15ef33f00d390da68e49015672e34693914e93da5f225e96336544be6278ec71"
+    },
+    {
+      "path": "ops/prompts/build.txt",
+      "bytes": 957,
+      "sha256": "17d91255f6bddd611f8bcbb723a37cb05cf38fe74ffe683e2001c5a4b67b50f7"
+    },
+    {
+      "path": "ops/prompts/content.txt",
+      "bytes": 959,
+      "sha256": "809f35476cc8a6b8fdd64227fa18ef22fd41601672d3c5e12cb6dcc0bda19724"
+    },
+    {
+      "path": "ops/prompts/growth.txt",
+      "bytes": 958,
+      "sha256": "76eabd5428957e52a178c73e2391c235686ffe624e51d95b029f52746db370df"
+    },
+    {
+      "path": "ops/prompts/knowledge.txt",
+      "bytes": 961,
+      "sha256": "f9cd461d6c8a98d6c7eaae12dd22407566e2dad5857f2e147a2b544e22abd4f7"
+    },
+    {
+      "path": "ops/prompts/seo.txt",
+      "bytes": 955,
+      "sha256": "1b1109a6f307913860730060ea25fc03f61a885b27c3466e4491578c0270a3b6"
+    },
+    {
+      "path": "ops/prompts/social.txt",
+      "bytes": 958,
+      "sha256": "c301aaeb6a2b7de58a110fdbe871cc46cd9514bc0a7e422114cf91ea9cf58416"
+    },
+    {
+      "path": "ops/spec/ACCEPTANCE.md",
+      "bytes": 6960,
+      "sha256": "3a9d9123e281d81d9502d1884b80a9a6b8fef90b58f7128912d330d33c877e4e"
+    },
+    {
+      "path": "ops/spec/PACKAGE_QA.md",
+      "bytes": 1129,
+      "sha256": "284435b3ffb697d3c20b256fe8b6aeb320c7145b78bbc284f4159ab0ec218a3a"
+    },
+    {
+      "path": "ops/spec/ROLE_SOPS.md",
+      "bytes": 18854,
+      "sha256": "c5d97e30740202ceef972bd15abfa46792b0f4de37b652c0e206226fcb37f12d"
+    },
+    {
+      "path": "ops/spec/SOURCES.md",
+      "bytes": 6134,
+      "sha256": "e539fa6a0d7236552c73726b6146f6163c38c02dc9b2dd6963d4bd49390b346a"
+    },
+    {
+      "path": "ops/templates/INSTALL_STATUS.template.md",
+      "bytes": 931,
+      "sha256": "a817f5ba63377a979259382a9c2ab608d26a0221cfd229e93205a49a46531a0a"
+    },
+    {
+      "path": "ops/templates/access-checklist.md",
+      "bytes": 1926,
+      "sha256": "a438bd9e3f0cf41f046ea7f4091eca1daa43cc7f69bb87fad44acc95947198a1"
+    },
+    {
+      "path": "ops/templates/activation.example.json",
+      "bytes": 3246,
+      "sha256": "45a6a1f7d8a6aa86f1e200c7e763e2f826ad87d20b538168cf63632057eea97e"
+    },
+    {
+      "path": "ops/templates/content-calendar.csv",
+      "bytes": 197,
+      "sha256": "aeac1fe6d6b4d51b79a7aded737ab6927f410cd896f5f633d870853aa0110e7f"
+    },
+    {
+      "path": "ops/templates/job-result.example.json",
+      "bytes": 690,
+      "sha256": "2183be68f3064cf605e89381b8950d173246813386f11b194a36b34486537f47"
+    },
+    {
+      "path": "ops/templates/legacy-url-map.csv",
+      "bytes": 183,
+      "sha256": "a76b6126e710455860356a43621ae3020e3a495ad1e20ae10e88648f69159f87"
+    },
+    {
+      "path": "ops/templates/schedule.example.json",
+      "bytes": 3424,
+      "sha256": "bb8d60200269d77a20252cdbacac5625133f47a7182fb06439b84bf4fba6df1d"
+    },
+    {
+      "path": "ops/templates/source-register.csv",
+      "bytes": 140,
+      "sha256": "de2449a1c7f13430e2347888358b2331efb80be1c88d7be8476dd0a09daacbf5"
+    },
+    {
+      "path": "ops/templates/weekly-report.md",
+      "bytes": 1537,
+      "sha256": "d0b8b48d509ed518c481fb0e3b7a2cb7a4c080ff88e1d555dc084fdac77325be"
+    }
+  ]
+}

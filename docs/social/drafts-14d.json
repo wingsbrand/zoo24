@@ -1,0 +1,202 @@
+[
+  {
+    "id": "soc-001",
+    "platform": "facebook",
+    "pillar": "B",
+    "topic": "Relaunch: ZOO24 wraca w nowej formule (post przypięty) - sklep nie wraca",
+    "copy": "ZOO24 wraca - w nowej formule.\n\nPrzez lata część z Was znała ZOO24 jako sklep zoologiczny online. Mówimy wprost: sklep ZOO24 nie wraca. Nie przyjmujemy zamówień, nie obowiązują dawne promocje, kody rabatowe ani programy lojalnościowe, a ten profil nie udziela gwarancji na produkty kupione w przeszłości.\n\nW zamian ZOO24 staje się miejscem z praktycznymi poradnikami dla opiekunów zwierząt i wyszukiwarką usług, takich jak groomerzy czy hotele dla zwierząt. Nie sprzedajemy usług i nie rezerwujemy terminów - pomagamy znaleźć informacje i podpowiadamy, o co zapytać, zanim wybierzecie usługodawcę.\n\nNie udzielamy porad weterynaryjnych. W sprawach zdrowia zwierzęcia kontaktujcie się z lekarzem weterynarii.\n\nPytanie o dawne zamówienie? Prosimy, nie wpisujcie w komentarzach numerów zamówień, adresów ani telefonów. [UZUPEŁNIA WŁAŚCICIEL: kanał kontaktu i podmiot odpowiedzialny za sprawy dawnego sklepu].\n\nCzego chcielibyście szukać w nowym ZOO24? Napiszcie w komentarzu.",
+    "cta": "Zobacz, czym jest nowe ZOO24",
+    "targetPath": "/o-nas",
+    "utm": {"source": "facebook", "medium": "organic_social", "campaign": "zoo24_relaunch_2026", "content": "soc-001"},
+    "assetId": "ast-001",
+    "altText": "Grafika tekstowa w barwach ZOO24 z napisem: ZOO24 w nowej formule - poradniki i wyszukiwarka usług dla zwierząt. Nie jesteśmy sklepem.",
+    "sourceRefs": [
+      "docs/SEO_SOCIAL_RECOVERY.md §4.1 - wymagana komunikacja zmiany formuły",
+      "docs/social/relaunch-message.md - wersja FB do akceptacji właściciela",
+      "Do potwierdzenia przez właściciela: podmiot i kanał obsługi spraw dawnego sklepu (fakt prawny, placeholder w copy)"
+    ],
+    "disclosure": null,
+    "scheduledAtLocal": "2026-11-30T18:00",
+    "status": "draft"
+  },
+  {
+    "id": "soc-002",
+    "platform": "instagram",
+    "pillar": "B",
+    "topic": "Relaunch IG: krótka grafika o zmianie formuły ZOO24",
+    "copy": "ZOO24 wraca - ale już nie jako sklep.\n\nNie przyjmujemy zamówień, nie ma dawnych promocji ani rabatów, nie obsługujemy tu gwarancji.\n\nTeraz: poradniki dla opiekunów zwierząt i wyszukiwarka usług - groomerzy, hotele dla zwierząt. Bez sprzedaży, bez rezerwacji.\n\nPytanie o dawne zamówienie? Nie podawaj danych w komentarzu - [UZUPEŁNIA WŁAŚCICIEL: kanał kontaktu].\n\nWięcej o nowej formule - link w bio.\n\n#zoo24 #opiekunzwierząt #poradnikdlaopiekunów",
+    "cta": "Link w bio - nowa formuła ZOO24",
+    "targetPath": "/",
+    "utm": {"source": "instagram", "medium": "organic_social", "campaign": "zoo24_relaunch_2026", "content": "soc-002"},
+    "assetId": "ast-002",
+    "altText": "Kwadratowa grafika tekstowa ZOO24: Nowa formuła. Poradniki i usługi dla zwierząt. Bez sprzedaży.",
+    "sourceRefs": [
+      "docs/SEO_SOCIAL_RECOVERY.md §4.1",
+      "docs/social/relaunch-message.md - wersja IG i propozycja bio",
+      "Link w podpisie IG nie jest klikalny - link z UTM ustawić w bio na czas kampanii (weryfikacja redaktora)"
+    ],
+    "disclosure": null,
+    "scheduledAtLocal": "2026-12-01T19:00",
+    "status": "draft"
+  },
+  {
+    "id": "soc-003",
+    "platform": "facebook",
+    "pillar": "A",
+    "topic": "Zimowe spacery: codzienna pielęgnacja łap po powrocie do domu",
+    "copy": "Zimowy spacer po posypanych chodnikach? Kilka prostych nawyków po powrocie do domu:\n\n1. Przetrzyj łapy wilgotną, miękką ściereczką i dokładnie osusz.\n2. Zajrzyj między opuszki - tam lubią zbierać się grudki śniegu i piasku.\n3. Osusz też brzuch i okolice łap, jeśli pies wraca mokry.\n4. Miej ręcznik przy drzwiach, żeby to był szybki rytuał, a nie walka.\n\nTo zwykła codzienna pielęgnacja, nie porada medyczna. Jeśli coś Cię zaniepokoi - zaczerwienienie, kulenie łapy, wylizywanie - skontaktuj się z lekarzem weterynarii.\n\nWięcej wskazówek na zimę zebraliśmy w poradniku.",
+    "cta": "Przeczytaj poradnik o pielęgnacji psa zimą",
+    "targetPath": "/poradniki/pielegnacja-psa-zima",
+    "utm": {"source": "facebook", "medium": "organic_social", "campaign": "zoo24_relaunch_2026", "content": "soc-003"},
+    "assetId": "ast-003",
+    "altText": "Ilustracja: psia łapa wycierana ręcznikiem przy drzwiach, obok cztery krótkie punkty: przetrzyj, osusz, sprawdź między opuszkami, ręcznik przy drzwiach.",
+    "sourceRefs": [
+      "Poradnik ZOO24 /poradniki/pielegnacja-psa-zima - post publikować dopiero po zatwierdzeniu faktów w artykule",
+      "Redaktor: wskazać materiał edukacyjny organizacji lekarzy weterynarii lub uczelni weterynaryjnej o wpływie soli drogowej na łapy psa i potwierdzić, że copy nie wykracza poza ogólne zalecenia",
+      "Kontrola tonu: brak obietnic zdrowotnych, brak diagnozy, odesłanie do lekarza weterynarii bez wskazania konkretnej placówki"
+    ],
+    "disclosure": null,
+    "scheduledAtLocal": "2026-12-02T18:00",
+    "status": "draft"
+  },
+  {
+    "id": "soc-004",
+    "platform": "instagram",
+    "pillar": "A",
+    "topic": "Karuzela: 5 rzeczy po zimowym spacerze (wersja IG, inna od FB)",
+    "copy": "Zapisz na zimę: 5 rzeczy po spacerze w mrozie i śniegu.\n\nSlajd po slajdzie: ręcznik przy drzwiach, łapy, przestrzenie między opuszkami, brzuch, chwila na ogrzanie.\n\nTo codzienna pielęgnacja, nie porada medyczna. Gdy coś Cię niepokoi - lekarz weterynarii.\n\nPełny poradnik zimowy - link w bio.\n\nA jak u Was wygląda powrót ze spaceru? Ręcznik czy szybki prysznic łap?",
+    "cta": "Zapisz post | Poradnik zimowy - link w bio",
+    "targetPath": "/poradniki/pielegnacja-psa-zima",
+    "utm": {"source": "instagram", "medium": "organic_social", "campaign": "zoo24_relaunch_2026", "content": "soc-004"},
+    "assetId": "ast-004",
+    "altText": "Karuzela 5 slajdów z ilustracjami: ręcznik przy drzwiach, wycieranie łap, sprawdzanie przestrzeni między opuszkami, osuszanie brzucha, pies odpoczywający na kocu.",
+    "sourceRefs": [
+      "Poradnik ZOO24 /poradniki/pielegnacja-psa-zima - zgodność slajdów z zatwierdzoną treścią artykułu",
+      "Redaktor: to samo źródło merytoryczne co soc-003, do potwierdzenia",
+      "IG: link w podpisie nieklikalny - ustawić link z utm_content=soc-004 w bio w dniu publikacji lub użyć ogólnego linku bio"
+    ],
+    "disclosure": null,
+    "scheduledAtLocal": "2026-12-03T19:00",
+    "status": "draft"
+  },
+  {
+    "id": "soc-005",
+    "platform": "facebook",
+    "pillar": "C",
+    "topic": "Pytanie do społeczności: jakich usług dla zwierząt najtrudniej szukać w Waszej okolicy?",
+    "copy": "Budujemy wyszukiwarkę usług dla zwierząt i chcemy, żeby odpowiadała na prawdziwe potrzeby, a nie nasze wyobrażenia.\n\nJakiej usługi najtrudniej Wam szukać?\nA) groomer\nB) hotel lub opieka na czas wyjazdu\nC) szkolenie / behawiorysta\nD) coś innego - napiszcie co\n\nWystarczy litera w komentarzu. Prosimy bez nazw firm, nazwisk i danych kontaktowych - interesuje nas sama potrzeba. Wyniki podsumujemy w jednym z kolejnych postów.",
+    "cta": "Odpowiedz w komentarzu i zajrzyj na nowe zoo24.pl",
+    "targetPath": "/",
+    "utm": {"source": "facebook", "medium": "organic_social", "campaign": "zoo24_relaunch_2026", "content": "soc-005"},
+    "assetId": "ast-006",
+    "altText": "Grafika tekstowa z pytaniem: Jakiej usługi dla zwierząt najtrudniej Ci szukać? Cztery odpowiedzi oznaczone literami A, B, C, D.",
+    "sourceRefs": [
+      "docs/SEO_SOCIAL_RECOVERY.md §4.1 filar C - pytania bez danych wrażliwych",
+      "Wyniki tylko jako agregat (liczba odpowiedzi na literę), bez kopiowania komentarzy do repo",
+      "Kategoria 'behawiorysta' do potwierdzenia, czy jest w zakresie katalogu MVP (MASTER_PLAN) - w razie braku zamienić na inną kategorię"
+    ],
+    "disclosure": null,
+    "scheduledAtLocal": "2026-12-04T18:00",
+    "status": "draft"
+  },
+  {
+    "id": "soc-006",
+    "platform": "instagram",
+    "pillar": "C",
+    "topic": "Pytanie IG (do ankiety w Stories, jeśli dostępna ręcznie): zimowy rytuał spacerowy",
+    "copy": "Pytanie na weekend: jaki jest Wasz zimowy rytuał spacerowy?\n\nKrótszy spacer częściej, czy jeden długi w środku dnia? Śnieg - radość czy foch?\n\nNapiszcie w komentarzu (bez zdjęć innych osób i bez lokalizacji domu). Najciekawsze odpowiedzi - bez nazw profili - zbierzemy w kolejnych materiałach.\n\nPoradniki na zimę - link w bio.",
+    "cta": "Napisz w komentarzu | Poradniki - link w bio",
+    "targetPath": "/",
+    "utm": {"source": "instagram", "medium": "organic_social", "campaign": "zoo24_relaunch_2026", "content": "soc-006"},
+    "assetId": "ast-006",
+    "altText": "Grafika tekstowa w formacie pionowym: Twój zimowy rytuał spacerowy? Dwie opcje: krótko i często albo jeden długi spacer.",
+    "sourceRefs": [
+      "docs/SEO_SOCIAL_RECOVERY.md §4.1 filar C, §4.2 tydzień 2 - Stories/Q&A tylko jeśli konto/narzędzie pozwala, inaczej ręcznie",
+      "Cytowanie odpowiedzi użytkowników w przyszłych postach wyłącznie za ich zgodą (filar D) - domyślnie tylko agregat",
+      "Kontrola tonu: brak sugestii dotyczących zdrowia przy niskich temperaturach bez źródła"
+    ],
+    "disclosure": null,
+    "scheduledAtLocal": "2026-12-05T11:00",
+    "status": "draft"
+  },
+  {
+    "id": "soc-007",
+    "platform": "facebook",
+    "pillar": "B",
+    "topic": "Przed świętami: co sprawdzić przed pobytem psa w hotelu",
+    "copy": "Planujecie wyjazd na święta, a pies zostaje pod opieką hotelu dla zwierząt? Zanim zarezerwujecie miejsce u usługodawcy, warto zapytać o kilka rzeczy:\n\n- Jakie dokumenty i szczepienia są wymagane?\n- Jak wygląda dzień psa: spacery, kontakt z innymi psami, miejsce do odpoczynku?\n- Czy można zobaczyć obiekt przed pobytem?\n- Co dzieje się, gdy pies źle się poczuje - jaka jest procedura i kontakt z lekarzem weterynarii?\n- Czy można przywieźć własną karmę i legowisko?\n- Jak hotel informuje opiekuna w trakcie pobytu?\n\nPełną checklistę do wydruku przygotowaliśmy w poradniku. ZOO24 nie prowadzi rezerwacji - pomagamy przygotować się do rozmowy z hotelem.",
+    "cta": "Pobierz checklistę przed pobytem psa w hotelu",
+    "targetPath": "/poradniki/hotel-dla-psa-checklista",
+    "utm": {"source": "facebook", "medium": "organic_social", "campaign": "zoo24_relaunch_2026", "content": "soc-007"},
+    "assetId": "ast-005",
+    "altText": "Grafika checklisty w formacie poziomym: sześć pól do zaznaczenia z pytaniami do hotelu dla psa - dokumenty, plan dnia, obiekt, procedura zdrowotna, karma, kontakt z opiekunem.",
+    "sourceRefs": [
+      "Poradnik ZOO24 /poradniki/hotel-dla-psa-checklista - post po zatwierdzeniu artykułu",
+      "Redaktor: zweryfikować w aktualnych polskich przepisach i źródłach urzędowych, jakie dokumenty/szczepienia mogą być wymagane (copy celowo formułuje to jako pytanie do hotelu, bez twierdzeń)",
+      "Bez nazw i linków do realnych hoteli; ewentualny link do /uslugi/hotel-dla-zwierzat/... tylko gdy strona zawiera zweryfikowane, nie-DEMO wpisy"
+    ],
+    "disclosure": null,
+    "scheduledAtLocal": "2026-12-08T18:00",
+    "status": "draft"
+  },
+  {
+    "id": "soc-008",
+    "platform": "instagram",
+    "pillar": "B",
+    "topic": "Karuzela IG: hotel dla psa na święta - 6 pytań przed rezerwacją",
+    "copy": "Hotel dla psa na święta? 6 pytań, które warto zadać przed rezerwacją - przesuń karuzelę.\n\nZapisz post, zanim zaczniesz dzwonić do hoteli. Wyślij osobie, która też planuje wyjazd ze zwierzakiem w domu.\n\nPełna checklista do wydruku - link w bio.\n\nZOO24 nie prowadzi rezerwacji ani nie poleca konkretnych obiektów w tym poście.",
+    "cta": "Zapisz i udostępnij | Checklista - link w bio",
+    "targetPath": "/poradniki/hotel-dla-psa-checklista",
+    "utm": {"source": "instagram", "medium": "organic_social", "campaign": "zoo24_relaunch_2026", "content": "soc-008"},
+    "assetId": "ast-005",
+    "altText": "Karuzela 7 slajdów: okładka z tytułem Hotel dla psa na święta oraz sześć slajdów, każdy z jednym pytaniem do hotelu zapisanym dużą czcionką.",
+    "sourceRefs": [
+      "Poradnik ZOO24 /poradniki/hotel-dla-psa-checklista",
+      "To samo źródło merytoryczne co soc-007; wersja IG ma inny układ i copy",
+      "IG: link w podpisie nieklikalny - link z UTM w bio"
+    ],
+    "disclosure": null,
+    "scheduledAtLocal": "2026-12-09T19:00",
+    "status": "draft"
+  },
+  {
+    "id": "soc-009",
+    "platform": "facebook",
+    "pillar": "B",
+    "topic": "Jak wybrać groomera: pytania przed pierwszą wizytą",
+    "copy": "Pierwsza wizyta u groomera - dla psa i dla opiekuna to często sporo emocji. Kilka pytań, które pomagają wybrać spokojnie:\n\n- Czy mogę opisać charakter psa i jego wcześniejsze doświadczenia przed wizytą?\n- Jak wygląda zapoznanie psa z salonem?\n- Czy opiekun może zostać lub odebrać psa w trakcie, jeśli pies się stresuje?\n- Jakie zabiegi wchodzą w usługę i ile zwykle trwa wizyta?\n- Jakich kosmetyków się używa i czy można przynieść własne?\n\nNie ma jednej dobrej odpowiedzi - chodzi o to, żeby zasady były jasne przed wizytą. Szerzej piszemy o tym w poradniku.",
+    "cta": "Przeczytaj: jak wybrać groomera",
+    "targetPath": "/poradniki/jak-wybrac-groomera",
+    "utm": {"source": "facebook", "medium": "organic_social", "campaign": "zoo24_relaunch_2026", "content": "soc-009"},
+    "assetId": "ast-005",
+    "altText": "Grafika checklisty w formacie poziomym: pięć pytań do groomera przed pierwszą wizytą, z ikonami nożyczek i szczotki.",
+    "sourceRefs": [
+      "Poradnik ZOO24 /poradniki/jak-wybrac-groomera - post po zatwierdzeniu artykułu",
+      "docs/SEO_SOCIAL_RECOVERY.md §4.2 tydzień 1 - checklista wyboru groomera",
+      "Bez nazw realnych salonów, bez rekomendacji i bez linku do /uslugi/groomer/warszawa, dopóki strona nie zawiera zweryfikowanych, nie-DEMO wpisów"
+    ],
+    "disclosure": null,
+    "scheduledAtLocal": "2026-12-11T18:00",
+    "status": "draft"
+  },
+  {
+    "id": "soc-010",
+    "platform": "instagram",
+    "pillar": "A",
+    "topic": "IG: szczotkowanie w domu między wizytami u groomera (zima)",
+    "copy": "Między wizytami u groomera najwięcej robi zwykła szczotka.\n\nZimą sierść częściej bywa wilgotna od śniegu - dlatego dobrze jest najpierw ją osuszyć, a dopiero potem szczotkować. Krótko, ale regularnie, w spokojnym momencie dnia i z nagrodą na koniec.\n\nNie wiesz, jaka szczotka pasuje do sierści Twojego psa? Zapytaj groomera przy najbliższej wizycie - w poradniku podpowiadamy, o co jeszcze warto zapytać.\n\nLink w bio.",
+    "cta": "Poradnik: jak wybrać groomera - link w bio",
+    "targetPath": "/poradniki/jak-wybrac-groomera",
+    "utm": {"source": "instagram", "medium": "organic_social", "campaign": "zoo24_relaunch_2026", "content": "soc-010"},
+    "assetId": "ast-004",
+    "altText": "Pionowa ilustracja: opiekun delikatnie szczotkuje osuszoną sierść psa leżącego na kocu, obok napis: najpierw osusz, potem szczotkuj.",
+    "sourceRefs": [
+      "Poradnik ZOO24 /poradniki/jak-wybrac-groomera oraz /poradniki/pielegnacja-psa-zima - spójność z zatwierdzoną treścią",
+      "Redaktor: potwierdzić zalecenie 'osusz przed szczotkowaniem' w wiarygodnym źródle o pielęgnacji sierści lub z udziałem groomera (bez cytowania nazwisk bez zgody)",
+      "Asset ast-004 wymaga osobnego slajdu/wariantu dla tego posta - do potwierdzenia w rejestrze assetów"
+    ],
+    "disclosure": null,
+    "scheduledAtLocal": "2026-12-12T11:00",
+    "status": "draft"
+  }
+]

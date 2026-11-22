@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+/* ZOO24 — tokeny projektowe (jedno źródło prawdy). Zmiana wyglądu = zmiana tutaj. Opis: docs/design/DESIGN_SYSTEM.md */
+@theme {
+  /* Kolory marki */
+  --color-brand: #0e4f5c;          /* petrol — kolor główny, tekst linków, przyciski drugorzędne */
+  --color-brand-dark: #0a3842;     /* nagłówki, hover */
+  --color-brand-soft: #e4f0ef;     /* tła sekcji, aktywne filtry */
+  --color-brand-tint: #f1f7f6;
+  --color-accent: #b8461f;         /* koral — jedno najważniejsze działanie na ekranie (biały tekst 5,34:1) */
+  --color-accent-dark: #963818;    /* koral jako tekst na jasnym tle / hover przycisku */
+  --color-accent-soft: #fdebe4;
+
+  /* Neutralne (ciepłe) */
+  --color-canvas: #faf7f2;         /* tło strony */
+  --color-surface: #ffffff;        /* karty */
+  --color-ink: #1b2422;            /* tekst główny */
+  --color-ink-muted: #4f5b58;      /* tekst pomocniczy (AA na canvas) */
+  --color-line: #e6e0d6;           /* obramowania */
+  --color-line-strong: #cfc6b8;
+
+  /* Statusy (zawsze z ikoną/tekstem, nie samym kolorem) */
+  --color-ok: #1f7a4d;     --color-ok-soft: #e6f4ec;
+  --color-warn: #8a5a00;   --color-warn-soft: #fff4d6;
+  --color-danger: #b42318; --color-danger-soft: #fdecea;
+  --color-info: #0e4f5c;   --color-info-soft: #e4f0ef;
+  --color-demo: #7a4a00;   --color-demo-soft: #ffe9b0;
+
+  /* Typografia (zmienne ustawiane przez next/font w app/layout.tsx) */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, "Segoe UI", Arial, sans-serif;
+  --font-display: var(--font-bricolage), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  /* Zaokrąglenia, cienie, ruch */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 28px;
+  --shadow-card: 0 1px 2px rgb(27 36 34 / 0.06), 0 2px 8px rgb(27 36 34 / 0.05);
+  --shadow-raised: 0 4px 12px rgb(27 36 34 / 0.08), 0 12px 32px rgb(27 36 34 / 0.08);
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  /* Szerokości treści */
+  --container-page: 72rem;   /* 1152px */
+  --container-prose: 42rem;  /* ~68 znaków w akapicie */
+}
+
+@layer base {
+  html { -webkit-text-size-adjust: 100%; scroll-padding-top: 5rem; }
+  body { background: var(--color-canvas); color: var(--color-ink); font-family: var(--font-sans); line-height: 1.6; }
+  h1, h2, h3 { font-family: var(--font-display); color: var(--color-brand-dark); line-height: 1.15; letter-spacing: -0.015em; text-wrap: balance; }
+  p { text-wrap: pretty; }
+  a { color: inherit; text-underline-offset: 3px; }
+  ::selection { background: var(--color-accent-soft); }
+  :focus-visible { outline: 3px solid var(--color-accent); outline-offset: 2px; border-radius: 4px; }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  }
+}
+
+@layer components {
+  /* Treść artykułu */
+  .prose-zoo { max-width: var(--container-prose); font-size: 1.0625rem; line-height: 1.75; }
+  .prose-zoo h2 { font-size: 1.5rem; margin-top: 2.25rem; margin-bottom: 0.75rem; }
+  .prose-zoo h3 { font-size: 1.2rem; margin-top: 1.75rem; margin-bottom: 0.5rem; }
+  .prose-zoo p { margin-bottom: 1.1rem; }
+  .prose-zoo a { color: var(--color-brand); text-decoration: underline; }
+
+  /* Subtelny motyw marki: rozproszone łapki (tło sekcji hero) */
+  .paw-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Cg fill='%230e4f5c' fill-opacity='0.06'%3E%3Cellipse cx='14' cy='14' rx='3' ry='4'/%3E%3Cellipse cx='21' cy='9' rx='3' ry='4'/%3E%3Cellipse cx='28' cy='14' rx='3' ry='4'/%3E%3Cpath d='M21 16c4 0 7 3 7 6 0 2-2 3-4 3-1 0-2-1-3-1s-2 1-3 1c-2 0-4-1-4-3 0-3 3-6 7-6z'/%3E%3C/g%3E%3C/svg%3E");
+  }
+}

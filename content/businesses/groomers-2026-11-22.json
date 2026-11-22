@@ -1,0 +1,82 @@
+[
+  {
+    "id": "r01", "name": "AnimalRoom", "category": "groomer", "city": "warszawa",
+    "addressText": "ul. Świętochowskiego 2/7, Warszawa (Bemowo)", "serviceArea": null,
+    "websiteUrl": "https://animalroom.pl/", "phonePublic": "+48 698 361 213",
+    "services": ["strzyżenie", "kąpiel", "pakiety pielęgnacji"], "petTypes": ["psy", "koty"],
+    "sourceUrl": "https://animalroom.pl/", "verifiedByHuman": false,
+    "note": "Strona podaje też pielęgnację królików i świnek morskich. Brak kodu pocztowego na stronie."
+  },
+  {
+    "id": "r02", "name": "Kudłate Historie", "category": "groomer", "city": "krakow",
+    "addressText": "ul. Ułanów 17, 31-450 Kraków", "serviceArea": "Kraków — Prądnik Czerwony",
+    "websiteUrl": "https://kudlatehistorie.pl/", "phonePublic": "+48 602 402 802",
+    "services": ["strzyżenie", "kąpiel", "trymowanie", "pielęgnacja łap i uszu", "wizyta adaptacyjna"], "petTypes": ["psy"],
+    "sourceUrl": "https://kudlatehistorie.pl/kontakt/", "verifiedByHuman": true,
+    "note": "Strona: lokal widoczny z ulicy, parter."
+  },
+  {
+    "id": "r03", "name": "Psi Fryzjer", "category": "groomer", "city": "lodz",
+    "addressText": "ul. Podjazdowa 7, 94-232 Łódź", "serviceArea": null,
+    "websiteUrl": "https://anetagrooming.pl/", "phonePublic": "796 927 842",
+    "services": ["strzyżenie", "kąpiel", "trymowanie", "pielęgnacja pazurów", "dojazd do klienta"], "petTypes": ["psy"],
+    "sourceUrl": "https://anetagrooming.pl/", "verifiedByHuman": false,
+    "note": "Strona: psy małe i średnie."
+  },
+  {
+    "id": "r04", "name": "Strefa Psa", "category": "groomer", "city": "wroclaw",
+    "addressText": "ul. Marcelego Nenckiego 21/4, 52-223 Wrocław", "serviceArea": null,
+    "websiteUrl": "https://strefa-psa.pl/", "phonePublic": "693 257 850",
+    "services": ["strzyżenie", "kąpiel", "trymowanie", "SPA"], "petTypes": ["psy"],
+    "sourceUrl": "https://strefa-psa.pl/", "verifiedByHuman": true,
+    "note": "Adres potwierdzony na stronie; telefon z odczytu agenta."
+  },
+  {
+    "id": "r05", "name": "Pom Pom", "category": "groomer", "city": "poznan",
+    "addressText": "ul. Czesława Niemena 7/LU1, 61-131 Poznań", "serviceArea": "Poznań — Łacina",
+    "websiteUrl": "https://www.groomer.pompom.dog/", "phonePublic": "+48 790 677 790",
+    "services": ["strzyżenie", "kąpiel", "trymowanie", "wizyta szczeniaka"], "petTypes": ["psy"],
+    "sourceUrl": "https://www.groomer.pompom.dog/kontakt/", "verifiedByHuman": false,
+    "note": ""
+  },
+  {
+    "id": "r06", "name": "LUXPIES", "category": "groomer", "city": "gdansk",
+    "addressText": "ul. Dmowskiego 7B, Gdańsk (Wrzeszcz)", "serviceArea": null,
+    "websiteUrl": "https://luxpies.com/", "phonePublic": "+48 881 422 040",
+    "services": ["strzyżenie", "kąpiel", "trymowanie", "adaptacja szczeniaka"], "petTypes": ["psy"],
+    "sourceUrl": "https://luxpies.com/rezerwacja/", "verifiedByHuman": false,
+    "note": "Brak kodu pocztowego na stronie. Agent zgłosił ukryte polecenie dla botów AI na stronie — sprawdzić ręcznie."
+  },
+  {
+    "id": "r07", "name": "Yuti Dog Spa", "category": "groomer", "city": "szczecin",
+    "addressText": "Szosa Polska 86/2, 71-800 Szczecin", "serviceArea": null,
+    "websiteUrl": "https://www.yutidogspa.pl/", "phonePublic": "+48 573 104 404",
+    "services": ["strzyżenie", "kąpiel", "trymowanie", "pielęgnacja pazurów"], "petTypes": ["psy"],
+    "sourceUrl": "https://www.yutidogspa.pl/", "verifiedByHuman": false,
+    "note": ""
+  },
+  {
+    "id": "r08", "name": "Salonik dla Pupila", "category": "groomer", "city": "bydgoszcz",
+    "addressText": "ul. Dr. E. Warmińskiego 20, 85-054 Bydgoszcz", "serviceArea": null,
+    "websiteUrl": "https://www.salonik-dla-pupila.pl/", "phonePublic": "+48 502 364 907",
+    "services": ["strzyżenie", "kąpiel", "trymowanie", "czesanie"], "petTypes": ["psy"],
+    "sourceUrl": "https://www.salonik-dla-pupila.pl/", "verifiedByHuman": false,
+    "note": "Strona: głównie psy małych ras."
+  },
+  {
+    "id": "r09", "name": "GROOM ROOM", "category": "groomer", "city": "lublin",
+    "addressText": "ul. Tymiankowa 7, 20-542 Lublin", "serviceArea": null,
+    "websiteUrl": "https://strzyzenie.lublin.pl/", "phonePublic": "+48 796 929 104",
+    "services": ["strzyżenie", "trymowanie", "pielęgnacja"], "petTypes": ["psy"],
+    "sourceUrl": "https://strzyzenie.lublin.pl/", "verifiedByHuman": false,
+    "note": ""
+  },
+  {
+    "id": "r10", "name": "Kudłatek – Studio Psiej Urody", "category": "groomer", "city": "bialystok",
+    "addressText": "ul. Armii Krajowej 23/3, 15-661 Białystok", "serviceArea": null,
+    "websiteUrl": "https://kudlatek-studio.pl/", "phonePublic": "+48 790 262 243",
+    "services": ["strzyżenie", "pielęgnacja"], "petTypes": ["psy"],
+    "sourceUrl": "https://kudlatek-studio.pl/kontakt/", "verifiedByHuman": true,
+    "note": "Adres i telefon potwierdzone na stronie."
+  }
+]

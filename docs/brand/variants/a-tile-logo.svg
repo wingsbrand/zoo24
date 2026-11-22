@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 372 96" role="img" aria-labelledby="t">
+  <title id="t">ZOO24 — usługi i wiedza dla opiekunów zwierząt</title>
+  <g>
+    <rect width="96" height="96" rx="22" fill="#1f6f5c"/>
+    <ellipse cx="25" cy="38" rx="8" ry="10" fill="#fdf6e7" transform="rotate(-18 25 38)"/>
+    <ellipse cx="39" cy="24" rx="8" ry="10.5" fill="#fdf6e7" transform="rotate(-6 39 24)"/>
+    <ellipse cx="57" cy="24" rx="8" ry="10.5" fill="#fdf6e7" transform="rotate(6 57 24)"/>
+    <ellipse cx="71" cy="38" rx="8" ry="10" fill="#fdf6e7" transform="rotate(18 71 38)"/>
+    <path d="M48 41c13 0 26 10 26 23 0 9-7 15-15 15-4 0-7-2-11-2s-7 2-11 2c-8 0-15-6-15-15 0-13 13-23 26-23z" fill="#f2b544"/>
+    <text x="48" y="70" text-anchor="middle" font-family="'Arial Black','Segoe UI Black',Arial,Helvetica,sans-serif" font-weight="900" font-size="22" fill="#154d40" letter-spacing="-0.5">24</text>
+  </g>
+  <text x="114" y="62" font-family="'Arial Black','Segoe UI Black',Arial,Helvetica,sans-serif" font-weight="900" font-size="50" letter-spacing="-1">
+    <tspan fill="#154d40">ZOO</tspan><tspan fill="#d99a1e">24</tspan>
+  </text>
+  <text x="116" y="84" font-family="Arial,Helvetica,sans-serif" font-size="13" fill="#57534e" letter-spacing="0.4">usługi i wiedza dla opiekunów zwierząt</text>
+</svg>

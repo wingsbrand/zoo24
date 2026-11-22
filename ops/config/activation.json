@@ -1,0 +1,107 @@
+{
+  "schema_version": "zoo24.ops.policy.v1",
+  "status": "INACTIVE_PENDING_OWNER_APPROVAL",
+  "mode": "shadow",
+  "enabled": false,
+  "timezone": "Europe/Warsaw",
+  "owner_approval": {
+    "approved": false,
+    "approved_by": null,
+    "approved_at": null,
+    "policy_hash": null,
+    "review_due_at": null
+  },
+  "resources": {
+    "site_origin": "https://zoo24.pl",
+    "repository": null,
+    "production_environment_id": null,
+    "cms_project_id": null,
+    "gsc_property": null,
+    "ga4_property_id": null,
+    "facebook_page_id": null,
+    "instagram_account_id": null,
+    "gateway_integration_id": null
+  },
+  "resource_notes": {
+    "site_origin": "domena potwierdzona (docs/audits/asset-rights-status.md); serwis offline, DNS nietknięty",
+    "repository": "folder projektu nie jest repozytorium git — warunek cloud runtime i flow branch/PR",
+    "ga4_property_id": "property odczytywane przez Windsor.ai; ID do potwierdzenia przez właściciela (nie zgadujemy)",
+    "facebook_page_id": "strona ZOO24.PL odczytana przez Windsor.ai (agregaty); ID i uprawnienia publikacji do potwierdzenia",
+    "instagram_account_id": "konektor IG niepodłączony",
+    "gsc_property": "do założenia po uruchomieniu serwera (decyzja właściciela)"
+  },
+  "runtime": {
+    "selected": null,
+    "cloud_available_verified": false,
+    "max_concurrent_runs": 2,
+    "max_runtime_seconds": 1200,
+    "build_max_runtime_seconds": 2400,
+    "max_turns": 30,
+    "build_max_turns": 50,
+    "max_attempts_total": 3,
+    "fencing_required": true,
+    "single_dispatcher_required": true
+  },
+  "budgets": {
+    "currency": "PLN",
+    "approved_monthly_extra_ai_automation": null,
+    "suggested_monthly_extra_ai_automation": 600,
+    "approved_per_run": null,
+    "paid_advertising_monthly": 0,
+    "new_paid_media_generation_monthly": 0,
+    "alerts_fraction": [0.7, 0.9, 1.0],
+    "prevent_automatic_overage": true
+  },
+  "autonomy": {
+    "read_approved_sources": false,
+    "create_drafts": true,
+    "publish_human_reviewed_content": false,
+    "publish_reviewed_social_versions": false,
+    "apply_low_risk_seo_patch": false,
+    "auto_deploy_low_risk_code": false,
+    "reply_exact_public_faq": false,
+    "send_email_campaigns": false,
+    "send_private_messages": false,
+    "activate_paid_ads": false,
+    "change_protected_configuration": false
+  },
+  "caps": {
+    "new_articles_per_week": 2,
+    "article_updates_per_week": 2,
+    "facebook_posts_per_week": 3,
+    "instagram_posts_per_week": 3,
+    "social_min_gap_hours": 24,
+    "active_growth_experiments": 2,
+    "seo_changed_urls_per_week": 5,
+    "seo_experiment_cooldown_days_per_url": 28,
+    "low_risk_deployments_per_day": 1,
+    "sources_per_knowledge_run": 10,
+    "automatic_faq_replies_per_thread": 1
+  },
+  "review": {
+    "editor_id": null,
+    "backup_editor_id": null,
+    "review_cadence": "weekly",
+    "approved_content_buffer_days": 7,
+    "low_buffer_alert_items": 3,
+    "new_factual_content_requires_human_review": true,
+    "health_legal_insurance_requires_specialist": true,
+    "approval_bound_to_content_and_evidence_versions": true
+  },
+  "alerts": {
+    "operator_id": null,
+    "approved_destination": null,
+    "critical_delivery_verified": false
+  },
+  "capabilities_by_channel": {
+    "facebook": { "can_publish": false, "can_edit_caption": null, "can_delete_media": null, "can_cancel_schedule": null },
+    "instagram": { "can_publish": false, "can_edit_caption": null, "can_delete_media": null, "can_cancel_schedule": null }
+  },
+  "source_allowlist": [],
+  "pause": {
+    "global": true,
+    "cancel_provider_schedules": true,
+    "unknown_cancel_state": "partially_paused"
+  },
+  "notes": "Polityka ZOO24 wygenerowana z zoo24-ops/ops/templates/activation.example.json. NIEAKTYWNA: brak podpisu właściciela (owner_approval) => efektywny tryb najwyżej shadow (lib/ops/policy.ts). Role zoo24-ops-* nie mogą zapisywać tego pliku (writePolicy odrzuca tożsamości agentów). Zakres pierwszej aktywacji: ops/runtime/ACTIVATION_PACKAGE.md."
+}

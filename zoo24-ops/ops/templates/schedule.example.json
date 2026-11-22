@@ -1,0 +1,105 @@
+{
+  "schema_version": "zoo24.ops.schedule.v1",
+  "status": "EXAMPLE_DISABLED",
+  "timezone": "Europe/Warsaw",
+  "dispatcher": null,
+  "max_concurrent_model_runs": 2,
+  "jobs": [
+    {
+      "job_key": "zoo24-ops-build",
+      "agent": "zoo24-ops-build",
+      "enabled": false,
+      "cron_local": "0 8 * * 1-5",
+      "timezone": "Europe/Warsaw",
+      "prompt_file": "zoo24-ops/ops/prompts/build.txt",
+      "max_runtime_seconds": 2400,
+      "max_turns": 50,
+      "max_attempts_total": 3,
+      "scope_policy_ref": null,
+      "dependencies": "validated records; schedule order is not proof of dependency completion"
+    },
+    {
+      "job_key": "zoo24-ops-content",
+      "agent": "zoo24-ops-content",
+      "enabled": false,
+      "cron_local": "0 9 * * 1,3,5",
+      "timezone": "Europe/Warsaw",
+      "prompt_file": "zoo24-ops/ops/prompts/content.txt",
+      "max_runtime_seconds": 1200,
+      "max_turns": 30,
+      "max_attempts_total": 3,
+      "scope_policy_ref": null,
+      "dependencies": "validated records; schedule order is not proof of dependency completion"
+    },
+    {
+      "job_key": "zoo24-ops-growth",
+      "agent": "zoo24-ops-growth",
+      "enabled": false,
+      "cron_local": "0 10 * * 2,4",
+      "timezone": "Europe/Warsaw",
+      "prompt_file": "zoo24-ops/ops/prompts/growth.txt",
+      "max_runtime_seconds": 1200,
+      "max_turns": 30,
+      "max_attempts_total": 3,
+      "scope_policy_ref": null,
+      "dependencies": "validated records; schedule order is not proof of dependency completion"
+    },
+    {
+      "job_key": "zoo24-ops-knowledge",
+      "agent": "zoo24-ops-knowledge",
+      "enabled": false,
+      "cron_local": "0 7 * * *",
+      "timezone": "Europe/Warsaw",
+      "prompt_file": "zoo24-ops/ops/prompts/knowledge.txt",
+      "max_runtime_seconds": 1200,
+      "max_turns": 30,
+      "max_attempts_total": 3,
+      "scope_policy_ref": null,
+      "dependencies": "validated records; schedule order is not proof of dependency completion"
+    },
+    {
+      "job_key": "zoo24-ops-social",
+      "agent": "zoo24-ops-social",
+      "enabled": false,
+      "cron_local": "0 9 * * *",
+      "timezone": "Europe/Warsaw",
+      "prompt_file": "zoo24-ops/ops/prompts/social.txt",
+      "max_runtime_seconds": 1200,
+      "max_turns": 30,
+      "max_attempts_total": 3,
+      "scope_policy_ref": null,
+      "dependencies": "validated records; schedule order is not proof of dependency completion"
+    },
+    {
+      "job_key": "zoo24-ops-seo",
+      "agent": "zoo24-ops-seo",
+      "enabled": false,
+      "cron_local": "30 7 * * 1-5",
+      "timezone": "Europe/Warsaw",
+      "prompt_file": "zoo24-ops/ops/prompts/seo.txt",
+      "max_runtime_seconds": 1200,
+      "max_turns": 30,
+      "max_attempts_total": 3,
+      "scope_policy_ref": null,
+      "dependencies": "validated records; schedule order is not proof of dependency completion"
+    }
+  ],
+  "non_agent_services": [
+    {
+      "id": "publisher",
+      "enabled": false,
+      "when": "approved due_at; must recheck dependencies/rights/version/pause/budget"
+    },
+    {
+      "id": "health_monitor",
+      "enabled": false,
+      "interval_minutes": 10
+    },
+    {
+      "id": "weekly_report",
+      "enabled": false,
+      "cron_local": "0 12 * * 1"
+    }
+  ],
+  "notes": "Nie jest plikiem importu do Claude Cloud. Installer tłumaczy na API/UI rzeczywiście wybranego runtime, zachowując timezone i dedup."
+}

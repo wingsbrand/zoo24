@@ -1,0 +1,16 @@
+{
+  "source": "ga4",
+  "property": "zoo24.pl - GA4 (301981165)",
+  "via": "windsor.ai, odczyt w sesji Claude Code za zgodą właściciela",
+  "periodStart": "2026-10-23",
+  "periodEnd": "2026-11-19",
+  "lastSyncAt": "2026-11-22",
+  "note": "Źródło podłączone, 0 sesji w okresie: serwis nie działa / brak tagu od 12.2024. To prawdziwe 0, nie brak danych.",
+  "metrics": {
+    "ga4_organic_sessions": 0,
+    "legacy_url_landing_sessions": 0,
+    "new_content_landing_sessions": 0,
+    "facebook_sessions": 0,
+    "instagram_sessions": 0
+  }
+}

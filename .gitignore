@@ -1,0 +1,28 @@
+node_modules/
+.next/
+dist/
+build/
+coverage/
+playwright-report/
+test-results/
+.vercel/
+.env
+.env.*
+!.env.example
+.DS_Store
+*.log
+*.pem
+*.key
+secrets/
+
+# lokalny store F1 (dane DEMO, stan kolejek)
+.data/
+.data-test/
+*.tsbuildinfo
+next-env.d.ts
+
+# surowe eksporty właściciela (GSC/GA4/Meta) — nie commitować
+imports/
+
+# lokalne ustawienia Claude Code (mogą zawierać uprawnienia/ścieżki)
+.claude/settings.local.json

@@ -1,0 +1,6 @@
+Uruchom rolę zoo24-ops-growth w istniejącym projekcie ZOO24.
+Przeczytaj CLAUDE.md, zoo24-ops/ops/OPERATIONS.md i przypisany SOP w zoo24-ops/ops/spec/ROLE_SOPS.md.
+Sprawdź aktualny tryb, politykę, limit kosztów, konta i trwały stan. Wybierz najwyżej jedno uprawnione zadanie dla tej roli, uzyskaj lease i nie powielaj już wykonanego skutku.
+Wykonaj zadanie zgodnie z rolą, z dowodami oraz wskazanymi bramkami. Nowe merytoryczne treści mają właściwe review człowieka; zaplanowana zatwierdzona wersja może zostać opublikowana automatycznie w zakresie polityki.
+Nie zmieniaj własnych uprawnień i nie obchodź auth/ask rule. Przy braku wejścia oznacz blocked, przy braku danych N/A; nie zatrzymuj pozostałych ról.
+Zapisz wynik zgodny z ops/templates/job-result.example.json (szablon znajduje się wewnątrz zoo24-ops), dokładne artefakty/wersje i potwierdzenie zewnętrznego skutku. Nie twórz nowych harmonogramów z wnętrza tego zadania.

@@ -1,0 +1,16 @@
+{
+  "source": "meta_fb",
+  "page": "ZOO24.PL (facebook_organic)",
+  "via": "windsor.ai, odczyt w sesji Claude Code za zgodą właściciela",
+  "periodStart": "2026-10-23",
+  "periodEnd": "2026-11-19",
+  "lastSyncAt": "2026-11-22",
+  "note": "Obserwujący 43 547 -> 43 515 (-32 netto, 6 nowych). Zasięg 28d: API zwraca tylko dzienne unikalne (suma dziennych = 59, to NIE jest zasięg) -> null. Kliknięcia linków: metryka zwrócona jako null.",
+  "metrics": {
+    "facebook_followers_total": 43515,
+    "facebook_engagements": 0,
+    "facebook_page_views": 103,
+    "facebook_reach": null,
+    "facebook_link_clicks": null
+  }
+}

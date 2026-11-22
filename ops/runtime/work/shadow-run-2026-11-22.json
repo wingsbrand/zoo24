@@ -1,0 +1,391 @@
+﻿[
+    {
+        "schema_version":  "zoo24.ops.job-result.v1",
+        "job_id":  "2b726e74-9b7b-487a-be34-ffe289495852",
+        "role":  "knowledge",
+        "mode":  "shadow",
+        "policy_version":  "unsigned",
+        "status":  "produced",
+        "reason":  null,
+        "artifacts":  [
+                          {
+                              "id":  "source-register",
+                              "type":  "register",
+                              "version":  "0",
+                              "note":  "0 kart faktów w rejestrze (0 zatwierdzonych, 0 w kwarantannie)"
+                          }
+                      ],
+        "checks":  [
+                       {
+                           "name":  "article_sources_have_url",
+                           "status":  "pass",
+                           "detail":  "8/8 źródeł artykułów ma URL"
+                       },
+                       {
+                           "name":  "evidence_ttl",
+                           "status":  "pass",
+                           "detail":  "0 przeterminowanych zatwierdzonych faktów"
+                       },
+                       {
+                           "name":  "corrections_open",
+                           "status":  "pass",
+                           "detail":  "0 zadań korekty"
+                       }
+                   ],
+        "metrics":  [
+
+                    ],
+        "next_tasks":  [
+                           "Karty faktów (claim-\u003eźródło) dla 3 artykułów needs_review",
+                           "Mapa praw do historycznych tekstów bloga (brak archiwum = jawna luka)"
+                       ],
+        "human_decisions_required":  [
+
+                                     ],
+        "external_actions":  [
+
+                             ],
+        "cost":  {
+                     "value":  null,
+                     "currency":  null,
+                     "status":  "none"
+                 },
+        "finished_at":  "2026-11-22T14:11:23.430Z"
+    },
+    {
+        "schema_version":  "zoo24.ops.job-result.v1",
+        "job_id":  "22704701-9d21-44f2-90c1-99de01ef7463",
+        "role":  "seo",
+        "mode":  "shadow",
+        "policy_version":  "unsigned",
+        "status":  "produced",
+        "reason":  "partial: gsc blocked_access",
+        "artifacts":  [
+                          {
+                              "id":  "legacy-url-map",
+                              "type":  "redirect_plan",
+                              "version":  null,
+                              "note":  "0 dawnych URL czeka na decyzję 200/301/404/410"
+                          }
+                      ],
+        "checks":  [
+                       {
+                           "name":  "gsc_read",
+                           "status":  "blocked",
+                           "detail":  "blocked_access — GSC do założenia po uruchomieniu serwera"
+                       },
+                       {
+                           "name":  "ga4_read",
+                           "status":  "pass",
+                           "detail":  "GA4: export_manual"
+                       },
+                       {
+                           "name":  "indexing_api_forbidden",
+                           "status":  "pass",
+                           "detail":  "Indexing API nieużywane dla poradników/katalogu"
+                       }
+                   ],
+        "metrics":  [
+                        {
+                            "name":  "gsc_clicks",
+                            "value":  null,
+                            "unit":  "clicks",
+                            "source":  "gsc",
+                            "period_start":  null,
+                            "period_end":  null,
+                            "data_status":  "unavailable",
+                            "note":  "N/A — brak property GSC (nie 0)"
+                        }
+                    ],
+        "next_tasks":  [
+                           "Decyzje dla TOP 100 GA4 (kolejność wg historycznych sesji)",
+                           "Po GSC: TOP 100 wg linków"
+                       ],
+        "human_decisions_required":  [
+
+                                     ],
+        "external_actions":  [
+
+                             ],
+        "cost":  {
+                     "value":  null,
+                     "currency":  null,
+                     "status":  "none"
+                 },
+        "finished_at":  "2026-11-22T14:11:23.430Z"
+    },
+    {
+        "schema_version":  "zoo24.ops.job-result.v1",
+        "job_id":  "b67b3e5e-b54e-4b37-bc52-d842875503d2",
+        "role":  "build",
+        "mode":  "shadow",
+        "policy_version":  "unsigned",
+        "status":  "blocked",
+        "reason":  "blocked_dependency: no_version_control",
+        "artifacts":  [
+                          {
+                              "id":  "backlog:P0",
+                              "type":  "task_list",
+                              "version":  null,
+                              "note":  "P0 przed pierwszą produkcją wg docs/STATUS.md"
+                          }
+                      ],
+        "checks":  [
+                       {
+                           "name":  "vcs_branch_pr_flow",
+                           "status":  "blocked",
+                           "detail":  "folder bez git — branch/PR/SHA niemożliwe; release niekwalifikowalny"
+                       },
+                       {
+                           "name":  "independent_review",
+                           "status":  "n/a",
+                           "detail":  "zoo24-qa dostępny jako niezależny reviewer; brak diffu w tym przebiegu"
+                       },
+                       {
+                           "name":  "deploy_gateway",
+                           "status":  "blocked",
+                           "detail":  "brak hostingu/CI (production_environment_id = null)"
+                       }
+                   ],
+        "metrics":  [
+                        {
+                            "name":  "production_errors",
+                            "value":  null,
+                            "unit":  "count",
+                            "source":  null,
+                            "period_start":  null,
+                            "period_end":  null,
+                            "data_status":  "unavailable",
+                            "note":  "N/A — brak produkcji i monitoringu"
+                        }
+                    ],
+        "next_tasks":  [
+                           "Założyć repozytorium git (prywatne) — warunek branch/PR/review/rollback i cloud runtime",
+                           "Supabase + Auth + RLS lokalnie z testami (zastąpienie .data/state.json)",
+                           "Staging z ochroną hasłem i noindex"
+                       ],
+        "human_decisions_required":  [
+                                         "Zgoda na repozytorium (GitHub prywatne) dla kodu ZOO24"
+                                     ],
+        "external_actions":  [
+
+                             ],
+        "cost":  {
+                     "value":  null,
+                     "currency":  null,
+                     "status":  "none"
+                 },
+        "finished_at":  "2026-11-22T14:11:23.430Z"
+    },
+    {
+        "schema_version":  "zoo24.ops.job-result.v1",
+        "job_id":  "e1052da5-8310-4800-a63e-ac91d4a401de",
+        "role":  "content",
+        "mode":  "shadow",
+        "policy_version":  "unsigned",
+        "status":  "needs_human",
+        "reason":  "editorial_review_required",
+        "artifacts":  [
+                          {
+                              "id":  "article:cane-corso-n63",
+                              "type":  "article",
+                              "version":  "2026-11-22T12:00:00.000Z",
+                              "note":  "polityka maszynowa PASS — czeka na redaktora"
+                          },
+                          {
+                              "id":  "article:kot-brytyjski-n66",
+                              "type":  "article",
+                              "version":  "2026-11-22T12:00:00.000Z",
+                              "note":  "polityka maszynowa PASS — czeka na redaktora"
+                          },
+                          {
+                              "id":  "article:maltanczyk-n77",
+                              "type":  "article",
+                              "version":  "2026-11-22T12:00:00.000Z",
+                              "note":  "polityka maszynowa PASS — czeka na redaktora"
+                          }
+                      ],
+        "checks":  [
+                       {
+                           "name":  "editor_assigned",
+                           "status":  "blocked",
+                           "detail":  "brak redaktora w polityce — nowe treści pozostają niepubliczne"
+                       },
+                       {
+                           "name":  "approved_buffer_items",
+                           "status":  "fail",
+                           "detail":  "0 opublikowanych/zatwierdzonych (próg ryzyka przerwy: 3)"
+                       }
+                   ],
+        "metrics":  [
+                        {
+                            "name":  "article_to_directory",
+                            "value":  null,
+                            "unit":  "clicks",
+                            "source":  "own_events",
+                            "period_start":  null,
+                            "period_end":  null,
+                            "data_status":  "unavailable",
+                            "note":  "N/A — serwis nie jest publiczny"
+                        }
+                    ],
+        "next_tasks":  [
+                           "Brief: kot syberyjski (n67) pod dawnym URL — z kart faktów Knowledge",
+                           "Brief: kot bengalski (n65)",
+                           "Komunikat nowej formuły ZOO24 (strona wyjaśniająca)"
+                       ],
+        "human_decisions_required":  [
+                                         "Redaktor: review 3 artykułów w /admin/content"
+                                     ],
+        "external_actions":  [
+
+                             ],
+        "cost":  {
+                     "value":  null,
+                     "currency":  null,
+                     "status":  "none"
+                 },
+        "finished_at":  "2026-11-22T14:11:23.430Z"
+    },
+    {
+        "schema_version":  "zoo24.ops.job-result.v1",
+        "job_id":  "8d2d853f-2a48-4f26-bbda-2316b1a9b732",
+        "role":  "social",
+        "mode":  "shadow",
+        "policy_version":  "unsigned",
+        "status":  "blocked",
+        "reason":  "blocked_dependency: asset_rights_unverified",
+        "artifacts":  [
+                          {
+                              "id":  "social-queue-14d",
+                              "type":  "calendar",
+                              "version":  null,
+                              "note":  "10 otwartych postów, 6 w horyzoncie 14 dni"
+                          }
+                      ],
+        "checks":  [
+                       {
+                           "name":  "asset_rights",
+                           "status":  "fail",
+                           "detail":  "10/10 postów bez zweryfikowanej licencji grafiki"
+                       },
+                       {
+                           "name":  "kill_switch",
+                           "status":  "pass",
+                           "detail":  "publikacje wstrzymane"
+                       },
+                       {
+                           "name":  "meta_publish_access",
+                           "status":  "blocked",
+                           "detail":  "brak facebook_page_id/instagram_account_id i uprawnień publikacji — tryb asystowany (eksport CSV)"
+                       },
+                       {
+                           "name":  "meta_insights_read",
+                           "status":  "pass",
+                           "detail":  "FB: export_manual, IG: no_access"
+                       }
+                   ],
+        "metrics":  [
+                        {
+                            "name":  "instagram_reach",
+                            "value":  null,
+                            "unit":  "accounts",
+                            "source":  null,
+                            "period_start":  null,
+                            "period_end":  null,
+                            "data_status":  "unavailable",
+                            "note":  "N/A — konektor IG niepodłączony"
+                        }
+                    ],
+        "next_tasks":  [
+                           "Grafiki z licencją do rejestru assetów",
+                           "Finalne copy relaunchu do review redaktora"
+                       ],
+        "human_decisions_required":  [
+                                         "Źródło grafik z prawami (np. własne zdjęcia / licencja stockowa)"
+                                     ],
+        "external_actions":  [
+
+                             ],
+        "cost":  {
+                     "value":  null,
+                     "currency":  null,
+                     "status":  "none"
+                 },
+        "finished_at":  "2026-11-22T14:11:23.430Z"
+    },
+    {
+        "schema_version":  "zoo24.ops.job-result.v1",
+        "job_id":  "6e950691-d31b-4494-b3f8-7c7c99af542f",
+        "role":  "growth",
+        "mode":  "shadow",
+        "policy_version":  "unsigned",
+        "status":  "produced",
+        "reason":  null,
+        "artifacts":  [
+                          {
+                              "id":  "exp:nowa-formula",
+                              "type":  "experiment_design",
+                              "version":  null,
+                              "note":  "dawni odbiorcy FB nadal chcą praktycznej wiedzy — wynik: n/a"
+                          },
+                          {
+                              "id":  "exp:checklista-katalog",
+                              "type":  "experiment_design",
+                              "version":  null,
+                              "note":  "czytelnik poradnika szuka usługi w mieście — wynik: n/a"
+                          },
+                          {
+                              "id":  "exp:to-twoja-firma",
+                              "type":  "experiment_design",
+                              "version":  null,
+                              "note":  "usługodawca uzupełni własne dane — wynik: n/a"
+                          }
+                      ],
+        "checks":  [
+                       {
+                           "name":  "active_experiments_cap",
+                           "status":  "pass",
+                           "detail":  "0 aktywnych (limit 2) — serwis niepubliczny"
+                       },
+                       {
+                           "name":  "paid_spend",
+                           "status":  "pass",
+                           "detail":  "0 zł; płatne kampanie poza zakresem"
+                       },
+                       {
+                           "name":  "outreach_messages",
+                           "status":  "pass",
+                           "detail":  "0 wysłanych e-mail/DM — poza zakresem"
+                       }
+                   ],
+        "metrics":  [
+                        {
+                            "name":  "qualified_actions",
+                            "value":  null,
+                            "unit":  "count",
+                            "source":  null,
+                            "period_start":  null,
+                            "period_end":  null,
+                            "data_status":  "unavailable",
+                            "note":  "N/A — brak publicznego serwisu i pomiaru"
+                        }
+                    ],
+        "next_tasks":  [
+                           "Baseline 28 dni po starcie serwisu",
+                           "Przygotować wariant CTA checklista-\u003ekatalog dla 2 artykułów"
+                       ],
+        "human_decisions_required":  [
+
+                                     ],
+        "external_actions":  [
+
+                             ],
+        "cost":  {
+                     "value":  null,
+                     "currency":  null,
+                     "status":  "none"
+                 },
+        "finished_at":  "2026-11-22T14:11:23.430Z"
+    }
+]

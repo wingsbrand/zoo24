@@ -1,0 +1,27 @@
+Jesteś głównym integratorem etapu operacyjnego ZOO24. Pracujesz w istniejącym repo, po pierwszym etapie budowy katalogu usług i portalu poradnikowego. Wykonaj pracę, a nie sam opis planu.
+
+1. Przeczytaj istniejące CLAUDE.md, README i dokumenty dotychczasowego projektu, jeśli są dostępne, oraz zoo24-ops/ops/OPERATIONS.md, zoo24-ops/ops/spec/ROLE_SOPS.md, ACCEPTANCE.md i SOURCES.md. Sprawdź rzeczywisty kod, hosting, CMS, CI, bazę i gotowość MVP. Nie zakładaj, że wcześniejszy plan został wykonany. Nie nadpisuj pracy użytkownika.
+
+2. Addytywnie zainstaluj sześć definicji z zoo24-ops/.claude/agents/ do głównego .claude/agents/. Zachowaj wcześniejszych agentów. Scal CLAUDE_OPS_APPENDIX.md z głównym CLAUDE.md; nie kasuj istniejących instrukcji. Zweryfikuj wykrycie ról. W razie konfliktu podaj diff, nie obchodź zasad.
+
+3. Uruchom role zoo24-ops-build, zoo24-ops-content, zoo24-ops-growth, zoo24-ops-knowledge, zoo24-ops-social i zoo24-ops-seo w odrębnych zadaniach. Główna sesja koordynuje ich wyniki. Jeden zapisujący na plik/zasób; startowo max 2 równoległe przebiegi. Własność zadań, źródła, wersje i receipts przechowuj trwale, nie tylko w rozmowie.
+
+4. Wykryj dostępny runtime. Preferuj zweryfikowane cloud scheduled tasks Claude Code, jeśli konto, konektory i koszty to umożliwiają. W przeciwnym razie przygotuj jeden zarządzany worker Agent SDK/bezpieczny runner. Nie obiecuj 24/7 przy Desktop albo /loop zależnym od włączonego komputera. Przestrzegaj permissions i warunków dostawcy; nie włączaj bypassPermissions. Nie twórz równoległych dispatcherów tego samego zadania.
+
+5. Wykorzystaj istniejący CMS, storage i CI. Zaimplementuj trwały registry, lease/fencing i kontrolowaną usługę publikacji z typowanymi operacjami: zakres kont, polityka, review wersji, prawa i źródła, limit kosztu, deduplikacja, retry, reconciliation, pause i receipts. Agentom nie dawaj surowych sekretów ani możliwości edycji aktywnej polityki. Dodaj faktycznie istniejące narzędzia gateway do ról dopiero po weryfikacji; nazwy kontraktów w dokumentach nie oznaczają istniejących API.
+
+6. Zaimplementuj sześć pełnych przepływów:
+- Build: zadanie -> branch -> diff -> test -> niezależny review -> preview -> kontrolowany release.
+- Content: brief -> źródła -> tekst i assety -> review redaktora -> zamrożona wersja -> CMS -> odczyt publiczny.
+- Growth: dane -> jedna hipoteza -> eksperyment we własnych kanałach -> wynik i decyzja.
+- Knowledge: legalne źródła -> kwarantanna -> fakt/provenance/rights/TTL -> evidence bundle -> korekty zależności.
+- Social: plan 14 dni -> gotowe warianty FB/IG -> review -> scheduler -> publikacja -> zewnętrzne ID i pomiar.
+- SEO: legacy audit -> baseline -> priorytety -> ograniczone poprawki -> pomiar bez zmyślonych danych.
+
+7. Zachowaj informację właściciela: dawniej ponad 100 tys. wejść organicznych miesięcznie i kilkanaście tys. fanów FB/IG. To historyczna deklaracja, nie aktualny wynik. Brak GSC/GA4/Meta oznacz N/A. Nie odtwarzaj starych statystyk ani firm z wyobraźni. Nie importuj danych dawnych klientów.
+
+8. Najpierw design/shadow i testy z mockami lub uprawnionym odczytem. Wykonaj scenariusze ACCEPTANCE.md: brak nieautoryzowanych publikacji, invalidacja review po edycji, cofnięcie źródła, timeout po remote success, lease/fencing, pauza także harmonogramu dostawcy, koszt, token expiry, 301/404/410 i właściwa atrybucja. Dane demonstracyjne nie są publikacją ani dowodem obecnego ruchu.
+
+9. Przygotuj rzeczywistą konfigurację na podstawie templates/activation.example.json i schedule.example.json. Zostaw ją nieaktywną do zatwierdzenia konkretnych zasobów, kosztu i polityki. Właściciel ma zaakceptować raz zakres rutynowej pracy; nie pytaj ponownie o każde działanie objęte tą zgodą. Nowe teksty merytoryczne kieruj do wskazanego redaktora, nie do właściciela w każdej sprawie. Osobno wymagane są pierwsza produkcja, DNS, krytyczne migracje, nowe wydatki i nowe kanały komunikacji.
+
+10. Pracuj do ukończenia możliwych etapów. Brak kont zatrzymuje konkretną integrację, nie prototyp i testy. W ops/runtime/INSTALL_STATUS.md zapisuj wykonane zadania, testy i dowody. Oddaj: zakres działający, braki, koszt zmierzony lub N/A, harmonogram, sposób pauzy/rollbacku, operator i redaktor, oraz maksymalnie trzy skonsolidowane decyzje do pierwszej aktywacji. Nie deklaruj live, jeśli istnieją tylko pliki lub mocki.
