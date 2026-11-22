@@ -1,20 +1,20 @@
 [
   {
     "id": "ast-001",
-    "description": "Grafika tekstowa FB (format poziomy, do posta przypiętego): 'ZOO24 w nowej formule - poradniki i wyszukiwarka usług dla zwierząt. Nie jesteśmy sklepem.' Tylko typografia i logo ZOO24, bez zdjęć zwierząt z sieci. Wymaga potwierdzenia praw do logo.",
+    "description": "Grafika FB (format poziomy, do posta przypiętego): 'ZOO24 - poradniki i usługi dla opiekunów zwierząt.' Typografia i logo ZOO24; opcjonalnie ilustracja AI public/images/hero-dom.webp z oznaczeniem 'Ilustracja AI'. Bez zdjęć zwierząt z sieci. Wymaga potwierdzenia praw do logo i licencji ilustracji.",
     "licenseType": "unknown",
     "licenseProof": null,
-    "altText": "Grafika tekstowa w barwach ZOO24 z napisem: ZOO24 w nowej formule - poradniki i wyszukiwarka usług dla zwierząt. Nie jesteśmy sklepem.",
+    "altText": "Grafika w barwach ZOO24 z napisem: ZOO24 - poradniki i usługi dla opiekunów zwierząt.",
     "rightsCheckedAt": null,
     "expiresAt": null,
     "demo": true
   },
   {
     "id": "ast-002",
-    "description": "Grafika tekstowa IG (kwadrat lub 4:5): 'Nowa formuła. Poradniki i usługi dla zwierząt. Bez sprzedaży.' Tylko typografia i logo ZOO24. Wymaga potwierdzenia praw do logo.",
+    "description": "Grafika IG (kwadrat lub 4:5): 'Poradniki i usługi dla opiekunów zwierząt.' Typografia i logo ZOO24. Wymaga potwierdzenia praw do logo.",
     "licenseType": "unknown",
     "licenseProof": null,
-    "altText": "Kwadratowa grafika tekstowa ZOO24: Nowa formuła. Poradniki i usługi dla zwierząt. Bez sprzedaży.",
+    "altText": "Kwadratowa grafika ZOO24: Poradniki i usługi dla opiekunów zwierząt.",
     "rightsCheckedAt": null,
     "expiresAt": null,
     "demo": true
