@@ -7,7 +7,7 @@
   "body": [
     "Doberman to pies, którego trudno pomylić z inną rasą: elegancka, muskularna sylwetka, krótka, przylegająca sierść i charakterystyczne podpalania. Oficjalny opis rasy — pod nazwą Dobermann — zawiera standard Międzynarodowej Federacji Kynologicznej (FCI) nr 143. Poniżej streszczamy najważniejsze informacje ze standardu i podpowiadamy, o czym pomyśleć przed przyjęciem psa tej rasy.",
     "## Pochodzenie i klasyfikacja FCI",
-    "Według standardu FCI nr 143 doberman pochodzi z Niemiec. Data oficjalnej publikacji obowiązującego standardu to 13.11.2015 r., a angielskie tłumaczenie nosi datę 17.12.2015; językiem oficjalnym standardu jest niemiecki. FCI zalicza rasę do grupy 2 — pinczery i sznaucery, molosy oraz szwajcarskie psy górskie i do bydła, sekcja 1 — pinczery i sznaucery, z próbami pracy. Standard określa przeznaczenie rasy jako psa do towarzystwa, obrony i pracy.",
+    "Według standardu FCI nr 143 doberman pochodzi z Niemiec. Data oficjalnej publikacji obowiązującego standardu to 13.11.2015 r., a angielskie tłumaczenie nosi datę 17.12.2015; językiem oficjalnym standardu jest niemiecki. FCI zalicza rasę do grupy 2 — pinczery i sznaucery, molosy, szwajcarskie psy górskie i do bydła, sekcja 1 — pinczery i sznaucery, z próbami pracy. Standard określa przeznaczenie rasy jako psa do towarzystwa, obrony i pracy.",
     "Rys historyczny w standardzie przypomina, że to jedyna niemiecka rasa nosząca nazwisko swojego pierwszego hodowcy — Friedricha Louisa Dobermanna (1834–1894), który hodował te psy w latach 70. XIX wieku. Psy tej rasy były często wykorzystywane jako psy stróżujące i policyjne, a do początku XX wieku oficjalnie uznano je za psy policyjne.",
     "## Wygląd: wzrost, waga, szata i umaszczenie",
     "Standard opisuje dobermana jako psa średniej wielkości, silnego i muskularnego, którego eleganckie linie ciała, dumna postawa i wyraz zdecydowania odpowiadają idealnemu obrazowi psa. Sylwetka jest zbliżona do kwadratu, szczególnie u psów.",
@@ -62,6 +62,10 @@
     {
       "label": "FCI — członkowie: Polska (Związek Kynologiczny w Polsce)",
       "url": "https://www.fci.be/en/members/members.aspx?iso=PL"
+    },
+    {
+      "label": "ZKwP — Systematyka ras (grupy i sekcje FCI, wersja polska; PDF) oraz zkwp.pl/wzorce.php",
+      "url": "https://www.zkwp.pl/regulaminy/Systematyka_Ras.pdf"
     }
   ],
   "claims": [
@@ -141,13 +145,20 @@
       "evidence": "Strona członków FCI dla Polski: Zwiazek Kynologiczny w Polsce, status Full member.",
       "appliesTo": "Polska",
       "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Grupa 2 FCI wg ZKwP: pinczery i sznaucery, molosy, szwajcarskie psy górskie i do bydła; sekcja 1 — pinczery i sznaucery.",
+      "evidence": "ZKwP, Systematyka ras: polskie nazwy grup i sekcji FCI (odczyt 22.11.2026; nagłówki grup także na zkwp.pl/wzorce.php).",
+      "appliesTo": "nazewnictwo grup FCI",
+      "accessedAt": "2026-11-22",
+      "sourceIndex": 6
     }
   ],
   "authorDisplay": "Redakcja ZOO24 (szkic przygotowany z pomocą AI)",
   "status": "needs_review",
   "demo": false,
   "publishedAt": null,
-  "updatedAt": "2026-11-22T19:53:42.272Z",
+  "updatedAt": "2026-11-22T20:04:17.544Z",
   "relatedServicePaths": [],
   "disclosure": null,
   "reviewNotes": [
@@ -173,8 +184,8 @@
     "required": "editor",
     "by": "claude-ai-editor",
     "byKind": "ai",
-    "at": "2026-11-22T19:53:42.272Z",
-    "note": "Recenzja redaktora-AI: twierdzenia sprawdzone ze źródłami 22.11.2026 (ponowny odczyt stron i PDF). Nazwa grupy FCI 2 poprawiona („Swiss Mountain and Cattle Dogs” = psy górskie i do bydła). „By the beginning of the 20th century” oddane jako „do początku XX wieku”. Usunięto niepoparte twierdzenie o słabej izolacji sierści i zalecenie skracania spacerów (tolerancja zimna = welfare); zostaje fakt ze standardu (brak podszerstka) i odesłanie do lekarza weterynarii — klasa standard. Uszy i ogon: wyłącznie fakt ze standardu (naturalne).",
+    "at": "2026-11-22T20:04:17.544Z",
+    "note": "Recenzja redaktora-AI: twierdzenia sprawdzone ze źródłami 22.11.2026 (ponowny odczyt stron i PDF). Nazwy grup i sekcji FCI ujednolicone do polskiej nomenklatury ZKwP (Systematyka ras); dodane źródło i claim — ponowna akceptacja z nowym hashem.",
     "waitingReason": null
   },
   "reviewDueAt": "2027-05-22T00:00:00.000Z",
@@ -182,8 +193,8 @@
     "decision": "approved",
     "by": "claude-ai-editor",
     "byKind": "ai",
-    "at": "2026-11-22T19:53:42.272Z",
-    "contentHash": "f09c4b10b9ecdb5bdf7574ad492152545995ffa459219275ec13e134673ee398",
+    "at": "2026-11-22T20:04:17.544Z",
+    "contentHash": "61d15048de32337a46249c060fdfde7ec5bc0b456c71aef0efcd9e7d5e1da7cc",
     "evidenceRef": "claims[] w pliku + weryfikacja źródeł 22.11.2026 (FCI/FIFe/CFA/RSPCA/The Cat Group)",
     "excludedCategoriesChecked": [
       "health",
@@ -202,7 +213,8 @@
       "Nazwa grupy FCI 2 poprawiona („Swiss Mountain and Cattle Dogs” = psy górskie i do bydła).",
       "„By the beginning of the 20th century” oddane jako „do początku XX wieku”.",
       "Usunięto niepoparte twierdzenie o słabej izolacji sierści i zalecenie skracania spacerów (tolerancja zimna = welfare); zostaje fakt ze standardu (brak podszerstka) i odesłanie do lekarza weterynarii — klasa standard.",
-      "Uszy i ogon: wyłącznie fakt ze standardu (naturalne)."
+      "Uszy i ogon: wyłącznie fakt ze standardu (naturalne).",
+      "Nazwy grup i sekcji FCI ujednolicone do polskiej nomenklatury ZKwP (Systematyka ras); dodane źródło i claim — ponowna akceptacja z nowym hashem."
     ],
     "publishAfter": "serwis live na https://zoo24.pl; publikacja przez gateway (cms.publish_approved_version)"
   }

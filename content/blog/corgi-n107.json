@@ -7,7 +7,7 @@
   "body": [
     "Szukając informacji o corgi, warto wiedzieć, że Międzynarodowa Federacja Kynologiczna (FCI) uznaje dwie odrębne rasy: Welsh Corgi Pembroke (standard nr 39) i Welsh Corgi Cardigan (standard nr 38). Obie są niskimi, mocnymi psami pasterskimi z Wielkiej Brytanii, ale różnią się m.in. ogonem, umaszczeniem i proporcjami. W tym artykule opisujemy obie rasy obok siebie.",
     "## Pochodzenie i klasyfikacja FCI",
-    "Według obu standardów kraj pochodzenia ras to Wielka Brytania. Obowiązujące wersje standardów nr 39 i nr 38 zostały oficjalnie opublikowane 08.09.2026 r. (angielskie dokumenty noszą datę 06.10.2026). Obie rasy należą do grupy 1 FCI — owczarki i psy pasterskie (z wyjątkiem szwajcarskich psów pasterskich), sekcja 2 — psy pasterskie (z wyjątkiem szwajcarskich psów pasterskich), bez prób pracy. Standard Pembroke określa przeznaczenie rasy jako psa pasterskiego, a standard Cardigan — jako psa pasterskiego i do towarzystwa.",
+    "Według obu standardów kraj pochodzenia ras to Wielka Brytania. Obowiązujące wersje standardów nr 39 i nr 38 zostały oficjalnie opublikowane 08.09.2026 r. (angielskie dokumenty noszą datę 06.10.2026). Obie rasy należą do grupy 1 FCI — owczarki i inne psy pasterskie, z wyłączeniem szwajcarskich psów do bydła, sekcja 2 — psy pasterskie, z wyłączeniem szwajcarskich psów do bydła, bez prób pracy. Standard Pembroke określa przeznaczenie rasy jako psa pasterskiego, a standard Cardigan — jako psa pasterskiego i do towarzystwa.",
     "## Welsh Corgi Pembroke — wygląd według standardu",
     "Standard nr 39 opisuje Pembroke jako psa nisko osadzonego, silnego i mocno zbudowanego, czujnego i aktywnego, sprawiającego wrażenie masy i wytrzymałości na niewielkiej przestrzeni. Głowa ma lisi kształt i wyraz, uszy są stojące, średniej wielkości, lekko zaokrąglone. Szata jest średniej długości, prosta, z gęstym podszerstkiem. Dopuszczalne umaszczenia to jednolite rude, sobolowe, płowe oraz czarne podpalane, z białymi znaczeniami na kończynach, piersi i szyi lub bez nich; dopuszczalne jest też trochę bieli na głowie i kufie.",
     "Wysokość w kłębie wynosi według standardu około 25–30 cm, a masa ciała 10–12 kg u psów i 9–11 kg u suk. O ogonie standard mówi, że dawniej zwyczajowo był krótko kopiowany; ogon niekopiowany jest osadzony w linii grzbietu i noszony naturalnie, a mogą występować także naturalnie krótkie ogony.",
@@ -68,6 +68,10 @@
     {
       "label": "FCI — członkowie: Polska (Związek Kynologiczny w Polsce)",
       "url": "https://www.fci.be/en/members/members.aspx?iso=PL"
+    },
+    {
+      "label": "ZKwP — Systematyka ras (grupy i sekcje FCI, wersja polska; PDF) oraz zkwp.pl/wzorce.php",
+      "url": "https://www.zkwp.pl/regulaminy/Systematyka_Ras.pdf"
     }
   ],
   "claims": [
@@ -182,13 +186,20 @@
       "evidence": "Osobna pozycja nomenklatury FCI: Welsh Corgi Cardigan nr 38.",
       "appliesTo": "corgi cardigan",
       "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Grupa 1 FCI wg ZKwP: owczarki i inne psy pasterskie, z wyłączeniem szwajcarskich psów do bydła.",
+      "evidence": "ZKwP, Systematyka ras: polskie nazwy grup i sekcji FCI (odczyt 22.11.2026; nagłówki grup także na zkwp.pl/wzorce.php).",
+      "appliesTo": "nazewnictwo grup FCI",
+      "accessedAt": "2026-11-22",
+      "sourceIndex": 8
     }
   ],
   "authorDisplay": "Redakcja ZOO24 (szkic przygotowany z pomocą AI)",
   "status": "needs_review",
   "demo": false,
   "publishedAt": null,
-  "updatedAt": "2026-11-22T19:53:42.343Z",
+  "updatedAt": "2026-11-22T20:04:17.544Z",
   "relatedServicePaths": [],
   "disclosure": null,
   "reviewNotes": [
@@ -215,8 +226,8 @@
     "required": "editor",
     "by": "claude-ai-editor",
     "byKind": "ai",
-    "at": "2026-11-22T19:53:42.343Z",
-    "note": "Recenzja redaktora-AI: twierdzenia sprawdzone ze źródłami 22.11.2026 (ponowny odczyt stron i PDF). Nazwa sekcji 2 grupy 1 FCI („Cattledogs (except Swiss Cattledogs)”) ujednolicona z nazwą grupy: „psy pasterskie (z wyjątkiem szwajcarskich psów pasterskich)”. Ogon Pembroke: neutralny fakt ze standardu („previously customarily docked short”), bez komentarza prawnego. Usunięto sugestię skłonności do gonienia dzieci/rowerów (brak źródła). Claim o dwóch rasach przypisany do obu stron nomenklatury (39 i 38).",
+    "at": "2026-11-22T20:04:17.544Z",
+    "note": "Recenzja redaktora-AI: twierdzenia sprawdzone ze źródłami 22.11.2026 (ponowny odczyt stron i PDF). Nazwy grup i sekcji FCI ujednolicone do polskiej nomenklatury ZKwP (Systematyka ras); dodane źródło i claim — ponowna akceptacja z nowym hashem.",
     "waitingReason": null
   },
   "reviewDueAt": "2027-05-22T00:00:00.000Z",
@@ -224,8 +235,8 @@
     "decision": "approved",
     "by": "claude-ai-editor",
     "byKind": "ai",
-    "at": "2026-11-22T19:53:42.343Z",
-    "contentHash": "ac75e2217f77cb33c42eb0830769c9b4bd9137ee3775c3a980971ee62b0701c9",
+    "at": "2026-11-22T20:04:17.544Z",
+    "contentHash": "404f7ae93480dd914e7871ed7f7449ea6d8792c3032d342aa96078c19e8518a4",
     "evidenceRef": "claims[] w pliku + weryfikacja źródeł 22.11.2026 (FCI/FIFe/CFA/RSPCA/The Cat Group)",
     "excludedCategoriesChecked": [
       "health",
@@ -244,7 +255,8 @@
       "Nazwa sekcji 2 grupy 1 FCI („Cattledogs (except Swiss Cattledogs)”) ujednolicona z nazwą grupy: „psy pasterskie (z wyjątkiem szwajcarskich psów pasterskich)”.",
       "Ogon Pembroke: neutralny fakt ze standardu („previously customarily docked short”), bez komentarza prawnego.",
       "Usunięto sugestię skłonności do gonienia dzieci/rowerów (brak źródła).",
-      "Claim o dwóch rasach przypisany do obu stron nomenklatury (39 i 38)."
+      "Claim o dwóch rasach przypisany do obu stron nomenklatury (39 i 38).",
+      "Nazwy grup i sekcji FCI ujednolicone do polskiej nomenklatury ZKwP (Systematyka ras); dodane źródło i claim — ponowna akceptacja z nowym hashem."
     ],
     "publishAfter": "serwis live na https://zoo24.pl; publikacja przez gateway (cms.publish_approved_version)"
   }

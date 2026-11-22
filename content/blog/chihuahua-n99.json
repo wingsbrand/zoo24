@@ -7,7 +7,7 @@
   "body": [
     "Chihuahua to pies, którego łatwo rozpoznać po niewielkich rozmiarach, dużych stojących uszach i okrągłej głowie. Mały rozmiar nie oznacza jednak, że wychowanie i opieka są mniej ważne niż u dużych ras. Oficjalny opis rasy zawiera standard Międzynarodowej Federacji Kynologicznej (FCI) nr 218 — z niego pochodzą wszystkie dane o wyglądzie, wymiarach i szacie w tym artykule.",
     "## Pochodzenie i klasyfikacja FCI",
-    "Według standardu FCI nr 218 kraj pochodzenia rasy to Meksyk, a oficjalna nazwa w standardzie brzmi Chihuahueño. Obowiązujący standard opublikowano 04.09.2019 r., a angielska wersja dokumentu nosi datę 04.10.2019. Rasa należy do grupy 9 FCI — psy do towarzystwa i ozdobne, sekcja 6 — chihuahua, bez prób pracy. Przeznaczenie standard określa krótko: pies do towarzystwa.",
+    "Według standardu FCI nr 218 kraj pochodzenia rasy to Meksyk, a oficjalna nazwa w standardzie brzmi Chihuahueño. Obowiązujący standard opublikowano 04.09.2019 r., a angielska wersja dokumentu nosi datę 04.10.2019. Rasa należy do grupy 9 FCI — psy ozdobne i do towarzystwa, sekcja 6 — chihuahua, bez prób pracy. Przeznaczenie standard określa krótko: pies do towarzystwa.",
     "Rys historyczny w standardzie podaje, że chihuahua uchodzi za najmniejszego psa rasowego na świecie, a nazwę zawdzięcza największemu stanowi Meksyku. Standard przytacza przypuszczenie, że przodkowie tych psów żyli dziko i zostali udomowieni w czasach cywilizacji Tolteków. Przedstawienia małego psa zwanego techichi, zdobiące budowle w Tuli, są bardzo podobne do współczesnych chihuahua.",
     "## Wygląd i waga według standardu",
     "Standard opisuje chihuahua jako psa o zwartej budowie, u którego szczególnie ważne są czaszka w kształcie jabłka oraz wysoko noszony, umiarkowanie długi ogon — zagięty łukiem lub w półkole z końcem skierowanym ku lędźwiom. Tułów jest nieco dłuższy niż wysokość w kłębie, choć pożądana jest sylwetka niemal kwadratowa, zwłaszcza u psów. Uszy są duże, stojące i szeroko otwarte, a w spoczynku odchylone na boki pod kątem około 45°. Oczy są duże, okrągławe i bardzo wyraziste.",
@@ -61,6 +61,10 @@
     {
       "label": "FCI — członkowie: Polska (Związek Kynologiczny w Polsce)",
       "url": "https://www.fci.be/en/members/members.aspx?iso=PL"
+    },
+    {
+      "label": "ZKwP — Systematyka ras (grupy i sekcje FCI, wersja polska; PDF) oraz zkwp.pl/wzorce.php",
+      "url": "https://www.zkwp.pl/regulaminy/Systematyka_Ras.pdf"
     }
   ],
   "claims": [
@@ -147,13 +151,20 @@
       "evidence": "Strona członków FCI dla Polski: Zwiazek Kynologiczny w Polsce, status Full member.",
       "appliesTo": "Polska",
       "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Grupa 9 FCI wg ZKwP: psy ozdobne i do towarzystwa; sekcja 6 — chihuahua.",
+      "evidence": "ZKwP, Systematyka ras: polskie nazwy grup i sekcji FCI (odczyt 22.11.2026; nagłówki grup także na zkwp.pl/wzorce.php).",
+      "appliesTo": "nazewnictwo grup FCI",
+      "accessedAt": "2026-11-22",
+      "sourceIndex": 6
     }
   ],
   "authorDisplay": "Redakcja ZOO24 (szkic przygotowany z pomocą AI)",
   "status": "needs_review",
   "demo": false,
   "publishedAt": null,
-  "updatedAt": "2026-11-22T20:02:26.142Z",
+  "updatedAt": "2026-11-22T20:04:17.544Z",
   "relatedServicePaths": [],
   "disclosure": null,
   "reviewNotes": [
@@ -178,8 +189,8 @@
     "required": "editor",
     "by": "claude-ai-editor",
     "byKind": "ai",
-    "at": "2026-11-22T20:02:26.142Z",
-    "note": "Recenzja redaktora-AI: twierdzenia sprawdzone ze źródłami 22.11.2026 (ponowny odczyt stron i PDF). RSPCA: „food, toys or praise” oddane wiernie; dane z FCI odróżnione od danych RSPCA (okno socjalizacji). Tolerancja pogody i dobór wysiłku sformułowane jako odesłanie do lekarza weterynarii (bez zaleceń welfare) — klasa standard. Pominięcie „open fontanel” prawidłowe (treść zdrowotna).",
+    "at": "2026-11-22T20:04:17.544Z",
+    "note": "Recenzja redaktora-AI: twierdzenia sprawdzone ze źródłami 22.11.2026 (ponowny odczyt stron i PDF). Nazwy grup i sekcji FCI ujednolicone do polskiej nomenklatury ZKwP (Systematyka ras); dodane źródło i claim — ponowna akceptacja z nowym hashem.",
     "waitingReason": null
   },
   "reviewDueAt": "2027-05-23T00:00:00.000Z",
@@ -187,8 +198,8 @@
     "decision": "approved",
     "by": "claude-ai-editor",
     "byKind": "ai",
-    "at": "2026-11-22T20:02:26.142Z",
-    "contentHash": "8ec68a5e7580c3bab53b80682690f14cc6d0214e57f097b411b94682538371de",
+    "at": "2026-11-22T20:04:17.544Z",
+    "contentHash": "a540484d30ebc17bf7a8591f60fee0a6051cabd618dcc8a74351b2f1fbc5a536",
     "evidenceRef": "claims[] w pliku + weryfikacja źródeł 22.11.2026 (FCI/FIFe/CFA/RSPCA/The Cat Group)",
     "excludedCategoriesChecked": [
       "health",
@@ -206,7 +217,8 @@
     "notes": [
       "RSPCA: „food, toys or praise” oddane wiernie; dane z FCI odróżnione od danych RSPCA (okno socjalizacji).",
       "Tolerancja pogody i dobór wysiłku sformułowane jako odesłanie do lekarza weterynarii (bez zaleceń welfare) — klasa standard.",
-      "Pominięcie „open fontanel” prawidłowe (treść zdrowotna)."
+      "Pominięcie „open fontanel” prawidłowe (treść zdrowotna).",
+      "Nazwy grup i sekcji FCI ujednolicone do polskiej nomenklatury ZKwP (Systematyka ras); dodane źródło i claim — ponowna akceptacja z nowym hashem."
     ],
     "publishAfter": "serwis live na https://zoo24.pl; publikacja przez gateway (cms.publish_approved_version)"
   }

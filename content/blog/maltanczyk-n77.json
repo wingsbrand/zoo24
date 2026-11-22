@@ -35,13 +35,17 @@
     {
       "label": "FCI — nomenklatura ras, Maltese (65)",
       "url": "https://www.fci.be/en/nomenclature/MALTESE-65.html"
+    },
+    {
+      "label": "ZKwP — Systematyka ras (grupy i sekcje FCI, wersja polska; PDF) oraz zkwp.pl/wzorce.php",
+      "url": "https://www.zkwp.pl/regulaminy/Systematyka_Ras.pdf"
     }
   ],
   "authorDisplay": "Redakcja ZOO24",
   "status": "needs_review",
   "demo": false,
   "publishedAt": null,
-  "updatedAt": "2026-11-22T16:38:10.827Z",
+  "updatedAt": "2026-11-22T20:04:17.544Z",
   "relatedServicePaths": [
     "/uslugi/groomer/warszawa",
     "/uslugi/groomer/bialystok"
@@ -60,19 +64,35 @@
     "decision": "approved",
     "by": "claude-ai-editor",
     "byKind": "ai",
-    "at": "2026-11-22T16:38:10.827Z",
-    "contentHash": "9d63cc2f949c55ea0d60e484cd1e3603415fe2884b5e7785ed0fdbb1c1fd0575",
-    "evidenceRef": "ops/knowledge:ops/runtime/work/knowledge/evidence/evidence-2026-11-22.json",
+    "at": "2026-11-22T20:04:17.544Z",
+    "contentHash": "190b887935f91db274a57225d7edb0e1ae28da5219a65057cef8c7bcbb76f7be",
+    "evidenceRef": "claims[] w pliku + weryfikacja źródeł 22.11.2026 (FCI/FIFe/CFA/RSPCA/The Cat Group)",
     "excludedCategoriesChecked": [
       "health",
       "legal",
       "insurance",
       "sponsored",
-      "dynamic_prices"
+      "dynamic_prices",
+      "welfare",
+      "nutrition",
+      "environment",
+      "temperature_humidity_lighting",
+      "cohabitation",
+      "transport"
     ],
     "notes": [
-      "Kategoria: przewodnik po rasie (nie porada zdrowotna)."
+      "Kategoria: przewodnik po rasie (nie porada zdrowotna).",
+      "Nazwa grupy 9 zgodna z nomenklaturą ZKwP (bez zmiany tekstu); dodane źródło i claim — ponowna akceptacja z nowym hashem."
     ],
-    "publishAfter": "przełączenie domeny zoo24.pl na serwis live; publikacja przez gateway (cms.publish_approved_version)"
-  }
+    "publishAfter": "serwis live na https://zoo24.pl; publikacja przez gateway (cms.publish_approved_version)"
+  },
+  "claims": [
+    {
+      "text": "Grupa 9 FCI wg ZKwP: psy ozdobne i do towarzystwa.",
+      "evidence": "ZKwP, Systematyka ras: polskie nazwy grup i sekcji FCI (odczyt 22.11.2026; nagłówki grup także na zkwp.pl/wzorce.php).",
+      "appliesTo": "nazewnictwo grup FCI",
+      "accessedAt": "2026-11-22",
+      "sourceIndex": 2
+    }
+  ]
 }

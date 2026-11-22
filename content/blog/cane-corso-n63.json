@@ -4,7 +4,7 @@
   "title": "Cane corso — włoski molos dla doświadczonego opiekuna",
   "summary": "Duży, silny i czujny pies stróżujący o włoskim rodowodzie. Sprawdź, jak wygląda cane corso według standardu FCI, jakiego wychowania potrzebuje i komu naprawdę pasuje.",
   "body": [
-    "Cane corso (cane corso italiano) to włoska rasa psów w typie molosa, uznana przez Międzynarodową Federację Kynologiczną (FCI) i opisana w standardzie nr 343. Należy do grupy 2 FCI — pinczery, sznaucery, molosy i szwajcarskie psy pasterskie. Historycznie psy tego typu pilnowały gospodarstw i pomagały przy pracy z bydłem.",
+    "Cane corso (cane corso italiano) to włoska rasa psów w typie molosa, uznana przez Międzynarodową Federację Kynologiczną (FCI) i opisana w standardzie nr 343. Należy do grupy 2 FCI — pinczery i sznaucery, molosy, szwajcarskie psy górskie i do bydła (sekcja 2 — molosy). Historycznie psy tego typu pilnowały gospodarstw i pomagały przy pracy z bydłem.",
     "## Wygląd",
     "Standard FCI opisuje cane corso jako psa średniej do dużej wielkości, solidnego i muskularnego, a przy tym z pewną elegancją sylwetki. Głowa jest typowa dla molosów: czaszka szeroka, kufa wyraźnie krótsza od czaszki. Sierść jest krótka, błyszcząca i bardzo gęsta, z niewielkim podszerstkiem. Standard dopuszcza umaszczenie czarne, w odcieniach szarości, płowe (od jasnego do ciemnego i jeleniej czerwieni), ciemną pszenicę oraz pręgowane; mała biała plama na piersi, palcach lub grzbiecie nosa jest dopuszczalna.",
     "Według wersji standardu z 25.09.2023 wysokość w kłębie wynosi 64–68 cm u psów i 60–64 cm u suk (z tolerancją 2 cm), a masa ciała 45–50 kg u psów i 40–45 kg u suk.",
@@ -38,13 +38,17 @@
     {
       "label": "FCI — nomenklatura ras, Cane Corso (343)",
       "url": "https://fci.be/en/nomenclature/CANE-CORSO-343.html"
+    },
+    {
+      "label": "ZKwP — Systematyka ras (grupy i sekcje FCI, wersja polska; PDF) oraz zkwp.pl/wzorce.php",
+      "url": "https://www.zkwp.pl/regulaminy/Systematyka_Ras.pdf"
     }
   ],
   "authorDisplay": "Redakcja ZOO24",
   "status": "needs_review",
   "demo": false,
   "publishedAt": null,
-  "updatedAt": "2026-11-22T16:38:10.827Z",
+  "updatedAt": "2026-11-22T20:04:17.544Z",
   "relatedServicePaths": [
     "/uslugi/hotel-dla-zwierzat/warszawa",
     "/uslugi/hotel-dla-zwierzat/bialystok"
@@ -62,19 +66,35 @@
     "decision": "approved",
     "by": "claude-ai-editor",
     "byKind": "ai",
-    "at": "2026-11-22T16:38:10.827Z",
-    "contentHash": "98ccf02e26d821827e205a97569ee85e7a262c6c1cbb547cf5ec4432e27ab927",
-    "evidenceRef": "ops/knowledge:ops/runtime/work/knowledge/evidence/evidence-2026-11-22.json",
+    "at": "2026-11-22T20:04:17.544Z",
+    "contentHash": "aaccbb2cf080836e8bce507c967cee8979dcbfdc52164a31ba6c9af4cbd16058",
+    "evidenceRef": "claims[] w pliku + weryfikacja źródeł 22.11.2026 (FCI/FIFe/CFA/RSPCA/The Cat Group)",
     "excludedCategoriesChecked": [
       "health",
       "legal",
       "insurance",
       "sponsored",
-      "dynamic_prices"
+      "dynamic_prices",
+      "welfare",
+      "nutrition",
+      "environment",
+      "temperature_humidity_lighting",
+      "cohabitation",
+      "transport"
     ],
     "notes": [
-      "Kategoria: przewodnik po rasie (nie porada zdrowotna)."
+      "Kategoria: przewodnik po rasie (nie porada zdrowotna).",
+      "Nazwy grup i sekcji FCI ujednolicone do polskiej nomenklatury ZKwP (Systematyka ras); dodane źródło i claim — ponowna akceptacja z nowym hashem."
     ],
-    "publishAfter": "przełączenie domeny zoo24.pl na serwis live; publikacja przez gateway (cms.publish_approved_version)"
-  }
+    "publishAfter": "serwis live na https://zoo24.pl; publikacja przez gateway (cms.publish_approved_version)"
+  },
+  "claims": [
+    {
+      "text": "Grupa 2 FCI wg ZKwP: pinczery i sznaucery, molosy, szwajcarskie psy górskie i do bydła; sekcja 2 — molosy.",
+      "evidence": "ZKwP, Systematyka ras: polskie nazwy grup i sekcji FCI (odczyt 22.11.2026; nagłówki grup także na zkwp.pl/wzorce.php).",
+      "appliesTo": "nazewnictwo grup FCI",
+      "accessedAt": "2026-11-22",
+      "sourceIndex": 2
+    }
+  ]
 }

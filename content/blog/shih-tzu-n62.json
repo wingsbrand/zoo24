@@ -7,7 +7,7 @@
   "body": [
     "Shih tzu to niewielki pies do towarzystwa, którego łatwo rozpoznać po bujnej szacie i włosie rosnącym na kufie ku górze. Jeśli zastanawiasz się nad tą rasą, zacznij od oficjalnego opisu: Międzynarodowa Federacja Kynologiczna (FCI) prowadzi standard shih tzu pod numerem 208. Poniżej zebraliśmy najważniejsze informacje ze standardu oraz praktyczne wskazówki dotyczące codziennej opieki.",
     "## Pochodzenie i klasyfikacja FCI",
-    "Według standardu FCI nr 208 kraj pochodzenia rasy to Tybet (Chiny), a patronat nad standardem sprawuje Wielka Brytania. Obowiązująca wersja standardu została oficjalnie opublikowana 08.09.2026 r. (angielski dokument nosi datę 06.10.2026). FCI klasyfikuje shih tzu w grupie 9 — psy do towarzystwa i ozdobne, w sekcji 5 — rasy tybetańskie, bez prób pracy. Przeznaczenie rasy standard określa krótko: pies do towarzystwa.",
+    "Według standardu FCI nr 208 kraj pochodzenia rasy to Tybet (Chiny), a patronat nad standardem sprawuje Wielka Brytania. Obowiązująca wersja standardu została oficjalnie opublikowana 08.09.2026 r. (angielski dokument nosi datę 06.10.2026). FCI klasyfikuje shih tzu w grupie 9 — psy ozdobne i do towarzystwa, w sekcji 5 — rasy tybetańskie, bez prób pracy. Przeznaczenie rasy standard określa krótko: pies do towarzystwa.",
     "Krótki rys historyczny w standardzie wyjaśnia, że korzenie rasy sięgają Tybetu, ale ostatecznie ukształtowała się ona w Chinach, gdzie psy tego typu żyły w pałacach cesarskich. Pierwszy odnotowany import do Wielkiej Brytanii nastąpił w 1931 r., a w 1934 r. shih tzu uznano tam za rasę odrębną od innych ras orientalnych. Standard zaznacza też, że shih tzu bywa mylony z lhasa apso, choć obie rasy wyraźnie się różnią.",
     "## Wygląd: wzrost, waga i szata według standardu",
     "Standard opisuje shih tzu jako psa krzepkiego, z obfitą, ale nie przesadną szatą, wyraźnie dumną, wręcz wyniosłą postawą i „chryzantemowym” wyrazem pyska. Efekt ten daje włos rosnący ku górze na grzbiecie nosa. Tułów jest dłuższy (od kłębu do nasady ogona) niż wysokość w kłębie, kończyny krótkie i umięśnione, a ogon bogato owłosiony, noszony wesoło nad grzbietem.",
@@ -61,6 +61,10 @@
     {
       "label": "FCI — członkowie: Polska (Związek Kynologiczny w Polsce)",
       "url": "https://www.fci.be/en/members/members.aspx?iso=PL"
+    },
+    {
+      "label": "ZKwP — Systematyka ras (grupy i sekcje FCI, wersja polska; PDF) oraz zkwp.pl/wzorce.php",
+      "url": "https://www.zkwp.pl/regulaminy/Systematyka_Ras.pdf"
     }
   ],
   "claims": [
@@ -147,13 +151,20 @@
       "evidence": "Strona członków FCI dla Polski: Zwiazek Kynologiczny w Polsce, status Full member.",
       "appliesTo": "Polska",
       "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Grupa 9 FCI wg ZKwP: psy ozdobne i do towarzystwa; sekcja 5 — rasy tybetańskie.",
+      "evidence": "ZKwP, Systematyka ras: polskie nazwy grup i sekcji FCI (odczyt 22.11.2026; nagłówki grup także na zkwp.pl/wzorce.php).",
+      "appliesTo": "nazewnictwo grup FCI",
+      "accessedAt": "2026-11-22",
+      "sourceIndex": 6
     }
   ],
   "authorDisplay": "Redakcja ZOO24 (szkic przygotowany z pomocą AI)",
   "status": "needs_review",
   "demo": false,
   "publishedAt": null,
-  "updatedAt": "2026-11-22T19:53:42.272Z",
+  "updatedAt": "2026-11-22T20:04:17.544Z",
   "relatedServicePaths": [
     "/uslugi/groomer"
   ],
@@ -181,8 +192,8 @@
     "required": "editor",
     "by": "claude-ai-editor",
     "byKind": "ai",
-    "at": "2026-11-22T19:53:42.272Z",
-    "note": "Recenzja redaktora-AI: twierdzenia sprawdzone ze źródłami 22.11.2026 (ponowny odczyt stron i PDF). RSPCA: nagrody „food, toys or praise” oddane wiernie. Zdanie o miniaturowych psach przypisane do reguły standardu (typ nie może być poświęcony dla rozmiaru; masa od 4,5 kg), bez rozszerzania. „Distinctly arrogant carriage” oddane jako „dumna, wręcz wyniosła postawa”. Wskazówki pielęgnacyjne (czesanie, krótsze strzyżenie) — ogólne, bez liczb; klasa standard.",
+    "at": "2026-11-22T20:04:17.544Z",
+    "note": "Recenzja redaktora-AI: twierdzenia sprawdzone ze źródłami 22.11.2026 (ponowny odczyt stron i PDF). Nazwy grup i sekcji FCI ujednolicone do polskiej nomenklatury ZKwP (Systematyka ras); dodane źródło i claim — ponowna akceptacja z nowym hashem.",
     "waitingReason": null
   },
   "reviewDueAt": "2027-05-22T00:00:00.000Z",
@@ -190,8 +201,8 @@
     "decision": "approved",
     "by": "claude-ai-editor",
     "byKind": "ai",
-    "at": "2026-11-22T19:53:42.272Z",
-    "contentHash": "71f3d510d966caf89df1e91b96e5d2d8763256c2f9b11f26faaf988b6dbe147c",
+    "at": "2026-11-22T20:04:17.544Z",
+    "contentHash": "d29998f2505e369c9c8d02e1be27dde10dde4401551b722a24f5a7765361d047",
     "evidenceRef": "claims[] w pliku + weryfikacja źródeł 22.11.2026 (FCI/FIFe/CFA/RSPCA/The Cat Group)",
     "excludedCategoriesChecked": [
       "health",
@@ -210,7 +221,8 @@
       "RSPCA: nagrody „food, toys or praise” oddane wiernie.",
       "Zdanie o miniaturowych psach przypisane do reguły standardu (typ nie może być poświęcony dla rozmiaru; masa od 4,5 kg), bez rozszerzania.",
       "„Distinctly arrogant carriage” oddane jako „dumna, wręcz wyniosła postawa”.",
-      "Wskazówki pielęgnacyjne (czesanie, krótsze strzyżenie) — ogólne, bez liczb; klasa standard."
+      "Wskazówki pielęgnacyjne (czesanie, krótsze strzyżenie) — ogólne, bez liczb; klasa standard.",
+      "Nazwy grup i sekcji FCI ujednolicone do polskiej nomenklatury ZKwP (Systematyka ras); dodane źródło i claim — ponowna akceptacja z nowym hashem."
     ],
     "publishAfter": "serwis live na https://zoo24.pl; publikacja przez gateway (cms.publish_approved_version)"
   }

@@ -7,7 +7,7 @@
   "body": [
     "Owczarek niemiecki od ponad stu lat jest hodowany jako pies pracujący: pasterski i służbowy. Warto znać jego oficjalny opis, zanim zdecydujesz się na szczenię. Wzorzec rasy zawiera standard Międzynarodowej Federacji Kynologicznej (FCI) nr 166 — z niego pochodzą wszystkie wymiary podane poniżej.",
     "## Pochodzenie i klasyfikacja FCI",
-    "Według standardu FCI nr 166 kraj pochodzenia rasy to Niemcy. Obowiązujący standard oficjalnie opublikowano 11.08.2010 r., a angielska wersja dokumentu nosi datę 23.12.2010. Rasa należy do grupy 1 FCI — owczarki i psy pasterskie (z wyjątkiem szwajcarskich psów pasterskich), sekcja 1 — owczarki, i podlega próbom pracy. Przeznaczenie standard określa jako wszechstronnego psa pracującego, pasterskiego i służbowego.",
+    "Według standardu FCI nr 166 kraj pochodzenia rasy to Niemcy. Obowiązujący standard oficjalnie opublikowano 11.08.2010 r., a angielska wersja dokumentu nosi datę 23.12.2010. Rasa należy do grupy 1 FCI — owczarki i inne psy pasterskie, z wyłączeniem szwajcarskich psów do bydła, sekcja 1 — owczarki, i podlega próbom pracy. Przeznaczenie standard określa jako wszechstronnego psa pracującego, pasterskiego i służbowego.",
     "Za standard odpowiada niemiecki klub założycielski rasy, Verein für Deutsche Schäferhunde (SV). Planową hodowlę rozpoczęto w 1899 r., po założeniu tego stowarzyszenia, a bazą były ówczesne psy pasterskie ze środkowych i południowych Niemiec. Celem — jak zaznacza standard — było stworzenie psa pracującego zdolnego do wysokich osiągnięć.",
     "## Wygląd: wzrost, masa i proporcje według standardu",
     "Standard opisuje owczarka niemieckiego jako psa średniej wielkości, lekko wydłużonego, silnego i dobrze umięśnionego, o suchej kości i zwartej budowie. Długość tułowia przewyższa wysokość w kłębie o około 10–17%. Głowa ma kształt klina, a uszy są średniej wielkości, stojące, spiczaste i skierowane małżowiną do przodu. Ogon sięga co najmniej do stawu skokowego i w spoczynku zwisa w łagodnym łuku; standard wprost zabrania jego korekt operacyjnych.",
@@ -63,6 +63,10 @@
     {
       "label": "FCI — członkowie: Polska (Związek Kynologiczny w Polsce)",
       "url": "https://www.fci.be/en/members/members.aspx?iso=PL"
+    },
+    {
+      "label": "ZKwP — Systematyka ras (grupy i sekcje FCI, wersja polska; PDF) oraz zkwp.pl/wzorce.php",
+      "url": "https://www.zkwp.pl/regulaminy/Systematyka_Ras.pdf"
     }
   ],
   "claims": [
@@ -149,13 +153,20 @@
       "evidence": "Strona członków FCI dla Polski: Zwiazek Kynologiczny w Polsce, status Full member.",
       "appliesTo": "Polska",
       "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Grupa 1 FCI wg ZKwP: owczarki i inne psy pasterskie, z wyłączeniem szwajcarskich psów do bydła.",
+      "evidence": "ZKwP, Systematyka ras: polskie nazwy grup i sekcji FCI (odczyt 22.11.2026; nagłówki grup także na zkwp.pl/wzorce.php).",
+      "appliesTo": "nazewnictwo grup FCI",
+      "accessedAt": "2026-11-22",
+      "sourceIndex": 6
     }
   ],
   "authorDisplay": "Redakcja ZOO24 (szkic przygotowany z pomocą AI)",
   "status": "needs_review",
   "demo": false,
   "publishedAt": null,
-  "updatedAt": "2026-11-22T20:02:26.066Z",
+  "updatedAt": "2026-11-22T20:04:17.544Z",
   "relatedServicePaths": [],
   "disclosure": null,
   "reviewNotes": [
@@ -180,8 +191,8 @@
     "required": "editor",
     "by": "claude-ai-editor",
     "byKind": "ai",
-    "at": "2026-11-22T20:02:26.066Z",
-    "note": "Recenzja redaktora-AI: twierdzenia sprawdzone ze źródłami 22.11.2026 (ponowny odczyt stron i PDF). RSPCA: „food, toys or praise” oddane wiernie. Usunięto niepoparte „tropienie, sport, popularny pies rodzinny”; ruch i ogon dopasowane do brzmienia standardu FCI 166 („far-reaching”, „hanging downward in a gentle curve”). Zakaz korekt operacyjnych ogona — wprost ze standardu. Nazwy odmian szaty — tłumaczenie redakcyjne, do potwierdzenia z ZKwP (nie blokuje). Przy niepokojącym zachowaniu odesłanie do lekarza weterynarii, który może skierować do behawiorysty (zgodnie z RSPCA).",
+    "at": "2026-11-22T20:04:17.544Z",
+    "note": "Recenzja redaktora-AI: twierdzenia sprawdzone ze źródłami 22.11.2026 (ponowny odczyt stron i PDF). Nazwy grup i sekcji FCI ujednolicone do polskiej nomenklatury ZKwP (Systematyka ras); dodane źródło i claim — ponowna akceptacja z nowym hashem.",
     "waitingReason": null
   },
   "reviewDueAt": "2027-05-23T00:00:00.000Z",
@@ -189,8 +200,8 @@
     "decision": "approved",
     "by": "claude-ai-editor",
     "byKind": "ai",
-    "at": "2026-11-22T20:02:26.066Z",
-    "contentHash": "afc785f9d6bb32beb4eb703608d8452f109ccb9a1bba58114cc6919b38c1fc7d",
+    "at": "2026-11-22T20:04:17.544Z",
+    "contentHash": "27e98b5b421ac36b5a4db5a6f90605261c245e5694fe3920240afeea740f842e",
     "evidenceRef": "claims[] w pliku + weryfikacja źródeł 22.11.2026 (FCI/FIFe/CFA/RSPCA/The Cat Group)",
     "excludedCategoriesChecked": [
       "health",
@@ -210,7 +221,8 @@
       "Usunięto niepoparte „tropienie, sport, popularny pies rodzinny”; ruch i ogon dopasowane do brzmienia standardu FCI 166 („far-reaching”, „hanging downward in a gentle curve”).",
       "Zakaz korekt operacyjnych ogona — wprost ze standardu.",
       "Nazwy odmian szaty — tłumaczenie redakcyjne, do potwierdzenia z ZKwP (nie blokuje).",
-      "Przy niepokojącym zachowaniu odesłanie do lekarza weterynarii, który może skierować do behawiorysty (zgodnie z RSPCA)."
+      "Przy niepokojącym zachowaniu odesłanie do lekarza weterynarii, który może skierować do behawiorysty (zgodnie z RSPCA).",
+      "Nazwy grup i sekcji FCI ujednolicone do polskiej nomenklatury ZKwP (Systematyka ras); dodane źródło i claim — ponowna akceptacja z nowym hashem."
     ],
     "publishAfter": "serwis live na https://zoo24.pl; publikacja przez gateway (cms.publish_approved_version)"
   }

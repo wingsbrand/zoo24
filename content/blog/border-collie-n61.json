@@ -7,7 +7,7 @@
   "body": [
     "Border collie to pies pasterski, który kojarzy się z pracą przy owcach, sportami kynologicznymi i ogromną chęcią do współpracy z człowiekiem. Zanim zdecydujesz się na tę rasę, warto poznać jej oficjalny opis i zastanowić się, czy możesz zapewnić psu odpowiednią ilość zajęć. Wzorzec rasy opisuje standard Międzynarodowej Federacji Kynologicznej (FCI) nr 297.",
     "## Pochodzenie i klasyfikacja FCI",
-    "Według standardu FCI nr 297 border collie pochodzi z Wielkiej Brytanii. Data oficjalnej publikacji obowiązującego standardu to 24.06.1987 r., a angielska wersja dokumentu udostępniana przez FCI nosi datę 28.10.2009. Rasa należy do grupy 1 FCI — owczarki i psy pasterskie (z wyjątkiem szwajcarskich psów pasterskich), sekcja 1 — owczarki, i podlega próbom pracy. Przeznaczenie standard określa jednym słowem: pies pasterski.",
+    "Według standardu FCI nr 297 border collie pochodzi z Wielkiej Brytanii. Data oficjalnej publikacji obowiązującego standardu to 24.06.1987 r., a angielska wersja dokumentu udostępniana przez FCI nosi datę 28.10.2009. Rasa należy do grupy 1 FCI — owczarki i inne psy pasterskie, z wyłączeniem szwajcarskich psów do bydła, sekcja 1 — owczarki, i podlega próbom pracy. Przeznaczenie standard określa jednym słowem: pies pasterski.",
     "## Wygląd: wzrost i szata według standardu",
     "Standard opisuje border collie jako psa dobrze zbudowanego, o płynnej linii sylwetki, łączącego wdzięk i doskonałą równowagę z masą wystarczającą, by sprawiać wrażenie wytrzymałości. Tułów jest nieco dłuższy niż wysokość w kłębie, a ruch — swobodny, płynny i niestrudzony, z minimalnym unoszeniem łap, co daje wrażenie zdolności do skradania się i szybkiego biegu. Uszy są średniej wielkości, noszone stojąco lub półstojąco.",
     "Jedyną liczbą dotyczącą wielkości w standardzie jest idealna wysokość w kłębie psa: 53 cm; suki mają być nieco niższe. Standard FCI nie podaje masy ciała.",
@@ -59,6 +59,10 @@
     {
       "label": "FCI — członkowie: Polska (Związek Kynologiczny w Polsce)",
       "url": "https://www.fci.be/en/members/members.aspx?iso=PL"
+    },
+    {
+      "label": "ZKwP — Systematyka ras (grupy i sekcje FCI, wersja polska; PDF) oraz zkwp.pl/wzorce.php",
+      "url": "https://www.zkwp.pl/regulaminy/Systematyka_Ras.pdf"
     }
   ],
   "claims": [
@@ -131,13 +135,20 @@
       "evidence": "Strona członków FCI dla Polski: Zwiazek Kynologiczny w Polsce, status Full member.",
       "appliesTo": "Polska",
       "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Grupa 1 FCI wg ZKwP: owczarki i inne psy pasterskie, z wyłączeniem szwajcarskich psów do bydła.",
+      "evidence": "ZKwP, Systematyka ras: polskie nazwy grup i sekcji FCI (odczyt 22.11.2026; nagłówki grup także na zkwp.pl/wzorce.php).",
+      "appliesTo": "nazewnictwo grup FCI",
+      "accessedAt": "2026-11-22",
+      "sourceIndex": 6
     }
   ],
   "authorDisplay": "Redakcja ZOO24 (szkic przygotowany z pomocą AI)",
   "status": "needs_review",
   "demo": false,
   "publishedAt": null,
-  "updatedAt": "2026-11-22T19:53:42.272Z",
+  "updatedAt": "2026-11-22T20:04:17.544Z",
   "relatedServicePaths": [],
   "disclosure": null,
   "reviewNotes": [
@@ -162,8 +173,8 @@
     "required": "editor",
     "by": "claude-ai-editor",
     "byKind": "ai",
-    "at": "2026-11-22T19:53:42.272Z",
-    "note": "Recenzja redaktora-AI: twierdzenia sprawdzone ze źródłami 22.11.2026 (ponowny odczyt stron i PDF). RSPCA: „distressed or bored” oddane wiernie; przy zmianach zachowania odesłanie też do lekarza weterynarii (zgodnie z RSPCA). Sporty kynologiczne i pielęgnacja w okresie linienia — wzmianki ogólne bez liczb; klasa standard. „Great tractability” = „bardzo podatny na prowadzenie” — tłumaczenie poprawne.",
+    "at": "2026-11-22T20:04:17.544Z",
+    "note": "Recenzja redaktora-AI: twierdzenia sprawdzone ze źródłami 22.11.2026 (ponowny odczyt stron i PDF). Nazwy grup i sekcji FCI ujednolicone do polskiej nomenklatury ZKwP (Systematyka ras); dodane źródło i claim — ponowna akceptacja z nowym hashem.",
     "waitingReason": null
   },
   "reviewDueAt": "2027-05-22T00:00:00.000Z",
@@ -171,8 +182,8 @@
     "decision": "approved",
     "by": "claude-ai-editor",
     "byKind": "ai",
-    "at": "2026-11-22T19:53:42.272Z",
-    "contentHash": "e1df0d0aa0dd551c6229932b20e807ee7ed46f069a70e0049552e9dfdcaf411e",
+    "at": "2026-11-22T20:04:17.544Z",
+    "contentHash": "38c6e1f60899c2f685f10a17bbd4384008b2f4c8be183048aafbaa78ea383a91",
     "evidenceRef": "claims[] w pliku + weryfikacja źródeł 22.11.2026 (FCI/FIFe/CFA/RSPCA/The Cat Group)",
     "excludedCategoriesChecked": [
       "health",
@@ -190,7 +201,8 @@
     "notes": [
       "RSPCA: „distressed or bored” oddane wiernie; przy zmianach zachowania odesłanie też do lekarza weterynarii (zgodnie z RSPCA).",
       "Sporty kynologiczne i pielęgnacja w okresie linienia — wzmianki ogólne bez liczb; klasa standard.",
-      "„Great tractability” = „bardzo podatny na prowadzenie” — tłumaczenie poprawne."
+      "„Great tractability” = „bardzo podatny na prowadzenie” — tłumaczenie poprawne.",
+      "Nazwy grup i sekcji FCI ujednolicone do polskiej nomenklatury ZKwP (Systematyka ras); dodane źródło i claim — ponowna akceptacja z nowym hashem."
     ],
     "publishAfter": "serwis live na https://zoo24.pl; publikacja przez gateway (cms.publish_approved_version)"
   }
