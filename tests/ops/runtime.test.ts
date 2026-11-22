@@ -189,6 +189,12 @@ describe("dispatcher shadow sześciu ról", () => {
     expect(content.status).toBe("needs_human"); // 3 artykuły czekają na redaktora
     expect(content.human_decisions_required[0]).toMatch(/Redaktor/);
   });
+  it("redaktor-AI z polityki (claude-ai-editor) nie odblokowuje publikacji: check editor_assigned = blocked", async () => {
+    const store = tempStore();
+    await runShadowTick(store, { now: NOW, dispatcherId: "d1", policy: testPolicy("shadow"), env: { ...ENV, editorId: "claude-ai-editor" }, manual: true });
+    const content = store.read().ops.results.find((x) => x.role === "content")!;
+    expect(content.checks.find((c) => c.name === "editor_assigned")).toMatchObject({ status: "blocked" });
+  });
   it("tylko jeden dispatcher naraz; w canary/live dispatcher shadow odmawia", async () => {
     const store = tempStore();
     await store.transact((s) => { s.ops.dispatcher = { id: "inny", leaseUntil: new Date(NOW.getTime() + 60_000).toISOString() }; });

@@ -10,7 +10,8 @@ Wersja pakietu 1.0 · aktualizacja 2026-11-22 · tryb **design/shadow** · nic n
 - [x] sześć przepływów i testy na mockach — handlery ról `lib/ops/roles.ts` zintegrowane z `lib/content`, `lib/social`, `lib/seo`, analityką; dispatcher shadow `lib/ops/dispatcher.ts`
 - [ ] dostęp/źródła/rights i redaktor/operator — lista w `ACTIVATION_PACKAGE.md`
 - [x] shadow i wymagane testy awarii — `QA_REPORT.md` (P01–P08, R01–R11, C01–C06/C10, S01–S09)
-- [ ] rzeczywista polityka zaakceptowana — `ops/config/activation.json` = `INACTIVE_PENDING_OWNER_APPROVAL`
+- [x] rzeczywista polityka zaakceptowana — 2026-11-22 właściciel: „shadow z harmonogramem, tylko odczyt”, pilot 7 dni; `ops/config/activation.json` = `APPROVED_SHADOW_READONLY_PILOT`, podpis zgodny z hashem (test `isPolicyApproved`), wszystkie autonomie zapisu = false
+- [x] repozytorium git lokalnie (`main`, 2 commity) — **brak zdalnego GitHub** (warunek zadań chmurowych)
 - [ ] pierwsza produkcja / canary z receipts — zablokowane (serwis offline, bramka G2)
 - [ ] harmonogramy działają i przeżywają zamknięcie sesji — `ops/config/schedule.json` wszystko `enabled:false`; **żadnych zadań nie utworzono**
 - [ ] test pauzy także zewnętrznego schedulera — logika przetestowana na mocku (R09); realne Meta N/A

@@ -6,6 +6,7 @@ import type { AppState } from "../types";
 import type { AccessStatus, SourceId } from "../integrations/read-sources";
 import { checkArticlePolicy } from "../content/editorial";
 import { evaluateExperiment } from "./guards";
+import { isAgentIdentity } from "./policy";
 import type { OpsCheck, OpsJobResult, OpsMetric, OpsMode, OpsRole } from "./types";
 
 export interface OpsEnv {
@@ -48,8 +49,15 @@ function content(s: AppState, env: OpsEnv): Draft {
     return { id: `article:${a.slug}`, type: "article", version: a.updatedAt, note: errs.length ? `blokady: ${errs.join(", ")}` : "polityka maszynowa PASS — czeka na redaktora" };
   });
   const ready = s.articles.filter((a) => !a.demo && a.status === "published").length;
+  const aiEditor = !!env.editorId && isAgentIdentity(env.editorId);
   const checks: OpsCheck[] = [
-    { name: "editor_assigned", status: env.editorId ? "pass" : "blocked", detail: env.editorId ? "redaktor przypisany" : "brak redaktora w polityce — nowe treści pozostają niepubliczne" },
+    {
+      name: "editor_assigned",
+      status: env.editorId && !aiEditor ? "pass" : "blocked",
+      detail: !env.editorId ? "brak redaktora w polityce — nowe treści pozostają niepubliczne"
+        : aiEditor ? "redaktor = AI (redaguje szkice); zatwierdzenie publikacji faktów wymaga człowieka — publikacja zablokowana"
+        : "redaktor (człowiek) przypisany",
+    },
     { name: "approved_buffer_items", status: ready >= 3 ? "pass" : "fail", detail: `${ready} opublikowanych/zatwierdzonych (próg ryzyka przerwy: 3)` },
   ];
   return {

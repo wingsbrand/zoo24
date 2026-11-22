@@ -151,4 +151,5 @@ Brak odpowiedzi = brak zgody: prototyp rozwijany dalej wyłącznie lokalnie na D
 - [x] Przebieg shadow na realnym stanie lokalnym: 6 ról, 0 zapisów zewnętrznych (`ops/runtime/work/shadow-run-2026-11-22.json`): build blocked (brak git), content needs_human (3 artykuły → redaktor), social blocked (brak licencji grafik), SEO partial (GSC N/A), knowledge/growth produced.
 - [x] Testy: `npx vitest run` **238/238 (19 plików)**, `tsc` PASS, `scan:secrets` PASS; scenariusze ACCEPTANCE w `ops/runtime/QA_REPORT.md` (I04/I05, C07–C09, wdrożenie — BLOCKED).
 - [x] Pakiet aktywacji: `ops/runtime/ACTIVATION_PACKAGE.md` (jeden zakres: harmonogram shadow tylko do odczytu), polityka `ops/config/activation.json` INACTIVE, runtime `ops/runtime/ADR-RUNTIME.md`, gotowość `ops/runtime/READINESS.md`, rejestr `ops/runtime/INSTALL_STATUS.md`.
-- [ ] Decyzje właściciela (ACTIVATION_PACKAGE): 1) repo GitHub + zadania chmurowe, 2) redaktor/operator + limit AI, 3) podpis polityki „shadow z harmonogramem” na 7 dni pilota.
+- [x] Właściciel zatwierdził zakres „shadow z harmonogramem — tylko odczyt” (pilot 7 dni, do 29.11.2026); polityka podpisana, testy 252/252, `tsc` PASS.
+- [ ] Do uruchomienia harmonogramu: zdalne prywatne repo GitHub (lokalne repo już jest) + wybór runtime; redaktor-człowiek (AI może tylko redagować szkice); kanał alarmów; limit AI (budżet niezatwierdzony).
