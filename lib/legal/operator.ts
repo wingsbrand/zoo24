@@ -1,6 +1,7 @@
 // Dane operatora serwisu (usługodawca w rozumieniu ustawy o świadczeniu usług drogą elektroniczną, administrator danych).
-// Źródło: właściciel w czacie Claude Code 2026-11-22 („właścicielem jest nasza spółka WINGS RETAIL : NIP 9662134997”).
-// Pola null = do uzupełnienia przez właściciela przed startem produkcji (blokuje `npm run preflight:live`).
+// Źródło: właściciel w czacie Claude Code 2026-11-22: „WINGS RETAIL SP. Z O.O., ŻÓŁTKI KOLONIA 38A, 16-070 CHOROSZCZ.
+// NIP 5423261087, EMAIL: OFFICE@ZOO24.PL, WEJŚCIE W ŻYCIE: 23.11.2026” (zastępuje wcześniej podany NIP 9662134997).
+// Pola null = do uzupełnienia przez właściciela (blokuje lub ostrzega w `npm run preflight:live`).
 
 export interface OperatorData {
   /** Pełna nazwa z formą prawną, np. „WINGS RETAIL sp. z o.o.” — do potwierdzenia. */
@@ -15,15 +16,15 @@ export interface OperatorData {
 }
 
 export const OPERATOR: OperatorData = {
-  legalName: null,
+  legalName: "WINGS RETAIL sp. z o.o.",
   shortName: "WINGS RETAIL",
-  nip: "9662134997",
-  krs: null,
-  registeredAddress: null,
-  contactEmail: null,
+  nip: "5423261087",
+  krs: null, // sp. z o.o.: KRS, sąd rejestrowy i kapitał zakładowy wymagane na stronie (art. 206 KSH) — do podania przez właściciela
+  registeredAddress: "Żółtki Kolonia 38A, 16-070 Choroszcz",
+  contactEmail: "office@zoo24.pl",
 };
 
-export const LEGAL_EFFECTIVE_DATE: string | null = null; // np. "2026-11-23" — data wejścia w życie regulaminu i polityki
+export const LEGAL_EFFECTIVE_DATE: string | null = "2026-11-23"; // data wejścia w życie regulaminu i polityki
 
 export function missingOperatorFields(o: OperatorData = OPERATOR): string[] {
   const missing: string[] = [];

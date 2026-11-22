@@ -39,8 +39,8 @@ export default function ONas() {
       <p>
         Operator serwisu:{" "}
         {OPERATOR.legalName ?? <>{OPERATOR.shortName} <Todo>pełna nazwa spółki z formą prawną</Todo></>}, z siedzibą:{" "}
-        {OPERATOR.registeredAddress ?? <Todo>adres siedziby</Todo>}, NIP: {OPERATOR.nip ?? <Todo>NIP</Todo>}, KRS:{" "}
-        {OPERATOR.krs ?? <Todo>numer KRS, jeśli dotyczy</Todo>}.
+        {OPERATOR.registeredAddress ?? <Todo>adres siedziby</Todo>}, NIP: {OPERATOR.nip ?? <Todo>NIP</Todo>}
+        {OPERATOR.krs ? <>, KRS: {OPERATOR.krs}</> : null}.
       </p>
       <p>
         Kontakt z redakcją: <Link href="/kontakt">formularz kontaktowy</Link> lub e-mail:{" "}
