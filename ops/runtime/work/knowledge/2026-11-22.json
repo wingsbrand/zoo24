@@ -1,0 +1,43 @@
+{
+  "schema_version": "zoo24.ops.job-result.v1",
+  "job_id": null,
+  "role": "knowledge",
+  "mode": "shadow",
+  "policy_version": "unsigned",
+  "status": "blocked_partial",
+  "reason": "source_hosts_unreachable (fci.be, fifeweb.org: ENOTFOUND)",
+  "artifacts": [
+    {
+      "id": "evidence-2026-11-22",
+      "type": "evidence_bundle",
+      "version": "0",
+      "note": "10 kart candidate, 0 zweryfikowanych względem źródła; 3 artykuły needs_review"
+    }
+  ],
+  "checks": [
+    {
+      "name": "sources_fetched",
+      "status": "fail",
+      "detail": "0/5 źródeł pierwotnych odczytanych"
+    },
+    {
+      "name": "card_status_candidate_only",
+      "status": "pass",
+      "detail": "żadna karta nie jest approved"
+    }
+  ],
+  "external_actions": [],
+  "metrics": [],
+  "cost": {
+    "value": null,
+    "currency": null,
+    "status": "unknown"
+  },
+  "next_tasks": [
+    "Odczyt 5 źródeł FCI/FIFe po odblokowaniu domen i uzupełnienie kart",
+    "Dodać źródło/oznaczenie opinii dla akapitu o charakterze kota brytyjskiego"
+  ],
+  "human_decisions_required": [
+    "Dopuścić domeny fci.be i fifeweb.org w sieci sesji chmurowej"
+  ]
+}
