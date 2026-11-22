@@ -9,7 +9,7 @@ import { assertFence, claim, complete, enqueue, RegistryError } from "@/lib/ops/
 import { budgetLevel, reserveBudget } from "@/lib/ops/gateway";
 import { latestDueSlot, nextSlot, OPS_SCHEDULE, slotsBetween } from "@/lib/ops/schedule";
 import { pauseAll, resumeOps, type ProviderScheduleAdapter, NoProviderAccess } from "@/lib/ops/pause";
-import { effectiveMode, isAgentIdentity, loadPolicy, PolicyError, writePolicy } from "@/lib/ops/policy";
+import { effectiveMode, isAgentIdentity, isPolicyApproved, loadPolicy, PolicyError, writePolicy } from "@/lib/ops/policy";
 import { runShadowTick } from "@/lib/ops/dispatcher";
 import { runRoleShadow } from "@/lib/ops/roles";
 import { MockMetaAdapter } from "@/lib/integrations/meta/adapter";
@@ -131,7 +131,7 @@ describe("R08/R09 pauza", () => {
 });
 
 describe("P04 polityka chroniona", () => {
-  it("agent nie może zapisać polityki ani podnieść budżetu; plik w repo jest nieaktywny", () => {
+  it("agent nie może zapisać polityki ani podnieść budżetu; polityka w repo podpisana tylko dla shadow", () => {
     const dir = fs.mkdtempSync(path.join(process.cwd(), ".data", "policy-test-"));
     try {
       const p = testPolicy("live_scoped");
@@ -143,11 +143,15 @@ describe("P04 polityka chroniona", () => {
       expect(() => writePolicy(dir, "owner", p, { ownerConfirmed: true })).toThrow("BUDGET_CHANGE_REQUIRES_OWNER_SIGNATURE");
       expect(fs.existsSync(path.join(dir, "ops", "config", "activation.json"))).toBe(false);
     } finally { fs.rmSync(dir, { recursive: true, force: true }); }
+    // Polityka w repo: podpisana przez właściciela wyłącznie dla zakresu shadow, tylko odczyt + szkice.
     const repo = loadPolicy()!;
-    expect(repo.enabled).toBe(false);
-    expect(repo.owner_approval.approved).toBe(false);
-    expect(Object.values(repo.autonomy).filter(Boolean)).toEqual([true]); // tylko create_drafts
+    expect(repo.status).toBe("APPROVED_SHADOW_READONLY_PILOT");
+    expect(isPolicyApproved(repo)).toBe(true);
+    expect(repo.mode).toBe("shadow");
+    expect(Object.entries(repo.autonomy).filter(([, v]) => v).map(([k]) => k).sort()).toEqual(["create_drafts", "read_approved_sources"]);
+    expect(repo.budgets.paid_advertising_monthly).toBe(0);
     expect(effectiveMode(repo, "design")).toBe("shadow");
+    expect(effectiveMode(repo, "paused")).toBe("paused");
     expect(isAgentIdentity("owner-local")).toBe(false);
   });
   it("podpis właściciela niezgodny z treścią (edytowana polityka) => najwyżej shadow", () => {

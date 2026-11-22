@@ -111,6 +111,23 @@ describe("P: uprawnienia i autonomia", () => {
   });
 });
 
+describe("polityka podpisana w repo (pilot shadow tylko do odczytu)", () => {
+  it("podpisana polityka z repo: każda operacja zapisu kończy się dry_run, executor nie jest wywoływany", async () => {
+    const { loadPolicy } = await import("@/lib/ops/policy");
+    const policy = loadPolicy()!;
+    policy.resources = { ...policy.resources, facebook_page_id: "TEST-PAGE-1" }; // edycja unieważnia podpis => nadal shadow
+    for (const p of [loadPolicy()!, policy]) {
+      const store = tempStore();
+      const { dedupeKey, token } = await leasedJob(store);
+      const ex = new SpyExecutor();
+      const r = await executeAction(socialRequest(dedupeKey, token), { store, policy: p, executor: ex, now: NOW });
+      expect(["dry_run", "blocked_access"]).toContain(r.status);
+      expect(r.mode).toBe("shadow");
+      expect(ex.calls + ex.lookups).toBe(0);
+    }
+  });
+});
+
 describe("R: niezawodność", () => {
   it("R02 spóźniony worker ze starym fencing tokenem => odmowa przed wywołaniem", async () => {
     const store = tempStore();

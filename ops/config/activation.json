@@ -1,15 +1,15 @@
 {
   "schema_version": "zoo24.ops.policy.v1",
-  "status": "INACTIVE_PENDING_OWNER_APPROVAL",
+  "status": "APPROVED_SHADOW_READONLY_PILOT",
   "mode": "shadow",
-  "enabled": false,
+  "enabled": true,
   "timezone": "Europe/Warsaw",
   "owner_approval": {
-    "approved": false,
-    "approved_by": null,
-    "approved_at": null,
-    "policy_hash": null,
-    "review_due_at": null
+    "approved": true,
+    "approved_by": "owner",
+    "approved_at": "2026-11-22T14:33:05.284Z",
+    "policy_hash": "dfa947cfc0e1dd80b302efa8862fd0c9230bb7eb3812a1bfa6354022de76820b",
+    "review_due_at": "2026-11-29T14:32:33.350Z"
   },
   "resources": {
     "site_origin": "https://zoo24.pl",
@@ -49,11 +49,15 @@
     "approved_per_run": null,
     "paid_advertising_monthly": 0,
     "new_paid_media_generation_monthly": 0,
-    "alerts_fraction": [0.7, 0.9, 1.0],
+    "alerts_fraction": [
+      0.7,
+      0.9,
+      1
+    ],
     "prevent_automatic_overage": true
   },
   "autonomy": {
-    "read_approved_sources": false,
+    "read_approved_sources": true,
     "create_drafts": true,
     "publish_human_reviewed_content": false,
     "publish_reviewed_social_versions": false,
@@ -79,23 +83,34 @@
     "automatic_faq_replies_per_thread": 1
   },
   "review": {
-    "editor_id": null,
+    "editor_id": "claude-ai-editor",
     "backup_editor_id": null,
     "review_cadence": "weekly",
     "approved_content_buffer_days": 7,
     "low_buffer_alert_items": 3,
     "new_factual_content_requires_human_review": true,
     "health_legal_insurance_requires_specialist": true,
-    "approval_bound_to_content_and_evidence_versions": true
+    "approval_bound_to_content_and_evidence_versions": true,
+    "editor_note": "Redaktor = agent Claude (AI), jawnie oznaczony jako AI; nie jest i nie udaje człowieka. W zakresie shadow redaguje i ocenia szkice. Publikacja treści faktograficznych nadal wymaga człowieka (new_factual_content_requires_human_review=true) albo osobnej, wyraźnej zgody właściciela przy aktywacji canary."
   },
   "alerts": {
-    "operator_id": null,
-    "approved_destination": null,
+    "operator_id": "claude-ai-operator",
+    "approved_destination": "panel /admin (sekcja automatyzacji) + raport tygodniowy; alarmy krytyczne: eskalacja do właściciela (kanał do potwierdzenia)",
     "critical_delivery_verified": false
   },
   "capabilities_by_channel": {
-    "facebook": { "can_publish": false, "can_edit_caption": null, "can_delete_media": null, "can_cancel_schedule": null },
-    "instagram": { "can_publish": false, "can_edit_caption": null, "can_delete_media": null, "can_cancel_schedule": null }
+    "facebook": {
+      "can_publish": false,
+      "can_edit_caption": null,
+      "can_delete_media": null,
+      "can_cancel_schedule": null
+    },
+    "instagram": {
+      "can_publish": false,
+      "can_edit_caption": null,
+      "can_delete_media": null,
+      "can_cancel_schedule": null
+    }
   },
   "source_allowlist": [],
   "pause": {
@@ -103,5 +118,25 @@
     "cancel_provider_schedules": true,
     "unknown_cancel_state": "partially_paused"
   },
-  "notes": "Polityka ZOO24 wygenerowana z zoo24-ops/ops/templates/activation.example.json. NIEAKTYWNA: brak podpisu właściciela (owner_approval) => efektywny tryb najwyżej shadow (lib/ops/policy.ts). Role zoo24-ops-* nie mogą zapisywać tego pliku (writePolicy odrzuca tożsamości agentów). Zakres pierwszej aktywacji: ops/runtime/ACTIVATION_PACKAGE.md."
+  "notes": "Polityka v1 ZOO24, podpisana przez właściciela dla zakresu shadow_scheduled_readonly (pilot 7 dni). Efektywny tryb: shadow — gateway wykonuje wyłącznie dry_run; wszystkie autonomie zapisu = false. Każda zmiana pliku unieważnia podpis (policy_hash). Role zoo24-ops-* nie mogą zapisywać tego pliku. Rozszerzenie zakresu wymaga nowej zgody właściciela.",
+  "scope": {
+    "name": "shadow_scheduled_readonly",
+    "pilot_days": 7,
+    "allowed": [
+      "odczyt stanu aplikacji i agregatów (Windsor.ai: GA4, FB; GSC/IG po podłączeniu)",
+      "szkice artykułów i postów",
+      "karty faktów (kwarantanna)",
+      "kalendarz 14 dni",
+      "propozycje SEO",
+      "raport tygodniowy"
+    ],
+    "forbidden": [
+      "publikacja treści i postów",
+      "zmiany strony/DNS/produkcji",
+      "e-mail/DM",
+      "wydatki i płatne media",
+      "zmiana tej polityki"
+    ],
+    "approval_evidence": "zgoda właściciela w czacie Claude Code 2026-11-22: „Approve, start setup” na pytanie o zakres shadow z harmonogramem tylko do odczytu, 7 dni pilota | ponowna zgoda właściciela w czacie orkiestratora 2026-11-22: „zgoda na aktywacje”; redaktor i operator alarmów: agent Claude (jawnie AI)."
+  }
 }

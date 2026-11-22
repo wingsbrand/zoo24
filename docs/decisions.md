@@ -50,6 +50,12 @@ Decyzja właściciela (2026-11-22, w rozmowie z orkiestratorem: „znajdź realn
 Wdrożenie: `lib/directory/contact.ts → publicLocation` (zwraca `address` tylko dla nie-DEMO), profil i karta firmy, link „Wyznacz trasę” (zewnętrzny, bez osadzania mapy). Dane: `content/businesses/groomers-2026-11-22.json`. Do potwierdzenia przez redakcję przed live: czy adresy z numerem lokalu (/7, /4, /3) to lokale usługowe.
 Status: **Zaakceptowane przez właściciela**; compliance może zawęzić przed publikacją produkcyjną.
 
+## ADR-012 — 2026-11-22 — Infrastruktura: GitHub (prywatne repo), Supabase ZOO24, Vercel; redaktor i operator alarmów = agent Claude (jawnie AI)
+Decyzja właściciela: (1) repozytorium i wdrożenie wykonuje Claude na kontach właściciela; (2) redaktorem i operatorem alarmów jest agent Claude; (3) zgoda na aktywację zakresu „shadow z harmonogramem — tylko odczyt” (pilot 7 dni).
+Wykonanie: projekt Supabase `ZOO24` (eu-central-1, 0 zł; CONTENT WIZARD wstrzymany na życzenie właściciela, by zwolnić limit darmowych projektów), tabela `public.app_state` (JSONB + wersja, RLS bez polityk = tylko serwer), adapter `lib/store/supabase-store.ts`. Hosting Vercel (zespół WINGS) jako **staging** z `noindex` — DNS zoo24.pl bez zmian (osobna zgoda, bramka G2).
+Tożsamość redaktora/operatora: wewnętrzne identyfikatory `claude-ai-editor` / `claude-ai-operator`, zawsze oznaczone jako AI (zasady CLAUDE.md i zoo24-ops: AI nie udaje człowieka; scenariusz P08). Nie zakładamy kont zewnętrznych (e-mail, social) na fikcyjną osobę. Publikacja treści faktograficznych nadal wymaga człowieka lub osobnej, wyraźnej zgody właściciela przy aktywacji canary.
+Status: Zaakceptowane (właściciel).
+
 ## ADR-P01 — 2026-11-22 — F1 wyłącznie na danych DEMO i mockach (zoo24-product)
 Integracje GSC/GA4/Meta flag-off. Status: Zaakceptowane.
 

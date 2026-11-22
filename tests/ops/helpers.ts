@@ -16,6 +16,7 @@ export function testPolicy(mode: OpsMode, opts: { signed?: boolean; budget?: num
   p.resources = { ...p.resources, facebook_page_id: "TEST-PAGE-1", instagram_account_id: "TEST-IG-1", production_environment_id: "TEST-ENV" };
   p.budgets.approved_monthly_extra_ai_automation = opts.budget === undefined ? 600 : opts.budget;
   p.autonomy = { ...p.autonomy, publish_reviewed_social_versions: true, publish_human_reviewed_content: true, ...opts.autonomy };
+  p.owner_approval = { approved: false, approved_by: null, approved_at: null, policy_hash: null };
   if (opts.signed) {
     p.owner_approval = { approved: true, approved_by: "owner-test", approved_at: "2026-11-22T10:00:00Z", policy_hash: null };
     p.owner_approval.policy_hash = policyHash(p);
