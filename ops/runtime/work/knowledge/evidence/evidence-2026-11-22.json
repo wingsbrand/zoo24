@@ -10,22 +10,23 @@
       "publisher": "FCI",
       "title": "Cane Corso (343) — nomenklatura",
       "source_date": null,
-      "retrieved_at_utc": null,
+      "retrieved_at_utc": "2026-11-22T00:00:00Z (godzina nieodnotowana)",
       "source_hash": null,
       "claim_text": "Rasa uznana przez FCI, standard nr 343, grupa 2 (pinczery, sznaucery, molosy, szwajcarskie psy pasterskie).",
       "scope": "grupa/numer standardu",
       "license_basis": "unknown",
-      "allowed_use": "own_summary_only_pending_license_check",
+      "allowed_use": "quote_summary_own_words",
       "status": "candidate",
-      "source_verified_by_agent": false,
-      "verification_note": "Odczyt źródła niemożliwy: host nie rozwiązuje się w sieci sesji (ENOTFOUND). Twierdzenie pochodzi z szkicu artykułu i NIE zostało zweryfikowane względem źródła.",
+      "source_verified_by_agent": true,
+      "verification_note": "Grupa 2, nr 343, kraj Włochy — zgodne ze stroną nomenklatury FCI.",
       "reviewer_id": null,
       "reviewed_at": null,
       "valid_until": null,
       "conflicts": [],
       "used_by_artifact_versions": [
         "cane-corso-n63@2026-11-22T12:00:00Z"
-      ]
+      ],
+      "verification_result": "confirmed"
     },
     {
       "evidence_id": "ev-cc-002",
@@ -34,22 +35,23 @@
       "publisher": "FCI",
       "title": "Standard nr 343 Cane Corso Italiano",
       "source_date": null,
-      "retrieved_at_utc": null,
-      "source_hash": null,
+      "retrieved_at_utc": "2026-11-22T00:00:00Z (godzina nieodnotowana)",
+      "source_hash": "sha256:3ee85186ac7985fdb83ecfa8d863383f6eecf7dc334d9fce477ed596481a950f",
       "claim_text": "Opis wyglądu: pies średni–duży, mocny, muskularny, a zarazem elegancki w ruchu; głowa szeroka, kufa krótsza od czaszki; sierść krótka, błyszcząca, gęsta, z niewielkim podszerstkiem.",
       "scope": "wygląd",
       "license_basis": "unknown",
-      "allowed_use": "own_summary_only_pending_license_check",
+      "allowed_use": "quote_summary_own_words",
       "status": "candidate",
-      "source_verified_by_agent": false,
-      "verification_note": "Odczyt źródła niemożliwy: host nie rozwiązuje się w sieci sesji (ENOTFOUND). Twierdzenie pochodzi z szkicu artykułu i NIE zostało zweryfikowane względem źródła.",
+      "source_verified_by_agent": true,
+      "verification_note": "Zgodne: średni–duży, solidny, głowa molosowata, kufa wyraźnie krótsza od czaszki (ok. 1:2), sierść krótka, błyszcząca, b. gęsta, lekki podszerstek. NIEZGODNE w szczególe: standard mówi 'pewna elegancja' (some elegance), nie 'elegancki w ruchu'; „szeroka głowa” — czaszka szeroka w łukach jarzmowych.",
       "reviewer_id": null,
       "reviewed_at": null,
       "valid_until": null,
       "conflicts": [],
       "used_by_artifact_versions": [
         "cane-corso-n63@2026-11-22T12:00:00Z"
-      ]
+      ],
+      "verification_result": "partial"
     },
     {
       "evidence_id": "ev-cc-003",
@@ -58,22 +60,23 @@
       "publisher": "FCI",
       "title": "Standard nr 343 Cane Corso Italiano",
       "source_date": null,
-      "retrieved_at_utc": null,
-      "source_hash": null,
+      "retrieved_at_utc": "2026-11-22T00:00:00Z (godzina nieodnotowana)",
+      "source_hash": "sha256:3ee85186ac7985fdb83ecfa8d863383f6eecf7dc334d9fce477ed596481a950f",
       "claim_text": "Dopuszczalne umaszczenia: czarne, odcienie szarości, płowe, pręgowane (do weryfikacji pełnej listy odmian).",
       "scope": "umaszczenie",
       "license_basis": "unknown",
-      "allowed_use": "own_summary_only_pending_license_check",
+      "allowed_use": "quote_summary_own_words",
       "status": "candidate",
-      "source_verified_by_agent": false,
-      "verification_note": "Odczyt źródła niemożliwy: host nie rozwiązuje się w sieci sesji (ENOTFOUND). Twierdzenie pochodzi z szkicu artykułu i NIE zostało zweryfikowane względem źródła.",
+      "source_verified_by_agent": true,
+      "verification_note": "Lista: czarne, szare (ołowiane/łupkowe/jasne), jasne płowe, ciemne płowe i jeleni czerwień, ciemna pszenica, pręgowane czarne i szare; mała biała plama na piersi/palcach/nosie dopuszczalna. Artykuł (czarne, szarości, płowe, pręgowane) jest uproszczeniem poprawnym.",
       "reviewer_id": null,
       "reviewed_at": null,
       "valid_until": null,
       "conflicts": [],
       "used_by_artifact_versions": [
         "cane-corso-n63@2026-11-22T12:00:00Z"
-      ]
+      ],
+      "verification_result": "confirmed"
     },
     {
       "evidence_id": "ev-cc-004",
@@ -82,22 +85,25 @@
       "publisher": "FCI",
       "title": "Standard nr 343 Cane Corso Italiano",
       "source_date": null,
-      "retrieved_at_utc": null,
-      "source_hash": null,
+      "retrieved_at_utc": "2026-11-22T00:00:00Z (godzina nieodnotowana)",
+      "source_hash": "sha256:3ee85186ac7985fdb83ecfa8d863383f6eecf7dc334d9fce477ed596481a950f",
       "claim_text": "Temperament: czujny obrońca domu i rodziny, przywiązany do opiekuna, łatwy w szkoleniu przy właściwym prowadzeniu.",
       "scope": "temperament",
       "license_basis": "unknown",
-      "allowed_use": "own_summary_only_pending_license_check",
+      "allowed_use": "quote_summary_own_words",
       "status": "candidate",
-      "source_verified_by_agent": false,
-      "verification_note": "Odczyt źródła niemożliwy: host nie rozwiązuje się w sieci sesji (ENOTFOUND). Twierdzenie pochodzi z szkicu artykułu i NIE zostało zweryfikowane względem źródła.",
+      "source_verified_by_agent": true,
+      "verification_note": "Standard: 'strażnik mienia, rodziny i bydła; wyjątkowo zwinny i reagujący'. Brak w standardzie sformułowań 'przywiązany do opiekuna' i 'łatwy w szkoleniu' — twierdzenie z artykułu NIE jest poparte źródłem; wymaga innego źródła albo przeredagowania.",
       "reviewer_id": null,
       "reviewed_at": null,
       "valid_until": null,
-      "conflicts": [],
+      "conflicts": [
+        "unsupported_by_cited_source"
+      ],
       "used_by_artifact_versions": [
         "cane-corso-n63@2026-11-22T12:00:00Z"
-      ]
+      ],
+      "verification_result": "conflict"
     },
     {
       "evidence_id": "ev-cc-005",
@@ -106,22 +112,23 @@
       "publisher": "FCI",
       "title": "Standard nr 343 Cane Corso Italiano",
       "source_date": null,
-      "retrieved_at_utc": null,
-      "source_hash": null,
+      "retrieved_at_utc": "2026-11-22T00:00:00Z (godzina nieodnotowana)",
+      "source_hash": "sha256:3ee85186ac7985fdb83ecfa8d863383f6eecf7dc334d9fce477ed596481a950f",
       "claim_text": "Wersja standardu z 25.09.2023 (wg notatki redakcyjnej) — wymaga potwierdzenia; zakresy wzrostu/masy celowo pominięte w artykule.",
       "scope": "wersja/data standardu",
       "license_basis": "unknown",
-      "allowed_use": "own_summary_only_pending_license_check",
+      "allowed_use": "quote_summary_own_words",
       "status": "candidate",
-      "source_verified_by_agent": false,
-      "verification_note": "Odczyt źródła niemożliwy: host nie rozwiązuje się w sieci sesji (ENOTFOUND). Twierdzenie pochodzi z szkicu artykułu i NIE zostało zweryfikowane względem źródła.",
+      "source_verified_by_agent": true,
+      "verification_note": "Data publikacji obowiązującego standardu 25.09.2023 (wersja EN 13.10.2023). Standard podaje wzrost (samce 64–68 cm, samice 60–64 cm, tolerancja 2 cm) i masę (45–50 / 40–45 kg) — redaktor może je dodać.",
       "reviewer_id": null,
       "reviewed_at": null,
       "valid_until": null,
       "conflicts": [],
       "used_by_artifact_versions": [
         "cane-corso-n63@2026-11-22T12:00:00Z"
-      ]
+      ],
+      "verification_result": "confirmed"
     },
     {
       "evidence_id": "ev-bsh-001",
@@ -130,22 +137,23 @@
       "publisher": "FIFe",
       "title": "Standard BLH-BSH (British Shorthair/Longhair), kategoria III",
       "source_date": null,
-      "retrieved_at_utc": null,
-      "source_hash": null,
+      "retrieved_at_utc": "2026-11-22T00:00:00Z (godzina nieodnotowana)",
+      "source_hash": "sha256:c18677e1b5d18771b3e9d77ac71429a41046064173c4b5c995368b68f8a2be0a",
       "claim_text": "Kot muskularny, zwarty („cobby”), szeroka klatka piersiowa, mocne krótkie łapy, gruby krótki ogon zaokrąglony na końcu.",
       "scope": "budowa ciała",
       "license_basis": "unknown",
-      "allowed_use": "own_summary_only_pending_license_check",
+      "allowed_use": "quote_summary_own_words",
       "status": "candidate",
-      "source_verified_by_agent": false,
-      "verification_note": "Odczyt źródła niemożliwy: host nie rozwiązuje się w sieci sesji (ENOTFOUND). Twierdzenie pochodzi z szkicu artykułu i NIE zostało zweryfikowane względem źródła.",
+      "source_verified_by_agent": true,
+      "verification_note": "Standard FIFe BLH/BSH (kat. III, stopka 01.07.2026): ciało muskularne, 'cobby'; szeroka klatka, mocne ramiona i grzbiet; łapy krótkie i mocne; ogon krótki, gruby, lekko zaokrąglony na końcu.",
       "reviewer_id": null,
       "reviewed_at": null,
       "valid_until": null,
       "conflicts": [],
       "used_by_artifact_versions": [
         "kot-brytyjski-n66@2026-11-22T12:00:00Z"
-      ]
+      ],
+      "verification_result": "confirmed"
     },
     {
       "evidence_id": "ev-bsh-002",
@@ -154,22 +162,23 @@
       "publisher": "FIFe",
       "title": "Standard BLH-BSH",
       "source_date": null,
-      "retrieved_at_utc": null,
-      "source_hash": null,
+      "retrieved_at_utc": "2026-11-22T00:00:00Z (godzina nieodnotowana)",
+      "source_hash": "sha256:c18677e1b5d18771b3e9d77ac71429a41046064173c4b5c995368b68f8a2be0a",
       "claim_text": "Głowa okrągła, masywna, pełne policzki; uszy małe, szeroko osadzone; sierść krótka, bardzo gęsta, sprężysta.",
       "scope": "głowa/sierść",
       "license_basis": "unknown",
-      "allowed_use": "own_summary_only_pending_license_check",
+      "allowed_use": "quote_summary_own_words",
       "status": "candidate",
-      "source_verified_by_agent": false,
-      "verification_note": "Odczyt źródła niemożliwy: host nie rozwiązuje się w sieci sesji (ENOTFOUND). Twierdzenie pochodzi z szkicu artykułu i NIE zostało zweryfikowane względem źródła.",
+      "source_verified_by_agent": true,
+      "verification_note": "Głowa okrągła i masywna, szeroka czaszka; uszy małe, lekko zaokrąglone, szeroko rozstawione; sierść BSH krótka, gęsta, 'nie przylegająca płasko', z dobrym podszerstkiem, faktura sprężysta ('crisp'). Brak w standardzie 'pełnych policzków' (do doprecyzowania/usunięcia z artykułu) — twierdzenie o 'pluszu' to opis potoczny, nie ze standardu.",
       "reviewer_id": null,
       "reviewed_at": null,
       "valid_until": null,
       "conflicts": [],
       "used_by_artifact_versions": [
         "kot-brytyjski-n66@2026-11-22T12:00:00Z"
-      ]
+      ],
+      "verification_result": "partial"
     },
     {
       "evidence_id": "ev-mt-001",
@@ -178,22 +187,23 @@
       "publisher": "FCI",
       "title": "Maltese (65) — nomenklatura",
       "source_date": null,
-      "retrieved_at_utc": null,
-      "source_hash": null,
+      "retrieved_at_utc": "2026-11-22T00:00:00Z (godzina nieodnotowana)",
+      "source_hash": "sha256:5929bc6d54929cc4dd259980148fac09d8e944d5632ab140092a8cf59a81429f",
       "claim_text": "Standard nr 65, grupa 9 (psy ozdobne i do towarzystwa); kraj patronacki: Włochy.",
       "scope": "grupa/kraj",
       "license_basis": "unknown",
-      "allowed_use": "own_summary_only_pending_license_check",
+      "allowed_use": "quote_summary_own_words",
       "status": "candidate",
-      "source_verified_by_agent": false,
-      "verification_note": "Odczyt źródła niemożliwy: host nie rozwiązuje się w sieci sesji (ENOTFOUND). Twierdzenie pochodzi z szkicu artykułu i NIE zostało zweryfikowane względem źródła.",
+      "source_verified_by_agent": true,
+      "verification_note": "Nr 65, grupa 9, patronat: Włochy — zgodne ze stroną FCI i PDF standardu.",
       "reviewer_id": null,
       "reviewed_at": null,
       "valid_until": null,
       "conflicts": [],
       "used_by_artifact_versions": [
         "maltanczyk-n77@2026-11-22T12:00:00Z"
-      ]
+      ],
+      "verification_result": "confirmed"
     },
     {
       "evidence_id": "ev-mt-002",
@@ -202,22 +212,23 @@
       "publisher": "FCI",
       "title": "Standard nr 65 Maltese (ważny od 01.01.2016)",
       "source_date": null,
-      "retrieved_at_utc": null,
-      "source_hash": null,
+      "retrieved_at_utc": "2026-11-22T00:00:00Z (godzina nieodnotowana)",
+      "source_hash": "sha256:5929bc6d54929cc4dd259980148fac09d8e944d5632ab140092a8cf59a81429f",
       "claim_text": "Wydłużony tułów; sierść biała, długa, gęsta, jedwabista, opadająca prosto, bez podszerstka; dopuszczalny bardzo jasny odcień kości słoniowej, bez wyraźnych plam; oczy i nos ciemne.",
       "scope": "wygląd",
       "license_basis": "unknown",
-      "allowed_use": "own_summary_only_pending_license_check",
+      "allowed_use": "quote_summary_own_words",
       "status": "candidate",
-      "source_verified_by_agent": false,
-      "verification_note": "Odczyt źródła niemożliwy: host nie rozwiązuje się w sieci sesji (ENOTFOUND). Twierdzenie pochodzi z szkicu artykułu i NIE zostało zweryfikowane względem źródła.",
+      "source_verified_by_agent": true,
+      "verification_note": "Zgodne: ciało dłuższe o ok. 1/3 od wysokości w kłębie; sierść gęsta, błyszcząca, jedwabista, prosta, bez fal/loków, brak podszerstka; kolor: czysta biel, blady odcień kości słoniowej dopuszczalny; ślady jasnej pomarańczy tolerowane jako wada; nos czarny, oczy ciemnochrowe. Standard podaje wzrost 21–25 cm (samce), 20–23 cm (samice), masa 3–4 kg.",
       "reviewer_id": null,
       "reviewed_at": null,
       "valid_until": null,
       "conflicts": [],
       "used_by_artifact_versions": [
         "maltanczyk-n77@2026-11-22T12:00:00Z"
-      ]
+      ],
+      "verification_result": "confirmed"
     },
     {
       "evidence_id": "ev-mt-003",
@@ -226,31 +237,31 @@
       "publisher": "FCI",
       "title": "Standard nr 65 Maltese",
       "source_date": null,
-      "retrieved_at_utc": null,
-      "source_hash": null,
+      "retrieved_at_utc": "2026-11-22T00:00:00Z (godzina nieodnotowana)",
+      "source_hash": "sha256:5929bc6d54929cc4dd259980148fac09d8e944d5632ab140092a8cf59a81429f",
       "claim_text": "Temperament: żywy, przywiązany, bardzo inteligentny, łagodny. Data ważności 01.01.2016 — sprawdzić, czy nie ma nowszej wersji.",
       "scope": "temperament/wersja",
       "license_basis": "unknown",
-      "allowed_use": "own_summary_only_pending_license_check",
+      "allowed_use": "quote_summary_own_words",
       "status": "candidate",
-      "source_verified_by_agent": false,
-      "verification_note": "Odczyt źródła niemożliwy: host nie rozwiązuje się w sieci sesji (ENOTFOUND). Twierdzenie pochodzi z szkicu artykułu i NIE zostało zweryfikowane względem źródła.",
+      "source_verified_by_agent": true,
+      "verification_note": "Standard: 'lively, affectionate, very calm and very intelligent' — brak słowa 'łagodny' w dosłownym sensie; bliżej 'bardzo spokojny'. Wersja ważna od 01.01.2016 (publikacja 13.11.2015, PDF 17.12.2015); nowszej wersji nie sprawdzono. Zdanie artykułu o złym znoszeniu samotności NIE pochodzi ze standardu.",
       "reviewer_id": null,
       "reviewed_at": null,
       "valid_until": null,
       "conflicts": [],
       "used_by_artifact_versions": [
         "maltanczyk-n77@2026-11-22T12:00:00Z"
-      ]
+      ],
+      "verification_result": "partial"
     }
   ],
   "gaps": [
-    "Żadne źródło nie zostało odczytane (fci.be, fifeweb.org niedostępne w sieci sesji) — brak retrieved_at, hash i potwierdzenia treści.",
-    "Zakresy wzrostu/masy (cane corso, maltańczyk) nieobecne w artykułach — braki do uzupełnienia po odczycie standardów.",
-    "Źródła porównawcze (WCF, CFA, The Kennel Club) pominięte: nie-FCI/FIFe, a odczyt i tak niemożliwy; artykuł kot brytyjski cytuje je jako 'porównawczo'.",
-    "Twierdzenia ogólne bez źródła pierwotnego w artykułach: czesanie/pielęgnacja, żywienie, 'miniaturowe maltańczyki', ZKwP — to porady redakcyjne; część wymaga eksperta (zdrowie/żywienie, ADR-013: poza akceptacją AI).",
-    "Kot brytyjski: akapit o charakterze ('spokojne, zrównoważone') nie jest oparty na przytoczonym standardzie FIFe (standard opisuje wygląd) — oznaczyć jako opinia redakcyjna lub dodać źródło.",
-    "Sprzeczności między źródłami: N/A (brak odczytu)."
+    "Nie pobrano 3 źródeł porównawczych (WCF, CFA, Kennel Club) — poza limitem ról/pierwotnych.",
+    "Charakter kota brytyjskiego (spokojny, zrównoważony) — standard FIFe nie opisuje temperamentu; wymaga źródła lub oznaczenia opinii.",
+    "Pielęgnacja/żywienie/zdrowie w 3 artykułach to porady ogólne bez źródła pierwotnego — wymagają redaktora (kategoria zdrowie → człowiek, ADR-013).",
+    "Licencja/prawa do cytowania PDF FIFe i FCI: nieustalone (unknown); tylko własne streszczenia."
   ],
-  "next": "Po dodaniu fci.be i fifeweb.org do dozwolonych domen sieci sesji: odczytać 5 źródeł, uzupełnić retrieved_at/hash/source_date i licencję."
+  "next": "Po dodaniu fci.be i fifeweb.org do dozwolonych domen sieci sesji: odczytać 5 źródeł, uzupełnić retrieved_at/hash/source_date i licencję.",
+  "updated": "2026-11-22 (przebieg 2, sieć dostępna)"
 }

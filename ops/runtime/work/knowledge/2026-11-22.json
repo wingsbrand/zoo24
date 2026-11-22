@@ -4,21 +4,21 @@
   "role": "knowledge",
   "mode": "shadow",
   "policy_version": "unsigned",
-  "status": "blocked_partial",
-  "reason": "source_hosts_unreachable (fci.be, fifeweb.org: ENOTFOUND)",
+  "status": "partial_success",
+  "reason": "źródła FCI/FIFe odczytane w przebiegu 2; 5 źródeł pierwotnych, bez źródeł porównawczych",
   "artifacts": [
     {
       "id": "evidence-2026-11-22",
       "type": "evidence_bundle",
-      "version": "0",
-      "note": "10 kart candidate, 0 zweryfikowanych względem źródła; 3 artykuły needs_review"
+      "version": "1",
+      "note": "10 kart candidate; 10/10 zweryfikowanych względem źródła przez agenta (nie human review): 6 confirmed, 3 partial, 1 conflict"
     }
   ],
   "checks": [
     {
       "name": "sources_fetched",
-      "status": "fail",
-      "detail": "0/5 źródeł pierwotnych odczytanych"
+      "status": "pass",
+      "detail": "5/5 źródeł pierwotnych (FCI 343 PDF+strona, FCI 65 PDF+strona, FIFe BLH-BSH)"
     },
     {
       "name": "card_status_candidate_only",
@@ -33,11 +33,16 @@
     "currency": null,
     "status": "unknown"
   },
-  "next_tasks": [
-    "Odczyt 5 źródeł FCI/FIFe po odblokowaniu domen i uzupełnienie kart",
-    "Dodać źródło/oznaczenie opinii dla akapitu o charakterze kota brytyjskiego"
+  "findings": [
+    "cane-corso: 'przywiązany do opiekuna i łatwy w szkoleniu' nie wynika ze standardu FCI 343 (temperament: strażnik, zwinny, reagujący) — przeredagować lub dodać źródło",
+    "cane-corso: 'elegancki w ruchu' → standard: 'pewna elegancja'; wzrost/masa dostępne (64–68/60–64 cm; 45–50/40–45 kg)",
+    "kot-brytyjski: 'pełne policzki' brak w standardzie FIFe; temperament bez źródła",
+    "maltanczyk: 'zwykle źle znosi samotność' bez źródła; 'łagodny' vs 'bardzo spokojny'; wzrost 21–25/20–23 cm, 3–4 kg dostępne"
   ],
-  "human_decisions_required": [
-    "Dopuścić domeny fci.be i fifeweb.org w sieci sesji chmurowej"
-  ]
+  "next_tasks": [
+    "Redaktor: poprawić 4 twierdzenia z findings",
+    "Zbadać źródła temperamentu/zdrowia (np. ZKwP, publikacje weterynaryjne) dla akapitów zdrowotnych",
+    "Ustalić licencję cytowania standardów FCI/FIFe"
+  ],
+  "human_decisions_required": []
 }
