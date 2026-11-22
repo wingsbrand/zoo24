@@ -2,6 +2,15 @@
 
 **Aktualizacja:** 2026-11-22 — sesja 1 Claude Code (F0 + lokalne F1). **Tryb:** Mode 0 / MOCK. Nic nie jest live.
 
+## Portal V3 — pakiet 1 (2026-11-22, wieczór)
+Plan i statusy: `docs/PORTAL_V3_PLAN.md`; treści: `docs/CONTENT_COVERAGE.md`; QA: `docs/PORTAL_V3_QA.md` (+ `docs/qa-screens/`); dawne URL: `docs/seo/URL_RECOVERY_MAP_V3.md`; social: `docs/social/CALENDAR_V3.md`.
+| Status odbioru | Stan |
+|---|---|
+| Wersja techniczna gotowa | **TAK** — wdrożona na produkcję (commit f87d8e7); sprawdzone na serwerze Vercel jako zoo24.pl: strona główna portalu, /zwierzeta, /poradniki, /narzedzia (2 narzędzia), /polec-miejsce, sitemap 11 URL bez DEMO, /admin 404 bez wycieku |
+| Częściowe uruchomienie redakcyjne | **NIE (jeszcze)** — 9 materiałów zatwierdzonych (3 /blog + 6 poradników standard, redaktor-AI jawnie) czeka na publikację przez gateway po działającym HTTPS i podpisie polityki live_scoped; do tego czasu grupy zwierząt zwracają 404 (brak opublikowanej treści) |
+| Pełny zakres 10 grup | **NIE** — 6 poradników welfare czeka na specjalistów; 3 grupy bez materiałów (fretki/małe ssaki, płazy, bezkręgowce) |
+Testy: vitest 348/348, tsc PASS; QA niezależny: brak blokerów, defekty high naprawione (D-01, D-04, D-06), D-02 (restart dev), pozostałe low w raporcie.
+
 ## START 2026-11-22 ok. 19:15 — zoo24.pl w trybie produkcyjnym (decyzja właściciela: „GO”)
 | Element | Stan (zweryfikowany) |
 |---|---|
