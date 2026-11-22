@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { BadgeCheck, CalendarCheck, ListOrdered, ShieldCheck, Sparkles, UserCheck } from "lucide-react";
 import { Alert, ButtonLink, Card, Container, PageHeader, Section, SectionHeading } from "@/components/ui";
+import { SITE_IMAGES } from "@/lib/content/images";
 
 export const metadata: Metadata = {
   title: "Dla firm — bezpłatny profil w katalogu usług dla zwierząt",
@@ -41,6 +42,7 @@ export default function DlaFirm() {
         title="Dla firm"
         lead="Prowadzisz salon pielęgnacji albo hotel dla zwierząt? Zgłoś firmę do katalogu ZOO24 — bezpłatnie, z ręczną moderacją i jasnymi zasadami."
         breadcrumbs={[{ href: "/", label: "ZOO24" }, { label: "Dla firm" }]}
+        image={SITE_IMAGES.dlaFirm}
       >
         <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
           <ButtonLink href="/dodaj-firme" variant="accent" size="lg">Zgłoś firmę bezpłatnie</ButtonLink>

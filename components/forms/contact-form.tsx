@@ -35,12 +35,6 @@ export function ContactForm({ action, topics, initialTopic }: { action: Action; 
         </Select>
       </Field>
 
-      {topic === "dawny_sklep" && (
-        <Alert tone="warn" title="Sprawy dawnego sklepu ZOO24">
-          ZOO24 działa w nowej formule: nie prowadzimy sprzedaży, nie mamy wglądu w dawne zamówienia i nie realizujemy dawnych zamówień ani gwarancji. Nie podawaj numeru zamówienia ani adresu. Wiadomość przekażemy osobie, która odpowiada indywidualnie.
-        </Alert>
-      )}
-
       <Field id="message" label="Wiadomość" required error={e.message} hint="10–2000 znaków.">
         <Textarea id="message" name="message" rows={7} maxLength={2000} defaultValue={v.message ?? ""} required aria-required aria-invalid={!!e.message} aria-describedby={describedBy("message", true, e.message)} />
       </Field>

@@ -19,9 +19,9 @@ export default function ZasadyRedakcyjne() {
         Każdy poradnik ma listę źródeł. Korzystamy przede wszystkim z publikacji instytucji, organizacji branżowych i specjalistów. Przy artykule podajemy datę ostatniej aktualizacji oraz informację, kto go sprawdził.
       </p>
 
-      <h2>2. Szkice z pomocą AI zawsze sprawdza człowiek</h2>
+      <h2>2. Redakcja z udziałem AI — jawnie</h2>
       <p>
-        Niektóre szkice przygotowujemy z pomocą narzędzi AI. Żaden tekst nie jest publikowany automatycznie: przed publikacją redaktor sprawdza fakty ze źródłami, poprawia treść i zatwierdza ją. Nie publikujemy hurtowo tekstów generowanych maszynowo.
+        Część pracy redakcyjnej wykonuje asystent AI: przygotowuje szkice, sprawdza je ze źródłami i może zatwierdzić tekst do publikacji. Taki artykuł jest oznaczony jako sprawdzony przez „redakcję ZOO24 z udziałem AI” — nigdy nie przedstawiamy go jako przeglądu człowieka. Tematy zdrowotne, prawne, ubezpieczeniowe, sponsorowane i dotyczące cen zawsze zatwierdza człowiek. Opublikowane teksty przegląda wydawca serwisu. Nie publikujemy hurtowo tekstów generowanych maszynowo.
       </p>
 
       <h2>3. Bez porad weterynaryjnych</h2>
@@ -55,7 +55,7 @@ export default function ZasadyRedakcyjne() {
 
       <h2>8. Prywatność w treściach</h2>
       <p>
-        Nie publikujemy danych osobowych opiekunów zwierząt ani dawnych klientów sklepu. Nie kopiujemy komentarzy ani wiadomości prywatnych do naszych materiałów.
+        Nie publikujemy danych osobowych opiekunów zwierząt. Nie kopiujemy komentarzy ani wiadomości prywatnych do naszych materiałów.
       </p>
     </InfoPage>
   );

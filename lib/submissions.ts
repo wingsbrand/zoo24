@@ -34,7 +34,6 @@ export const CONTACT_TOPICS = {
   pytanie: "Pytanie o serwis",
   profil: "Profil firmy w katalogu",
   wspolpraca: "Reklama i współprace",
-  dawny_sklep: "Sprawy dawnego sklepu ZOO24",
   dane_osobowe: "Dane osobowe (RODO)",
   inne: "Inne",
 } as const;

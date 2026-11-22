@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { getStore } from "@/lib/store/file-store";
 import { CATEGORIES, isCategory } from "@/lib/site";
 import { Container, PageHeader } from "@/components/ui";
+import { CATEGORY_IMAGES } from "@/lib/content/images";
 import { ServiceSearch } from "@/components/directory/search-form";
 import { CategoryCard, CityCards } from "@/components/directory/category-tiles";
 import { CATEGORY_DESCRIPTIONS } from "@/lib/directory/search";
@@ -33,6 +34,7 @@ export default async function CategoryPage({ params }: P) {
       <PageHeader
         title={c.plural}
         lead={CATEGORY_DESCRIPTIONS[category]}
+        image={CATEGORY_IMAGES[category]}
         breadcrumbs={[{ href: "/", label: "ZOO24" }, { href: "/uslugi", label: "Usługi" }, { label: c.plural }]}
       >
         <div className="mt-6">

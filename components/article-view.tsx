@@ -7,6 +7,7 @@ import { Alert, Badge, Breadcrumbs, Container, DemoBadge } from "@/components/ui
 import { buildToc, headingText, isH2, isH3, midContentInsertIndex, shouldShowToc, type TocEntry } from "@/lib/content/toc";
 import { hubHref, relatedArticles, topicForArticle } from "@/lib/content/topics";
 import { Cover } from "@/components/editorial/cover";
+import { articleImage } from "@/lib/content/images";
 import { ArticleCard } from "@/components/editorial/article-card";
 import { ServiceInline, ServiceSection } from "@/components/editorial/service-links";
 import { formatDatePl, readingMinutes } from "@/components/editorial/format";
@@ -84,7 +85,7 @@ export function ArticleView({ a, preview = false, related }: { a: Article; previ
                 <div className="flex items-center gap-1"><dt className="sr-only">Czas czytania</dt><dd className="flex items-center gap-1"><BookOpen aria-hidden size={16} /> ok. {minutes} min czytania</dd></div>
               </dl>
             </div>
-            <Cover topic={topic} variant="hero" className="rounded-[var(--radius-xl)]" />
+            <Cover topic={topic} variant="hero" image={articleImage(a.slug)} className="rounded-[var(--radius-xl)]" />
           </div>
         </Container>
       </header>

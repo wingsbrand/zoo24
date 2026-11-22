@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { BookOpen, Building2, Search } from "lucide-react";
 import { CATEGORIES, CITIES } from "@/lib/site";
-import { Alert, Button, Card, Container } from "@/components/ui";
+import { Button, Card, Container } from "@/components/ui";
 
 // 404: Next.js automatycznie dodaje noindex. Wyszukiwarka to zwykły formularz GET (działa bez JS).
 export default function NotFound() {
@@ -10,10 +10,6 @@ export default function NotFound() {
       <p className="text-sm font-semibold uppercase tracking-wide text-accent-dark">Błąd 404</p>
       <h1 className="mt-1 text-3xl font-bold sm:text-4xl">Nie znaleźliśmy tej strony</h1>
       <p className="mt-3 text-lg text-ink-muted">Adres mógł się zmienić albo strona została usunięta. Spróbuj znaleźć usługę lub przejdź do poradników.</p>
-
-      <Alert tone="info" title="Szukasz produktu z dawnego sklepu ZOO24?" className="mt-6">
-        Sklep ZOO24 nie wraca — nie przyjmujemy zamówień. Dziś publikujemy poradniki i pomagamy znaleźć usługi dla zwierząt. <Link href="/o-nas">Więcej o nowej formule</Link>.
-      </Alert>
 
       <Card as="section" className="mt-8 p-5 sm:p-6">
         <h2 className="flex items-center gap-2 text-xl font-bold"><Search aria-hidden size={20} className="text-brand" /> Znajdź usługę</h2>

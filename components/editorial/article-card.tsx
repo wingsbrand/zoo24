@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { Article } from "@/lib/types";
 import { articleHref } from "@/lib/content/editorial";
 import { topicForArticle } from "@/lib/content/topics";
+import { articleImage } from "@/lib/content/images";
 import { DemoBadge, cn } from "@/components/ui";
 import { Cover } from "./cover";
 import { formatDatePl } from "./format";
@@ -19,7 +20,7 @@ export function ArticleCard({ a, headingLevel = 3, className }: { a: Article; he
         className,
       )}
     >
-      <Cover topic={topic} />
+      <Cover topic={topic} image={articleImage(a.slug)} />
       <div className="flex flex-1 flex-col gap-2 p-5">
         <p className="text-sm font-semibold text-accent-dark">{topic.name}</p>
         <H className="text-xl font-bold leading-snug">

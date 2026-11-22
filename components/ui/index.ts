@@ -4,3 +4,4 @@ export * from "./badge";
 export * from "./layout";
 export * from "./feedback";
 export * from "./form";
+export * from "./ai-badge";

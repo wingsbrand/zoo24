@@ -14,6 +14,8 @@
 | Social / GSC / GA4 live | wyłączone (`ZOO24_SOCIAL_MODE=0`, flagi `*_LIVE=false`) |
 
 Smoke test `ZOO24_SITE_URL=https://zoo24.vercel.app node scripts/smoke-http.mjs`: 21/22 PASS; jedyny FAIL `/admin` → 404 był oczekiwanym zachowaniem — skrypt poprawiony (na hostingu oczekuje 404).
+**Rebranding treści i zdjęcia (decyzja właściciela 2026-11-22):** usunięto ze strony wszystkie wzmianki o dawnym sklepie („ZOO24 w nowej formule”, „sklep nie wraca”, temat formularza „dawny sklep”) — serwis komunikuje się jako całkiem nowy. Dodano 10 ilustracji AI z fal.ai (`google/nano-banana-2.1`): baner strony głównej, kategorie, „Dla firm”, okładki 6 poradników; każda z widocznym oznaczeniem „Ilustracja AI” (rejestr: `docs/brand/ai-images.md`). Teksty o redakcji dostosowane do ADR-013 (redakcja z udziałem AI, jawnie). Licencja komercyjna modelu — do potwierdzenia przez compliance przed produkcją.
+
 Region funkcji: `vercel.json` → `fra1` (Frankfurt, obok bazy `eu-central-1`); pierwsze deploye były w `iad1`.
 
 ## Co jest MOCK, a co live

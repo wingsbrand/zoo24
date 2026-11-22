@@ -11,7 +11,7 @@ export function SiteFooter() {
         <div className="space-y-3">
           <Logo />
           <p className="max-w-xs text-sm text-ink-muted">Usługi i praktyczna wiedza dla opiekunów zwierząt. Sprawdzamy dane firm i piszemy, skąd je mamy.</p>
-          <p className="max-w-xs text-xs text-ink-muted">ZOO24 nie jest sklepem — nie przyjmujemy zamówień i nie obsługujemy dawnych zamówień ani gwarancji. Nie udzielamy porad weterynaryjnych.</p>
+          <p className="max-w-xs text-xs text-ink-muted">Nie prowadzimy sprzedaży ani rezerwacji. Nie udzielamy porad weterynaryjnych.</p>
         </div>
         <nav aria-labelledby="f-uslugi">
           <h2 id="f-uslugi" className="mb-2 font-[family-name:var(--font-sans)] text-sm font-bold uppercase tracking-wide text-ink">Usługi</h2>

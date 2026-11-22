@@ -1,7 +1,9 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { ReactNode } from "react";
 import { ChevronRight } from "lucide-react";
 import { cn } from "./cn";
+import { AiBadge } from "./ai-badge";
 
 export function Container({ children, className, size = "page" }: { children: ReactNode; className?: string; size?: "page" | "prose" | "wide" }) {
   const max = size === "prose" ? "max-w-[var(--container-prose)]" : size === "wide" ? "max-w-[88rem]" : "max-w-[var(--container-page)]";
@@ -30,15 +32,28 @@ export function SectionHeading({ id, eyebrow, title, lead, action }: { id?: stri
   );
 }
 
-export function PageHeader({ title, lead, breadcrumbs, meta, children }: { title: ReactNode; lead?: ReactNode; breadcrumbs?: Crumb[]; meta?: ReactNode; children?: ReactNode }) {
+export function PageHeader({ title, lead, breadcrumbs, meta, children, image }: { title: ReactNode; lead?: ReactNode; breadcrumbs?: Crumb[]; meta?: ReactNode; children?: ReactNode; image?: { src: string; alt: string } | null }) {
+  const body = (
+    <>
+      <h1 className="text-3xl sm:text-4xl font-bold">{title}</h1>
+      {lead && <p className="mt-3 max-w-2xl text-lg text-ink-muted">{lead}</p>}
+      {meta && <div className="mt-4 flex flex-wrap items-center gap-2">{meta}</div>}
+      {children}
+    </>
+  );
   return (
     <header className="border-b border-line bg-surface">
       <Container className="py-8 sm:py-10">
         {breadcrumbs && <Breadcrumbs items={breadcrumbs} />}
-        <h1 className="text-3xl sm:text-4xl font-bold">{title}</h1>
-        {lead && <p className="mt-3 max-w-2xl text-lg text-ink-muted">{lead}</p>}
-        {meta && <div className="mt-4 flex flex-wrap items-center gap-2">{meta}</div>}
-        {children}
+        {image ? (
+          <div className="grid items-center gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,26rem)] lg:gap-10">
+            <div className="min-w-0">{body}</div>
+            <div className="relative order-first aspect-[16/9] overflow-hidden rounded-[var(--radius-xl)] bg-brand-soft lg:order-none">
+              <Image src={image.src} alt={image.alt} fill priority sizes="(min-width: 1024px) 26rem, 100vw" className="object-cover" />
+              <AiBadge />
+            </div>
+          </div>
+        ) : body}
       </Container>
     </header>
   );

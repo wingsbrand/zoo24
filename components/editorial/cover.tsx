@@ -1,7 +1,10 @@
-// Okładka-szablon poradnika (bez zdjęć — brak problemu z prawami). Stałe proporcje 16:9 => brak przesunięć układu.
-// Tło w kolorze tematu, motyw łapki z poduszką-sercem, nazwa tematu w bezpiecznym polu (marginesy ≥ 8%).
+// Okładka poradnika. Stałe proporcje 16:9 => brak przesunięć układu.
+// Gdy artykuł ma ilustrację (lib/content/images.ts) — zdjęcie z oznaczeniem „Ilustracja AI”.
+// W przeciwnym razie szablon: tło w kolorze tematu, motyw łapki z poduszką-sercem, nazwa tematu (marginesy ≥ 8%).
+import Image from "next/image";
 import type { Topic } from "@/lib/content/topics";
-import { cn } from "@/components/ui";
+import type { SiteImage } from "@/lib/content/images";
+import { AiBadge, cn } from "@/components/ui";
 
 /** Łapa w układzie 100×100: cztery palce + poduszka w kształcie serca. */
 export function PawShape({ fill, opacity = 1, transform }: { fill: string; opacity?: number; transform?: string }) {
@@ -16,7 +19,24 @@ export function PawShape({ fill, opacity = 1, transform }: { fill: string; opaci
   );
 }
 
-export function Cover({ topic, variant = "card", className }: { topic: Topic; variant?: "card" | "hero"; className?: string }) {
+export function Cover({ topic, variant = "card", className, image }: { topic: Topic; variant?: "card" | "hero"; className?: string; image?: SiteImage | null }) {
+  if (image) {
+    const hero = variant === "hero";
+    return (
+      <div className={cn("relative aspect-video w-full overflow-hidden bg-brand-soft", className)}>
+        <Image
+          src={image.src}
+          // Na karcie tytuł jest tuż obok — zdjęcie dekoracyjne; w nagłówku artykułu opis alternatywny.
+          alt={hero ? image.alt : ""}
+          fill
+          priority={hero}
+          sizes={hero ? "(min-width: 1024px) 24rem, 100vw" : "(min-width: 1024px) 24rem, (min-width: 640px) 50vw, 100vw"}
+          className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+        />
+        <AiBadge />
+      </div>
+    );
+  }
   const { bg, fg, motif } = topic.colors;
   return (
     <div

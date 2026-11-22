@@ -38,7 +38,7 @@ export default function Regulamin() {
       <p><Todo>zakres odpowiedzialności za dane firm i treści poradników; brak porad weterynaryjnych</Todo></p>
 
       <h2>§7. Reklamacje dotyczące serwisu</h2>
-      <p>Uwagi dotyczące działania serwisu można zgłaszać przez <Link href="/kontakt">formularz kontaktowy</Link>. Serwis nie rozpatruje reklamacji produktów kupionych w dawnym sklepie ZOO24. <Todo>tryb i terminy</Todo></p>
+      <p>Uwagi dotyczące działania serwisu można zgłaszać przez <Link href="/kontakt">formularz kontaktowy</Link>. <Todo>tryb i terminy</Todo></p>
 
       <h2>§8. Dane osobowe</h2>
       <p>Zasady przetwarzania danych opisuje <Link href="/polityka-prywatnosci">polityka prywatności</Link>.</p>

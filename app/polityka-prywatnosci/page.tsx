@@ -23,7 +23,7 @@ export default function PolitykaPrywatnosci() {
         <li><strong>Formularz kontaktowy:</strong> temat, treść wiadomości i e-mail — w celu udzielenia odpowiedzi. <Todo>podstawa prawna</Todo></li>
         <li><strong>Pomiar zbiorczy:</strong> zliczamy kliknięcia „Zadzwoń”/„Strona firmy” i przejścia z poradników do katalogu jako dzienne sumy, bez cookies i bez identyfikowania osób. <Todo>ocena podstawy i zakresu</Todo></li>
       </ul>
-      <p>Nie zbieramy adresów zamieszkania osób prywatnych. Nie publikujemy e-maili osób zgłaszających. Nie przenosimy do serwisu danych klientów, zamówień ani list mailingowych dawnego sklepu ZOO24.</p>
+      <p>Nie zbieramy adresów zamieszkania osób prywatnych. Nie publikujemy e-maili osób zgłaszających. Nie kupujemy ani nie importujemy baz danych osobowych i list mailingowych.</p>
 
       <h2>3. Ochrona przed nadużyciami</h2>
       <p>Formularze chroni ukryte pole antyspamowe i limit liczby zgłoszeń. Do limitu używamy skrótu (hash) technicznych nagłówków przeglądarki, przechowywanego krótko w pamięci serwera; nie zapisujemy adresu IP. <Todo>ocena prawnika</Todo></p>

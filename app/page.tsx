@@ -1,10 +1,12 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
+import { SITE_IMAGES, CATEGORY_IMAGES } from "@/lib/content/images";
+import { ArticleCard } from "@/components/editorial/article-card";
 import { ArrowRight, BadgeCheck, BedDouble, BookOpen, Handshake, PhoneCall, Scissors, ShieldCheck } from "lucide-react";
 import { getStore } from "@/lib/store/file-store";
 import { CATEGORIES, CITIES } from "@/lib/site";
-import { articleHref } from "@/lib/content/editorial";
-import { ButtonLink, Container, DemoBadge, Section, SectionHeading } from "@/components/ui";
+import { AiBadge, ButtonLink, Container, Section, SectionHeading } from "@/components/ui";
 import { ServiceSearch } from "@/components/directory/search-form";
 import { firmCount } from "@/lib/directory/format";
 import { listingCounts } from "@/lib/directory/stats";
@@ -29,17 +31,19 @@ export default function Home() {
   return (
     <>
       {/* HERO — h1, wyszukiwarka: rodzaj usługi + miasto */}
-      <section className="paw-pattern relative overflow-hidden border-b border-line bg-brand-tint">
-        {/* Dekoracja: motyw łapy z poduszką-sercem (tylko duże ekrany, bez znaczenia dla treści) */}
-        <svg aria-hidden viewBox="0 0 96 96" className="pointer-events-none absolute -right-32 top-1/2 hidden h-[26rem] w-[26rem] -translate-y-1/2 lg:block xl:-right-8 xl:h-[32rem] xl:w-[32rem] 2xl:right-[6%]">
-          <circle cx="48" cy="48" r="48" fill="#0e4f5c" opacity="0.07" />
-          <ellipse cx="25" cy="42" rx="7.5" ry="9.5" fill="#0e4f5c" opacity="0.14" transform="rotate(-22 25 42)" />
-          <ellipse cx="38" cy="26" rx="7.5" ry="10" fill="#0e4f5c" opacity="0.14" transform="rotate(-8 38 26)" />
-          <ellipse cx="58" cy="26" rx="7.5" ry="10" fill="#0e4f5c" opacity="0.14" transform="rotate(8 58 26)" />
-          <ellipse cx="71" cy="42" rx="7.5" ry="9.5" fill="#0e4f5c" opacity="0.14" transform="rotate(22 71 42)" />
-          <path d="M48 81C39 74.5 25 65 25 54c0-6.5 5-11 11-11 5 0 9 2.8 12 7 3-4.2 7-7 12-7 6 0 11 4.5 11 11 0 11-14 20.5-23 27z" fill="#ef6c4a" opacity="0.35" />
-        </svg>
-        <Container className="relative py-12 sm:py-20">
+      <section className="relative overflow-hidden border-b border-line bg-brand-tint">
+        {/* Mobile/tablet: zdjęcie jako baner nad treścią */}
+        <div className="relative aspect-[16/9] w-full sm:aspect-[21/9] xl:hidden">
+          <Image src={SITE_IMAGES.hero.src} alt={SITE_IMAGES.hero.alt} fill sizes="100vw" className="object-cover object-[25%_center]" />
+          <AiBadge />
+        </div>
+        {/* Desktop: zdjęcie w prawej kolumnie, łagodne przejście w tło; tekst zawsze na jednolitym tle */}
+        <div className="absolute inset-y-0 right-0 hidden w-[42%] xl:block">
+          <Image src={SITE_IMAGES.hero.src} alt="" fill priority sizes="42vw" className="object-cover object-[18%_center]" />
+          <div aria-hidden className="absolute inset-y-0 left-0 w-2/5 bg-gradient-to-r from-brand-tint to-transparent" />
+          <AiBadge className="bottom-3 right-3" />
+        </div>
+        <Container className="relative py-10 sm:py-14 xl:py-24">
           <p className="mb-3 inline-flex items-center gap-2 rounded-full bg-surface px-3 py-1 text-sm font-semibold text-brand shadow-[var(--shadow-card)]">
             <BadgeCheck aria-hidden size={16} /> Groomerzy i hotele dla zwierząt · 10 największych miast Polski
           </p>
@@ -52,7 +56,7 @@ export default function Home() {
           <div className="mt-8 max-w-3xl">
             <ServiceSearch variant="hero" />
           </div>
-          <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink-muted">
+          <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink-muted xl:max-w-2xl">
             <li className="flex items-center gap-1.5"><ShieldCheck aria-hidden size={16} className="text-brand" /> Bez ocen i ukrytych reklam</li>
             <li className="flex items-center gap-1.5"><BadgeCheck aria-hidden size={16} className="text-brand" /> Przy każdej firmie źródło i data sprawdzenia</li>
             <li className="flex items-center gap-1.5"><PhoneCall aria-hidden size={16} className="text-brand" /> Kontakt bezpośrednio z firmą, bez pośrednika</li>
@@ -63,12 +67,16 @@ export default function Home() {
       {/* KATEGORIE */}
       <Section labelledBy="h-kategorie">
         <Container>
-          <SectionHeading id="h-kategorie" eyebrow="Usługi" title="Czego szukasz?" lead="Zaczynamy od dwóch rodzajów usług i dwóch miast. Rozszerzymy katalog, gdy dane będą sprawdzone." />
+          <SectionHeading id="h-kategorie" eyebrow="Usługi" title="Czego szukasz?" lead="Zaczynamy od dwóch rodzajów usług w 10 największych miastach Polski. Rozszerzymy katalog, gdy dane będą sprawdzone." />
           <ul className="grid gap-4 md:grid-cols-2">
             {(Object.keys(CATEGORIES) as (keyof typeof CATEGORIES)[]).map((cat) => {
               const Icon = CAT_META[cat].icon;
               return (
-                <li key={cat} className="flex flex-col rounded-[var(--radius-xl)] border border-line bg-surface p-6 shadow-[var(--shadow-card)]">
+                <li key={cat} className="flex flex-col overflow-hidden rounded-[var(--radius-xl)] border border-line bg-surface p-6 shadow-[var(--shadow-card)]">
+                  <div className="relative -mx-6 -mt-6 mb-5 aspect-[16/7] overflow-hidden bg-brand-soft">
+                    <Image src={CATEGORY_IMAGES[cat].src} alt="" fill sizes="(min-width: 768px) 50vw, 100vw" className="object-cover" />
+                    <AiBadge />
+                  </div>
                   <div className="flex items-start gap-4">
                     <span className="flex size-14 shrink-0 items-center justify-center rounded-[var(--radius-lg)] bg-brand-soft text-brand"><Icon aria-hidden size={28} /></span>
                     <div>
@@ -122,19 +130,9 @@ export default function Home() {
           {articles.length === 0 ? (
             <p className="rounded-[var(--radius-lg)] border border-dashed border-line-strong bg-surface p-6 text-ink-muted">Pierwsze poradniki są w redakcji — publikujemy je po sprawdzeniu faktów i źródeł.</p>
           ) : (
-            <ul className="grid gap-4 md:grid-cols-3">
+            <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {articles.map((a) => (
-                <li key={a.slug} className="group relative flex flex-col rounded-[var(--radius-lg)] border border-line bg-surface p-5 shadow-[var(--shadow-card)] focus-within:ring-2 focus-within:ring-accent">
-                  <div className="mb-3 flex items-center justify-between gap-2">
-                    <span className="text-xs font-semibold uppercase tracking-wide text-accent-dark">Poradnik</span>
-                    <DemoBadge show={a.demo} />
-                  </div>
-                  <h3 className="text-lg font-bold leading-snug">
-                    <Link href={articleHref(a)} className="no-underline after:absolute after:inset-0 after:content-[''] group-hover:underline">{a.title}</Link>
-                  </h3>
-                  <p className="mt-2 line-clamp-3 text-sm text-ink-muted">{a.summary}</p>
-                  <p className="mt-auto pt-4 text-xs text-ink-muted">Aktualizacja: {new Date(a.updatedAt).toLocaleDateString("pl-PL")}</p>
-                </li>
+                <li key={a.slug}><ArticleCard a={a} /></li>
               ))}
             </ul>
           )}
@@ -144,7 +142,8 @@ export default function Home() {
       {/* NOWA FORMUŁA + DLA FIRM */}
       <Section labelledBy="h-firmy" className="pt-0">
         <Container className="grid gap-4 lg:grid-cols-[1.2fr_1fr]">
-          <div className="rounded-[var(--radius-xl)] bg-brand p-8 text-white">
+          <div className="grid overflow-hidden rounded-[var(--radius-xl)] bg-brand text-white md:grid-cols-[1.3fr_1fr]">
+           <div className="p-8">
             <p className="text-sm font-semibold uppercase tracking-wide text-[#ffd9cc]">Dla firm</p>
             <h2 id="h-firmy" className="mt-1 text-3xl font-bold text-white">Prowadzisz salon pielęgnacji lub hotel dla zwierząt?</h2>
             <p className="mt-3 max-w-xl text-white/85">Profil w ZOO24 jest bezpłatny. Każde zgłoszenie sprawdzamy ręcznie, a dane możesz poprawić w każdej chwili.</p>
@@ -152,10 +151,15 @@ export default function Home() {
               <ButtonLink href="/dodaj-firme" variant="accent" size="lg" icon={<Handshake aria-hidden size={20} />}>Dodaj firmę</ButtonLink>
               <ButtonLink href="/dla-firm" size="lg" className="border border-white/40 bg-transparent hover:bg-white/10">Jak to działa</ButtonLink>
             </div>
+           </div>
+           <div className="relative min-h-56 md:min-h-full">
+            <Image src={SITE_IMAGES.dlaFirm.src} alt="" fill sizes="(min-width: 1024px) 25vw, (min-width: 768px) 40vw, 100vw" className="object-cover object-[60%_center]" />
+            <AiBadge />
+           </div>
           </div>
           <div className="rounded-[var(--radius-xl)] border border-line bg-surface p-8">
-            <h2 className="text-2xl font-bold">ZOO24 w nowej formule</h2>
-            <p className="mt-3 text-ink-muted">Wiele osób zna ZOO24 jako sklep zoologiczny. Sklep nie wraca — nie przyjmujemy zamówień i nie obsługujemy dawnych zamówień ani gwarancji. Teraz pomagamy znaleźć firmy ze sprawdzonymi danymi i piszemy praktyczne poradniki.</p>
+            <h2 className="text-2xl font-bold">Czym jest ZOO24</h2>
+            <p className="mt-3 text-ink-muted">Pomagamy opiekunom psów i kotów znaleźć dobrą opiekę w swoim mieście — firmy ze sprawdzonymi danymi i źródłem informacji — oraz piszemy praktyczne poradniki o codziennej pielęgnacji.</p>
             <Link href="/o-nas" className="mt-4 inline-flex min-h-11 items-center gap-1 font-semibold text-brand">Więcej o nas <ArrowRight aria-hidden size={18} /></Link>
           </div>
         </Container>

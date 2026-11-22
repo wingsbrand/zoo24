@@ -21,9 +21,9 @@ function handle(req: NextRequest): NextResponse {
     return new NextResponse(null, { status: r.status, headers: { ...headers, Location: new URL(r.location, req.nextUrl.origin).toString() } });
   }
   if (r.status === 410) {
-    return new NextResponse(page("Strona usunięta (410)", "Ta strona dotyczyła dawnego sklepu ZOO24 i została trwale usunięta. ZOO24 nie prowadzi już sprzedaży."), { status: 410, headers });
+    return new NextResponse(page("Strona usunięta (410)", "Ta strona została trwale usunięta. Zajrzyj do poradników albo znajdź usługę w swoim mieście."), { status: 410, headers });
   }
-  return new NextResponse(page("Nie znaleziono strony (404)", "Ta strona nie istnieje lub dotyczyła dawnego sklepu ZOO24, który nie wraca w formie sklepu."), { status: 404, headers });
+  return new NextResponse(page("Nie znaleziono strony (404)", "Ta strona nie istnieje albo zmieniła adres. Zajrzyj do poradników albo znajdź usługę w swoim mieście."), { status: 404, headers });
 }
 
 export const dynamic = "force-dynamic";
