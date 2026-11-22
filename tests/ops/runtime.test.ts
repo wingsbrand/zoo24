@@ -145,11 +145,14 @@ describe("P04 polityka chroniona", () => {
     } finally { fs.rmSync(dir, { recursive: true, force: true }); }
     // Polityka w repo: podpisana przez właściciela wyłącznie dla zakresu shadow, tylko odczyt + szkice.
     const repo = loadPolicy()!;
-    expect(repo.status).toBe("APPROVED_SHADOW_READONLY_PILOT");
+    expect(repo.status).toBe("APPROVED_AI_EDITOR_SHADOW_UNTIL_LIVE");
     expect(isPolicyApproved(repo)).toBe(true);
-    expect(repo.mode).toBe("shadow");
-    expect(Object.entries(repo.autonomy).filter(([, v]) => v).map(([k]) => k).sort()).toEqual(["create_drafts", "read_approved_sources"]);
+    expect(repo.mode).toBe("shadow"); // do czasu serwisu live
+    expect(Object.entries(repo.autonomy).filter(([, v]) => v).map(([k]) => k).sort()).toEqual(["create_drafts", "publish_human_reviewed_content", "read_approved_sources"]);
+    expect(repo.review.ai_editor_allowed).toBe(true);
+    expect(repo.review.ai_editor_excluded_categories).toEqual(expect.arrayContaining(["health", "legal", "sponsored"]));
     expect(repo.budgets.paid_advertising_monthly).toBe(0);
+    expect(repo.budgets.approved_monthly_extra_ai_automation).toBe(0); // tylko w limicie subskrypcji
     expect(effectiveMode(repo, "design")).toBe("shadow");
     expect(effectiveMode(repo, "paused")).toBe("paused");
     expect(isAgentIdentity("owner-local")).toBe(false);

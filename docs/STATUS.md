@@ -2,6 +2,20 @@
 
 **Aktualizacja:** 2026-11-22 — sesja 1 Claude Code (F0 + lokalne F1). **Tryb:** Mode 0 / MOCK. Nic nie jest live.
 
+## Aktualizacja 2026-11-22 (popołudnie) — staging na Vercel (ADR-012)
+| Element | Stan (zweryfikowany) |
+|---|---|
+| Repozytorium | `github.com/wingsbrand/zoo24` (prywatne), gałąź `main` |
+| Hosting | Vercel, zespół WINGS, projekt `zoo24`; deploy `dpl_5WA7ah5bYscbNyBvTeQt6dhyt7Rs` = **READY**; adres **https://zoo24.vercel.app** (staging) |
+| Indeksacja | zablokowana: `X-Robots-Tag: noindex`, `robots.txt` = `Disallow: /`, sitemap 404 (`ZOO24_ENV=staging`) |
+| Panel `/admin` | 404 na hostingu (tylko lokalnie) |
+| DNS zoo24.pl | **bez zmian** (bramka G2 — osobna zgoda) |
+| Baza | projekt Supabase `ZOO24` + tabela `app_state` gotowe; **aplikacja jeszcze na efemerycznym store `/tmp`** — brak `ZOO24_SUPABASE_SECRET_KEY` (właściciel dodaje sam w Vercel) |
+| Social / GSC / GA4 live | wyłączone (`ZOO24_SOCIAL_MODE=0`, flagi `*_LIVE=false`) |
+
+Smoke test `ZOO24_SITE_URL=https://zoo24.vercel.app node scripts/smoke-http.mjs`: 21/22 PASS; jedyny FAIL `/admin` → 404 był oczekiwanym zachowaniem — skrypt poprawiony (na hostingu oczekuje 404).
+Uwaga: funkcje działają w regionie `iad1` (USA), baza w `eu-central-1` — do przeniesienia na `fra1` przed włączeniem Supabase (opóźnienia, lokalizacja danych).
+
 ## Co jest MOCK, a co live
 | Obszar | Stan |
 |---|---|

@@ -16,6 +16,8 @@ export interface OpsEnv {
   sources: Record<SourceId, AccessStatus>;
   vcs: boolean; // czy repo jest pod kontrolą wersji (branch/PR dla roli build)
   editorId: string | null;
+  /** Polityka dopuszcza redaktora-AI (decyzja właściciela) poza kategoriami wrażliwymi. */
+  aiEditorAllowed?: boolean;
 }
 
 type Draft = Omit<OpsJobResult, "schema_version" | "job_id" | "role" | "mode" | "policy_version" | "finished_at" | "cost" | "external_actions">;
@@ -53,8 +55,9 @@ function content(s: AppState, env: OpsEnv): Draft {
   const checks: OpsCheck[] = [
     {
       name: "editor_assigned",
-      status: env.editorId && !aiEditor ? "pass" : "blocked",
+      status: env.editorId && (!aiEditor || env.aiEditorAllowed) ? "pass" : "blocked",
       detail: !env.editorId ? "brak redaktora w polityce — nowe treści pozostają niepubliczne"
+        : aiEditor && env.aiEditorAllowed ? "redaktor = AI (decyzja właściciela): zatwierdza poza zdrowiem/prawem/cenami/sponsorowanymi; właściciel przegląda po publikacji"
         : aiEditor ? "redaktor = AI (redaguje szkice); zatwierdzenie publikacji faktów wymaga człowieka — publikacja zablokowana"
         : "redaktor (człowiek) przypisany",
     },
@@ -64,7 +67,9 @@ function content(s: AppState, env: OpsEnv): Draft {
     status: queue.length ? "needs_human" : "produced", reason: queue.length ? "editorial_review_required" : null,
     artifacts, checks, metrics: [na("article_to_directory", "clicks", "own_events", "N/A — serwis nie jest publiczny")],
     next_tasks: ["Brief: kot syberyjski (n67) pod dawnym URL — z kart faktów Knowledge", "Brief: kot bengalski (n65)", "Komunikat nowej formuły ZOO24 (strona wyjaśniająca)"],
-    human_decisions_required: queue.length ? [`Redaktor: review ${queue.length} artykułów w /admin/content`] : [],
+    human_decisions_required: queue.length
+      ? [aiEditor && env.aiEditorAllowed ? `Redaktor-AI: review ${queue.length} artykułów (poza kategoriami wrażliwymi); właściciel — przegląd po publikacji` : `Redaktor: review ${queue.length} artykułów w /admin/content`]
+      : [],
   };
 }
 

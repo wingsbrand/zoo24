@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { BookOpen, ClipboardCheck, ExternalLink, ListTree } from "lucide-react";
 import type { Article } from "@/lib/types";
+import { isAgentIdentity } from "@/lib/ops/identity";
 import { Alert, Badge, Breadcrumbs, Container, DemoBadge } from "@/components/ui";
 import { buildToc, headingText, isH2, isH3, midContentInsertIndex, shouldShowToc, type TocEntry } from "@/lib/content/toc";
 import { hubHref, relatedArticles, topicForArticle } from "@/lib/content/topics";
@@ -74,7 +75,12 @@ export function ArticleView({ a, preview = false, related }: { a: Article; previ
                 ) : (
                   <div className="flex gap-1"><dt className="sr-only">Status</dt><dd><Badge tone="warn">Nieopublikowany</Badge></dd></div>
                 )}
-                {a.reviewedBy ? <div className="flex gap-1"><dt>Sprawdzone przez:</dt><dd className="font-medium text-ink">{a.reviewedBy}</dd></div> : null}
+                {a.reviewedBy ? (
+                  <div className="flex gap-1"><dt>Sprawdzone przez:</dt><dd className="font-medium text-ink">
+                    {/* Jawność: akceptacja redaktora-AI nie jest przedstawiana jako przegląd człowieka. */}
+                    {isAgentIdentity(a.reviewedBy) ? "redakcję ZOO24 z udziałem AI" : a.reviewedBy}
+                  </dd></div>
+                ) : null}
                 <div className="flex items-center gap-1"><dt className="sr-only">Czas czytania</dt><dd className="flex items-center gap-1"><BookOpen aria-hidden size={16} /> ok. {minutes} min czytania</dd></div>
               </dl>
             </div>

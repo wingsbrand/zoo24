@@ -15,7 +15,11 @@ export interface ActivationPolicy {
   budgets: { currency: "PLN"; approved_monthly_extra_ai_automation: number | null; approved_per_run: number | null; paid_advertising_monthly: number };
   autonomy: Record<string, boolean>;
   caps: Record<string, number>;
-  review: { editor_id: string | null; backup_editor_id: string | null; new_factual_content_requires_human_review: boolean };
+  review: {
+    editor_id: string | null; backup_editor_id: string | null; new_factual_content_requires_human_review: boolean;
+    /** Decyzja właściciela: redaktor-AI może zatwierdzać treści poza kategoriami wrażliwymi; właściciel przegląda po publikacji. */
+    ai_editor_allowed?: boolean; ai_editor_id?: string | null; ai_editor_excluded_categories?: string[];
+  };
   alerts: { operator_id: string | null; approved_destination: string | null; critical_delivery_verified: boolean };
   capabilities_by_channel: Record<string, { can_publish: boolean; can_edit_caption: boolean | null; can_delete_media: boolean | null; can_cancel_schedule: boolean | null }>;
   [k: string]: unknown;
@@ -23,11 +27,8 @@ export interface ActivationPolicy {
 
 export const POLICY_PATH = path.join("ops", "config", "activation.json");
 
-/** Tożsamość procesu agenta/AI — nigdy nie może pełnić roli redaktora ani zmieniać polityki (P04, P08). */
-export function isAgentIdentity(actor: string | null | undefined): boolean {
-  if (!actor) return true; // brak tożsamości traktujemy jak niezaufany proces
-  return /^(agent:|ai:|claude|zoo24-ops-|zoo24-(product|seo|social|analytics|architect|builder|qa|growth|compliance)\b|job:|worker-|dispatcher)/i.test(actor.trim());
-}
+import { isAgentIdentity } from "./identity";
+export { isAgentIdentity };
 
 export function policyHash(p: ActivationPolicy): string {
   const { owner_approval: _a, ...rest } = p;

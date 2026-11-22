@@ -13,5 +13,6 @@ export async function buildOpsEnv(policy: ActivationPolicy | null, root = proces
     sources,
     vcs: fs.existsSync(path.join(/*turbopackIgnore: true*/ root, ".git")),
     editorId: policy?.review.editor_id ?? null,
+    aiEditorAllowed: !!policy?.review.ai_editor_allowed && policy.review.ai_editor_id === policy.review.editor_id,
   };
 }

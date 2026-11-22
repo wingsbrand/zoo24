@@ -13,7 +13,8 @@ const cases = [
   ["/cokolwiek/niezwiazanego", 404],
   ["/sitemap.xml", 404], // poza produkcją nie serwowana
   ["/robots.txt", 200],
-  ["/admin", 200],
+  // Panel tylko lokalnie (isTrustedAdminRequest); na hostingu zawsze 404.
+  ["/admin", /^https?:\/\/(localhost|127\.0\.0\.1|\[::1\])(:\d+)?$/.test(base) ? 200 : 404],
 ];
 let fail = 0;
 for (const [p, status, loc] of cases) {

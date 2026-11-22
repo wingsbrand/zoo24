@@ -4,6 +4,7 @@ import { tempStore } from "../helpers";
 import { leasedJob, socialRequest, SpyExecutor, testPolicy } from "./helpers";
 import { executeAction } from "@/lib/ops/gateway";
 import { claim } from "@/lib/ops/registry";
+import { policyHash } from "@/lib/ops/policy";
 
 const NOW = new Date("2026-12-01T08:00:20Z");
 
@@ -125,6 +126,50 @@ describe("polityka podpisana w repo (pilot shadow tylko do odczytu)", () => {
       expect(r.mode).toBe("shadow");
       expect(ex.calls + ex.lookups).toBe(0);
     }
+  });
+});
+
+describe("redaktor-AI (decyzja właściciela 2026-11-22)", () => {
+  const aiPolicy = () => {
+    const p = testPolicy("live_scoped", { signed: false, budget: 0 });
+    p.review = { ...p.review, editor_id: "claude-ai-editor", ai_editor_allowed: true, ai_editor_id: "claude-ai-editor" };
+    p.enabled = true;
+    p.owner_approval = { approved: true, approved_by: "owner-test", approved_at: "2026-11-22T15:00:00Z", policy_hash: null };
+    p.owner_approval.policy_hash = policyHash(p);
+    return p;
+  };
+  const cmsReq = (key: string, token: number, reviewedBy: string, flags = {}) => ({
+    op: "cms.publish_approved_version", role: "content" as const, jobDedupeKey: key, fencingToken: token,
+    target: { kind: "site_origin", id: "https://zoo24.pl" },
+    artifact: { id: "article:kot-brytyjski-n66", contentHash: "a1", approvedHash: "a1", authorId: "zoo24-ops-content", reviewedBy, evidenceIds: [] },
+    flags, estimatedCostPln: 0, payload: { slug: "kot-brytyjski-n66" },
+  });
+
+  it("wskazany redaktor-AI zatwierdza artykuł => publikacja (live), koszt 0 zł mieści się w limicie 0 ponad subskrypcję", async () => {
+    const store = tempStore();
+    const { dedupeKey, token } = await leasedJob(store);
+    const ex = new SpyExecutor();
+    const r = await executeAction(cmsReq(dedupeKey, token, "claude-ai-editor"), { store, policy: aiPolicy(), executor: ex, now: NOW });
+    expect(r.status).toBe("executed");
+    expect(ex.calls).toBe(1);
+  });
+  it("inny proces AI niż wskazany redaktor => odrzucony; zdrowie/prawo/ceny/sponsor => needs_human", async () => {
+    const store = tempStore();
+    const { dedupeKey, token } = await leasedJob(store);
+    const ex = new SpyExecutor();
+    const deps = { store, policy: aiPolicy(), executor: ex, now: NOW };
+    expect((await executeAction(cmsReq(dedupeKey, token, "zoo24-ops-content"), deps)).status).toBe("rejected"); // autor-agent nie zatwierdza sam siebie
+    expect((await executeAction(cmsReq(dedupeKey, token, "agent:inny"), deps)).reasons).toContain("HUMAN_REVIEW_MISSING");
+    for (const flags of [{ health: true }, { legal: true }, { prices: true }, { sponsored: true }]) {
+      expect((await executeAction(cmsReq(dedupeKey, token, "claude-ai-editor", flags), deps)).status).toBe("needs_human");
+    }
+    expect(ex.calls).toBe(0);
+  });
+  it("koszt > 0 przy limicie 0 zł ponad subskrypcję => blocked_policy BUDGET_CAP", async () => {
+    const store = tempStore();
+    const { dedupeKey, token } = await leasedJob(store);
+    const r = await executeAction({ ...cmsReq(dedupeKey, token, "claude-ai-editor"), estimatedCostPln: 5 }, { store, policy: aiPolicy(), executor: new SpyExecutor(), now: NOW });
+    expect(r.reasons).toEqual(["BUDGET_CAP"]);
   });
 });
 

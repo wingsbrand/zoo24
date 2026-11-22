@@ -27,7 +27,7 @@ export interface ActionRequest {
   fencingToken: number;
   target: { kind: string; id: string };
   artifact: { id: string; contentHash: string; approvedHash: string | null; authorId: string; reviewedBy: string | null; evidenceIds: string[] };
-  flags?: { sponsored?: boolean; health?: boolean; privateMessage?: boolean; email?: boolean; paidMedia?: boolean };
+  flags?: { sponsored?: boolean; health?: boolean; legal?: boolean; prices?: boolean; privateMessage?: boolean; email?: boolean; paidMedia?: boolean };
   estimatedCostPln: number;
   payload: Record<string, unknown>;
 }
@@ -80,7 +80,7 @@ export async function executeAction(
   const extra = Object.keys(req.payload).filter((k) => !spec.payload.includes(k));
   if (extra.length) return out("rejected", [`PAYLOAD_NOT_ALLOWED:${extra.join(",")}`], "design");
   const f = req.flags ?? {};
-  const human = [f.sponsored && "SPONSORED", f.health && "HEALTH_CLAIM", f.privateMessage && "PRIVATE_MESSAGE", f.email && "EMAIL_CAMPAIGN", f.paidMedia && "PAID_MEDIA"].filter(Boolean) as string[];
+  const human = [f.sponsored && "SPONSORED", f.health && "HEALTH_CLAIM", f.legal && "LEGAL_OR_INSURANCE", f.prices && "DYNAMIC_PRICES",f.privateMessage && "PRIVATE_MESSAGE", f.email && "EMAIL_CAMPAIGN", f.paidMedia && "PAID_MEDIA"].filter(Boolean) as string[];
   if (human.length) return out("needs_human", human, "design");
   if (!spec.resources.includes(req.target.kind as ResourceKind)) return out("rejected", ["RESOURCE_KIND_NOT_ALLOWED"], "design");
   const key = operationKey(req);
@@ -98,7 +98,9 @@ export async function executeAction(
     if (configured !== req.target.id) reasons.push("RESOURCE_NOT_IN_POLICY");
     const a = req.artifact;
     if (!a.approvedHash || a.approvedHash !== a.contentHash) reasons.push("APPROVAL_NOT_CURRENT");
-    if (!a.reviewedBy || isAgentIdentity(a.reviewedBy)) reasons.push("HUMAN_REVIEW_MISSING");
+    // Redaktor-AI tylko wskazany z nazwy w podpisanej polityce (decyzja właściciela); inne procesy AI/agentów — odrzucone.
+    const aiEditorOk = !!policy?.review.ai_editor_allowed && !!a.reviewedBy && a.reviewedBy === policy.review.ai_editor_id;
+    if (!a.reviewedBy || (isAgentIdentity(a.reviewedBy) && !aiEditorOk)) reasons.push("HUMAN_REVIEW_MISSING");
     else if (a.reviewedBy === a.authorId) reasons.push("SELF_APPROVAL");
     if (reasons.length) return { go: false, o: out("rejected", reasons, mode, key) };
     for (const id of a.evidenceIds) {

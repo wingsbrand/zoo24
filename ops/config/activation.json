@@ -1,15 +1,15 @@
 {
   "schema_version": "zoo24.ops.policy.v1",
-  "status": "APPROVED_SHADOW_READONLY_PILOT",
+  "status": "APPROVED_AI_EDITOR_SHADOW_UNTIL_LIVE",
   "mode": "shadow",
   "enabled": true,
   "timezone": "Europe/Warsaw",
   "owner_approval": {
     "approved": true,
     "approved_by": "owner",
-    "approved_at": "2026-11-22T14:33:05.284Z",
-    "policy_hash": "dfa947cfc0e1dd80b302efa8862fd0c9230bb7eb3812a1bfa6354022de76820b",
-    "review_due_at": "2026-11-29T14:32:33.350Z"
+    "approved_at": "2026-11-22T14:41:54.301Z",
+    "policy_hash": "9bc00f53c86a65767149d8fedfa7cba4248a14c171a9a0467d45c05beb24d91c",
+    "review_due_at": null
   },
   "resources": {
     "site_origin": "https://zoo24.pl",
@@ -40,11 +40,12 @@
     "build_max_turns": 50,
     "max_attempts_total": 3,
     "fencing_required": true,
-    "single_dispatcher_required": true
+    "single_dispatcher_required": true,
+    "billing": "subscription_only"
   },
   "budgets": {
     "currency": "PLN",
-    "approved_monthly_extra_ai_automation": null,
+    "approved_monthly_extra_ai_automation": 0,
     "suggested_monthly_extra_ai_automation": 600,
     "approved_per_run": null,
     "paid_advertising_monthly": 0,
@@ -54,12 +55,14 @@
       0.9,
       1
     ],
-    "prevent_automatic_overage": true
+    "prevent_automatic_overage": true,
+    "billing_basis": "subscription_only",
+    "billing_note": "Wyłącznie w ramach limitu konta Claude właściciela: bez kluczy API, bez płatnych narzędzi i mediów. Po wyczerpaniu limitu przebiegi czekają do odnowienia — bez dokupowania."
   },
   "autonomy": {
     "read_approved_sources": true,
     "create_drafts": true,
-    "publish_human_reviewed_content": false,
+    "publish_human_reviewed_content": true,
     "publish_reviewed_social_versions": false,
     "apply_low_risk_seo_patch": false,
     "auto_deploy_low_risk_code": false,
@@ -88,10 +91,20 @@
     "review_cadence": "weekly",
     "approved_content_buffer_days": 7,
     "low_buffer_alert_items": 3,
-    "new_factual_content_requires_human_review": true,
+    "new_factual_content_requires_human_review": false,
     "health_legal_insurance_requires_specialist": true,
     "approval_bound_to_content_and_evidence_versions": true,
-    "editor_note": "Redaktor = agent Claude (AI), jawnie oznaczony jako AI; nie jest i nie udaje człowieka. W zakresie shadow redaguje i ocenia szkice. Publikacja treści faktograficznych nadal wymaga człowieka (new_factual_content_requires_human_review=true) albo osobnej, wyraźnej zgody właściciela przy aktywacji canary."
+    "editor_note": "Redaktor = agent Claude, jawnie oznaczony jako AI (na stronie: „redakcja ZOO24 z udziałem AI”). Zatwierdza treści poza kategoriami wrażliwymi; zdrowie/prawo/ubezpieczenia/sponsorowane/ceny wymagają człowieka. Właściciel przegląda opublikowane treści na wersji live.",
+    "ai_editor_allowed": true,
+    "ai_editor_id": "claude-ai-editor",
+    "ai_editor_excluded_categories": [
+      "health",
+      "legal",
+      "insurance",
+      "sponsored",
+      "dynamic_prices"
+    ],
+    "post_publication_owner_review": true
   },
   "alerts": {
     "operator_id": "claude-ai-operator",
@@ -118,25 +131,25 @@
     "cancel_provider_schedules": true,
     "unknown_cancel_state": "partially_paused"
   },
-  "notes": "Polityka v1 ZOO24, podpisana przez właściciela dla zakresu shadow_scheduled_readonly (pilot 7 dni). Efektywny tryb: shadow — gateway wykonuje wyłącznie dry_run; wszystkie autonomie zapisu = false. Każda zmiana pliku unieważnia podpis (policy_hash). Role zoo24-ops-* nie mogą zapisywać tego pliku. Rozszerzenie zakresu wymaga nowej zgody właściciela.",
+  "notes": "Polityka v2 ZOO24 podpisana przez właściciela: redaktor-AI, bez pilota, koszt tylko w ramach subskrypcji. Tryb shadow do czasu uruchomienia serwisu (deploy/DNS = osobna zgoda). Każda zmiana pliku unieważnia podpis. Role zoo24-ops-* nie mogą zapisywać tego pliku.",
   "scope": {
-    "name": "shadow_scheduled_readonly",
-    "pilot_days": 7,
+    "name": "ai_editor_no_pilot",
+    "pilot_days": 0,
     "allowed": [
-      "odczyt stanu aplikacji i agregatów (Windsor.ai: GA4, FB; GSC/IG po podłączeniu)",
-      "szkice artykułów i postów",
-      "karty faktów (kwarantanna)",
-      "kalendarz 14 dni",
-      "propozycje SEO",
-      "raport tygodniowy"
+      "odczyt stanu i agregatów",
+      "szkice i redakcja artykułów/postów",
+      "akceptacja treści przez redaktora-AI poza kategoriami wrażliwymi",
+      "publikacja zaakceptowanych artykułów — dopiero na serwisie live, przez gateway",
+      "karty faktów, kalendarz 14 dni, propozycje SEO, raport tygodniowy"
     ],
     "forbidden": [
-      "publikacja treści i postów",
-      "zmiany strony/DNS/produkcji",
+      "deploy produkcji i zmiana DNS bez osobnej zgody",
+      "publikacja na FB/IG (brak dostępu Meta; osobna zgoda)",
+      "treści zdrowotne/prawne/sponsorowane/ceny bez człowieka",
       "e-mail/DM",
-      "wydatki i płatne media",
-      "zmiana tej polityki"
+      "wydatki ponad subskrypcję",
+      "zmiana tej polityki przez agentów"
     ],
-    "approval_evidence": "zgoda właściciela w czacie Claude Code 2026-11-22: „Approve, start setup” na pytanie o zakres shadow z harmonogramem tylko do odczytu, 7 dni pilota | ponowna zgoda właściciela w czacie orkiestratora 2026-11-22: „zgoda na aktywacje”; redaktor i operator alarmów: agent Claude (jawnie AI)."
+    "approval_evidence": "właściciel w czacie Claude Code 2026-11-22: „możesz samodzielnie redagować, bez pilota. Ja będę sprawdzał już na wersji live. limit kosztów AI - róbmy tak aby mieścić się w limicie mojego konta.”"
   }
 }
