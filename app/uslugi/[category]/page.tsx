@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getStore } from "@/lib/store/file-store";
+import { buildPageRegistry } from "@/lib/seo";
 import { CATEGORIES, isCategory } from "@/lib/site";
 import { Container, PageHeader } from "@/components/ui";
 import { CATEGORY_IMAGES } from "@/lib/content/images";
@@ -20,6 +21,8 @@ export async function generateMetadata({ params }: P): Promise<Metadata> {
     title: CATEGORIES[category].plural,
     description: `${CATEGORIES[category].plural} w największych miastach Polski. ${CATEGORY_DESCRIPTIONS[category]}`,
     alternates: { canonical: `/uslugi/${category}` },
+    // N5: kategoria bez żadnej opublikowanej realnej firmy — noindex (spójnie z rejestrem stron i sitemap).
+    robots: buildPageRegistry(getStore().read()).get(`/uslugi/${category}`)?.indexable ? undefined : { index: false, follow: true },
   };
 }
 

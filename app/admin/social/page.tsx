@@ -6,6 +6,7 @@ import { buildUtmUrl } from "@/lib/analytics/utm";
 import { SITE_URL } from "@/lib/site";
 import { postAction, runMockPublishJob } from "../actions";
 import type { SocialPost } from "@/lib/types";
+import { requireAdmin } from "@/lib/admin/guard";
 
 export const dynamic = "force-dynamic";
 
@@ -21,7 +22,8 @@ const STATUS_STYLE: Record<string, string> = {
   publishing: "bg-indigo-300", published: "bg-emerald-200", failed: "bg-red-200", held: "bg-orange-200", rejected: "bg-red-100", cancelled: "bg-line",
 };
 
-export default function SocialAdmin() {
+export default async function SocialAdmin() {
+  await requireAdmin();
   const s = getStore().read();
   const ctx = policyContext(s, new Date());
   const posts = [...s.socialPosts].sort((a, b) => (a.scheduledAt ?? "").localeCompare(b.scheduledAt ?? ""));

@@ -6,6 +6,7 @@ import { CATEGORIES, CITIES } from "@/lib/site";
 import { formatWarsaw } from "@/lib/time";
 import { Alert, Badge, Breadcrumbs, Card, EmptyState } from "@/components/ui";
 import { DecisionForm } from "./decision-form";
+import { requireAdmin } from "@/lib/admin/guard";
 
 export const dynamic = "force-dynamic";
 
@@ -29,6 +30,7 @@ function value(k: string, v: string) {
 }
 
 export default async function Moderacja({ searchParams }: { searchParams: Promise<{ widok?: string }> }) {
+  await requireAdmin();
   const { widok } = await searchParams;
   const all = [...(getStore().read().submissions ?? [])].sort((a, b) => b.createdAt.localeCompare(a.createdAt));
   const showDone = widok === "rozpatrzone";

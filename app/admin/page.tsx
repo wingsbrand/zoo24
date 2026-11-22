@@ -13,6 +13,7 @@ import { loadPolicy } from "@/lib/ops/policy";
 import { loadScheduleConfig } from "@/lib/ops/schedule";
 import { toggleKillSwitch, resetDemo, enableChannel, runOpsShadow } from "./actions";
 import { VisitMarker } from "./visit-marker";
+import { requireAdmin } from "@/lib/admin/guard";
 
 export const dynamic = "force-dynamic";
 
@@ -29,6 +30,7 @@ function Q({ n, icon: Icon, title, children, id }: { n: number; icon: typeof Lis
 }
 
 export default async function AdminHome() {
+  await requireAdmin();
   const s = getStore().read();
   const d = await buildDashboard(s, getReadSources());
   const decisions = pendingDecisions(s);

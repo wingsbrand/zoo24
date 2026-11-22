@@ -56,6 +56,12 @@ Wykonanie: projekt Supabase `ZOO24` (eu-central-1, 0 zł; CONTENT WIZARD wstrzym
 Tożsamość redaktora/operatora: wewnętrzne identyfikatory `claude-ai-editor` / `claude-ai-operator`, zawsze oznaczone jako AI (zasady CLAUDE.md i zoo24-ops: AI nie udaje człowieka; scenariusz P08). Nie zakładamy kont zewnętrznych (e-mail, social) na fikcyjną osobę. Publikacja treści faktograficznych nadal wymaga człowieka lub osobnej, wyraźnej zgody właściciela przy aktywacji canary.
 Status: Zaakceptowane (właściciel).
 
+## ADR-014 — 2026-11-22 — Przygotowanie startu na zoo24.pl (tryb produkcyjny, domena, GSC/Ahrefs)
+Decyzja właściciela (cytat): „jutro chcę opublikować już finalną wersję live na domenie zoo24.pl, podpiąć GSC i Ahrefs i rozpocząć pracę nad skalowaniem i optymalizacją serwisu”.
+Wykonanie przygotowań: (1) tryb `ZOO24_ENV=production` usuwa publiczne rekordy DEMO (seed + `lib/store/sync.ts`); szkice social zostają (niepubliczne); reset bazy Supabase zablokowany. (2) Indeksowana wyłącznie domena kanoniczna — aliasy (*.vercel.app) dostają `noindex` i `Disallow`. (3) Domeny `zoo24.pl` i `www.zoo24.pl` (308 → apex) dodane do projektu Vercel; DNS u aftermarket zmienia właściciel (MX/SPF bez zmian). (4) Weryfikacja GSC/Ahrefs: zalecany DNS TXT, alternatywnie meta tagi z env. (5) Bramka: `npm run preflight:live` + `docs/GO_LIVE_RUNBOOK.md`.
+Przełączenie `ZOO24_ENV=production` i `ZOO24_SITE_URL=https://zoo24.pl` następuje dopiero po „GO” właściciela w dniu startu i po spełnieniu blokerów (dane operatora, klucz Supabase).
+Status: Zaakceptowane (właściciel) — wykonanie przełączenia w dniu startu.
+
 ## ADR-P01 — 2026-11-22 — F1 wyłącznie na danych DEMO i mockach (zoo24-product)
 Integracje GSC/GA4/Meta flag-off. Status: Zaakceptowane.
 

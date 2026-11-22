@@ -4,10 +4,10 @@
 import fs from "node:fs";
 import path from "node:path";
 import type { AppState } from "../types";
-import { buildSeedState, loadContentArticles } from "../demo/seed";
-import { loadRealBusinesses } from "../catalog/real-businesses";
+import { buildSeedState } from "../demo/seed";
 import { SupabaseStore } from "./supabase-store";
-import { emptyOpsState } from "../ops/types";
+import { syncState } from "./sync";
+import { IS_PRODUCTION } from "../site";
 
 export interface Store {
   read(): AppState;
@@ -35,23 +35,10 @@ export class FileStore implements Store {
     fs.mkdirSync(this.dir, { recursive: true });
     if (!fs.existsSync(this.file)) { this.write(buildSeedState()); this.synced = true; return; }
     if (!this.synced) {
-      // Nowe pliki treści (content/blog) dopisywane do istniejącego stanu; nie nadpisuje statusów już przejrzanych.
+      // Treści z repo dopisywane do istniejącego stanu, migracje; w produkcji usunięcie publicznych rekordów DEMO.
       this.synced = true;
       const state = JSON.parse(fs.readFileSync(this.file, "utf8")) as AppState;
-      let changed = false;
-      // Realne firmy z content/businesses dopisywane do istniejącego stanu (bez nadpisywania już obecnych).
-      const newFirms = loadRealBusinesses().filter((b) => !state.businesses.some((x) => x.id === b.id));
-      if (newFirms.length) { state.businesses.push(...newFirms); changed = true; }
-      const missing = loadContentArticles().filter((a) => !state.articles.some((x) => x.slug === a.slug));
-      if (missing.length) { state.articles.push(...missing); changed = true; }
-      // Migracje schematu lokalnego stanu (nowe pola z bezpiecznymi wartościami domyślnymi).
-      if (!Array.isArray(state.submissions)) { state.submissions = []; changed = true; }
-      if (!state.ops) { state.ops = emptyOpsState(); changed = true; }
-      for (const b of state.businesses) {
-        if (!Array.isArray(b.petTypes)) { b.petTypes = []; changed = true; }
-        if (b.addressText === undefined) { b.addressText = null; changed = true; }
-      }
-      if (changed) this.write(state);
+      if (syncState(state, { production: IS_PRODUCTION })) this.write(state);
     }
   }
 
@@ -124,9 +111,16 @@ export interface AppStore extends Store {
 }
 
 class SupabaseAppStore extends SupabaseStore implements AppStore {
+  /** Reset współdzielonej bazy (produkcja) jest zablokowany — wymazałby zgłoszenia, decyzje i audit log. */
   async reset(): Promise<void> {
-    const seed = buildSeedState();
-    await this.transact((s) => { Object.assign(s, seed); });
+    throw new Error("RESET_DISABLED_ON_SHARED_STORE");
+  }
+
+  /** Jednorazowa synchronizacja po starcie (treści z repo, migracje, w produkcji usunięcie DEMO). */
+  async syncOnce(): Promise<void> {
+    const probe = this.read();
+    if (!syncState(probe, { production: IS_PRODUCTION })) return;
+    await this.transact((s) => { syncState(s, { production: IS_PRODUCTION }); });
   }
 }
 
@@ -148,4 +142,8 @@ export function getStore(): AppStore {
 }
 
 // Supabase: kopia stanu musi być wczytana, zanim pierwsza strona wywoła synchroniczne read().
-if (STORE_BACKEND === "supabase") await (getStore() as SupabaseAppStore).hydrate();
+if (STORE_BACKEND === "supabase") {
+  const s = getStore() as SupabaseAppStore;
+  await s.hydrate();
+  await s.syncOnce();
+}

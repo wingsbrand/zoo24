@@ -23,7 +23,8 @@ export async function generateMetadata({ params }: P): Promise<Metadata> {
     title: `${b.name} — ${CATEGORIES[b.category].name}, ${CITIES[b.city].name}`,
     description: b.description.slice(0, 160),
     alternates: { canonical: `/firma/${b.slug}` }, // także dla ?z= (powrót do filtrów)
-    robots: b.demo ? { index: false, follow: false } : undefined, // N1: DEMO nigdy nie jest indeksowane
+    // N1: DEMO nigdy nie jest indeksowane; N6: firma bez potwierdzenia danych przez redakcję — noindex do weryfikacji.
+    robots: b.demo ? { index: false, follow: false } : !b.checkedAt ? { index: false, follow: true } : undefined,
   };
   // JSON-LD celowo pominięty: brak potwierdzonych danych realnych firm.
 }

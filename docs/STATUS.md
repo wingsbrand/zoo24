@@ -2,6 +2,15 @@
 
 **Aktualizacja:** 2026-11-22 — sesja 1 Claude Code (F0 + lokalne F1). **Tryb:** Mode 0 / MOCK. Nic nie jest live.
 
+## Aktualizacja 2026-11-22 (wieczór) — przygotowanie startu na zoo24.pl (ADR-014)
+Plan i kroki: `docs/GO_LIVE_RUNBOOK.md`. Bramka: `npm run preflight:live` (dziś: 4 blokery — dane operatora i data wejścia w życie dokumentów).
+- Tryb produkcyjny przetestowany lokalnie (`next build` + `next start` z `ZOO24_ENV=production`, Host zoo24.pl vs alias): 30/30 PASS — brak DEMO, sitemap 8 URL tylko https://zoo24.pl, robots/X-Robots-Tag zależne od hosta, meta GSC/Ahrefs, canonical, 404 dla /admin, /demo-legacy, dawnych URL sklepu; linki wewnętrzne z / bez błędów.
+- **Naprawiona podatność** (znaleziona w tym teście, dotyczyła też stagingu): `/admin` zwracał 404, ale dane panelu trafiały do ładunku RSC (notFound tylko w layoucie). Teraz `requireAdmin()` w każdej stronie panelu + test regresyjny `tests/security/admin-guard.test.ts`.
+- Indeksacja: strona firmy tylko po weryfikacji danych (checkedAt); huby bez realnej treści (poradniki, hotele) noindex i poza sitemap; teksty strony głównej nie obiecują „sprawdzonych danych” dla każdej firmy.
+- Dokumenty prawne: pełny regulamin (§1–§11, DSA, kolejność wyników) i polityka prywatności; dane operatora z `lib/legal/operator.ts` (brakuje: pełnej nazwy, adresu siedziby, e-maila, daty wejścia w życie).
+- Domena: `zoo24.pl` + `www` (308) dodane w Vercel; DNS (aftermarket) bez zmian do dnia startu.
+- Otwarte: klucz Supabase (właściciel), 3 artykuły /blog/* (recenzja redaktora AI — sesja ops), 7 firm do weryfikacji, licencja komercyjna ilustracji AI.
+
 ## Aktualizacja 2026-11-22 (popołudnie) — staging na Vercel (ADR-012)
 | Element | Stan (zweryfikowany) |
 |---|---|

@@ -186,12 +186,14 @@ export function loadContentArticles(): Article[] {
   }
 }
 
-export function buildSeedState(): AppState {
+export function buildSeedState(opts: { production?: boolean } = {}): AppState {
+  // Produkcja: bez publicznych rekordów DEMO (fikcyjne firmy, artykuły, przykładowe stare URL).
+  const prod = opts.production ?? process.env.ZOO24_ENV === "production";
   return {
     schemaVersion: 1,
-    businesses: [...structuredClone(DEMO_BUSINESSES), ...loadRealBusinesses()],
-    articles: [...structuredClone(DEMO_ARTICLES), ...loadContentArticles()],
-    legacyUrls: structuredClone(DEMO_LEGACY_URLS),
+    businesses: [...(prod ? [] : structuredClone(DEMO_BUSINESSES)), ...loadRealBusinesses()],
+    articles: [...(prod ? [] : structuredClone(DEMO_ARTICLES)), ...loadContentArticles()],
+    legacyUrls: prod ? [] : structuredClone(DEMO_LEGACY_URLS),
     socialPosts: loadDraftPosts(),
     socialAssets: loadAssets(),
     attempts: [],

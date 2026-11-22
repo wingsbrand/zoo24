@@ -2,10 +2,12 @@ import Link from "next/link";
 import { getStore } from "@/lib/store/file-store";
 import { articleHref, checkArticlePolicy } from "@/lib/content/editorial";
 import { articleAction } from "../actions";
+import { requireAdmin } from "@/lib/admin/guard";
 
 export const dynamic = "force-dynamic";
 
-export default function ContentAdmin() {
+export default async function ContentAdmin() {
+  await requireAdmin();
   const s = getStore().read();
   const items = [...s.articles].sort((a, b) => Number(a.demo) - Number(b.demo) || a.status.localeCompare(b.status));
   const lastErrors = s.audit.filter((x) => x.entity === "article" && (x.action.endsWith("failed") || x.action === "approve_blocked")).slice(-3).reverse();

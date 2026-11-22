@@ -58,14 +58,18 @@ export function buildPageRegistry(state: AppState, opts?: { minListings?: number
   const pages: PageInfo[] = [];
   const base = { status: 200 as const, demo: false, draft: false };
 
+  const published = state.businesses.filter((b) => b.status === "published");
+  const hasRealArticles = state.articles.some((a) => a.status === "published" && !a.demo);
+
   pages.push({ ...base, path: "/", kind: "home", indexable: true });
   pages.push({ ...base, path: "/uslugi", kind: "hub", indexable: true });
-  pages.push({ ...base, path: "/poradniki", kind: "hub", indexable: true });
+  // N5: hub bez realnej treści (0 opublikowanych artykułów) nie jest indeksowany — brak cienkich stron w sitemap.
+  pages.push({ ...base, path: "/poradniki", kind: "hub", indexable: hasRealArticles });
   for (const s of STATIC_PATHS) pages.push({ ...base, path: s, kind: "static", indexable: true });
 
-  const published = state.businesses.filter((b) => b.status === "published");
   for (const cat of CATEGORIES) {
-    pages.push({ ...base, path: `/uslugi/${cat}`, kind: "hub", indexable: true });
+    const realInCategory = published.some((b) => b.category === cat && !b.demo);
+    pages.push({ ...base, path: `/uslugi/${cat}`, kind: "hub", indexable: realInCategory });
     for (const city of CITIES) {
       const inListing = published.filter((b) => b.category === cat && b.city === city);
       const real = inListing.filter((b) => !b.demo).length;
@@ -86,7 +90,8 @@ export function buildPageRegistry(state: AppState, opts?: { minListings?: number
       path: `/firma/${b.slug}`,
       kind: "business",
       demo: b.demo,
-      indexable: !b.demo, // N1
+      // N1: DEMO nigdy; N6: tylko firmy z potwierdzonymi danymi (checkedAt ustawiane po weryfikacji redakcji).
+      indexable: !b.demo && !!b.checkedAt,
       lastmod: b.checkedAt,
     });
   }

@@ -58,7 +58,7 @@ export default function Home() {
           </div>
           <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-ink-muted xl:max-w-2xl">
             <li className="flex items-center gap-1.5"><ShieldCheck aria-hidden size={16} className="text-brand" /> Bez ocen i ukrytych reklam</li>
-            <li className="flex items-center gap-1.5"><BadgeCheck aria-hidden size={16} className="text-brand" /> Przy każdej firmie źródło i data sprawdzenia</li>
+            <li className="flex items-center gap-1.5"><BadgeCheck aria-hidden size={16} className="text-brand" /> Przy każdej firmie źródło danych</li>
             <li className="flex items-center gap-1.5"><PhoneCall aria-hidden size={16} className="text-brand" /> Kontakt bezpośrednio z firmą, bez pośrednika</li>
           </ul>
         </Container>
@@ -107,7 +107,7 @@ export default function Home() {
           <SectionHeading id="h-zasady" eyebrow="Jak działa ZOO24" title="Uczciwy katalog, praktyczna wiedza" />
           <ol className="grid gap-6 md:grid-cols-3">
             {[
-              { icon: BadgeCheck, t: "Sprawdzamy dane i piszemy skąd", d: "Przy każdej firmie widzisz źródło informacji i datę sprawdzenia. Gdy czegoś nie potwierdziliśmy, mówimy to wprost." },
+              { icon: BadgeCheck, t: "Sprawdzamy dane i piszemy skąd", d: "Przy każdej firmie podajemy źródło informacji, a po weryfikacji — datę sprawdzenia. Gdy czegoś jeszcze nie potwierdziliśmy, mówimy to wprost." },
               { icon: PhoneCall, t: "Kontaktujesz się bezpośrednio", d: "Nie pośredniczymy w rezerwacjach i nie zbieramy Twoich danych. Dzwonisz lub piszesz prosto do firmy." },
               { icon: ShieldCheck, t: "Bez ocen i ukrytych reklam", d: "Kolejność wyników jest neutralna. Jeśli kiedyś pojawią się płatne wyróżnienia, zawsze będą oznaczone jako reklama." },
             ].map((x, i) => (
@@ -159,7 +159,7 @@ export default function Home() {
           </div>
           <div className="rounded-[var(--radius-xl)] border border-line bg-surface p-8">
             <h2 className="text-2xl font-bold">Czym jest ZOO24</h2>
-            <p className="mt-3 text-ink-muted">Pomagamy opiekunom psów i kotów znaleźć dobrą opiekę w swoim mieście — firmy ze sprawdzonymi danymi i źródłem informacji — oraz piszemy praktyczne poradniki o codziennej pielęgnacji.</p>
+            <p className="mt-3 text-ink-muted">Pomagamy opiekunom psów i kotów znaleźć dobrą opiekę w swoim mieście — firmy z podanym źródłem informacji — oraz piszemy praktyczne poradniki o codziennej pielęgnacji.</p>
             <Link href="/o-nas" className="mt-4 inline-flex min-h-11 items-center gap-1 font-semibold text-brand">Więcej o nas <ArrowRight aria-hidden size={18} /></Link>
           </div>
         </Container>
