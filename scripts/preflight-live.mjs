@@ -19,7 +19,7 @@ for (const f of ["legalName", "registeredAddress", "contactEmail", "nip"]) {
   if (field(f)) add("OK", `operator.${f} uzupełnione`);
   else add("BLOCKER", `operator.${f} puste (lib/legal/operator.ts) — wymóg PKE/RODO`);
 }
-if (!field("krs")) add("WARN", "operator.krs puste — dla sp. z o.o. art. 206 KSH wymaga na stronie: KRS, sąd rejestrowy, kapitał zakładowy");
+if (!field("krs")) add("OK", "operator.krs puste — decyzja właściciela 2026-11-22 (ryzyko art. 206 KSH przyjęte)");
 if (/LEGAL_EFFECTIVE_DATE[^=]*=\s*null/.test(op)) add("BLOCKER", "LEGAL_EFFECTIVE_DATE puste — data wejścia w życie regulaminu i polityki");
 else add("OK", "LEGAL_EFFECTIVE_DATE ustawione");
 

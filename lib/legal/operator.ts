@@ -19,7 +19,9 @@ export const OPERATOR: OperatorData = {
   legalName: "WINGS RETAIL sp. z o.o.",
   shortName: "WINGS RETAIL",
   nip: "5423261087",
-  krs: null, // sp. z o.o.: KRS, sąd rejestrowy i kapitał zakładowy wymagane na stronie (art. 206 KSH) — do podania przez właściciela
+  // Decyzja właściciela 2026-11-22: „OBEJDZIE SIĘ BEZ PODAWANIA KRS I KAPITAŁU” — pole celowo puste
+  // (poinformowano o art. 206 KSH; ryzyko przyjęte przez właściciela).
+  krs: null,
   registeredAddress: "Żółtki Kolonia 38A, 16-070 Choroszcz",
   contactEmail: "office@zoo24.pl",
 };
