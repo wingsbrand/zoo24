@@ -52,26 +52,89 @@
     "Czy opisałem, czy kot wychodzi, i jego zwyczaje?"
   ],
   "sources": [
-    { "label": "Cats Protection — Going on holiday (EN)", "url": "https://www.cats.org.uk/help-and-advice/home-and-environment/going-on-holiday" },
-    { "label": "RSPCA — Pet sitting / leaving your pet when you go away (EN)", "url": "https://www.rspca.org.uk/adviceandwelfare/pets/general/holiday/leavingyourpet" },
-    { "label": "PDSA — Going on holiday: finding care for your pets (EN)", "url": "https://pdsa.org.uk/pet-help-and-advice/looking-after-your-pet/all-pets/pet-boarding-kennels-and-holiday-care" }
+    {
+      "label": "Cats Protection — Going on holiday (EN)",
+      "url": "https://www.cats.org.uk/help-and-advice/home-and-environment/going-on-holiday"
+    },
+    {
+      "label": "RSPCA — Pet sitting / leaving your pet when you go away (EN)",
+      "url": "https://www.rspca.org.uk/adviceandwelfare/pets/general/holiday/leavingyourpet"
+    },
+    {
+      "label": "PDSA — Going on holiday: finding care for your pets (EN)",
+      "url": "https://pdsa.org.uk/pet-help-and-advice/looking-after-your-pet/all-pets/pet-boarding-kennels-and-holiday-care"
+    }
   ],
   "claims": [
-    { "text": "Spotkanie z opiekunem w domu jak najwcześniej, najlepiej kilka dni przed wyjazdem; nie trzeba brać pierwszej osoby; rezerwować wcześnie i mieć opiekuna zapasowego.", "sourceIndex": 0, "evidence": "Cats Protection: spotkanie w domu kilka dni przed wyjazdem; nie czuć się zobowiązanym do pierwszego opiekuna; rezerwować wcześnie, mieć zapasowego.", "appliesTo": "koty, opiekun odwiedzający", "accessedAt": "2026-11-22" },
-    { "text": "Opiekun powinien odwiedzać kota co najmniej dwa razy dziennie, częściej przy kotach bardzo młodych, starych lub wymagających opieki medycznej.", "sourceIndex": 0, "evidence": "Cats Protection: wizyty co najmniej dwa razy dziennie, częściej dla bardzo młodych, starych lub chorych kotów.", "appliesTo": "koty pozostające w domu", "accessedAt": "2026-11-22" },
-    { "text": "Pokaż miejsce karmy, misek, kuwety i transportera; sprawdź klucz; zostaw zapasowy klucz zaufanej osobie.", "sourceIndex": 0, "evidence": "Cats Protection: pokazać karmę, miski, kuwetę, transporter; przetestować dostęp do drzwi; zapasowy klucz u zaufanej osoby.", "appliesTo": "koty", "accessedAt": "2026-11-22" },
-    { "text": "Opiekun powinien wiedzieć, gdzie jest transporter, na wypadek nagłej sytuacji.", "sourceIndex": 0, "evidence": "Cats Protection: opiekun ma wiedzieć, gdzie jest transporter w razie nagłej sytuacji.", "appliesTo": "koty", "accessedAt": "2026-11-22" },
-    { "text": "Zostaw kontakt alarmowy, dane lekarza weterynarii, wystarczająco karmy, żwirku i leków, pełną listę leków, rutynę i cechy charakteru.", "sourceIndex": 0, "evidence": "Cats Protection: kontakt alarmowy, dane weterynarza, zapas karmy, żwirku, leków, lista leków, codzienna rutyna, osobowość kota.", "appliesTo": "koty", "accessedAt": "2026-11-22" },
-    { "text": "Informacje o kuwecie: miejsce, częstotliwość wymiany żwirku, gdzie wyrzucać; czy kot wychodzi i kiedy wraca; zabawki — sznurki schowane.", "sourceIndex": 0, "evidence": "Cats Protection: lokalizacja kuwety, wymiana żwirku, utylizacja, wyjścia i godziny powrotu; zabawki na wierzchu, sznurkowe poza zasięgiem.", "appliesTo": "koty", "accessedAt": "2026-11-22" },
-    { "text": "Koty przywiązane do domu lub nerwowe najlepiej czują się w domu z zaufanym opiekunem; koty dobrze znoszące obcych mogą skorzystać ze starannie wybranego hotelu.", "sourceIndex": 0, "evidence": "Cats Protection: koty domatorskie lub nerwowe najlepiej w domu z opiekunem; kotom towarzyskim może odpowiadać dobrze wybrany cattery.", "appliesTo": "koty", "accessedAt": "2026-11-22" },
-    { "text": "Przekaż zwykłą karmę z instrukcją, trzymaj się rutyny, zostaw dane weterynarza z pomocą całodobową i rzecz o znajomym zapachu.", "sourceIndex": 1, "evidence": "RSPCA: rutyna, zwykła karma z instrukcją, dane weterynarza z dyżurem, rzeczy o znajomym zapachu (np. noszona odzież, kocyk).", "appliesTo": "psy i koty", "accessedAt": "2026-11-22" },
-    { "text": "Leki w ilości na cały wyjazd z pisemną instrukcją podawania.", "sourceIndex": 2, "evidence": "PDSA: zapas leków na cały wyjazd plus pisemna instrukcja dawki, pory i sposobu podania.", "appliesTo": "zwierzęta przyjmujące leki", "accessedAt": "2026-11-22" }
+    {
+      "text": "Spotkanie z opiekunem w domu jak najwcześniej, najlepiej kilka dni przed wyjazdem; nie trzeba brać pierwszej osoby; rezerwować wcześnie i mieć opiekuna zapasowego.",
+      "sourceIndex": 0,
+      "evidence": "Cats Protection: spotkanie w domu kilka dni przed wyjazdem; nie czuć się zobowiązanym do pierwszego opiekuna; rezerwować wcześnie, mieć zapasowego.",
+      "appliesTo": "koty, opiekun odwiedzający",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Opiekun powinien odwiedzać kota co najmniej dwa razy dziennie, częściej przy kotach bardzo młodych, starych lub wymagających opieki medycznej.",
+      "sourceIndex": 0,
+      "evidence": "Cats Protection: wizyty co najmniej dwa razy dziennie, częściej dla bardzo młodych, starych lub chorych kotów.",
+      "appliesTo": "koty pozostające w domu",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Pokaż miejsce karmy, misek, kuwety i transportera; sprawdź klucz; zostaw zapasowy klucz zaufanej osobie.",
+      "sourceIndex": 0,
+      "evidence": "Cats Protection: pokazać karmę, miski, kuwetę, transporter; przetestować dostęp do drzwi; zapasowy klucz u zaufanej osoby.",
+      "appliesTo": "koty",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Opiekun powinien wiedzieć, gdzie jest transporter, na wypadek nagłej sytuacji.",
+      "sourceIndex": 0,
+      "evidence": "Cats Protection: opiekun ma wiedzieć, gdzie jest transporter w razie nagłej sytuacji.",
+      "appliesTo": "koty",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Zostaw kontakt alarmowy, dane lekarza weterynarii, wystarczająco karmy, żwirku i leków, pełną listę leków, rutynę i cechy charakteru.",
+      "sourceIndex": 0,
+      "evidence": "Cats Protection: kontakt alarmowy, dane weterynarza, zapas karmy, żwirku, leków, lista leków, codzienna rutyna, osobowość kota.",
+      "appliesTo": "koty",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Informacje o kuwecie: miejsce, częstotliwość wymiany żwirku, gdzie wyrzucać; czy kot wychodzi i kiedy wraca; zabawki — sznurki schowane.",
+      "sourceIndex": 0,
+      "evidence": "Cats Protection: lokalizacja kuwety, wymiana żwirku, utylizacja, wyjścia i godziny powrotu; zabawki na wierzchu, sznurkowe poza zasięgiem.",
+      "appliesTo": "koty",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Koty przywiązane do domu lub nerwowe najlepiej czują się w domu z zaufanym opiekunem; koty dobrze znoszące obcych mogą skorzystać ze starannie wybranego hotelu.",
+      "sourceIndex": 0,
+      "evidence": "Cats Protection: koty domatorskie lub nerwowe najlepiej w domu z opiekunem; kotom towarzyskim może odpowiadać dobrze wybrany cattery.",
+      "appliesTo": "koty",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Przekaż zwykłą karmę z instrukcją, trzymaj się rutyny, zostaw dane weterynarza z pomocą całodobową i rzecz o znajomym zapachu.",
+      "sourceIndex": 1,
+      "evidence": "RSPCA: rutyna, zwykła karma z instrukcją, dane weterynarza z dyżurem, rzeczy o znajomym zapachu (np. noszona odzież, kocyk).",
+      "appliesTo": "psy i koty",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Leki w ilości na cały wyjazd z pisemną instrukcją podawania.",
+      "sourceIndex": 2,
+      "evidence": "PDSA: zapas leków na cały wyjazd plus pisemna instrukcja dawki, pory i sposobu podania.",
+      "appliesTo": "zwierzęta przyjmujące leki",
+      "accessedAt": "2026-11-22"
+    }
   ],
   "authorDisplay": "Redakcja ZOO24 (szkic przygotowany z pomocą AI)",
   "status": "needs_review",
   "demo": false,
   "publishedAt": null,
-  "updatedAt": "2026-11-22T20:00:00.000Z",
+  "updatedAt": "2026-11-22T18:45:32.872Z",
   "relatedServicePaths": [],
   "disclosure": null,
   "reviewNotes": [
@@ -81,12 +144,50 @@
     "Brak relatedServicePaths: w katalogu nie ma ścieżki dla petsitterów kotów; ewentualnie rozważ /uslugi/hotel-dla-zwierzat po sprawdzeniu, czy obejmuje koty.",
     "Ścieżka /narzedzia/lista-dla-opiekuna musi istnieć przed publikacją."
   ],
-  "reviewedBy": null,
-  "animal": { "group": "koty", "species": "kot-domowy", "breed": null },
-  "needs": ["wyjazdy"],
+  "reviewedBy": "claude-ai-editor",
+  "animal": {
+    "group": "koty",
+    "species": "kot-domowy",
+    "breed": null
+  },
+  "needs": [
+    "wyjazdy"
+  ],
   "format": "guide",
   "risk": "standard",
-  "review": { "required": "editor", "by": null, "byKind": null, "at": null, "note": null, "waitingReason": "czeka na przegląd redakcyjny" },
+  "review": {
+    "required": "editor",
+    "by": "claude-ai-editor",
+    "byKind": "ai",
+    "at": "2026-11-22T18:45:32.872Z",
+    "note": "Recenzja redaktora-AI: twierdzenia sprawdzone ze źródłami 22.11.2026 (ponowny odczyt stron). Wszystkie twierdzenia potwierdzone (Cats Protection, RSPCA, PDSA). Klasa standard: przekazanie informacji opiekunowi, częstotliwość wizyt cytowana ze źródła.",
+    "waitingReason": null
+  },
   "reviewDueAt": "2027-05-22T00:00:00.000Z",
-  "legacyPath": null
+  "legacyPath": null,
+  "editorialDecision": {
+    "decision": "approved",
+    "by": "claude-ai-editor",
+    "byKind": "ai",
+    "at": "2026-11-22T18:45:32.872Z",
+    "contentHash": "06cba3e88d71459c38fca2f643b926fe0a498ef3be91b0e084a6d6f504f058f1",
+    "evidenceRef": "claims[] w pliku + weryfikacja źródeł 22.11.2026",
+    "excludedCategoriesChecked": [
+      "health",
+      "legal",
+      "insurance",
+      "sponsored",
+      "dynamic_prices",
+      "welfare",
+      "nutrition",
+      "environment",
+      "temperature_humidity_lighting",
+      "cohabitation",
+      "transport"
+    ],
+    "notes": [
+      "Wszystkie twierdzenia potwierdzone (Cats Protection, RSPCA, PDSA). Klasa standard: przekazanie informacji opiekunowi, częstotliwość wizyt cytowana ze źródła."
+    ],
+    "publishAfter": "serwis live na https://zoo24.pl; publikacja przez gateway (cms.publish_approved_version)"
+  }
 }

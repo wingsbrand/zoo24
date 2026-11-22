@@ -19,7 +19,7 @@
     "## Dlaczego to ma znaczenie",
     "Rzeczywista ilość wody przydaje się, gdy instrukcja jakiegoś preparatu podaje ilość w przeliczeniu na litry wody. MSD Veterinary Manual podkreśla, że kąpiel lecznicza wymaga dokładnego zmierzenia objętości wody, którą się traktuje. Zawsze postępuj zgodnie z instrukcją producenta danego produktu, a w sprawach leczenia ryb — z zaleceniami lekarza weterynarii zajmującego się rybami. Ten poradnik nie podaje dawek żadnych środków.",
     "## Objętość nie wyznacza obsady",
-    "Liczba litrów nie mówi, ile ryb zmieści się w akwarium. RSPCA podkreśla, że zbyt wiele ryb zanieczyszcza wodę, a przeliczniki objętości na długość ryb należy traktować wyłącznie jako orientacyjne, bo na jakość wody wpływa wiele czynników. O doborze ryb decydują m.in. wymagania gatunku, zgodność z innymi gatunkami i zachowanie stadne — RSPCA radzi sprawdzić dokładne wymagania każdego gatunku, a ryby ławicowe, takie jak danio czy tetry, trzymać w grupach co najmniej sześciu osobników. Dobór obsady skonsultuj z osobą znającą wybrane gatunki.",
+    "Liczba litrów nie mówi, ile ryb zmieści się w akwarium. RSPCA podkreśla, że zbyt wiele ryb zanieczyszcza wodę, a przeliczniki objętości na długość ryb należy traktować wyłącznie jako orientacyjne, bo na jakość wody wpływa wiele czynników. O doborze ryb decydują m.in. wymagania gatunku, zgodność z innymi gatunkami i zachowanie stadne — RSPCA radzi sprawdzić dokładne wymagania i zgodność każdego gatunku, w tym to, czy żyje on w ławicy. Dobór obsady i wielkość grup to osobny temat — skonsultuj go z osobą znającą wybrane gatunki.",
     "## Kiedy dotyczy i ograniczenia",
     "Wzór dotyczy zbiorników prostopadłościennych. Akwaria narożne, panoramiczne z wygiętą szybą czy cylindryczne wymagają innych wzorów albo pomiaru przy napełnianiu. Wynik obliczeń to przybliżenie. Poradnik nie dotyczy doboru wyposażenia ani obsady.",
     "## Typowe błędy",
@@ -36,23 +36,65 @@
     "Czy obsadę dobieram według wymagań gatunków, a nie samej liczby litrów?"
   ],
   "sources": [
-    { "label": "MSD Veterinary Manual — Formulae to Calculate Tank Volumes", "url": "https://www.msdvetmanual.com/multimedia/table/formulae-to-calculate-tank-volumes" },
-    { "label": "MSD Veterinary Manual (wersja profesjonalna) — Management of Fish (Petty, Francis-Floyd, Yanong)", "url": "https://www.msdvetmanual.com/exotic-and-laboratory-animals/aquarium-fishes/management-of-fish" },
-    { "label": "RSPCA — Fish: environment", "url": "https://www.rspca.org.uk/adviceandwelfare/pets/fish/environment" },
-    { "label": "RSPCA — Fish: company", "url": "https://www.rspca.org.uk/adviceandwelfare/pets/fish/company" }
+    {
+      "label": "MSD Veterinary Manual — Formulae to Calculate Tank Volumes",
+      "url": "https://www.msdvetmanual.com/multimedia/table/formulae-to-calculate-tank-volumes"
+    },
+    {
+      "label": "MSD Veterinary Manual (wersja profesjonalna) — Management of Fish (Petty, Francis-Floyd, Yanong)",
+      "url": "https://www.msdvetmanual.com/exotic-and-laboratory-animals/aquarium-fishes/management-of-fish"
+    },
+    {
+      "label": "RSPCA — Fish: environment",
+      "url": "https://www.rspca.org.uk/adviceandwelfare/pets/fish/environment"
+    },
+    {
+      "label": "RSPCA — Fish: company",
+      "url": "https://www.rspca.org.uk/adviceandwelfare/pets/fish/company"
+    }
   ],
   "claims": [
-    { "text": "Objętość zbiornika prostopadłościennego = długość × szerokość × wysokość; w przykładzie wysokością jest głębokość wody.", "sourceIndex": 0, "evidence": "V = l × w × h; przykład: 30 × 12 × 20 cm = 7,2 l, gdzie 20 cm to głębokość wody.", "appliesTo": "zbiorniki prostopadłościenne", "accessedAt": "2026-11-22" },
-    { "text": "Kąpiel lecznicza wymaga dokładnego zmierzenia objętości traktowanej wody.", "sourceIndex": 1, "evidence": "Zastosowanie kąpieli leczniczej wymaga dokładnego pomiaru objętości wody, która ma być traktowana.", "appliesTo": "zabiegi u ryb zlecane przez lekarza weterynarii", "accessedAt": "2026-11-22" },
-    { "text": "Objętość nietypowych zbiorników można ustalić pomiarem, mierząc czas napełniania naczynia o znanej objętości.", "sourceIndex": 1, "evidence": "Dla nietypowych zbiorników: zmierzyć przepływ, sprawdzając czas napełnienia cylindra miarowego 1 l.", "appliesTo": "zbiorniki o nieregularnym kształcie", "accessedAt": "2026-11-22" },
-    { "text": "Zbyt wiele ryb zanieczyszcza wodę; przeliczniki objętości na długość ryb są tylko orientacyjne.", "sourceIndex": 2, "evidence": "Zbyt wiele ryb zanieczyszcza wodę; przeliczniki tylko orientacyjnie — jakość wody zależy od wielu czynników.", "appliesTo": "akwaria słodkowodne", "accessedAt": "2026-11-22" },
-    { "text": "Trzeba sprawdzić dokładne wymagania gatunku i zgodność; ryby ławicowe w grupach co najmniej sześciu.", "sourceIndex": 3, "evidence": "Zbadaj gatunek, by poznać dokładne wymagania i zgodność; danio i tetry w grupach sześciu lub więcej.", "appliesTo": "dobór obsady", "accessedAt": "2026-11-22" }
+    {
+      "text": "Objętość zbiornika prostopadłościennego = długość × szerokość × wysokość; w przykładzie wysokością jest głębokość wody.",
+      "sourceIndex": 0,
+      "evidence": "V = l × w × h; przykład: 30 × 12 × 20 cm = 7,2 l, gdzie 20 cm to głębokość wody.",
+      "appliesTo": "zbiorniki prostopadłościenne",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Kąpiel lecznicza wymaga dokładnego zmierzenia objętości traktowanej wody.",
+      "sourceIndex": 1,
+      "evidence": "Zastosowanie kąpieli leczniczej wymaga dokładnego pomiaru objętości wody, która ma być traktowana.",
+      "appliesTo": "zabiegi u ryb zlecane przez lekarza weterynarii",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Objętość nietypowych zbiorników można ustalić pomiarem, mierząc czas napełniania naczynia o znanej objętości.",
+      "sourceIndex": 1,
+      "evidence": "Dla nietypowych zbiorników: zmierzyć przepływ, sprawdzając czas napełnienia cylindra miarowego 1 l.",
+      "appliesTo": "zbiorniki o nieregularnym kształcie",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Zbyt wiele ryb zanieczyszcza wodę; przeliczniki objętości na długość ryb są tylko orientacyjne.",
+      "sourceIndex": 2,
+      "evidence": "Zbyt wiele ryb zanieczyszcza wodę; przeliczniki tylko orientacyjnie — jakość wody zależy od wielu czynników.",
+      "appliesTo": "akwaria słodkowodne",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Trzeba sprawdzić dokładne wymagania gatunku, zgodność i to, czy gatunek jest ławicowy.",
+      "sourceIndex": 3,
+      "evidence": "Zbadaj gatunek, by poznać dokładne wymagania i zgodność; danio i tetry w grupach sześciu lub więcej.",
+      "appliesTo": "dobór obsady",
+      "accessedAt": "2026-11-22"
+    }
   ],
   "authorDisplay": "Redakcja ZOO24 (szkic przygotowany z pomocą AI)",
   "status": "needs_review",
   "demo": false,
   "publishedAt": null,
-  "updatedAt": "2026-11-22T20:00:00.000Z",
+  "updatedAt": "2026-11-22T18:45:32.872Z",
   "relatedServicePaths": [],
   "disclosure": null,
   "reviewNotes": [
@@ -63,12 +105,51 @@
     "Zdanie o kąpieli leczniczej pochodzi z profesjonalnej wersji MSD; tekst nie podaje dawek i odsyła do producenta/lekarza weterynarii.",
     "Link /narzedzia/kalkulator-akwarium: sprawdzić istnienie przed publikacją; spójność z założeniami kalkulatora."
   ],
-  "reviewedBy": null,
-  "animal": { "group": "akwarystyka", "species": null, "breed": null },
-  "needs": ["wyposazenie"],
+  "reviewedBy": "claude-ai-editor",
+  "animal": {
+    "group": "akwarystyka",
+    "species": null,
+    "breed": null
+  },
+  "needs": [
+    "wyposazenie"
+  ],
   "format": "guide",
   "risk": "standard",
-  "review": { "required": "editor", "by": null, "byKind": null, "at": null, "note": null, "waitingReason": "czeka na przegląd redakcyjny" },
+  "review": {
+    "required": "editor",
+    "by": "claude-ai-editor",
+    "byKind": "ai",
+    "at": "2026-11-22T18:45:32.872Z",
+    "note": "Recenzja redaktora-AI: twierdzenia sprawdzone ze źródłami 22.11.2026 (ponowny odczyt stron). Usunięto liczbową wielkość grupy ryb ławicowych (parametr łączenia zwierząt = klasa welfare wg V3); poradnik pozostaje obliczeniowy — klasa standard. Wzór i pomiar przepływu potwierdzone w MSD; brak dawek preparatów.",
+    "waitingReason": null
+  },
   "reviewDueAt": "2027-05-22T00:00:00.000Z",
-  "legacyPath": null
+  "legacyPath": null,
+  "editorialDecision": {
+    "decision": "approved",
+    "by": "claude-ai-editor",
+    "byKind": "ai",
+    "at": "2026-11-22T18:45:32.872Z",
+    "contentHash": "7a869a91ca9b590a17e96edcef404feafe705e51ebac669e35357de778d33bb7",
+    "evidenceRef": "claims[] w pliku + weryfikacja źródeł 22.11.2026",
+    "excludedCategoriesChecked": [
+      "health",
+      "legal",
+      "insurance",
+      "sponsored",
+      "dynamic_prices",
+      "welfare",
+      "nutrition",
+      "environment",
+      "temperature_humidity_lighting",
+      "cohabitation",
+      "transport"
+    ],
+    "notes": [
+      "Usunięto liczbową wielkość grupy ryb ławicowych (parametr łączenia zwierząt = klasa welfare wg V3); poradnik pozostaje obliczeniowy — klasa standard.",
+      "Wzór i pomiar przepływu potwierdzone w MSD; brak dawek preparatów."
+    ],
+    "publishAfter": "serwis live na https://zoo24.pl; publikacja przez gateway (cms.publish_approved_version)"
+  }
 }

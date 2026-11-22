@@ -40,3 +40,29 @@ describe("akceptacja redaktora-AI artykułów TOP 3", () => {
     expect(loadContentArticles().filter((x) => SLUGS.includes(x.slug)).every((x) => x.status === "needs_review" && x.publishedAt === null)).toBe(true);
   });
 });
+
+describe("poradniki V3 (content/guides)", () => {
+  const dir = path.join(process.cwd(), "content", "guides");
+  const all = fs.readdirSync(dir).filter((f) => f.endsWith(".json")).map((f) => JSON.parse(fs.readFileSync(path.join(dir, f), "utf8")) as Article & { risk?: string; review?: { byKind: string | null; waitingReason: string | null } });
+  const ai = loadPolicy()?.review.ai_editor_id ?? null;
+
+  it("6 poradników klasy standard: akceptacja redaktora-AI z aktualnym hashem, status needs_review, oznaczona jako AI", () => {
+    const std = all.filter((a) => (a.risk ?? "standard") === "standard");
+    expect(std).toHaveLength(6);
+    for (const a of std) {
+      expect(isEditorialApprovalCurrent(a, ai), a.slug).toBe(true);
+      expect(a.review?.byKind, a.slug).toBe("ai");
+      expect(a.status, a.slug).toBe("needs_review");
+      expect(checkArticlePolicy(a), a.slug).toEqual([]);
+    }
+  });
+
+  it("poradniki z klasą ryzyka nie mają akceptacji AI i czekają na człowieka", () => {
+    const risky = all.filter((a) => (a.risk ?? "standard") !== "standard");
+    expect(risky.length).toBeGreaterThan(0);
+    for (const a of risky) {
+      expect(a.editorialDecision, a.slug).toBeUndefined();
+      expect(a.review?.waitingReason, a.slug).toBeTruthy();
+    }
+  });
+});

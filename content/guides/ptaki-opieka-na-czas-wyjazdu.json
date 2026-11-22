@@ -19,7 +19,7 @@
     "## Krok 6. Hotel z innymi ptakami — zapytaj o zasady",
     "Ptaki często ukrywają objawy choroby, więc ptak wyglądający na zdrowego może być chory — zwraca na to uwagę artykuł w Vetstreet. Jeśli Twój ptak ma przebywać w miejscu z innymi ptakami, zapytaj, jak placówka oddziela ptaki od siebie i jakich badań lub zaświadczeń wymaga. O to, czy i jakie badania są potrzebne przed takim pobytem, zapytaj swojego lekarza weterynarii.",
     "## Ustal sposób przekazywania wiadomości",
-    "Opiekun nie będzie wiedział, jak często chcesz dostawać wiadomości, jeśli mu tego nie powiesz. Vetstreet sugeruje codzienny kontakt jako minimum, a zdjęcia jako miły dodatek.",
+    "Opiekun nie będzie wiedział, jak często chcesz dostawać wiadomości, jeśli mu tego nie powiesz. Vetstreet sugeruje codzienny kontakt jako minimum, najlepiej ze zdjęciami.",
     "## Kiedy dotyczy i ograniczenia",
     "Poradnik dotyczy organizacji opieki nad ptakami towarzyszącymi trzymanymi w domu, niezależnie od gatunku. Nie określa, czym karmić ptaka, jak urządzić klatkę ani jakie warunki zapewnić — te wymagania zależą od gatunku i warto je potwierdzić w źródłach dla Twojego ptaka lub u lekarza weterynarii zajmującego się ptakami. Część wskazówek pochodzi ze źródeł brytyjskich i amerykańskich; sprawdź lokalne wymagania placówek w Polsce. Poradnik nie zastępuje porady lekarza weterynarii.",
     "## Typowe błędy",
@@ -37,25 +37,82 @@
     "Czy ustaliłem, jak często opiekun będzie przesyłał wiadomości?"
   ],
   "sources": [
-    { "label": "RSPCA — Birds (ptaki: ogólne informacje)", "url": "https://www.rspca.org.uk/adviceandwelfare/pets/birds" },
-    { "label": "RSPCA — Pet sitting / leaving your pet", "url": "https://www.rspca.org.uk/adviceandwelfare/pets/general/holiday/leavingyourpet" },
-    { "label": "Vetstreet — Laurie Hess, Bird Boarding or Babysitting: What Every Pet Owner Should Ask", "url": "https://www.vetstreet.com/our-pet-experts/bird-boarding-or-babysitting-what-every-pet-owner-should-ask" }
+    {
+      "label": "RSPCA — Birds (ptaki: ogólne informacje)",
+      "url": "https://www.rspca.org.uk/adviceandwelfare/pets/birds"
+    },
+    {
+      "label": "RSPCA — Pet sitting / leaving your pet",
+      "url": "https://www.rspca.org.uk/adviceandwelfare/pets/general/holiday/leavingyourpet"
+    },
+    {
+      "label": "Vetstreet — Laurie Hess, Bird Boarding or Babysitting: What Every Pet Owner Should Ask",
+      "url": "https://www.vetstreet.com/our-pet-experts/bird-boarding-or-babysitting-what-every-pet-owner-should-ask"
+    }
   ],
   "claims": [
-    { "text": "Różne gatunki ptaków mają różne potrzeby dobrostanowe.", "sourceIndex": 0, "evidence": "Różne ptaki mają różne potrzeby dobrostanowe, dlatego bardzo ważne jest zrobienie researchu.", "appliesTo": "ptaki towarzyszące", "accessedAt": "2026-11-22" },
-    { "text": "Opiekun zostający w domu zwierzęcia zwykle sprawdza się najlepiej; hotel należy odwiedzić przed wyborem.", "sourceIndex": 1, "evidence": "Opiekun mieszkający w domu zwykle najlepszy; zawsze odwiedź miejsce przed wyborem.", "appliesTo": "zwierzęta domowe ogólnie", "accessedAt": "2026-11-22" },
-    { "text": "Przy hotelu warto sprawdzić czystość, przeciągi, zabezpieczenie, personel i rozdzielenie drapieżników od ofiar.", "sourceIndex": 1, "evidence": "Czysto, sucho, bez przeciągów, bezpiecznie; personel, kontakt dzienny, rozdzielenie gatunków drapieżnych i ofiar.", "appliesTo": "hotele dla zwierząt", "accessedAt": "2026-11-22" },
-    { "text": "Opiekunowi należy przekazać rutynę, karmę z instrukcją, kontakty, dane lekarza weterynarii z dyżurem, leki i zachowanie.", "sourceIndex": 1, "evidence": "Lista informacji dla opiekuna: rutyna, karma, kontakty awaryjne, weterynarz z dyżurem, leki, zachowanie.", "appliesTo": "zwierzęta domowe ogólnie", "accessedAt": "2026-11-22" },
-    { "text": "Minimum to codzienne wizyty z karmieniem i sprzątaniem, także w weekendy; pytać o referencje i ubezpieczenie.", "sourceIndex": 2, "evidence": "Codzienne wizyty co najmniej na karmienie i sprzątanie klatki, również w weekendy; referencje, licencje, ubezpieczenie.", "appliesTo": "ptaki", "accessedAt": "2026-11-22" },
-    { "text": "Zostaw dane lekarza i całodobowej lecznicy, poinformuj lekarza, daj pisemne upoważnienie i ustal płatność.", "sourceIndex": 2, "evidence": "Kontakt do weterynarza i całodobowej lecznicy; pisemna zgoda na pomoc w nagłych przypadkach; sposób zapłaty.", "appliesTo": "ptaki", "accessedAt": "2026-11-22" },
-    { "text": "Ptaki często ukrywają chorobę; w hotelu z innymi ptakami pytaj o oddzielanie i wymagane badania.", "sourceIndex": 2, "evidence": "Ptaki często ukrywają chorobę; zaświadczenie zdrowia, ptaki oddzielone, mycie rąk między ptakami.", "appliesTo": "pobyt z innymi ptakami", "accessedAt": "2026-11-22" },
-    { "text": "Znajome przedmioty pomagają; ptaka trzymaj poza wzrokiem i słuchem psów i kotów; ustal częstotliwość wiadomości.", "sourceIndex": 2, "evidence": "Własny pokarm, klatka, zabawki pomagają; ptak z dala od wzroku i słuchu psów i kotów; codzienny telefon minimum.", "appliesTo": "ptaki", "accessedAt": "2026-11-22" }
+    {
+      "text": "Różne gatunki ptaków mają różne potrzeby dobrostanowe.",
+      "sourceIndex": 0,
+      "evidence": "Różne ptaki mają różne potrzeby dobrostanowe, dlatego bardzo ważne jest zrobienie researchu.",
+      "appliesTo": "ptaki towarzyszące",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Opiekun zostający w domu zwierzęcia zwykle sprawdza się najlepiej; hotel należy odwiedzić przed wyborem.",
+      "sourceIndex": 1,
+      "evidence": "Opiekun mieszkający w domu zwykle najlepszy; zawsze odwiedź miejsce przed wyborem.",
+      "appliesTo": "zwierzęta domowe ogólnie",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Przy hotelu warto sprawdzić czystość, przeciągi, zabezpieczenie, personel i rozdzielenie drapieżników od ofiar.",
+      "sourceIndex": 1,
+      "evidence": "Czysto, sucho, bez przeciągów, bezpiecznie; personel, kontakt dzienny, rozdzielenie gatunków drapieżnych i ofiar.",
+      "appliesTo": "hotele dla zwierząt",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Opiekunowi należy przekazać rutynę, karmę z instrukcją, kontakty, dane lekarza weterynarii z dyżurem, leki i zachowanie.",
+      "sourceIndex": 1,
+      "evidence": "Lista informacji dla opiekuna: rutyna, karma, kontakty awaryjne, weterynarz z dyżurem, leki, zachowanie.",
+      "appliesTo": "zwierzęta domowe ogólnie",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Minimum to codzienne wizyty z karmieniem i sprzątaniem, także w weekendy; pytać o referencje i ubezpieczenie.",
+      "sourceIndex": 2,
+      "evidence": "Codzienne wizyty co najmniej na karmienie i sprzątanie klatki, również w weekendy; referencje, licencje, ubezpieczenie.",
+      "appliesTo": "ptaki",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Zostaw dane lekarza i całodobowej lecznicy, poinformuj lekarza, daj pisemne upoważnienie i ustal płatność.",
+      "sourceIndex": 2,
+      "evidence": "Kontakt do weterynarza i całodobowej lecznicy; pisemna zgoda na pomoc w nagłych przypadkach; sposób zapłaty.",
+      "appliesTo": "ptaki",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Ptaki często ukrywają chorobę; w hotelu z innymi ptakami pytaj o oddzielanie i wymagane badania.",
+      "sourceIndex": 2,
+      "evidence": "Ptaki często ukrywają chorobę; zaświadczenie zdrowia, ptaki oddzielone, mycie rąk między ptakami.",
+      "appliesTo": "pobyt z innymi ptakami",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Znajome przedmioty pomagają; ptaka trzymaj poza wzrokiem i słuchem psów i kotów; ustal częstotliwość wiadomości.",
+      "sourceIndex": 2,
+      "evidence": "Własny pokarm, klatka, zabawki pomagają; ptak z dala od wzroku i słuchu psów i kotów; codzienny telefon minimum.",
+      "appliesTo": "ptaki",
+      "accessedAt": "2026-11-22"
+    }
   ],
   "authorDisplay": "Redakcja ZOO24 (szkic przygotowany z pomocą AI)",
   "status": "needs_review",
   "demo": false,
   "publishedAt": null,
-  "updatedAt": "2026-11-22T20:00:00.000Z",
+  "updatedAt": "2026-11-22T18:45:32.872Z",
   "relatedServicePaths": [],
   "disclosure": null,
   "reviewNotes": [
@@ -66,12 +123,51 @@
     "Nie podano konkretnych badań (np. w kierunku chorób zakaźnych) — odesłano do lekarza weterynarii.",
     "Link /narzedzia/lista-dla-opiekuna: sprawdzić istnienie przed publikacją."
   ],
-  "reviewedBy": null,
-  "animal": { "group": "ptaki", "species": null, "breed": null },
-  "needs": ["wyjazdy", "profesjonalna-pomoc"],
+  "reviewedBy": "claude-ai-editor",
+  "animal": {
+    "group": "ptaki",
+    "species": null,
+    "breed": null
+  },
+  "needs": [
+    "wyjazdy",
+    "profesjonalna-pomoc"
+  ],
   "format": "guide",
   "risk": "standard",
-  "review": { "required": "editor", "by": null, "byKind": null, "at": null, "note": null, "waitingReason": "czeka na przegląd redakcyjny" },
+  "review": {
+    "required": "editor",
+    "by": "claude-ai-editor",
+    "byKind": "ai",
+    "at": "2026-11-22T18:45:32.872Z",
+    "note": "Recenzja redaktora-AI: twierdzenia sprawdzone ze źródłami 22.11.2026 (ponowny odczyt stron). S7: zgodne; własna klatka ujęta jako pytanie do placówki (nie wszystkie ją przyjmują). Bez parametrów żywienia i warunków — klasa standard.",
+    "waitingReason": null
+  },
   "reviewDueAt": "2027-05-22T00:00:00.000Z",
-  "legacyPath": null
+  "legacyPath": null,
+  "editorialDecision": {
+    "decision": "approved",
+    "by": "claude-ai-editor",
+    "byKind": "ai",
+    "at": "2026-11-22T18:45:32.872Z",
+    "contentHash": "77e2981452755797a3a02f6342daab8053eb44e53832db6643e4c865cf3e3888",
+    "evidenceRef": "claims[] w pliku + weryfikacja źródeł 22.11.2026",
+    "excludedCategoriesChecked": [
+      "health",
+      "legal",
+      "insurance",
+      "sponsored",
+      "dynamic_prices",
+      "welfare",
+      "nutrition",
+      "environment",
+      "temperature_humidity_lighting",
+      "cohabitation",
+      "transport"
+    ],
+    "notes": [
+      "S7: zgodne; własna klatka ujęta jako pytanie do placówki (nie wszystkie ją przyjmują). Bez parametrów żywienia i warunków — klasa standard."
+    ],
+    "publishAfter": "serwis live na https://zoo24.pl; publikacja przez gateway (cms.publish_approved_version)"
+  }
 }

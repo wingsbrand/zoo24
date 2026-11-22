@@ -13,7 +13,8 @@ describe("treści redakcyjne (content/blog)", () => {
       expect(a.status, a.slug).toBe("needs_review");
       expect(a.animal?.group, a.slug).toBeTruthy();
       expect(a.risk, a.slug).toBeTruthy();
-      expect(a.review?.by ?? null, a.slug).toBeNull();
+      // Recenzja AI dopuszczalna tylko dla klasy standard (V3, ADR-013); pozostałe czekają na człowieka.
+      if (a.review?.by) expect([a.risk, a.review.byKind, a.review.by], a.slug).toEqual(["standard", "ai", "claude-ai-editor"]);
       expect(checkArticlePolicy(a), a.slug).toEqual([]);
     }
   });

@@ -20,7 +20,7 @@ describe("cms.publish_approved_version — artykuły TOP 3", () => {
   it("polityka z repo (shadow do live): dry_run, w bazie nadal needs_review", async () => {
     const store = tempStore();
     const r = await publishApprovedArticles(store, loadPolicy(), { now: NOW, fetchFn: async () => ({ status: 200 }) });
-    expect(r.map((x) => x.slug).sort()).toEqual([...SLUGS].sort());
+    expect(SLUGS.every((s) => r.some((x) => x.slug === s))).toBe(true);
     expect(r.every((x) => x.outcome === "dry_run")).toBe(true);
     expect(store.read().articles.filter((a) => SLUGS.includes(a.slug)).every((a) => a.status === "needs_review")).toBe(true);
   });
@@ -29,13 +29,14 @@ describe("cms.publish_approved_version — artykuły TOP 3", () => {
     const store = tempStore();
     await store.transact((s) => { const a = s.articles.find((x) => x.slug === "cane-corso-n63")!; a.body = ["stara wersja"]; }); // baza ze starą treścią
     let published = new Set<string>();
-    const fetchFn = async (u: string) => ({ status: [...published].some((s) => u.endsWith(`/blog/${s}`)) ? 200 : 404 });
+    const fetchFn = async (u: string) => ({ status: [...published].some((s) => u.endsWith(`/${s}`)) ? 200 : 404 });
     const policy = livePolicy();
     const orig = store.transact.bind(store);
     store.transact = (async (fn: never) => { const r = await orig(fn); published = new Set(store.read().articles.filter((a) => a.status === "published").map((a) => a.slug)); return r; }) as typeof store.transact;
     const r1 = await publishApprovedArticles(store, policy, { now: NOW, fetchFn });
-    expect(r1.every((x) => x.outcome === "executed" && x.reasons.includes("VERIFIED_READBACK"))).toBe(true);
-    expect(r1.every((x) => x.url?.startsWith("https://zoo24.pl/blog/"))).toBe(true);
+    expect(r1.filter((x) => x.outcome !== "needs_human").every((x) => x.outcome === "executed" && x.reasons.includes("VERIFIED_READBACK"))).toBe(true);
+    expect(r1.filter((x) => SLUGS.includes(x.slug)).every((x) => x.url?.startsWith("https://zoo24.pl/blog/"))).toBe(true);
+    expect(r1.filter((x) => !SLUGS.includes(x.slug) && x.url).every((x) => x.url!.startsWith("https://zoo24.pl/poradniki/"))).toBe(true);
     const s = store.read();
     for (const slug of SLUGS) {
       const a = s.articles.find((x) => x.slug === slug)!;
@@ -44,8 +45,8 @@ describe("cms.publish_approved_version — artykuły TOP 3", () => {
       expect(a.reviewedBy).toBe("claude-ai-editor");
     }
     const r2 = await publishApprovedArticles(store, policy, { now: NOW, fetchFn });
-    expect(r2.every((x) => x.outcome === "already_done")).toBe(true);
-    expect(s.audit.filter((e) => e.action === "article_published" && e.actor === "gateway:cms")).toHaveLength(3);
+    expect(r2.filter((x) => x.outcome !== "needs_human").every((x) => x.outcome === "already_done")).toBe(true);
+    expect(s.audit.filter((e) => e.action === "article_published" && e.actor === "gateway:cms" && SLUGS.includes(e.entityId!))).toHaveLength(3);
   });
 
   it("live, ale strona nie odpowiada 200 (DNS/HTTPS w trakcie) => zapis w bazie i READBACK_PENDING, bez ponownego zapisu", async () => {

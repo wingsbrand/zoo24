@@ -5,7 +5,7 @@
 import type { Article } from "../types";
 import type { Store } from "../store/file-store";
 import { loadContentArticles } from "../demo/seed";
-import { checkArticlePolicy, requiredReviewRole } from "../content/editorial";
+import { articleHref, checkArticlePolicy, requiredReviewRole } from "../content/editorial";
 import { articleContentHash, isEditorialApprovalCurrent } from "./article-review";
 import { executeAction, operationKey, type ActionRequest, type Executor, type GatewayOutcome } from "./gateway";
 import { claim, complete, enqueue } from "./registry";
@@ -25,7 +25,7 @@ export class StoreCmsExecutor implements Executor {
 
   register(key: string, slug: string) { this.keyToSlug.set(key, slug); }
 
-  private url(slug: string) { return `${this.siteOrigin.replace(/\/$/, "")}/blog/${slug}`; }
+  private url(slug: string) { return `${this.siteOrigin.replace(/\/$/, "")}${articleHref(this.approved.get(slug)!)}`; }
 
   async execute(_req: ActionRequest, key: string) {
     const slug = this.keyToSlug.get(key)!;
