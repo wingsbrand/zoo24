@@ -15,13 +15,13 @@
     "## Charakter według standardu FCI",
     "Standard opisuje border collie jako psa czujnego, wytrwałego i pracowitego, bardzo podatnego na prowadzenie przez człowieka, a także gorliwego, reagującego i inteligentnego. Pies nie powinien być ani nerwowy, ani agresywny — agresja i nadmierna lękliwość są w standardzie wadami dyskwalifikującymi. Pamiętaj, że to opis wzorca rasy: zachowanie konkretnego psa zależy również od rodziców, socjalizacji i codziennego prowadzenia.",
     "## Ile ruchu i zajęć potrzebuje border collie",
-    "Standard opisuje psa pracującego, wytrwałego i niestrudzonego w ruchu, dlatego planując życie z border collie, myśl nie tylko o spacerach, ale też o zajęciach dla głowy. RSPCA przypomina, że każdy pies potrzebuje regularnego ruchu, możliwości chodzenia i biegania oraz wychodzenia co najmniej raz dziennie, o ile lekarz weterynarii nie zaleci inaczej. Psy bez wystarczającego zajęcia mogą się nudzić i odczuwać dyskomfort.",
+    "Standard opisuje psa pracującego, wytrwałego i niestrudzonego w ruchu, dlatego planując życie z border collie, myśl nie tylko o spacerach, ale też o zajęciach dla głowy. RSPCA przypomina, że każdy pies potrzebuje regularnego ruchu, możliwości chodzenia i biegania oraz wychodzenia co najmniej raz dziennie, o ile lekarz weterynarii nie zaleci inaczej. Psy bez wystarczającego zajęcia mogą się nudzić lub odczuwać stres.",
     "W praktyce opiekunowie border collie łączą spacery w zróżnicowanym terenie z zabawami węchowymi, nauką nowych sygnałów i zajęciami w szkole dla psów. Ilość i rodzaj wysiłku dopasuj do wieku psa — o planie aktywności dla szczenięcia i młodego psa porozmawiaj z lekarzem weterynarii. Równie ważna jak aktywność jest nauka odpoczynku: spokojne leżenie na posłaniu to umiejętność, którą warto ćwiczyć od początku.",
     "## Pielęgnacja szaty",
     "Podwójna szata z gęstym podszerstkiem wymaga regularnego przeczesywania, a w okresie linienia — częstszego. U odmiany średnio długowłosej szczególną uwagę zwróć na miejsca, gdzie włos łatwo się filcuje: za uszami, na portkach i na kicie. Krótkowłose psy zwykle potrzebują mniej pracy, ale również one linieją. Przy okazji czesania kontroluj pazury, uszy i opuszki łap, szczególnie po spacerach w terenie.",
     "## Wychowanie i socjalizacja",
-    "Według RSPCA całe szkolenie powinno opierać się na nagradzaniu — jedzeniem, zabawą lub pochwałą — ponieważ nagradzane zachowania pies chętniej powtarza. U psa opisywanego jako wrażliwy na prowadzenie i reagujący to szczególnie ważne: krótkie, jasne sesje z nagrodą budują współpracę. Na początek ćwicz przywołanie, chodzenie na luźnej smyczy, spokojne mijanie rowerów i samochodów oraz pozostawanie samemu przez krótki czas.",
-    "Socjalizację zaczyna hodowca. RSPCA wskazuje, że szczenięta są szczególnie otwarte na poznawanie ludzi, innych zwierząt i otoczenia mniej więcej od 3. do 14. tygodnia życia. W nowym domu kontynuuj spokojne, stopniowe poznawanie różnych miejsc, dźwięków i ludzi. Jeśli pies reaguje nadmiernie na ruch lub bodźce, skonsultuj się z doświadczonym behawiorystą.",
+    "Według RSPCA całe szkolenie powinno opierać się na nagradzaniu — jedzeniem, zabawkami lub pochwałą — ponieważ nagradzane zachowania pies chętniej powtarza. U psa opisywanego jako wrażliwy na prowadzenie i reagujący to szczególnie ważne: krótkie, jasne sesje z nagrodą budują współpracę. Na początek ćwicz przywołanie, chodzenie na luźnej smyczy, spokojne mijanie rowerów i samochodów oraz pozostawanie samemu przez krótki czas.",
+    "Socjalizację zaczyna hodowca. RSPCA wskazuje, że szczenięta są szczególnie otwarte na poznawanie ludzi, innych zwierząt i otoczenia mniej więcej od 3. do 14. tygodnia życia. W nowym domu kontynuuj spokojne, stopniowe poznawanie różnych miejsc, dźwięków i ludzi. Jeśli pies reaguje nadmiernie na ruch lub bodźce, skonsultuj się z lekarzem weterynarii oraz z doświadczonym behawiorystą.",
     "## Zdrowie — z kim rozmawiać",
     "Rasy psów mogą mieć predyspozycje do określonych problemów zdrowotnych, dlatego zapytaj hodowcę, jakie badania wykonano u rodziców szczeniąt, i poproś o wyniki. Z lekarzem weterynarii omów profilaktykę oraz bezpieczny poziom wysiłku dla rosnącego psa. Ten artykuł nie zastępuje porady lekarza weterynarii.",
     "## Jak wybrać hodowlę",
@@ -62,22 +62,82 @@
     }
   ],
   "claims": [
-    { "text": "Standard FCI nr 297; kraj pochodzenia Wielka Brytania; oficjalna publikacja 24.06.1987.", "sourceIndex": 0, "evidence": "FCI-Standard N° 297; ORIGIN: Great Britain; date of publication of the official valid standard 24.06.1987.", "appliesTo": "border collie", "accessedAt": "2026-11-22" },
-    { "text": "Grupa 1 FCI, sekcja 1 — owczarki, z próbami pracy; przeznaczenie: pies pasterski.", "sourceIndex": 0, "evidence": "Group 1 Sheepdogs and Cattle Dogs, Section 1 Sheepdogs, with working trial; Utilization: Sheepdog.", "appliesTo": "border collie", "accessedAt": "2026-11-22" },
-    { "text": "Idealna wysokość w kłębie psa 53 cm, suki nieco niższe; standard nie podaje masy.", "sourceIndex": 0, "evidence": "Size and weight: ideal height males 53 cm, females slightly less; no weight given.", "appliesTo": "border collie, dorosłe psy i suki", "accessedAt": "2026-11-22" },
-    { "text": "Temperament: czujny, wytrwały, pracowity, bardzo podatny na prowadzenie, gorliwy, reagujący, inteligentny; ani nerwowy, ani agresywny.", "sourceIndex": 0, "evidence": "Behaviour/Temperament: alert, tenacious, hard-working, great tractability; keen, responsive, intelligent; neither nervous nor aggressive.", "appliesTo": "border collie (wzorzec rasy)", "accessedAt": "2026-11-22" },
-    { "text": "Dwie odmiany szaty: średnio długa i krótka; gęsty podszerstek chroni przed pogodą; biel nie powinna dominować.", "sourceIndex": 0, "evidence": "Coat: moderately long or smooth; soft dense undercoat gives weather resistance; white should never predominate.", "appliesTo": "border collie", "accessedAt": "2026-11-22" },
-    { "text": "Ruch swobodny, płynny i niestrudzony.", "sourceIndex": 0, "evidence": "Gait: free, smooth and tireless, minimum lift of feet, great stealth and speed.", "appliesTo": "border collie", "accessedAt": "2026-11-22" },
-    { "text": "Szkolenie powinno opierać się na nagradzaniu.", "sourceIndex": 2, "evidence": "RSPCA: all training should be reward based; rewarded behaviour is more likely to be repeated.", "appliesTo": "psy ogólnie", "accessedAt": "2026-11-22" },
-    { "text": "Szczenięta są szczególnie otwarte na socjalizację mniej więcej od 3. do 14. tygodnia życia.", "sourceIndex": 3, "evidence": "RSPCA: puppies especially open to learning about people, animals and surroundings from about three to 14 weeks.", "appliesTo": "szczenięta ogólnie", "accessedAt": "2026-11-22" },
-    { "text": "Psy potrzebują regularnego ruchu, wychodzenia co najmniej raz dziennie i zajęcia, by się nie nudzić.", "sourceIndex": 4, "evidence": "RSPCA: regular exercise, out at least once a day unless vet advises otherwise; can become bored without enough to do.", "appliesTo": "psy ogólnie", "accessedAt": "2026-11-22" },
-    { "text": "Związek Kynologiczny w Polsce jest pełnoprawnym członkiem FCI.", "sourceIndex": 5, "evidence": "Strona członków FCI dla Polski: Zwiazek Kynologiczny w Polsce, status Full member.", "appliesTo": "Polska", "accessedAt": "2026-11-22" }
+    {
+      "text": "Standard FCI nr 297; kraj pochodzenia Wielka Brytania; oficjalna publikacja 24.06.1987.",
+      "sourceIndex": 0,
+      "evidence": "FCI-Standard N° 297; ORIGIN: Great Britain; date of publication of the official valid standard 24.06.1987.",
+      "appliesTo": "border collie",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Grupa 1 FCI, sekcja 1 — owczarki, z próbami pracy; przeznaczenie: pies pasterski.",
+      "sourceIndex": 0,
+      "evidence": "Group 1 Sheepdogs and Cattle Dogs, Section 1 Sheepdogs, with working trial; Utilization: Sheepdog.",
+      "appliesTo": "border collie",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Idealna wysokość w kłębie psa 53 cm, suki nieco niższe; standard nie podaje masy.",
+      "sourceIndex": 0,
+      "evidence": "Size and weight: ideal height males 53 cm, females slightly less; no weight given.",
+      "appliesTo": "border collie, dorosłe psy i suki",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Temperament: czujny, wytrwały, pracowity, bardzo podatny na prowadzenie, gorliwy, reagujący, inteligentny; ani nerwowy, ani agresywny.",
+      "sourceIndex": 0,
+      "evidence": "Behaviour/Temperament: alert, tenacious, hard-working, great tractability; keen, responsive, intelligent; neither nervous nor aggressive.",
+      "appliesTo": "border collie (wzorzec rasy)",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Dwie odmiany szaty: średnio długa i krótka; gęsty podszerstek chroni przed pogodą; biel nie powinna dominować.",
+      "sourceIndex": 0,
+      "evidence": "Coat: moderately long or smooth; soft dense undercoat gives weather resistance; white should never predominate.",
+      "appliesTo": "border collie",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Ruch swobodny, płynny i niestrudzony.",
+      "sourceIndex": 0,
+      "evidence": "Gait: free, smooth and tireless, minimum lift of feet, great stealth and speed.",
+      "appliesTo": "border collie",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Szkolenie powinno opierać się na nagradzaniu.",
+      "sourceIndex": 2,
+      "evidence": "RSPCA: all training should be reward based; rewarded behaviour is more likely to be repeated.",
+      "appliesTo": "psy ogólnie",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Szczenięta są szczególnie otwarte na socjalizację mniej więcej od 3. do 14. tygodnia życia.",
+      "sourceIndex": 3,
+      "evidence": "RSPCA: puppies especially open to learning about people, animals and surroundings from about three to 14 weeks.",
+      "appliesTo": "szczenięta ogólnie",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Psy potrzebują regularnego ruchu, wychodzenia co najmniej raz dziennie i zajęcia, by się nie nudzić.",
+      "sourceIndex": 4,
+      "evidence": "RSPCA: regular exercise, out at least once a day unless vet advises otherwise; can become bored without enough to do.",
+      "appliesTo": "psy ogólnie",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Związek Kynologiczny w Polsce jest pełnoprawnym członkiem FCI.",
+      "sourceIndex": 5,
+      "evidence": "Strona członków FCI dla Polski: Zwiazek Kynologiczny w Polsce, status Full member.",
+      "appliesTo": "Polska",
+      "accessedAt": "2026-11-22"
+    }
   ],
   "authorDisplay": "Redakcja ZOO24 (szkic przygotowany z pomocą AI)",
   "status": "needs_review",
   "demo": false,
   "publishedAt": null,
-  "updatedAt": "2026-11-22T22:00:00.000Z",
+  "updatedAt": "2026-11-22T19:53:42.272Z",
   "relatedServicePaths": [],
   "disclosure": null,
   "reviewNotes": [
@@ -86,11 +146,52 @@
     "Standard nie podaje masy ciała — świadomie nie podano żadnej liczby. „Great tractability” przetłumaczono jako „bardzo podatny na prowadzenie” (opis wzorca, nie ocena łatwości szkolenia).",
     "Brak list chorób, diagnoz, dawek, produktów i cen. Ruch, szkolenie i socjalizacja oparte na RSPCA; zdania o sportach kynologicznych i pielęgnacji podczas linienia to ogólna wiedza redakcyjna bez liczb — do oceny redaktora."
   ],
-  "reviewedBy": null,
-  "animal": { "group": "psy", "species": "pies-domowy", "breed": "border collie" },
-  "needs": ["wybor-zwierzecia", "codzienna-opieka"],
+  "reviewedBy": "claude-ai-editor",
+  "animal": {
+    "group": "psy",
+    "species": "pies-domowy",
+    "breed": "border collie"
+  },
+  "needs": [
+    "wybor-zwierzecia",
+    "codzienna-opieka"
+  ],
   "format": "species_card",
   "risk": "standard",
-  "review": { "required": "editor", "by": null, "byKind": null, "at": null, "note": null, "waitingReason": "czeka na przegląd redakcyjny" },
-  "reviewDueAt": "2027-05-22T00:00:00.000Z"
+  "review": {
+    "required": "editor",
+    "by": "claude-ai-editor",
+    "byKind": "ai",
+    "at": "2026-11-22T19:53:42.272Z",
+    "note": "Recenzja redaktora-AI: twierdzenia sprawdzone ze źródłami 22.11.2026 (ponowny odczyt stron i PDF). RSPCA: „distressed or bored” oddane wiernie; przy zmianach zachowania odesłanie też do lekarza weterynarii (zgodnie z RSPCA). Sporty kynologiczne i pielęgnacja w okresie linienia — wzmianki ogólne bez liczb; klasa standard. „Great tractability” = „bardzo podatny na prowadzenie” — tłumaczenie poprawne.",
+    "waitingReason": null
+  },
+  "reviewDueAt": "2027-05-22T00:00:00.000Z",
+  "editorialDecision": {
+    "decision": "approved",
+    "by": "claude-ai-editor",
+    "byKind": "ai",
+    "at": "2026-11-22T19:53:42.272Z",
+    "contentHash": "e1df0d0aa0dd551c6229932b20e807ee7ed46f069a70e0049552e9dfdcaf411e",
+    "evidenceRef": "claims[] w pliku + weryfikacja źródeł 22.11.2026 (FCI/FIFe/CFA/RSPCA/The Cat Group)",
+    "excludedCategoriesChecked": [
+      "health",
+      "legal",
+      "insurance",
+      "sponsored",
+      "dynamic_prices",
+      "welfare",
+      "nutrition",
+      "environment",
+      "temperature_humidity_lighting",
+      "cohabitation",
+      "transport"
+    ],
+    "notes": [
+      "RSPCA: „distressed or bored” oddane wiernie; przy zmianach zachowania odesłanie też do lekarza weterynarii (zgodnie z RSPCA).",
+      "Sporty kynologiczne i pielęgnacja w okresie linienia — wzmianki ogólne bez liczb; klasa standard.",
+      "„Great tractability” = „bardzo podatny na prowadzenie” — tłumaczenie poprawne."
+    ],
+    "publishAfter": "serwis live na https://zoo24.pl; publikacja przez gateway (cms.publish_approved_version)"
+  }
 }

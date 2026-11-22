@@ -7,8 +7,8 @@
   "body": [
     "Doberman to pies, którego trudno pomylić z inną rasą: elegancka, muskularna sylwetka, krótka, przylegająca sierść i charakterystyczne podpalania. Oficjalny opis rasy — pod nazwą Dobermann — zawiera standard Międzynarodowej Federacji Kynologicznej (FCI) nr 143. Poniżej streszczamy najważniejsze informacje ze standardu i podpowiadamy, o czym pomyśleć przed przyjęciem psa tej rasy.",
     "## Pochodzenie i klasyfikacja FCI",
-    "Według standardu FCI nr 143 doberman pochodzi z Niemiec. Data oficjalnej publikacji obowiązującego standardu to 13.11.2015 r., a angielskie tłumaczenie nosi datę 17.12.2015; językiem oficjalnym standardu jest niemiecki. FCI zalicza rasę do grupy 2 — pinczery i sznaucery, molosy oraz szwajcarskie psy pasterskie i do bydła, sekcja 1 — pinczery i sznaucery, z próbami pracy. Standard określa przeznaczenie rasy jako psa do towarzystwa, obrony i pracy.",
-    "Rys historyczny w standardzie przypomina, że to jedyna niemiecka rasa nosząca nazwisko swojego pierwszego hodowcy — Friedricha Louisa Dobermanna (1834–1894), który hodował te psy w latach 70. XIX wieku. Psy tej rasy były często wykorzystywane jako psy stróżujące i policyjne, a na początku XX wieku oficjalnie uznano je za psy policyjne.",
+    "Według standardu FCI nr 143 doberman pochodzi z Niemiec. Data oficjalnej publikacji obowiązującego standardu to 13.11.2015 r., a angielskie tłumaczenie nosi datę 17.12.2015; językiem oficjalnym standardu jest niemiecki. FCI zalicza rasę do grupy 2 — pinczery i sznaucery, molosy oraz szwajcarskie psy górskie i do bydła, sekcja 1 — pinczery i sznaucery, z próbami pracy. Standard określa przeznaczenie rasy jako psa do towarzystwa, obrony i pracy.",
+    "Rys historyczny w standardzie przypomina, że to jedyna niemiecka rasa nosząca nazwisko swojego pierwszego hodowcy — Friedricha Louisa Dobermanna (1834–1894), który hodował te psy w latach 70. XIX wieku. Psy tej rasy były często wykorzystywane jako psy stróżujące i policyjne, a do początku XX wieku oficjalnie uznano je za psy policyjne.",
     "## Wygląd: wzrost, waga, szata i umaszczenie",
     "Standard opisuje dobermana jako psa średniej wielkości, silnego i muskularnego, którego eleganckie linie ciała, dumna postawa i wyraz zdecydowania odpowiadają idealnemu obrazowi psa. Sylwetka jest zbliżona do kwadratu, szczególnie u psów.",
     "Wysokość w kłębie według standardu wynosi 68–72 cm u psów i 63–68 cm u suk; pożądana jest średnia wielkość. Masa ciała to około 40–45 kg u psów i około 32–35 kg u suk.",
@@ -20,9 +20,9 @@
     "## Ile ruchu i zajęć potrzebuje doberman",
     "Standard opisuje psa, który lubi pracę, a jego ruch jako sprężysty, elegancki, zwinny, swobodny i wydajny. RSPCA przypomina, że każdy pies potrzebuje regularnego ruchu, możliwości chodzenia i biegania oraz wyjścia co najmniej raz dziennie, o ile lekarz weterynarii nie zaleci inaczej, a także zabawy — bez zajęcia psy mogą się nudzić. W praktyce sprawdzają się spacery w zróżnicowanym terenie, zabawy węchowe i nauka nowych zadań. Intensywność wysiłku u szczeniąt i młodych psów omów z lekarzem weterynarii.",
     "## Pielęgnacja szaty",
-    "Krótka, przylegająca sierść bez podszerstka nie wymaga skomplikowanej pielęgnacji. Wystarczy regularne przeczesanie miękką szczotką lub rękawicą oraz kontrola pazurów i uszu. Krótka sierść słabo izoluje, więc zimą i w deszczu obserwuj, jak pies znosi pogodę, i skracaj spacer, jeśli marznie. Od szczenięcia przyzwyczajaj psa do dotykania łap, uszu i pyska.",
+    "Krótka, przylegająca sierść bez podszerstka nie wymaga skomplikowanej pielęgnacji. Wystarczy regularne przeczesanie miękką szczotką lub rękawicą oraz kontrola pazurów i uszu. Standard nie dopuszcza podszerstka, dlatego zimą i w deszczu obserwuj, jak pies znosi pogodę; jeśli masz wątpliwości, porozmawiaj z lekarzem weterynarii. Od szczenięcia przyzwyczajaj psa do dotykania łap, uszu i pyska.",
     "## Wychowanie i socjalizacja",
-    "Według RSPCA całe szkolenie powinno opierać się na nagradzaniu — jedzeniem, zabawą lub pochwałą — bo nagradzane zachowanie pies chętniej powtarza. U dużego, silnego psa szczególnie ważne są: przywołanie, spokojne chodzenie na smyczy, opanowanie przy gościach i umiejętność odpoczynku. Dobrym startem są zajęcia dla szczeniąt prowadzone metodami pozytywnymi.",
+    "Według RSPCA całe szkolenie powinno opierać się na nagradzaniu — jedzeniem, zabawkami lub pochwałą — bo nagradzane zachowanie pies chętniej powtarza. U dużego, silnego psa szczególnie ważne są: przywołanie, spokojne chodzenie na smyczy, opanowanie przy gościach i umiejętność odpoczynku. Dobrym startem są zajęcia dla szczeniąt prowadzone metodami pozytywnymi.",
     "Socjalizację rozpoczyna hodowca: RSPCA wskazuje, że szczenięta są szczególnie otwarte na poznawanie ludzi, zwierząt i otoczenia mniej więcej od 3. do 14. tygodnia życia. W nowym domu kontynuuj spokojne poznawanie ludzi, psów, dźwięków i miejsc. Jeśli zauważysz nadmierną reaktywność lub lęk, skonsultuj się z doświadczonym behawiorystą.",
     "## Zdrowie — z kim rozmawiać",
     "Rasy psów mogą mieć predyspozycje do niektórych problemów zdrowotnych. Zapytaj hodowcę, jakie badania wykonano u rodziców szczeniąt, i poproś o wgląd w wyniki. Profilaktykę i wszelkie wątpliwości omawiaj z lekarzem weterynarii. Ten artykuł nie zastępuje porady lekarza weterynarii.",
@@ -65,23 +65,89 @@
     }
   ],
   "claims": [
-    { "text": "Standard FCI nr 143; kraj pochodzenia Niemcy; oficjalna publikacja 13.11.2015; dokument EN z 17.12.2015.", "sourceIndex": 0, "evidence": "FCI-Standard N° 143; ORIGIN: Germany; official valid standard 13.11.2015; nagłówek 17.12.2015/EN.", "appliesTo": "doberman", "accessedAt": "2026-11-22" },
-    { "text": "Grupa 2 FCI, sekcja 1 — pinczery i sznaucery, z próbami pracy; pies do towarzystwa, obrony i pracy.", "sourceIndex": 0, "evidence": "Group 2, Section 1 Pinscher and Schnauzer, with working trial; Utilization: companion, protection and working dog.", "appliesTo": "doberman", "accessedAt": "2026-11-22" },
-    { "text": "Nazwa od Friedricha Louisa Dobermanna (1834–1894), hodowla w latach 70. XIX w.", "sourceIndex": 0, "evidence": "Historical summary: only German breed named after original breeder F. L. Dobermann; bred in the 1870s.", "appliesTo": "doberman", "accessedAt": "2026-11-22" },
-    { "text": "Wysokość w kłębie 68–72 cm (psy), 63–68 cm (suki); masa ok. 40–45 kg (psy), ok. 32–35 kg (suki).", "sourceIndex": 0, "evidence": "Size and weight: males 68–72 cm, females 63–68 cm; males about 40–45 kg, females about 32–35 kg.", "appliesTo": "doberman, dorosłe psy i suki", "accessedAt": "2026-11-22" },
-    { "text": "Sierść krótka, twarda, gęsta, bez podszerstka; czarna lub brązowa z rdzawoczerwonymi podpalaniami.", "sourceIndex": 0, "evidence": "Coat: short, hard, dense; undercoat not allowed; two varieties black or brown with rust red tan markings.", "appliesTo": "doberman", "accessedAt": "2026-11-22" },
-    { "text": "Uszy pozostawione naturalne; ogon pozostawiony naturalny.", "sourceIndex": 0, "evidence": "Ears: left natural, ideally lying close to cheeks. Tail: left natural, ideally carried high in slight curve.", "appliesTo": "doberman (aktualny standard)", "accessedAt": "2026-11-22" },
-    { "text": "Usposobienie przyjazne i spokojne, przywiązany do rodziny; średni temperament, czujność i próg pobudliwości; dobry kontakt z opiekunem; lubi pracę.", "sourceIndex": 0, "evidence": "Behaviour: friendly and calm, very devoted to family; medium temperament, sharpness and threshold of irritation; good contact; enjoys working.", "appliesTo": "doberman (wzorzec rasy)", "accessedAt": "2026-11-22" },
-    { "text": "Szkolenie powinno opierać się na nagradzaniu.", "sourceIndex": 2, "evidence": "RSPCA: all training should be reward based; rewarded behaviour is more likely to be repeated.", "appliesTo": "psy ogólnie", "accessedAt": "2026-11-22" },
-    { "text": "Szczenięta są szczególnie otwarte na socjalizację mniej więcej od 3. do 14. tygodnia życia.", "sourceIndex": 3, "evidence": "RSPCA: puppies especially open to learning about people, animals and surroundings from about three to 14 weeks.", "appliesTo": "szczenięta ogólnie", "accessedAt": "2026-11-22" },
-    { "text": "Psy potrzebują regularnego ruchu, wyjścia co najmniej raz dziennie i zabawy.", "sourceIndex": 4, "evidence": "RSPCA: regular exercise, out at least once a day unless vet advises otherwise; play and safe toys.", "appliesTo": "psy ogólnie", "accessedAt": "2026-11-22" },
-    { "text": "Związek Kynologiczny w Polsce jest pełnoprawnym członkiem FCI.", "sourceIndex": 5, "evidence": "Strona członków FCI dla Polski: Zwiazek Kynologiczny w Polsce, status Full member.", "appliesTo": "Polska", "accessedAt": "2026-11-22" }
+    {
+      "text": "Standard FCI nr 143; kraj pochodzenia Niemcy; oficjalna publikacja 13.11.2015; dokument EN z 17.12.2015.",
+      "sourceIndex": 0,
+      "evidence": "FCI-Standard N° 143; ORIGIN: Germany; official valid standard 13.11.2015; nagłówek 17.12.2015/EN.",
+      "appliesTo": "doberman",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Grupa 2 FCI, sekcja 1 — pinczery i sznaucery, z próbami pracy; pies do towarzystwa, obrony i pracy.",
+      "sourceIndex": 0,
+      "evidence": "Group 2, Section 1 Pinscher and Schnauzer, with working trial; Utilization: companion, protection and working dog.",
+      "appliesTo": "doberman",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Nazwa od Friedricha Louisa Dobermanna (1834–1894), hodowla w latach 70. XIX w.",
+      "sourceIndex": 0,
+      "evidence": "Historical summary: only German breed named after original breeder F. L. Dobermann; bred in the 1870s.",
+      "appliesTo": "doberman",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Wysokość w kłębie 68–72 cm (psy), 63–68 cm (suki); masa ok. 40–45 kg (psy), ok. 32–35 kg (suki).",
+      "sourceIndex": 0,
+      "evidence": "Size and weight: males 68–72 cm, females 63–68 cm; males about 40–45 kg, females about 32–35 kg.",
+      "appliesTo": "doberman, dorosłe psy i suki",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Sierść krótka, twarda, gęsta, bez podszerstka; czarna lub brązowa z rdzawoczerwonymi podpalaniami.",
+      "sourceIndex": 0,
+      "evidence": "Coat: short, hard, dense; undercoat not allowed; two varieties black or brown with rust red tan markings.",
+      "appliesTo": "doberman",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Uszy pozostawione naturalne; ogon pozostawiony naturalny.",
+      "sourceIndex": 0,
+      "evidence": "Ears: left natural, ideally lying close to cheeks. Tail: left natural, ideally carried high in slight curve.",
+      "appliesTo": "doberman (aktualny standard)",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Usposobienie przyjazne i spokojne, przywiązany do rodziny; średni temperament, czujność i próg pobudliwości; dobry kontakt z opiekunem; lubi pracę.",
+      "sourceIndex": 0,
+      "evidence": "Behaviour: friendly and calm, very devoted to family; medium temperament, sharpness and threshold of irritation; good contact; enjoys working.",
+      "appliesTo": "doberman (wzorzec rasy)",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Szkolenie powinno opierać się na nagradzaniu.",
+      "sourceIndex": 2,
+      "evidence": "RSPCA: all training should be reward based; rewarded behaviour is more likely to be repeated.",
+      "appliesTo": "psy ogólnie",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Szczenięta są szczególnie otwarte na socjalizację mniej więcej od 3. do 14. tygodnia życia.",
+      "sourceIndex": 3,
+      "evidence": "RSPCA: puppies especially open to learning about people, animals and surroundings from about three to 14 weeks.",
+      "appliesTo": "szczenięta ogólnie",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Psy potrzebują regularnego ruchu, wyjścia co najmniej raz dziennie i zabawy.",
+      "sourceIndex": 4,
+      "evidence": "RSPCA: regular exercise, out at least once a day unless vet advises otherwise; play and safe toys.",
+      "appliesTo": "psy ogólnie",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Związek Kynologiczny w Polsce jest pełnoprawnym członkiem FCI.",
+      "sourceIndex": 5,
+      "evidence": "Strona członków FCI dla Polski: Zwiazek Kynologiczny w Polsce, status Full member.",
+      "appliesTo": "Polska",
+      "accessedAt": "2026-11-22"
+    }
   ],
   "authorDisplay": "Redakcja ZOO24 (szkic przygotowany z pomocą AI)",
   "status": "needs_review",
   "demo": false,
   "publishedAt": null,
-  "updatedAt": "2026-11-22T22:00:00.000Z",
+  "updatedAt": "2026-11-22T19:53:42.272Z",
   "relatedServicePaths": [],
   "disclosure": null,
   "reviewNotes": [
@@ -91,11 +157,53 @@
     "Świadomie pominięto zdanie standardu „Easy to train” (zgodnie z zasadą: bez ocen łatwości szkolenia); pozostały opis temperamentu wiernie wg standardu.",
     "Brak list chorób, diagnoz, dawek, produktów i cen. Zdanie o słabej izolacji krótkiej sierści zimą to ogólna wiedza redakcyjna (standard potwierdza brak podszerstka) — do oceny redaktora."
   ],
-  "reviewedBy": null,
-  "animal": { "group": "psy", "species": "pies-domowy", "breed": "doberman" },
-  "needs": ["wybor-zwierzecia", "codzienna-opieka"],
+  "reviewedBy": "claude-ai-editor",
+  "animal": {
+    "group": "psy",
+    "species": "pies-domowy",
+    "breed": "doberman"
+  },
+  "needs": [
+    "wybor-zwierzecia",
+    "codzienna-opieka"
+  ],
   "format": "species_card",
   "risk": "standard",
-  "review": { "required": "editor", "by": null, "byKind": null, "at": null, "note": null, "waitingReason": "czeka na przegląd redakcyjny" },
-  "reviewDueAt": "2027-05-22T00:00:00.000Z"
+  "review": {
+    "required": "editor",
+    "by": "claude-ai-editor",
+    "byKind": "ai",
+    "at": "2026-11-22T19:53:42.272Z",
+    "note": "Recenzja redaktora-AI: twierdzenia sprawdzone ze źródłami 22.11.2026 (ponowny odczyt stron i PDF). Nazwa grupy FCI 2 poprawiona („Swiss Mountain and Cattle Dogs” = psy górskie i do bydła). „By the beginning of the 20th century” oddane jako „do początku XX wieku”. Usunięto niepoparte twierdzenie o słabej izolacji sierści i zalecenie skracania spacerów (tolerancja zimna = welfare); zostaje fakt ze standardu (brak podszerstka) i odesłanie do lekarza weterynarii — klasa standard. Uszy i ogon: wyłącznie fakt ze standardu (naturalne).",
+    "waitingReason": null
+  },
+  "reviewDueAt": "2027-05-22T00:00:00.000Z",
+  "editorialDecision": {
+    "decision": "approved",
+    "by": "claude-ai-editor",
+    "byKind": "ai",
+    "at": "2026-11-22T19:53:42.272Z",
+    "contentHash": "f09c4b10b9ecdb5bdf7574ad492152545995ffa459219275ec13e134673ee398",
+    "evidenceRef": "claims[] w pliku + weryfikacja źródeł 22.11.2026 (FCI/FIFe/CFA/RSPCA/The Cat Group)",
+    "excludedCategoriesChecked": [
+      "health",
+      "legal",
+      "insurance",
+      "sponsored",
+      "dynamic_prices",
+      "welfare",
+      "nutrition",
+      "environment",
+      "temperature_humidity_lighting",
+      "cohabitation",
+      "transport"
+    ],
+    "notes": [
+      "Nazwa grupy FCI 2 poprawiona („Swiss Mountain and Cattle Dogs” = psy górskie i do bydła).",
+      "„By the beginning of the 20th century” oddane jako „do początku XX wieku”.",
+      "Usunięto niepoparte twierdzenie o słabej izolacji sierści i zalecenie skracania spacerów (tolerancja zimna = welfare); zostaje fakt ze standardu (brak podszerstka) i odesłanie do lekarza weterynarii — klasa standard.",
+      "Uszy i ogon: wyłącznie fakt ze standardu (naturalne)."
+    ],
+    "publishAfter": "serwis live na https://zoo24.pl; publikacja przez gateway (cms.publish_approved_version)"
+  }
 }

@@ -36,7 +36,10 @@ describe("cms.publish_approved_version — artykuły TOP 3", () => {
     const r1 = await publishApprovedArticles(store, policy, { now: NOW, fetchFn });
     expect(r1.filter((x) => x.outcome !== "needs_human").every((x) => x.outcome === "executed" && x.reasons.includes("VERIFIED_READBACK"))).toBe(true);
     expect(r1.filter((x) => SLUGS.includes(x.slug)).every((x) => x.url?.startsWith("https://zoo24.pl/blog/"))).toBe(true);
-    expect(r1.filter((x) => !SLUGS.includes(x.slug) && x.url).every((x) => x.url!.startsWith("https://zoo24.pl/poradniki/"))).toBe(true);
+    const { loadContentArticles } = await import("@/lib/demo/seed");
+    const { articleHref } = await import("@/lib/content/editorial");
+    const href = new Map(loadContentArticles().map((a) => [a.slug, articleHref(a)]));
+    expect(r1.filter((x) => x.url).every((x) => x.url === `https://zoo24.pl${href.get(x.slug)}`)).toBe(true); // /blog/* i /poradniki/* wg basePath
     const s = store.read();
     for (const slug of SLUGS) {
       const a = s.articles.find((x) => x.slug === slug)!;
