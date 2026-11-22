@@ -5,19 +5,19 @@ Wersja pakietu 1.0 · aktualizacja 2026-11-22 · tryb **design/shadow** · nic n
 - [x] O0: realny audyt repo i zgodności z MVP — `ops/runtime/READINESS.md` (brak git/hostingu/GSC/IG — zapisane, nie obchodzone)
 - [x] sześć agentów skopiowanych (`.claude/agents/zoo24-ops-*.md`, hashe = MANIFEST) — **wykrycie w sesji: wymaga nowej sesji Claude Code** (lista agentów tej sesji sprzed instalacji)
 - [x] istniejący CLAUDE.md bezpiecznie scalony — sekcja między znacznikami `zoo24-ops:appendix`, instalator idempotentny (`scripts/ops-install.mjs`)
-- [ ] wybór runtime i prawdziwy koszt/limity — propozycja w `ADR-RUNTIME.md`; blokada: brak repo GitHub; koszt N/A
+- [ ] wybór runtime i prawdziwy koszt/limity — zadania chmurowe Claude Code (ADR-RUNTIME.md); repo GitHub już istnieje — zadania jeszcze NIE utworzone; koszt: tylko w limicie subskrypcji (ADR-013)
 - [x] registry, gateway, izolacja i uprawnienia — `lib/ops/{registry,gateway,policy,pause,knowledge,guards}.ts` (lease/fencing, allowlista operacji, polityka chroniona przed agentami)
 - [x] sześć przepływów i testy na mockach — handlery ról `lib/ops/roles.ts` zintegrowane z `lib/content`, `lib/social`, `lib/seo`, analityką; dispatcher shadow `lib/ops/dispatcher.ts`
 - [ ] dostęp/źródła/rights i redaktor/operator — lista w `ACTIVATION_PACKAGE.md`
 - [x] shadow i wymagane testy awarii — `QA_REPORT.md` (P01–P08, R01–R11, C01–C06/C10, S01–S09)
-- [x] rzeczywista polityka zaakceptowana — 2026-11-22 właściciel: „shadow z harmonogramem, tylko odczyt”, pilot 7 dni; `ops/config/activation.json` = `APPROVED_SHADOW_READONLY_PILOT`, podpis zgodny z hashem (test `isPolicyApproved`), wszystkie autonomie zapisu = false
-- [x] repozytorium git lokalnie (`main`, 2 commity) — **brak zdalnego GitHub** (warunek zadań chmurowych)
+- [x] rzeczywista polityka zaakceptowana — v1 (shadow, tylko odczyt) zastąpiona przez v2 `APPROVED_AI_EDITOR_SHADOW_UNTIL_LIVE` (ADR-013); podpis zgodny z hashem (test `isPolicyApproved`)
+- [x] repozytorium: prywatne `wingsbrand/zoo24` (GitHub, `main`); staging https://zoo24.vercel.app (noindex) — **to nie jest serwis live**, publikacje nadal `dry_run`
 - [x] decyzja właściciela 2026-11-22 (ADR-013): redaktor-AI zatwierdza treści poza kategoriami wrażliwymi, **bez pilota**, koszt tylko w limicie subskrypcji; polityka v2 podpisana; testy 255/255
-- [x] decyzja właściciela 2026-11-22: **bez zadań Desktop** — pilot startuje dopiero na zadaniach chmurowych po założeniu prywatnego repo GitHub przez właściciela; do tego czasu tylko ręczne przebiegi shadow
+- [x] decyzja właściciela 2026-11-22: **bez zadań Desktop**; harmonogram tylko jako zadania chmurowe. Warunek (repo GitHub) spełniony; pilot 7 dni anulowany (ADR-013). Uruchomienie zadań chmurowych w trybie shadow — czeka na potwierdzenie właściciela
 - [ ] pierwsza produkcja / canary z receipts — zablokowane (serwis offline, bramka G2)
 - [ ] harmonogramy działają i przeżywają zamknięcie sesji — `ops/config/schedule.json` wszystko `enabled:false`; **żadnych zadań nie utworzono**
 - [ ] test pauzy także zewnętrznego schedulera — logika przetestowana na mocku (R09); realne Meta N/A
-- [ ] raport tygodniowy i obserwacja pilota — po aktywacji
+- [ ] raport tygodniowy — po uruchomieniu zadań chmurowych (bez pilota)
 
 ## Integracja z kodem
 | Rola | Czyta | Wynik shadow (22.11, realny stan lokalny) |
