@@ -1,6 +1,7 @@
 // Tematy poradników i przypisanie artykułów (po slugu, potem regułami) — bez zmian w plikach content/*.json.
-// Filtrowanie hubu /poradniki (?temat=, ?q=) jako czyste funkcje (testowane).
+// Filtrowanie hubu /poradniki (?temat=, ?q=, ?zwierze=, ?potrzeba=) jako czyste funkcje (testowane).
 import type { Article } from "../types";
+import { GROUPS, NEEDS, isGroupSlug, isNeedSlug, type GroupSlug, type NeedSlug } from "../taxonomy/animals";
 
 export type TopicSlug = "rasy-psow" | "rasy-kotow" | "pielegnacja" | "wybor-uslugi" | "zachowanie";
 
@@ -89,6 +90,24 @@ export function parseHubQuery(sp: Record<string, string | string[] | undefined>)
   return { temat: isTopicSlug(rawTemat) ? rawTemat : null, q, filtered: rawTemat !== undefined || rawQ !== undefined };
 }
 
+/** Portal V3: dodatkowe osie hubu — ?zwierze=<grupa> i ?potrzeba=<potrzeba>. Nieznane wartości = brak filtra. */
+export interface PortalHubQuery extends HubQuery {
+  zwierze: GroupSlug | null;
+  potrzeba: NeedSlug | null;
+}
+
+export function parsePortalHubQuery(sp: Record<string, string | string[] | undefined>): PortalHubQuery {
+  const base = parseHubQuery(sp);
+  const rawZ = first(sp.zwierze);
+  const rawP = first(sp.potrzeba);
+  return {
+    ...base,
+    zwierze: isGroupSlug(rawZ) ? rawZ : null,
+    potrzeba: isNeedSlug(rawP) ? rawP : null,
+    filtered: base.filtered || rawZ !== undefined || rawP !== undefined,
+  };
+}
+
 export const isPublished = (a: Article) => a.status === "published";
 
 /** Proste wyszukiwanie: wszystkie słowa zapytania muszą wystąpić w tytule lub leadzie (bez polskich znaków). */
@@ -111,25 +130,47 @@ export interface HubResult {
   items: Article[];
   /** licznik per temat po zastosowaniu zapytania q (bez filtra tematu) */
   counts: Record<TopicSlug, number>;
-  /** liczba wszystkich pasujących do q (pozycja „Wszystkie”) */
+  /** liczba wszystkich pasujących do q i osi zwierzę/potrzeba (pozycja „Wszystkie” w tematach) */
   countAll: number;
+  /** licznik per grupa zwierząt (po q, temacie i potrzebie — bez filtra zwierzęcia) */
+  countsByGroup: Record<GroupSlug, number>;
+  /** licznik per potrzeba (po q, temacie i zwierzęciu — bez filtra potrzeby) */
+  countsByNeed: Record<NeedSlug, number>;
+}
+
+export interface HubFilter {
+  temat: TopicSlug | null;
+  q: string;
+  zwierze?: GroupSlug | null;
+  potrzeba?: NeedSlug | null;
 }
 
 /** Filtrowanie hubu — wyłącznie artykuły opublikowane. */
-export function filterArticles(all: Article[], query: Pick<HubQuery, "temat" | "q">): HubResult {
+export function filterArticles(all: Article[], query: HubFilter): HubResult {
   const published = all.filter(isPublished);
   const byQ = published.filter((a) => matchesQuery(a, query.q));
+  const okTopic = (a: Article) => !query.temat || topicSlugForArticle(a) === query.temat;
+  const okGroup = (a: Article) => !query.zwierze || a.animal?.group === query.zwierze;
+  const okNeed = (a: Article) => !query.potrzeba || (a.needs ?? []).includes(query.potrzeba);
+  // Liczniki fasetowe: każda oś liczona z pozostałymi filtrami (bez własnego).
+  const forTopics = byQ.filter((a) => okGroup(a) && okNeed(a));
   const counts = Object.fromEntries(TOPICS.map((t) => [t.slug, 0])) as Record<TopicSlug, number>;
-  for (const a of byQ) counts[topicSlugForArticle(a)]++;
-  const items = query.temat ? byQ.filter((a) => topicSlugForArticle(a) === query.temat) : byQ;
-  return { totalPublished: published.length, items: sortArticles(items), counts, countAll: byQ.length };
+  for (const a of forTopics) counts[topicSlugForArticle(a)]++;
+  const countsByGroup = Object.fromEntries(GROUPS.map((g) => [g.slug, 0])) as Record<GroupSlug, number>;
+  for (const a of byQ) if (okTopic(a) && okNeed(a) && a.animal && a.animal.group in countsByGroup) countsByGroup[a.animal.group]++;
+  const countsByNeed = Object.fromEntries(NEEDS.map((n) => [n.slug, 0])) as Record<NeedSlug, number>;
+  for (const a of byQ) if (okTopic(a) && okGroup(a)) for (const n of new Set(a.needs ?? [])) if (n in countsByNeed) countsByNeed[n]++;
+  const items = forTopics.filter(okTopic);
+  return { totalPublished: published.length, items: sortArticles(items), counts, countAll: forTopics.length, countsByGroup, countsByNeed };
 }
 
 /** Href hubu z zachowaniem parametrów; pusty filtr = czyste /poradniki. */
-export function hubHref(p: { temat?: TopicSlug | null; q?: string }): string {
+export function hubHref(p: { temat?: TopicSlug | null; q?: string; zwierze?: GroupSlug | null; potrzeba?: NeedSlug | null }): string {
   const sp = new URLSearchParams();
   if (p.temat) sp.set("temat", p.temat);
   if (p.q) sp.set("q", p.q);
+  if (p.zwierze) sp.set("zwierze", p.zwierze);
+  if (p.potrzeba) sp.set("potrzeba", p.potrzeba);
   const s = sp.toString();
   return s ? `/poradniki?${s}` : "/poradniki";
 }

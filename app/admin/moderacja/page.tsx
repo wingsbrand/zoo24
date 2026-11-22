@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { Inbox } from "lucide-react";
 import { getStore } from "@/lib/store/file-store";
-import { CONTACT_TOPICS, KIND_LABELS, ROLE_OPTIONS, STATUS_LABELS } from "@/lib/submissions";
+import { CONTACT_TOPICS, OTHER_CATEGORY, ROLE_OPTIONS, STATUS_LABELS, kindLabel } from "@/lib/submissions";
+import { GROUPS } from "@/lib/taxonomy/animals";
 import { CATEGORIES, CITIES } from "@/lib/site";
 import { formatWarsaw } from "@/lib/time";
 import { Alert, Badge, Breadcrumbs, Card, EmptyState } from "@/components/ui";
@@ -16,11 +17,17 @@ const FIELD_LABELS: Record<string, string> = {
   topic: "Temat", message: "Wiadomość", consent: "Zgoda", url: "Adres strony",
   companyName: "Nazwa firmy", acceptTerms: "Akceptacja regulaminu", acceptPrivacy: "Informacja o prywatności", mode: "Rodzaj zgłoszenia",
   businessSlug: "Profil (przejęcie/aktualizacja)", page: "Dotyczy strony",
+  targetBusinessId: "Id profilu docelowego", placeName: "Polecane miejsce", categoryOther: "Inna usługa",
+  animals: "Zwierzęta (wg polecającego)", source: "Skąd zna miejsce", relation: "Relacja z firmą",
 };
+
+const GROUP_NAMES: Record<string, string> = Object.fromEntries(GROUPS.map((g) => [g.slug, g.name]));
 
 function label(k: string) { return FIELD_LABELS[k] ?? k; }
 function value(k: string, v: string) {
-  if (k === "category") return CATEGORIES[v as keyof typeof CATEGORIES]?.name ?? v;
+  if (k === "category") return v === OTHER_CATEGORY ? "inna usługa" : CATEGORIES[v as keyof typeof CATEGORIES]?.name ?? v;
+  if (k === "animals") return v.split(",").map((g) => GROUP_NAMES[g] ?? g).join(", ");
+  if (k === "relation") return v === "recommender" ? "polecający (nie reprezentuje firmy — brak praw do profilu)" : v;
   if (k === "city") return CITIES[v as keyof typeof CITIES]?.name ?? v;
   if (k === "role") return ROLE_OPTIONS[v as keyof typeof ROLE_OPTIONS] ?? v;
   if (k === "topic") return CONTACT_TOPICS[v as keyof typeof CONTACT_TOPICS] ?? v;
@@ -55,11 +62,11 @@ export default async function Moderacja({ searchParams }: { searchParams: Promis
           {recent.entityId} · {formatWarsaw(recent.at)}. Status jest już widoczny dla zgłaszającego na stronie <Link href={`/status-zgloszenia?kod=${recent.entityId}`}>statusu zgłoszenia</Link>. <Link href="/admin/moderacja?widok=rozpatrzone">Zobacz rozpatrzone</Link>.
         </Alert>
       )}
-      <Alert tone="info">Zaakceptowanie zgłoszenia firmy <strong>nie publikuje profilu automatycznie</strong> — w F1 profil dodaje się ręcznie po sprawdzeniu, czy zgłaszający reprezentuje firmę. E-mail zgłaszającego służy tylko do weryfikacji; nie jest publikowany.</Alert>
+      <Alert tone="info">Zaakceptowanie zgłoszenia firmy <strong>nie publikuje profilu automatycznie</strong> — w F1 profil dodaje się ręcznie po sprawdzeniu, czy zgłaszający reprezentuje firmę. E-mail zgłaszającego służy tylko do weryfikacji; nie jest publikowany. <strong>Polecenie miejsca</strong> pochodzi od osoby spoza firmy: nie tworzy profilu, dane sprawdź w publicznych źródłach, a polecający nie uzyskuje prawa do zarządzania profilem. Przejęcie/aktualizację profilu (z id profilu docelowego) zatwierdzaj dopiero po potwierdzeniu prawa do reprezentowania firmy przez jej oficjalny kanał.</Alert>
 
       {list.length === 0 ? (
         <EmptyState icon={<Inbox aria-hidden />} title={showDone ? "Brak rozpatrzonych zgłoszeń" : "Brak zgłoszeń do moderacji"}>
-          {showDone ? "Tu pojawią się zgłoszenia po decyzji." : "Nowe zgłoszenia z formularzy „Dodaj firmę”, „Zgłoś błąd” i „Kontakt” pojawią się tutaj."}
+          {showDone ? "Tu pojawią się zgłoszenia po decyzji." : "Nowe zgłoszenia z formularzy „Dodaj firmę”, „Poleć miejsce”, „Zgłoś błąd” i „Kontakt” pojawią się tutaj."}
         </EmptyState>
       ) : (
         <ul className="space-y-4">
@@ -67,7 +74,7 @@ export default async function Moderacja({ searchParams }: { searchParams: Promis
             <Card as="li" key={sub.code} className="p-5">
               <div className="flex flex-wrap items-center gap-2">
                 <span className="font-mono text-sm font-bold">{sub.code}</span>
-                <Badge tone="brand">{KIND_LABELS[sub.kind]}</Badge>
+                <Badge tone="brand">{kindLabel(sub.kind)}</Badge>
                 <Badge tone={sub.status === "pending" ? "warn" : sub.status === "approved" ? "ok" : "danger"}>{STATUS_LABELS[sub.status]}</Badge>
                 <span className="text-xs text-ink-muted">wpłynęło {formatWarsaw(sub.createdAt)}{sub.processedAt ? ` · rozpatrzone ${formatWarsaw(sub.processedAt)}` : ""}</span>
               </div>

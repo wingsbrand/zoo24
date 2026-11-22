@@ -174,16 +174,19 @@ export function loadAssets(): SocialAsset[] {
 }
 
 /** Prawdziwe (nie-DEMO) treści redakcyjne z content/blog/*.json — startują jako needs_review. */
+/** Treści z repo: content/blog (dawne adresy /blog/*) i content/guides (portal V3). Zawsze trafiają jako nieopublikowane. */
 export function loadContentArticles(): Article[] {
-  const dir = path.join(/*turbopackIgnore: true*/ process.cwd(), "content", "blog");
-  try {
-    return fs.readdirSync(dir).filter((f) => f.endsWith(".json")).map((f) => {
-      const a = JSON.parse(fs.readFileSync(path.join(dir, f), "utf8")) as Article;
-      return { ...a, demo: false, status: a.status === "published" ? "needs_review" : a.status, publishedAt: null };
-    });
-  } catch {
-    return [];
-  }
+  return ["blog", "guides"].flatMap((sub) => {
+    const dir = path.join(/*turbopackIgnore: true*/ process.cwd(), "content", sub);
+    try {
+      return fs.readdirSync(dir).filter((f) => f.endsWith(".json")).map((f) => {
+        const a = JSON.parse(fs.readFileSync(path.join(dir, f), "utf8")) as Article;
+        return { ...a, demo: false, status: a.status === "published" ? "needs_review" : a.status, publishedAt: null } as Article;
+      });
+    } catch {
+      return [];
+    }
+  });
 }
 
 export function buildSeedState(opts: { production?: boolean } = {}): AppState {

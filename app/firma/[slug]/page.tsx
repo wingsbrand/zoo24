@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { Cat, Dog, FlaskConical, Flag, Globe, MapPin, Phone, PhoneOff, Store } from "lucide-react";
+import { Cat, Dog, FlaskConical, Flag, Globe, Heart, MapPin, Phone, PhoneOff, Store } from "lucide-react";
 import { getStore } from "@/lib/store/file-store";
 import { CATEGORIES, CITIES } from "@/lib/site";
 import type { Business } from "@/lib/types";
@@ -169,6 +169,9 @@ export default async function BusinessPage({ params, searchParams }: P) {
               ) : (
                 <p className="text-ink-muted">Brak potwierdzonej informacji — zapytaj firmę przed wizytą.</p>
               )}
+              {b.petTypes.length > 0 && (
+                <p className="mt-2 text-sm text-ink-muted">Według źródła danych (sekcja „Skąd mamy te dane”). Inne zwierzęta — zapytaj firmę przed wizytą.</p>
+              )}
             </Section>
 
             <Section id="obszar" title={address ? "Adres salonu" : "Obszar działania"}>
@@ -202,11 +205,21 @@ export default async function BusinessPage({ params, searchParams }: P) {
               </Link>
             </Section>
 
-            <Section id="wlasciciel" title="Prowadzisz tę firmę?">
-              <p className="text-ink-muted">Zaktualizuj dane lub przejmij profil — bezpłatnie, po weryfikacji przez moderatora.</p>
-              <Link href={`/dodaj-firme?firma=${encodeURIComponent(b.slug)}`} className={buttonClasses("secondary", "md", "mt-3")}>
-                <Store aria-hidden size={18} /> Zaktualizuj profil firmy
-              </Link>
+            <Section id="wlasciciel" title="Prowadzisz tę firmę albo znasz inne miejsce?">
+              <ul className="space-y-4">
+                <li>
+                  <Link href={`/dodaj-firme?profil=${encodeURIComponent(b.slug)}`} className={buttonClasses("secondary", "md")}>
+                    <Store aria-hidden size={18} /> To Twoja firma? Zaktualizuj lub przejmij profil
+                  </Link>
+                  <p className="mt-1 text-sm text-ink-muted">Dla właściciela lub upoważnionego pracownika. Bezpłatnie, po weryfikacji prawa do reprezentowania firmy — do tego czasu profil się nie zmienia.</p>
+                </li>
+                <li>
+                  <Link href="/polec-miejsce" className={buttonClasses("ghost", "md", "-ml-4")}>
+                    <Heart aria-hidden size={18} /> Znasz inne dobre miejsce? Poleć je
+                  </Link>
+                  <p className="mt-1 text-sm text-ink-muted">Redakcja sprawdzi polecenie w publicznych źródłach, zanim cokolwiek opublikuje.</p>
+                </li>
+              </ul>
             </Section>
           </div>
         </div>

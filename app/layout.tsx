@@ -25,6 +25,10 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = { themeColor: "#0e4f5c" };
 
+// Strony statyczne (o-nas, regulamin…) odświeżane co 5 min — stopka/nawigacja pokazują aktualne niepuste działy
+// po publikacji treści w bazie (bez czekania na kolejny build).
+export const revalidate = 300;
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pl" className={`${inter.variable} ${bricolage.variable}`}>

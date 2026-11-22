@@ -119,8 +119,19 @@ class SupabaseAppStore extends SupabaseStore implements AppStore {
   /** Jednorazowa synchronizacja po starcie (treści z repo, migracje, w produkcji usunięcie DEMO). */
   async syncOnce(): Promise<void> {
     const probe = this.read();
-    if (!syncState(probe, { production: IS_PRODUCTION })) return;
-    await this.transact((s) => { syncState(s, { production: IS_PRODUCTION }); });
+    if (syncState(probe, { production: IS_PRODUCTION })) {
+      await this.transact((s) => { syncState(s, { production: IS_PRODUCTION }); });
+    }
+    // Publikacja artykułów zaakceptowanych przez redaktora-AI — tylko na działającym serwerze (nie w `next build`)
+    // i tylko gdy podpisana polityka daje tryb live_scoped. Idempotentne (dedupe/lease w rejestrze ops).
+    if (IS_PRODUCTION && process.env.NEXT_PHASE !== "phase-production-build") {
+      const { loadPolicy, effectiveMode } = await import("../ops/policy");
+      const p = loadPolicy();
+      if (effectiveMode(p, this.read().ops.mode) === "live_scoped") {
+        const { publishApprovedArticles } = await import("../ops/cms-publish");
+        void publishApprovedArticles(this, p).catch(() => undefined);
+      }
+    }
   }
 }
 
