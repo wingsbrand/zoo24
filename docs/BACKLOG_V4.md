@@ -31,8 +31,7 @@
 | A16 social/newsletter | Social | plan | Paczka 12 postów (Mode 0), decyzje D-03, D-09 |
 
 ## Następne pozycje (kolejność)
-1. Redaktor-AI: ponowna akceptacja 4 wzorców (Border collie, wyjazd psa, objętość akwarium, gady) → publikacja przez gateway.
-2. Wyjazd publikacji z hooka modułu do endpointu/crona z sekretem; re-weryfikacja read-back (24 potwierdzenia READBACK_PENDING).
+1. Publikacja 4 wzorców (zaakceptowane przez redaktora-AI) i domknięcie 24 READBACK_PENDING — czeka tylko na `CRON_SECRET` w Vercel (D-10); endpoint i cron wdrożone.
 3. LocalBusiness/ProfessionalService + indywidualne opisy meta dla 3 indeksowalnych profili firm (A08/A15).
 4. Pomiar: zdarzenia narzędzi (wynik kalkulatora, eksport listy — bez treści), wyszukiwania bez wyników (bez utrwalania fraz z danymi osobowymi), sprawdzenie /api/out bez dubli.
 5. Redirecty 301 — tylko po D-05; odtworzenia treści pod dawnymi adresami (kolejka w `docs/seo/HISTORICAL_URL_MAP.csv`).
