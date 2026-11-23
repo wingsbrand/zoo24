@@ -1,0 +1,35 @@
+{
+  "schema_version": "zoo24.ops.job-result.v1",
+  "job_id": null,
+  "role": "content",
+  "mode": "shadow",
+  "policy_version": "unsigned",
+  "status": "produced",
+  "reason": null,
+  "artifacts": [
+    {"id":"drafts/2026-11-23-cane-corso-n63.md","type":"editorial_review","note":"needs_changes"},
+    {"id":"drafts/2026-11-23-kot-brytyjski-n66.md","type":"editorial_review","note":"needs_human (żywienie) + needs_changes"},
+    {"id":"drafts/2026-11-23-maltanczyk-n77.md","type":"editorial_review","note":"needs_changes"},
+    {"id":"drafts/2026-11-23-brief-kolejny.md","type":"brief","note":"N/A — brak GA4 TOP 100"}
+  ],
+  "checks": [
+    {"name":"queue_size","status":"info","detail":"20 artykułów needs_review w content/blog/"},
+    {"name":"claims_coverage","status":"fail","detail":"17/20 z mapą claimów 11–17; cane-corso-n63 i maltanczyk-n77 po 1 claim; kot-brytyjski-n66 0 claimów"},
+    {"name":"claim_source_index_valid","status":"pass","detail":"0 nieprawidłowych sourceIndex"},
+    {"name":"placeholders_diagnostics","status":"pass","detail":"brak placeholderów, diagnoz, dawek ani cen (automatyczne wyszukiwanie)"},
+    {"name":"knowledge_evidence","status":"blocked","detail":"gałąź ops/knowledge nie istnieje na origin; odwołania w reviewNotes do kart evidence-2026-11-22 niesprawdzalne"},
+    {"name":"approval_hash_consistency","status":"not_run","detail":"nie przeliczano contentHash (poza zakresem shadow)"},
+    {"name":"basenji_fci_dates","status":"warn","detail":"basenji-n78: publikacja standardu 08.09.2026 vs wersja EN 06.10.2026 (późniejsza data dokumentu niż publikacji) — zweryfikować przy ponownym odczycie"}
+  ],
+  "external_actions": [],
+  "metrics": [],
+  "cost": {"value": null, "currency": null, "status": "unknown"},
+  "next_tasks": [
+    "Uzupełnić claims[] dla cane-corso-n63, maltanczyk-n77, kot-brytyjski-n66 i ponowna akceptacja z nowym hashem",
+    "Zweryfikować daty FCI 43 w basenji-n78",
+    "Odtworzyć lub dostarczyć karty faktów ops/knowledge (gałąź nie istnieje)"
+  ],
+  "human_decisions_required": [
+    "kot-brytyjski-n66: sekcja żywienie/masa ciała (kategoria wrażliwa) — usunąć czy przekazać do review człowieka"
+  ]
+}
