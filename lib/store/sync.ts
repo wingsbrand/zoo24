@@ -6,6 +6,12 @@ import { loadContentArticles } from "../demo/seed";
 import { loadRealBusinesses } from "../catalog/real-businesses";
 import { emptyOpsState } from "../ops/types";
 import { requiredReviewRole } from "../content/editorial";
+import { loadApprovedRedirects } from "../seo/approved-redirects";
+
+/** JSON z posortowanymi kluczami — porównanie odporne na przestawianie kluczy przez Postgres jsonb. */
+function canonical(v: unknown): string {
+  return JSON.stringify(v, (_k, x) => (x && typeof x === "object" && !Array.isArray(x) ? Object.fromEntries(Object.entries(x).sort(([a], [b]) => a.localeCompare(b))) : x));
+}
 
 /** Metadane klasyfikacji i prezentacji (poza hashem treści) — odświeżane z repo także dla opublikowanych materiałów. */
 const META_FIELDS = ["animal", "needs", "format", "risk", "authorDisplay", "related"] as const;
@@ -28,7 +34,7 @@ export function syncState(state: AppState, opts: SyncOptions): boolean {
     if (!a) continue;
     let touched = false;
     for (const k of META_FIELDS) {
-      if (JSON.stringify(a[k] ?? null) !== JSON.stringify(file[k] ?? null)) { (a as unknown as Record<string, unknown>)[k] = file[k]; touched = true; }
+      if (canonical(a[k] ?? null) !== canonical(file[k] ?? null)) { (a as unknown as Record<string, unknown>)[k] = file[k]; touched = true; }
     }
     if (!touched) continue;
     changed = true;
@@ -37,6 +43,12 @@ export function syncState(state: AppState, opts: SyncOptions): boolean {
       a.status = "needs_review";
       state.audit.push({ at: new Date().toISOString(), actor: "system:sync", entity: "article", entityId: a.slug, action: "article_unpublished_risk_reclassified", meta: { required: requiredReviewRole(a) } });
     }
+  }
+  // Zatwierdzone przekierowania z repo (content/redirects) — dopisywane/aktualizowane po oldPath; nic nie jest usuwane.
+  for (const r of loadApprovedRedirects()) {
+    const i = state.legacyUrls.findIndex((x) => x.oldPath === r.oldPath);
+    if (i < 0) { state.legacyUrls.push(r); changed = true; }
+    else if (canonical(state.legacyUrls[i]) !== canonical(r)) { state.legacyUrls[i] = r; changed = true; }
   }
   // Migracje schematu (nowe pola z bezpiecznymi wartościami domyślnymi).
   if (!Array.isArray(state.submissions)) { state.submissions = []; changed = true; }
