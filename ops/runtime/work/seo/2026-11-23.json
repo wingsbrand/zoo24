@@ -1,0 +1,42 @@
+{
+  "schema_version": "zoo24.ops.job-result.v1",
+  "job_id": "seo-shadow-2026-11-23",
+  "role": "seo",
+  "mode": "shadow",
+  "policy_version": "unsigned",
+  "status": "produced",
+  "reason": null,
+  "artifacts": [],
+  "checks": [
+    {"name": "inventory_decisions_empty", "result": "ok", "note": "docs/audits/old-url-inventory.csv: 0/100 wierszy z proposed_action, wszystkie status=draft"},
+    {"name": "content_status", "result": "warn", "note": "5/5 artykułów w content/blog ma status needs_review, publishedAt=null; scripts/seo-meta-check.mjs oczekuje 404 dla n66/n67 — URL nie są jeszcze publiczne (200)"}
+  ],
+  "external_actions": [],
+  "metrics": [
+    {"name": "ga4_organic_sessions_28d", "value": 0, "unit": "sessions", "source": "data/exports/ga4-28d.json", "period_start": "2026-10-23", "period_end": "2026-11-19", "data_status": "final", "note": "serwis offline / brak tagu — prawdziwe 0 wg eksportu"},
+    {"name": "gsc_clicks", "value": null, "unit": "clicks", "source": null, "period_start": null, "period_end": null, "data_status": "unavailable", "note": "N/A: brak property GSC"},
+    {"name": "historical_organic_sessions_peak_month", "value": 33702, "unit": "sessions", "source": "docs/audits/top100-ga4-report.md", "period_start": "2024-01", "period_end": "2024-01", "data_status": "historical", "note": "GA4 2022-02..2025-02; deklaracja 100k+ dotyczy ruchu łącznego, nie organicznego"}
+  ],
+  "proposals": [
+    {"rank": 1, "path": "/blog/kot-brytyjski-n66", "historical_ga4_organic_sessions": 13648, "segment": "B", "proposed_action": "revise_same_url", "reason": "Intencja informacyjna (rasa kota), brak odpowiednika w katalogu usług — redirect = zmiana intencji (R7). Nowy autorski artykuł istnieje (needs_review, editorialDecision=approved przez claude-ai-editor, 2 źródła). Publikacja pod tym samym adresem = 200. Temat nie-zdrowotny, więc ADR-013 dopuszcza AI-redaktora. Uwaga: tylko 2 źródła — rozważyć dopełnienie przed publikacją.", "blocked_by": "publikacja przez gateway; potwierdzenie 200 po publikacji", "next": "po publikacji sprawdzić 200, canonical, meta, indeksowalność"},
+    {"rank": 2, "path": "/blog/cane-corso-n63", "historical_ga4_organic_sessions": 11812, "segment": "B", "proposed_action": "revise_same_url", "reason": "Jak wyżej: poradnik o rasie psa, intencja informacyjna; artykuł gotowy (needs_review, 3 źródła). Redirect niewskazany — brak równoważnego materiału.", "blocked_by": "publikacja przez gateway", "next": "j.w."},
+    {"rank": 3, "path": "/blog/maltanczyk-n77", "historical_ga4_organic_sessions": 11604, "segment": "B", "proposed_action": "revise_same_url", "reason": "Jak wyżej; artykuł gotowy (needs_review, 3 źródła). Najkrótsza treść z trójki (~2,7 tys. znaków) — zasadne rozszerzenie o praktyczne sekcje przed publikacją, bez nowych niezweryfikowanych twierdzeń.", "blocked_by": "publikacja przez gateway", "next": "zlecić Content rozbudowę"},
+    {"rank": 4, "path": "/", "historical_ga4_organic_sessions": 10598, "segment": "A", "proposed_action": "keep_200", "reason": "Strona główna/brand — zawsze 200 z komunikatem nowej formuły (A/brand). Jedyny cel dopuszczalnego aliasu /2-strona-glowna -> / (301, wymaga zatwierdzenia). Sesje obejmują ruch nawigacyjny/brandowy, nie jest to ruch tematyczny do odzyskania.", "blocked_by": "brak", "next": "sprawdzić title/meta/canonical nowej strony głównej"},
+    {"rank": 5, "path": "/blog/kot-syberyjski-n67", "historical_ga4_organic_sessions": 10399, "segment": "B", "proposed_action": "revise_same_url", "reason": "Poradnik o rasie kota, intencja informacyjna; artykuł gotowy (needs_review, 3 źródła, ~6 tys. znaków).", "blocked_by": "publikacja przez gateway", "next": "j.w."}
+  ],
+  "excluded_notes": [
+    "/blog/nosowka-u-psa-...-n93 (6975), /blog/zapalenie-stawow-u-psa-n86 (5582) i inne ZDROWIE: poza zakresem AI-redaktora (ADR-013) — decyzja: recenzent wet. albo 404/410; w tym przebiegu pominięte.",
+    "/brand/360-pan-miesko (6546) i /brand/208-wiejska-zagroda (5633): segment C — domyślnie 404/410, bez redirectu na hub (R6); wymagają osobnej decyzji.",
+    "Mapowanie nie wpisano do CSV (ops/config i docs nie są edytowane w tej roli); to propozycja shadow. Żadnych redirectów nie wdrożono."
+  ],
+  "cost": {"value": null, "currency": null, "status": "unknown"},
+  "next_tasks": [
+    "Weekly: po publikacji 5 propozycji zweryfikować HTTP 200/canonical/robots oraz wpis w sitemapie",
+    "Przygotować propozycje dla kolejnych 5 URL (kot-bengalski-n65, jakie-rasy-psow-...-n144, shih-tzu-n62, buldog-francuski-n64, ...)",
+    "Zalecić Content: dopełnić źródła n66 i rozbudować n77"
+  ],
+  "human_decisions_required": [
+    "Segment C (/brand/*, kategorie): potwierdzić domyślne 404/410 albo wskazać realny poradnik zakupowy",
+    "Artykuły zdrowotne z TOP 100: recenzent weterynaryjny czy 404/410"
+  ]
+}
