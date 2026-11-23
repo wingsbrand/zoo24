@@ -26,9 +26,14 @@ export function hasHumanReview(a: Pick<Article, "editorialDecision" | "review" |
   return !!(r?.by && r.byKind === "human" && r.at && !isAgentIdentity(r.by));
 }
 
-/** Krótkie ujawnienie wymagane przy materiale; null = niepotrzebne (przegląd człowieka). */
+/**
+ * Ujawnienie AI przy materiale. Decyzja właściciela D-01 (arkusz decyzji, 2026-11-23): „usuń wszelkie informacje
+ * dotyczące AI na moją odpowiedzialność” — przy materiałach nie pokazujemy dopisku o AI. Nigdzie też nie twierdzimy,
+ * że tekst sprawdził człowiek; proces (w tym użycie AI) opisują zasady redakcyjne. Ponowne włączenie: SHOW_AI_DISCLOSURE.
+ */
+export const SHOW_AI_DISCLOSURE = false;
 export function aiDisclosure(a: Pick<Article, "editorialDecision" | "review" | "reviewedBy" | "demo">): string | null {
-  if (a.demo) return null;
+  if (!SHOW_AI_DISCLOSURE || a.demo) return null;
   if (hasHumanReview(a)) return null;
   return "Tekst przygotowany z użyciem narzędzi AI na podstawie wskazanych źródeł. Nie był konsultowany ze specjalistą.";
 }

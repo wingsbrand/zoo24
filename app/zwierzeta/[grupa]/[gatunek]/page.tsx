@@ -127,7 +127,7 @@ export default async function SpeciesPage({ params }: P) {
                 </li>
               ))}
             </ol>
-            <p className="text-sm text-ink-muted">Redakcja ZOO24 · źródła sprawdzone {formatDatePl(content.checkedAt)}. Tekst przygotowany z użyciem narzędzi AI na podstawie wskazanych źródeł. Nie był konsultowany ze specjalistą. <Link href="/zglos-blad" className="font-semibold text-brand">Zgłoś błąd</Link></p>
+            <p className="text-sm text-ink-muted">Redakcja ZOO24 · źródła sprawdzone {formatDatePl(content.checkedAt)}. <Link href="/zglos-blad" className="font-semibold text-brand">Zgłoś błąd</Link></p>
           </section>
         )}
 

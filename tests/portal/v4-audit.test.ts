@@ -38,7 +38,8 @@ describe("A01/A10 autorstwo i ujawnienie AI", () => {
   it("akceptacja redaktora-AI nie jest przeglądem człowieka => ujawnienie zostaje", () => {
     const a = art({ slug: "a", editorialDecision: aiDecision, reviewedBy: "claude-ai-editor" });
     expect(hasHumanReview(a)).toBe(false);
-    expect(aiDisclosure(a)).toMatch(/narzędzi AI/);
+    // D-01: decyzja właściciela — bez dopisku o AI przy materiałach (SHOW_AI_DISCLOSURE = false).
+    expect(aiDisclosure(a)).toBeNull();
   });
   it("udokumentowany przegląd człowieka => bez ujawnienia; deklaracja „human” przy tożsamości agenta nie wystarcza", () => {
     expect(aiDisclosure(art({ slug: "a", editorialDecision: { ...aiDecision, by: "Anna Kowalska", byKind: "human" } }))).toBeNull();

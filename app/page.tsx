@@ -237,7 +237,7 @@ export default function Home() {
             {[
               { icon: BookOpen, t: "Źródła przy każdym materiale", d: "Opieramy się na organizacjach kynologicznych i felinologicznych, organizacjach dobrostanu zwierząt i publikacjach specjalistycznych. Brakujących danych nie zgadujemy." },
               { icon: ShieldCheck, t: "Zdrowie i warunki utrzymania po przeglądzie specjalisty", d: "Materiały o żywieniu, warunkach utrzymania, transporcie i zdrowiu publikujemy dopiero po sprawdzeniu przez osobę z odpowiednią wiedzą. Nie udzielamy porad weterynaryjnych." },
-              { icon: BadgeCheck, t: "Jawnie o tym, jak powstał tekst", d: "Przy materiale podajemy datę publikacji i informację, czy powstał z użyciem narzędzi AI. Błędy można zgłosić przy każdym tekście." },
+              { icon: BadgeCheck, t: "Daty i poprawki", d: "Przy materiale podajemy datę publikacji i ostatniej zmiany treści. Błędy można zgłosić przy każdym tekście — poprawiamy je." },
             ].map((x, i) => (
               <li key={x.t} className="relative rounded-[var(--radius-lg)] border border-line bg-surface p-6">
                 <span className="absolute right-5 top-4 font-[family-name:var(--font-display)] text-4xl font-extrabold text-line-strong" aria-hidden>{i + 1}</span>

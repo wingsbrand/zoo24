@@ -21,7 +21,7 @@ export default function ZasadyRedakcyjne() {
 
       <h2>2. Kto odpowiada za treści i jak powstają</h2>
       <p>
-        Autorem materiałów jest Redakcja ZOO24 — zespół serwisu wydawanego przez WINGS RETAIL sp. z o.o., który odpowiada za publikację. Część tekstów przygotowujemy z użyciem narzędzi AI: szkic powstaje na podstawie wskazanych źródeł, a przed publikacją jest automatycznie sprawdzany pod kątem zgodności ze źródłami i naszymi zasadami. Taka kontrola nie jest przeglądem człowieka, dlatego przy każdym takim tekście piszemy wprost: „Tekst przygotowany z użyciem narzędzi AI… Nie był konsultowany ze specjalistą”.
+        Autorem materiałów jest Redakcja ZOO24 — zespół serwisu wydawanego przez WINGS RETAIL sp. z o.o., który odpowiada za publikację. Część tekstów przygotowujemy z użyciem narzędzi AI: szkic powstaje na podstawie wskazanych źródeł, a przed publikacją jest automatycznie sprawdzany pod kątem zgodności ze źródłami i naszymi zasadami. Taka kontrola nie jest przeglądem człowieka — gdy tekst sprawdził specjalista, podajemy to przy materiale.
       </p>
       <p>
         Materiały o żywieniu, warunkach utrzymania, transporcie, zdrowiu, prawie, cenach oraz treści sponsorowane publikujemy dopiero po sprawdzeniu przez człowieka z odpowiednią wiedzą. Gdy tekst sprawdził specjalista, podajemy przy nim jego imię i nazwisko lub rolę oraz datę. Nie publikujemy hurtowo tekstów generowanych maszynowo i nie przedstawiamy osób, konsultacji ani testów, których nie było.
