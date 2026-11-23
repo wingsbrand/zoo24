@@ -27,7 +27,12 @@ export async function GET(req: Request) {
   if (mode !== "live_scoped") return NextResponse.json({ mode, published: [], verified: 0 });
   const published = await publishApprovedArticles(store, policy);
   const verified = await verifyPendingReadbacks(store, policy);
+  const reasons: Record<string, number> = {};
+  for (const v of verified) reasons[`${v.outcome}:${v.reason}`] = (reasons[`${v.outcome}:${v.reason}`] ?? 0) + 1;
+  const changed = published.filter((r) => r.outcome !== "already_done").map((r) => `${r.slug}=${r.outcome}`);
+  console.log(`[ops/publish] mode=${mode} changed=[${changed.join(",")}] readback=${JSON.stringify(reasons)}`);
   return NextResponse.json({
+    readbackReasons: reasons,
     mode,
     published: published.filter((r) => r.outcome !== "already_done").map((r) => ({ slug: r.slug, outcome: r.outcome, reasons: r.reasons })),
     alreadyDone: published.filter((r) => r.outcome === "already_done").length,
