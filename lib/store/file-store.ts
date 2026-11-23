@@ -125,11 +125,23 @@ class SupabaseAppStore extends SupabaseStore implements AppStore {
     // Publikacja artykułów zaakceptowanych przez redaktora-AI — tylko na działającym serwerze (nie w `next build`)
     // i tylko gdy podpisana polityka daje tryb live_scoped. Idempotentne (dedupe/lease w rejestrze ops).
     if (IS_PRODUCTION && process.env.NEXT_PHASE !== "phase-production-build") {
-      const { loadPolicy, effectiveMode } = await import("../ops/policy");
-      const p = loadPolicy();
-      if (effectiveMode(p, this.read().ops.mode) === "live_scoped") {
-        const { publishApprovedArticles } = await import("../ops/cms-publish");
-        void publishApprovedArticles(this, p).catch(() => undefined);
+      // Awaitowane (nie `void`): w środowisku serverless obietnica w tle bywa zamrażana po odpowiedzi.
+      // Log zawiera wyłącznie kody i liczniki — bez treści, kluczy i danych osobowych.
+      try {
+        const { loadPolicy, effectiveMode } = await import("../ops/policy");
+        const p = loadPolicy();
+        const mode = effectiveMode(p, this.read().ops.mode);
+        if (mode === "live_scoped") {
+          const { publishApprovedArticles } = await import("../ops/cms-publish");
+          const r = await publishApprovedArticles(this, p);
+          const by: Record<string, number> = {};
+          for (const x of r) { const k = `${x.outcome}:${x.reasons.join("+") || "-"}`; by[k] = (by[k] ?? 0) + 1; }
+          console.log(`[cms-publish] mode=${mode} items=${r.length} ${JSON.stringify(by)}`);
+        } else {
+          console.log(`[cms-publish] skipped mode=${mode} policy=${p ? "loaded" : "missing"}`);
+        }
+      } catch (e) {
+        console.error(`[cms-publish] error=${(e as Error)?.message?.slice(0, 120) ?? "unknown"}`);
       }
     }
   }
