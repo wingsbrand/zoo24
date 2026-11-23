@@ -1,6 +1,13 @@
-﻿# ZOO24 — status wdrożenia (v1.2)
+# ZOO24 — status wdrożenia (v1.2)
 
-**Aktualizacja:** 2026-11-22 — sesja 1 Claude Code (F0 + lokalne F1). **Tryb:** Mode 0 / MOCK. Nic nie jest live.
+**Aktualizacja:** 2026-11-23 — serwis live na https://zoo24.pl; publikacja CMS live_scoped (26 materiałów). Social nadal Mode 0.
+
+## LIVE 2026-11-23 ok. 01:45 — HTTPS i pierwsza publikacja redakcyjna
+- **HTTPS:** DNS wskazywał Vercel, ale certyfikat nie powstał automatycznie; wystawiony ręcznie przez API Vercel (`cert_SohBRo1DwE3Zk4xzATZUGKUl`, zoo24.pl + www, autoRenew). `www` → 308 na `https://zoo24.pl/`.
+- **Polityka:** `ops/config/activation.json` podpisana `live_scoped` (status `LIVE_SCOPED_CMS_AI_EDITOR`) — wyłącznie publikacja artykułów zaakceptowanych przez redaktora-AI; social, SEO-patche, deploy, e-mail/DM, reklamy nadal wyłączone; welfare/żywienie/środowisko/transport wykluczone z akceptacji AI (commit c1365b9).
+- **Opublikowane (potwierdzone HTTP 200 na https://zoo24.pl):** 26 materiałów — 20 artykułów o rasach pod dawnymi adresami `/blog/*` + 6 poradników klasy standard `/poradniki/*`. 6 poradników welfare **czeka** na specjalistę (404, zgodnie z zasadą). Publiczne działy: psy, koty, ptaki, akwarystyka, gady. Sitemap: 36 URL. Canonical poprawny, brak noindex na domenie kanonicznej. `preflight:live --url https://zoo24.pl` = GOTOWE; vitest 348/348.
+- **Incydent ~01:33–01:43 (ok. 10 min niedostępności):** zmiana hooka publikacji na `await` (commit d9977c7) spowodowała blokadę zimnego startu (read-back do własnej domeny → timeout 300 s). Wycofana (2d74b32); w tym czasie publikacja jednak się wykonała (stan bazy v204). Wniosek: publikacji nie uruchamiać synchronicznie przy starcie modułu; docelowo osobny endpoint/cron z sekretem.
+- **Status odbioru V3:** wersja techniczna — TAK; **częściowe uruchomienie redakcyjne — TAK**; pełny zakres 10 grup — NIE.
 
 ## Portal V3 — pakiet 1 (2026-11-22, wieczór)
 Plan i statusy: `docs/PORTAL_V3_PLAN.md`; treści: `docs/CONTENT_COVERAGE.md`; QA: `docs/PORTAL_V3_QA.md` (+ `docs/qa-screens/`); dawne URL: `docs/seo/URL_RECOVERY_MAP_V3.md`; social: `docs/social/CALENDAR_V3.md`.
