@@ -2,6 +2,14 @@
 
 **Aktualizacja:** 2026-11-23 — serwis live na https://zoo24.pl; publikacja CMS live_scoped (26 materiałów). Social nadal Mode 0.
 
+## Audyt V4 — partia 1 (2026-11-23, rano)
+- **Backlog i odbiór:** `docs/BACKLOG_V4.md` (status A01–A16, wspólne kryteria). Decyzje właściciela: arkusz https://claude.ai/artifact/Fs8MvZ9yLSMaJc48iidubw (D-01…D-09), przypomnienie e-mail codziennie 8:30 (zadanie `zoo24-przypomnienie-decyzje`, działa przy otwartej aplikacji Claude).
+- **Wdrożone w kodzie:** autorstwo „Redakcja ZOO24” + jedno ujawnienie AI (art. 50 AI Act; akceptacja redaktora-AI ≠ przegląd człowieka); usunięte publiczne logi (klasa ryzyka, recenzent, termin przeglądu, rejestr twierdzeń); daty (`dateModified ≥ datePublished`); JSON-LD Organization/WebSite/BreadcrumbList/Article; format `breed_profile`; brakujące `animal/needs` (cane corso, maltańczyk, kot brytyjski — przyczyna 26 vs 23); synchronizacja metadanych repo→baza; rekomendacje wg zwierzęcia/zadania + „Co dalej”; wyszukiwarka działów/kart/narzędzi; karty psa i kota (`content/species`); strona główna z zadaniami; zasady redakcyjne zgodne z procesem; 2 strony informacyjne w sitemap.
+- **Wzorce (5 ścieżek):** Border collie, wyjazd psa (tabela porównawcza + lista), objętość akwarium (przykład 64,8 → 44–53 l, zgodny z kalkulatorem), gady (metoda na gekonie lamparcim, bez parametrów welfare), karta psa/kota. Przegląd redaktora-AI: 11 poprawek źródłowych, potem APPROVE; nowe hashe w `editorialDecision`. Bez przeglądu człowieka.
+- **Agenci:** mapa URL (`docs/seo/HISTORICAL_URL_MAP.csv`, 287 wierszy; produkcja: wszystkie stare adresy → 404, 20 z 67 TOP-blog działa), tech check (`docs/seo/TECH_CHECK_2026-11-23.md`), pilotaże (`docs/growth/`), paczka social 12 szkiców Mode 0 (`docs/social/PACZKA_01_GRUDZIEN_2026.md`), paczka welfare dla specjalisty (`docs/review-packages/PACZKA_WELFARE_01.md`).
+- **Testy:** vitest 367/367, tsc PASS, `next build` PASS, skan sekretów PASS; podgląd lokalny: artykuł, karta psa, wyszukiwanie „królik”, strona główna, wzorce.
+- **Nie zrobione / ograniczenia:** LocalBusiness i opisy profili firm (A08/A15), pomiar zdarzeń narzędzi, CWV (brak danych terenowych), redirecty 301 (czekają na D-05), endpoint/cron publikacji z sekretem.
+
 ## LIVE 2026-11-23 ok. 01:45 — HTTPS i pierwsza publikacja redakcyjna
 - **HTTPS:** DNS wskazywał Vercel, ale certyfikat nie powstał automatycznie; wystawiony ręcznie przez API Vercel (`cert_SohBRo1DwE3Zk4xzATZUGKUl`, zoo24.pl + www, autoRenew). `www` → 308 na `https://zoo24.pl/`.
 - **Polityka:** `ops/config/activation.json` podpisana `live_scoped` (status `LIVE_SCOPED_CMS_AI_EDITOR`) — wyłącznie publikacja artykułów zaakceptowanych przez redaktora-AI; social, SEO-patche, deploy, e-mail/DM, reklamy nadal wyłączone; welfare/żywienie/środowisko/transport wykluczone z akceptacji AI (commit c1365b9).
