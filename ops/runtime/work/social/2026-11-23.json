@@ -1,0 +1,74 @@
+{
+ "schema_version": "zoo24.ops.job-result.v1",
+ "job_id": null,
+ "role": "social",
+ "mode": "shadow",
+ "policy_version": "unsigned-shadow (activation.json: social wyłączony)",
+ "status": "produced",
+ "reason": null,
+ "artifacts": [
+  {
+   "id": "calendar-v3-refresh",
+   "path": "ops/runtime/work/social/drafts/calendar-v3-refresh-2026-11-23.json",
+   "note": "16 pozycji (8 slotów x FB/IG), status draft, 30.11-13.12.2026"
+  }
+ ],
+ "checks": [
+  {
+   "name": "utm_valid",
+   "status": "pass",
+   "detail": "16/16 zgodne: source=facebook|instagram, medium=organic_social, content=id"
+  },
+  {
+   "name": "ig_link_in_caption",
+   "status": "pass",
+   "detail": "0 linków w podpisach IG; CTA 'link w bio'"
+  },
+  {
+   "name": "target_live_200",
+   "status": "N/A",
+   "detail": "curl z runtime zwrócił 000 (proxy); nie weryfikowano. Pliki guides w repo: needs_review/publishedAt null (STATUS.md twierdzi 6 poradników live od 2026-11-23) - do potwierdzenia przez gateway przed publikacją"
+  },
+  {
+   "name": "asset_rights",
+   "status": "fail",
+   "detail": "brak wpisów V3 w asset-register.json; licencja ilustracji AI niepotwierdzona (v3-003/007/009)"
+  },
+  {
+   "name": "welfare_guides_excluded",
+   "status": "pass",
+   "detail": "żaden z 6 poradników welfare nie jest w kalendarzu"
+  },
+  {
+   "name": "old_calendar_conflict",
+   "status": "warn",
+   "detail": "drafts-14d.json (soc-001..010, kampania zoo24_relaunch_2026, część linków do DEMO) nakłada się na V3; rekomendacja: wycofać stary, nie publikować obu"
+  }
+ ],
+ "external_actions": [],
+ "metrics": [
+  {
+   "name": "fb_ig_followers_engagement",
+   "value": null,
+   "unit": null,
+   "source": null,
+   "data_status": "unavailable",
+   "note": "N/A; brak dostępu Meta"
+  }
+ ],
+ "cost": {
+  "value": null,
+  "currency": null,
+  "status": "unknown"
+ },
+ "next_tasks": [
+  "Uzupełnić asset-register o ast V3 po wyrenderowaniu grafik (typografia własna: potwierdzić prawa do logo)",
+  "Po potwierdzeniu live 200 odświeżyć gate A1 i daty slotów (v3-001 30.11 zależy od startu bez DEMO)",
+  "Oznaczyć drafts-14d.json jako superseded (decyzja właściciela)"
+ ],
+ "human_decisions_required": [
+  "Czy V3 zastępuje stary kalendarz soc-001..010 (A5)",
+  "Licencja komercyjna ilustracji AI (compliance)",
+  "Dostęp Meta (Page ID/IG ID, uprawnienia) - bez tego tryb asystowany; nic nie planować u dostawcy"
+ ]
+}
