@@ -2,6 +2,12 @@
 
 **Aktualizacja:** 2026-11-23 — serwis live na https://zoo24.pl; publikacja CMS live_scoped (26 materiałów). Social nadal Mode 0.
 
+## Audyt V4 — publikacja wzorców (2026-11-23, ok. 11:00)
+- `CRON_SECRET` ustawiony przez właściciela (D-10); cron `/api/ops/publish` uruchomiony ręcznie w Vercel. **4 wzorce opublikowane** (Border collie, wyjazd psa, akwarium, gady) — na produkcji tabela porównawcza, „Zaktualizowano”, blok „Co dalej”.
+- Znaleziony i naprawiony błąd (4150cb6): Postgres `jsonb` przestawia klucze obiektów, a hash treści zależał od kolejności → po odczycie z bazy każdy artykuł wyglądał na zmieniony (read-back `DB_VERSION_MISMATCH`, publikacja odrzucana przez dedupe — bez podwójnych publikacji). Hash normalizuje kolejność wg plików; akceptacje pozostały ważne (test).
+- Read-back: **20/20 aktualnych publikacji potwierdzonych HTTP 200** + 4 nowe wzorce potwierdzone przy publikacji. 4 stare potwierdzenia dotyczą zastąpionych wersji wzorców (oczekiwane `DB_VERSION_MISMATCH`, do oznaczenia jako `superseded` w kolejnej poprawce).
+- Cron dalej codziennie 05:00 UTC; endpoint loguje `[ops/publish] changed=… readback=…`.
+
 ## Audyt V4 — partia 1 (2026-11-23, rano)
 - **Backlog i odbiór:** `docs/BACKLOG_V4.md` (status A01–A16, wspólne kryteria). Decyzje właściciela: arkusz https://claude.ai/artifact/Fs8MvZ9yLSMaJc48iidubw (D-01…D-09), przypomnienie e-mail codziennie 8:30 (zadanie `zoo24-przypomnienie-decyzje`, działa przy otwartej aplikacji Claude).
 - **Wdrożone w kodzie:** autorstwo „Redakcja ZOO24” + jedno ujawnienie AI (art. 50 AI Act; akceptacja redaktora-AI ≠ przegląd człowieka); usunięte publiczne logi (klasa ryzyka, recenzent, termin przeglądu, rejestr twierdzeń); daty (`dateModified ≥ datePublished`); JSON-LD Organization/WebSite/BreadcrumbList/Article; format `breed_profile`; brakujące `animal/needs` (cane corso, maltańczyk, kot brytyjski — przyczyna 26 vs 23); synchronizacja metadanych repo→baza; rekomendacje wg zwierzęcia/zadania + „Co dalej”; wyszukiwarka działów/kart/narzędzi; karty psa i kota (`content/species`); strona główna z zadaniami; zasady redakcyjne zgodne z procesem; 2 strony informacyjne w sitemap.
