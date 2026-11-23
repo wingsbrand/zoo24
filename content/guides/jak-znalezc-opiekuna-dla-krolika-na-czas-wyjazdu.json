@@ -44,24 +44,96 @@
     "Czy zarezerwowałem opiekę z wyprzedzeniem?"
   ],
   "sources": [
-    { "label": "RSPCA — Pet sitting / leaving your pet when you go away (EN)", "url": "https://www.rspca.org.uk/adviceandwelfare/pets/general/holiday/leavingyourpet" },
-    { "label": "PDSA — Going on holiday: finding care for your pets (EN)", "url": "https://pdsa.org.uk/pet-help-and-advice/looking-after-your-pet/all-pets/pet-boarding-kennels-and-holiday-care" },
-    { "label": "Scottish Government — Pet rabbit welfare guidance, sekcja 6: towarzystwo (EN)", "url": "https://www.gov.scot/publications/pet-rabbit-welfare-guidance/pages/7/" },
-    { "label": "Scottish Government — Pet rabbit welfare guidance, sekcja 7: ochrona przed cierpieniem, urazami i chorobami (EN)", "url": "https://www.gov.scot/publications/pet-rabbit-welfare-guidance/pages/8/" }
+    {
+      "label": "RSPCA — Pet sitting / leaving your pet when you go away (EN)",
+      "url": "https://www.rspca.org.uk/adviceandwelfare/pets/general/holiday/leavingyourpet"
+    },
+    {
+      "label": "PDSA — Going on holiday: finding care for your pets (EN)",
+      "url": "https://pdsa.org.uk/pet-help-and-advice/looking-after-your-pet/all-pets/pet-boarding-kennels-and-holiday-care"
+    },
+    {
+      "label": "Scottish Government — Pet rabbit welfare guidance, sekcja 6: towarzystwo (EN)",
+      "url": "https://www.gov.scot/publications/pet-rabbit-welfare-guidance/pages/7/"
+    },
+    {
+      "label": "Scottish Government — Pet rabbit welfare guidance, sekcja 7: ochrona przed cierpieniem, urazami i chorobami (EN)",
+      "url": "https://www.gov.scot/publications/pet-rabbit-welfare-guidance/pages/8/"
+    }
   ],
   "claims": [
-    { "text": "Osoba opiekująca się królikami powinna rozumieć, że codzienna opieka to więcej niż karmienie, pojenie i sprzątanie.", "sourceIndex": 3, "evidence": "Wytyczne szkockie: każdy opiekun królików powinien rozumieć, że codzienna opieka obejmuje więcej niż karmienie, wodę i sprzątanie.", "appliesTo": "króliki domowe", "accessedAt": "2026-11-22" },
-    { "text": "Obserwacja co najmniej raz dziennie: zachowanie, jedzenie, picie; kontrola m.in. bobków, okolic ogona, sierści; w ciepłe dni okolice ogona co najmniej dwa razy dziennie.", "sourceIndex": 3, "evidence": "Wytyczne szkockie: obserwować codziennie zachowanie, jedzenie, picie; sprawdzać bobki, ogon, sierść; latem okolice ogona min. dwa razy dziennie (muchy).", "appliesTo": "króliki domowe", "accessedAt": "2026-11-22" },
-    { "text": "Opieka w domu jest zwykle najmniej stresująca, bo otoczenie pozostaje znane.", "sourceIndex": 0, "evidence": "RSPCA: opieka we własnym domu zwykle najmniej stresująca dzięki znanemu otoczeniu.", "appliesTo": "zwierzęta domowe", "accessedAt": "2026-11-22" },
-    { "text": "Opieka domowa u opiekuna sprawdza się m.in. przy małych zwierzętach.", "sourceIndex": 1, "evidence": "PDSA: home-from-home boarding odpowiedni dla psów, małych zwierząt i czasem kotów.", "appliesTo": "małe zwierzęta, w tym króliki", "accessedAt": "2026-11-22" },
-    { "text": "Pytaj lekarza weterynarii i znajomych o polecenia; sprawdź opiekuna: spotkanie, referencje, ubezpieczenie; miejsce pobytu odwiedź i oceń.", "sourceIndex": 0, "evidence": "RSPCA: rekomendacje od weterynarza i znajomych; poznać sittera, referencje, ubezpieczenie; obiekt czysty, suchy, bez przeciągów, bezpieczny, zacieniony.", "appliesTo": "petsitterzy i miejsca pobytu", "accessedAt": "2026-11-22" },
-    { "text": "Rezerwuj wcześnie — dobre miejsca zapełniają się w wakacje i święta.", "sourceIndex": 1, "evidence": "PDSA: dobre miejsca szybko zajęte latem i w okresie świątecznym; rezerwować wcześnie.", "appliesTo": "wszystkie formy opieki", "accessedAt": "2026-11-22" },
-    { "text": "Zaprzyjaźnionych królików nie należy rozdzielać, jeśli da się tego uniknąć; ponowne łączenie wymaga ostrożności; towarzysz najlepiej towarzyszy przy wizycie u weterynarza.", "sourceIndex": 2, "evidence": "Wytyczne szkockie: nie rozdzielać par, jeśli można uniknąć; ostrożnie łączyć ponownie (ryzyko walki); idealnie towarzysz przy wizycie/pobycie u weterynarza.", "appliesTo": "zaprzyjaźnione króliki", "accessedAt": "2026-11-22" },
-    { "text": "Zorganizuj sesje wprowadzające z nowym opiekunem przed wyjazdem.", "sourceIndex": 0, "evidence": "RSPCA: introductory sessions z nowym opiekunem, aby zwierzę się zaaklimatyzowało.", "appliesTo": "każda forma opieki", "accessedAt": "2026-11-22" },
-    { "text": "Przekaż rutynę, jedzenie z instrukcją, kontakty, dane weterynarza (także całodobowego), informacje o zachowaniu i ruchu oraz niezabrudzony materiał z legowiska.", "sourceIndex": 0, "evidence": "RSPCA: rutyna, karma z instrukcją, kontakty i weterynarz z dyżurem, leki, zachowanie, ruch; dla królików niezabrudzony materiał gniazdowy.", "appliesTo": "króliki i małe zwierzęta", "accessedAt": "2026-11-22" },
-    { "text": "Leki w ilości na cały wyjazd z pisemną instrukcją; kontakt zapasowy.", "sourceIndex": 1, "evidence": "PDSA: zapas leków na cały wyjazd z pisemną instrukcją; numer telefonu i dane zapasowe.", "appliesTo": "zwierzęta przyjmujące leki", "accessedAt": "2026-11-22" }
+    {
+      "text": "Osoba opiekująca się królikami powinna rozumieć, że codzienna opieka to więcej niż karmienie, pojenie i sprzątanie.",
+      "sourceIndex": 3,
+      "evidence": "Wytyczne szkockie: każdy opiekun królików powinien rozumieć, że codzienna opieka obejmuje więcej niż karmienie, wodę i sprzątanie.",
+      "appliesTo": "króliki domowe",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Obserwacja co najmniej raz dziennie: zachowanie, jedzenie, picie; kontrola m.in. bobków, okolic ogona, sierści; w ciepłe dni okolice ogona co najmniej dwa razy dziennie.",
+      "sourceIndex": 3,
+      "evidence": "Wytyczne szkockie: obserwować codziennie zachowanie, jedzenie, picie; sprawdzać bobki, ogon, sierść; latem okolice ogona min. dwa razy dziennie (muchy).",
+      "appliesTo": "króliki domowe",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Opieka w domu jest zwykle najmniej stresująca, bo otoczenie pozostaje znane.",
+      "sourceIndex": 0,
+      "evidence": "RSPCA: opieka we własnym domu zwykle najmniej stresująca dzięki znanemu otoczeniu.",
+      "appliesTo": "zwierzęta domowe",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Opieka domowa u opiekuna sprawdza się m.in. przy małych zwierzętach.",
+      "sourceIndex": 1,
+      "evidence": "PDSA: home-from-home boarding odpowiedni dla psów, małych zwierząt i czasem kotów.",
+      "appliesTo": "małe zwierzęta, w tym króliki",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Pytaj lekarza weterynarii i znajomych o polecenia; sprawdź opiekuna: spotkanie, referencje, ubezpieczenie; miejsce pobytu odwiedź i oceń.",
+      "sourceIndex": 0,
+      "evidence": "RSPCA: rekomendacje od weterynarza i znajomych; poznać sittera, referencje, ubezpieczenie; obiekt czysty, suchy, bez przeciągów, bezpieczny, zacieniony.",
+      "appliesTo": "petsitterzy i miejsca pobytu",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Rezerwuj wcześnie — dobre miejsca zapełniają się w wakacje i święta.",
+      "sourceIndex": 1,
+      "evidence": "PDSA: dobre miejsca szybko zajęte latem i w okresie świątecznym; rezerwować wcześnie.",
+      "appliesTo": "wszystkie formy opieki",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Zaprzyjaźnionych królików nie należy rozdzielać, jeśli da się tego uniknąć; ponowne łączenie wymaga ostrożności; towarzysz najlepiej towarzyszy przy wizycie u weterynarza.",
+      "sourceIndex": 2,
+      "evidence": "Wytyczne szkockie: nie rozdzielać par, jeśli można uniknąć; ostrożnie łączyć ponownie (ryzyko walki); idealnie towarzysz przy wizycie/pobycie u weterynarza.",
+      "appliesTo": "zaprzyjaźnione króliki",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Zorganizuj sesje wprowadzające z nowym opiekunem przed wyjazdem.",
+      "sourceIndex": 0,
+      "evidence": "RSPCA: introductory sessions z nowym opiekunem, aby zwierzę się zaaklimatyzowało.",
+      "appliesTo": "każda forma opieki",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Przekaż rutynę, jedzenie z instrukcją, kontakty, dane weterynarza (także całodobowego), informacje o zachowaniu i ruchu oraz niezabrudzony materiał z legowiska.",
+      "sourceIndex": 0,
+      "evidence": "RSPCA: rutyna, karma z instrukcją, kontakty i weterynarz z dyżurem, leki, zachowanie, ruch; dla królików niezabrudzony materiał gniazdowy.",
+      "appliesTo": "króliki i małe zwierzęta",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Leki w ilości na cały wyjazd z pisemną instrukcją; kontakt zapasowy.",
+      "sourceIndex": 1,
+      "evidence": "PDSA: zapas leków na cały wyjazd z pisemną instrukcją; numer telefonu i dane zapasowe.",
+      "appliesTo": "zwierzęta przyjmujące leki",
+      "accessedAt": "2026-11-22"
+    }
   ],
-  "authorDisplay": "Redakcja ZOO24 (szkic przygotowany z pomocą AI)",
+  "authorDisplay": "Redakcja ZOO24",
   "status": "needs_review",
   "demo": false,
   "publishedAt": null,
@@ -78,11 +150,25 @@
     "Ścieżka /narzedzia/lista-dla-opiekuna musi istnieć przed publikacją."
   ],
   "reviewedBy": null,
-  "animal": { "group": "kroliki", "species": "krolik-domowy", "breed": null },
-  "needs": ["wyjazdy", "profesjonalna-pomoc"],
+  "animal": {
+    "group": "kroliki",
+    "species": "krolik-domowy",
+    "breed": null
+  },
+  "needs": [
+    "wyjazdy",
+    "profesjonalna-pomoc"
+  ],
   "format": "guide",
   "risk": "welfare",
-  "review": { "required": "species_specialist", "by": null, "byKind": null, "at": null, "note": null, "waitingReason": "potrzebna osoba z wiedzą o królikach" },
+  "review": {
+    "required": "species_specialist",
+    "by": null,
+    "byKind": null,
+    "at": null,
+    "note": null,
+    "waitingReason": "potrzebna osoba z wiedzą o królikach"
+  },
   "reviewDueAt": "2027-05-22T00:00:00.000Z",
   "legacyPath": null
 }

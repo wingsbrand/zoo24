@@ -38,7 +38,7 @@ export class StoreCmsExecutor implements Executor {
       if (!a) { a = { ...file }; s.articles.push(a); }
       Object.assign(a, {
         title: file.title, summary: file.summary, body: file.body, checklist: file.checklist, sources: file.sources,
-        authorDisplay: file.authorDisplay, basePath: file.basePath, relatedServicePaths: file.relatedServicePaths, disclosure: file.disclosure,
+        authorDisplay: file.authorDisplay, basePath: file.basePath, relatedServicePaths: file.relatedServicePaths, disclosure: file.disclosure, comparison: file.comparison ?? null,
         editorialDecision: file.editorialDecision, reviewedBy: file.editorialDecision!.by, demo: false,
         status: "published", publishedAt: a.publishedAt ?? this.now.toISOString(), updatedAt: file.updatedAt,
       } satisfies Partial<Article>);

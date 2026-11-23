@@ -4,6 +4,8 @@ import type { ReactNode } from "react";
 import { ChevronRight } from "lucide-react";
 import { cn } from "./cn";
 import { AiBadge } from "./ai-badge";
+import { JsonLd } from "@/components/seo/json-ld";
+import { breadcrumbLd } from "@/lib/seo/structured-data";
 
 export function Container({ children, className, size = "page" }: { children: ReactNode; className?: string; size?: "page" | "prose" | "wide" }) {
   const max = size === "prose" ? "max-w-[var(--container-prose)]" : size === "wide" ? "max-w-[88rem]" : "max-w-[var(--container-page)]";
@@ -64,6 +66,7 @@ export type Crumb = { href?: string; label: string };
 export function Breadcrumbs({ items }: { items: Crumb[] }) {
   return (
     <nav aria-label="Ścieżka nawigacji" className="mb-4 text-sm text-ink-muted">
+      <JsonLd nodes={[breadcrumbLd(items)]} />
       <ol className="flex flex-wrap items-center gap-1">
         {items.map((it, i) => (
           <li key={i} className="flex items-center gap-1 min-w-0">

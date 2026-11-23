@@ -128,8 +128,11 @@ class SupabaseAppStore extends SupabaseStore implements AppStore {
       const { loadPolicy, effectiveMode } = await import("../ops/policy");
       const p = loadPolicy();
       if (effectiveMode(p, this.read().ops.mode) === "live_scoped") {
-        const { publishApprovedArticles } = await import("../ops/cms-publish");
-        void publishApprovedArticles(this, p).catch(() => undefined);
+        const { publishApprovedArticles, verifyPendingReadbacks } = await import("../ops/cms-publish");
+        // Nigdy `await` przy starcie modułu (incydent 23.11: read-back do własnej domeny blokował zimny start).
+        void publishApprovedArticles(this, p)
+          .then(() => verifyPendingReadbacks(this, p))
+          .catch(() => undefined);
       }
     }
   }

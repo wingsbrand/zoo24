@@ -4,6 +4,7 @@ import type { Article } from "@/lib/types";
 import { getStore } from "@/lib/store/file-store";
 import { articleHref } from "@/lib/content/editorial";
 import { topicForArticle } from "@/lib/content/topics";
+import { articleDates, publicAuthor } from "@/lib/content/presentation";
 
 export type ArticleBase = "/poradniki" | "/blog";
 
@@ -19,6 +20,7 @@ export function allArticles(): Article[] {
 export function articleMetadata(a: Article): Metadata {
   const url = articleHref(a);
   const topic = topicForArticle(a);
+  const d = articleDates(a);
   return {
     title: a.title,
     description: a.summary,
@@ -30,10 +32,10 @@ export function articleMetadata(a: Article): Metadata {
       url,
       title: a.title,
       description: a.summary,
-      publishedTime: a.publishedAt ?? undefined,
-      modifiedTime: a.updatedAt,
+      publishedTime: d.published ?? undefined,
+      modifiedTime: d.published ? d.modified : undefined,
       section: topic.name,
-      authors: [a.authorDisplay],
+      authors: [publicAuthor(a)],
     },
     // DEMO zawsze noindex; poza produkcją noindex dziedziczony z app/layout.tsx.
     robots: a.demo ? { index: false, follow: false } : undefined,

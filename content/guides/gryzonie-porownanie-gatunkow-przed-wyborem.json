@@ -37,30 +37,126 @@
     "Czy znam lekarza weterynarii w okolicy, który przyjmuje ten gatunek?"
   ],
   "sources": [
-    { "label": "RSPCA — Guinea pigs (świnki morskie)", "url": "https://www.rspca.org.uk/adviceandwelfare/pets/rodents/guineapigs" },
-    { "label": "RSPCA — Hamsters (chomiki)", "url": "https://www.rspca.org.uk/adviceandwelfare/pets/rodents/hamsters" },
-    { "label": "RSPCA — Rats (szczury)", "url": "https://www.rspca.org.uk/adviceandwelfare/pets/rodents/rats" },
-    { "label": "RSPCA — Mice (myszy)", "url": "https://www.rspca.org.uk/adviceandwelfare/pets/rodents/mice" },
-    { "label": "RSPCA — Mice: company (towarzystwo myszy)", "url": "https://www.rspca.org.uk/adviceandwelfare/pets/rodents/mice/company" },
-    { "label": "RSPCA — Chinchillas (szynszyle)", "url": "https://www.rspca.org.uk/adviceandwelfare/pets/rodents/chinchillas" },
-    { "label": "RSPCA — Degus (koszatniczki)", "url": "https://www.rspca.org.uk/adviceandwelfare/pets/rodents/degus" },
-    { "label": "RSPCA — Gerbils (myszoskoczki)", "url": "https://www.rspca.org.uk/adviceandwelfare/pets/rodents/gerbils" }
+    {
+      "label": "RSPCA — Guinea pigs (świnki morskie)",
+      "url": "https://www.rspca.org.uk/adviceandwelfare/pets/rodents/guineapigs"
+    },
+    {
+      "label": "RSPCA — Hamsters (chomiki)",
+      "url": "https://www.rspca.org.uk/adviceandwelfare/pets/rodents/hamsters"
+    },
+    {
+      "label": "RSPCA — Rats (szczury)",
+      "url": "https://www.rspca.org.uk/adviceandwelfare/pets/rodents/rats"
+    },
+    {
+      "label": "RSPCA — Mice (myszy)",
+      "url": "https://www.rspca.org.uk/adviceandwelfare/pets/rodents/mice"
+    },
+    {
+      "label": "RSPCA — Mice: company (towarzystwo myszy)",
+      "url": "https://www.rspca.org.uk/adviceandwelfare/pets/rodents/mice/company"
+    },
+    {
+      "label": "RSPCA — Chinchillas (szynszyle)",
+      "url": "https://www.rspca.org.uk/adviceandwelfare/pets/rodents/chinchillas"
+    },
+    {
+      "label": "RSPCA — Degus (koszatniczki)",
+      "url": "https://www.rspca.org.uk/adviceandwelfare/pets/rodents/degus"
+    },
+    {
+      "label": "RSPCA — Gerbils (myszoskoczki)",
+      "url": "https://www.rspca.org.uk/adviceandwelfare/pets/rodents/gerbils"
+    }
   ],
   "claims": [
-    { "text": "Kawia nie powinna żyć sama; najlepiej w parze.", "sourceIndex": 0, "evidence": "Świnki morskie są bardzo towarzyskie, czują się samotne, nie powinny żyć same; najszczęśliwsze w parach.", "appliesTo": "kawia domowa", "accessedAt": "2026-11-22" },
-    { "text": "Kawie są aktywne do 20 godzin na dobę i śpią krótko.", "sourceIndex": 0, "evidence": "Aktywne do 20 godzin dziennie, śpią tylko krótkimi okresami.", "appliesTo": "kawia domowa", "accessedAt": "2026-11-22" },
-    { "text": "Kawie żyją zwykle 5–6 lat.", "sourceIndex": 0, "evidence": "Zwykle żyją 5–6 lat, niektóre dłużej.", "appliesTo": "kawia domowa", "accessedAt": "2026-11-22" },
-    { "text": "Chomiki są ogólnie samotnikami; syryjski i chiński osobno; niektóre karłowate mogą żyć razem przy właściwych warunkach.", "sourceIndex": 1, "evidence": "Chomiki generalnie samotnicze, mogą być agresywne; syryjskie i chińskie lepiej same; niektóre karłowate razem przy odpowiedniej opiece.", "appliesTo": "chomiki (różne gatunki)", "accessedAt": "2026-11-22" },
-    { "text": "Chomiki są nocne, żyją zwykle do około dwóch lat, łatwo je zranić; opiekę powinien przejąć dorosły.", "sourceIndex": 1, "evidence": "Nocne; zwykle żyją do dwóch lat; łatwo zranić przy nieostrożnym obchodzeniu; za duża odpowiedzialność dla dziecka.", "appliesTo": "chomiki", "accessedAt": "2026-11-22" },
-    { "text": "Szczury nie powinny być trzymane pojedynczo; zalecana para lub trójka tej samej płci.", "sourceIndex": 2, "evidence": "Nigdy nie należy trzymać ich samotnie; para lub trójka zżytych szczurów tej samej płci.", "appliesTo": "szczur", "accessedAt": "2026-11-22" },
-    { "text": "Szczury są aktywne nocą, o zmierzchu i świcie; żyją około 2–3 lat; łatwiejsze w obsłudze, ale przestraszone mogą ugryźć; mają czuły słuch.", "sourceIndex": 2, "evidence": "Nocne, aktywne o zmierzchu i świcie; żyją ok. 2–3 lata; łatwiejsze w obsłudze niż mniejsze gryzonie; mogą gryźć przestraszone; bardzo czuły słuch.", "appliesTo": "szczur", "accessedAt": "2026-11-22" },
-    { "text": "Myszy są aktywne głównie nocą, o świcie i zmierzchu, żyją zwykle około trzech lat, budują gniazda i są wrażliwe na światło i hałas.", "sourceIndex": 3, "evidence": "Aktywne głównie nocą, o świcie i zmierzchu; zwykle żyją ok. trzech lat; budują gniazda; wrażliwe na światło i hałas.", "appliesTo": "mysz", "accessedAt": "2026-11-22" },
-    { "text": "Myszy potrzebują towarzystwa w zgodnych grupach jednej płci; pojedynczo tylko na zalecenie lekarza weterynarii.", "sourceIndex": 4, "evidence": "Potrzebują towarzystwa innych myszy; zgodne grupy jednej płci; samotnie tylko, jeśli zaleci to weterynarz.", "appliesTo": "mysz", "accessedAt": "2026-11-22" },
-    { "text": "Szynszyle nie powinny być trzymane pojedynczo, są nocne, żyją 10–20 lat, nie lubią brania na ręce, pochodzą z chłodnego, suchego klimatu i nie kopią nor.", "sourceIndex": 5, "evidence": "Nie wolno trzymać pojedynczo; nocne; żyją 10–20 lat; płochliwe, nie lubią głaskania; przystosowane do chłodu; nie kopią nor.", "appliesTo": "szynszyla", "accessedAt": "2026-11-22" },
-    { "text": "Koszatniczki są towarzyskie, dzienne, żyją zwykle 6–7 lat w niewoli; RSPCA odsyła do weterynarza od zwierząt egzotycznych.", "sourceIndex": 6, "evidence": "Towarzyskie, żyją w grupach; dzienne; zwykle 6–7 lat w niewoli; skonsultuj się ze specjalistą od zwierząt egzotycznych.", "appliesTo": "koszatniczka", "accessedAt": "2026-11-22" },
-    { "text": "Myszoskoczki są towarzyskie, zasadniczo dzienne, żyją do 3–4 lat, kopią nory, słabo się wspinają, łatwo je zranić.", "sourceIndex": 7, "evidence": "Towarzyskie, rodziny; zasadniczo dzienne; do 3–4 lat; kopią głębokie nory; słabo się wspinają; łatwo zranić.", "appliesTo": "myszoskoczek", "accessedAt": "2026-11-22" }
+    {
+      "text": "Kawia nie powinna żyć sama; najlepiej w parze.",
+      "sourceIndex": 0,
+      "evidence": "Świnki morskie są bardzo towarzyskie, czują się samotne, nie powinny żyć same; najszczęśliwsze w parach.",
+      "appliesTo": "kawia domowa",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Kawie są aktywne do 20 godzin na dobę i śpią krótko.",
+      "sourceIndex": 0,
+      "evidence": "Aktywne do 20 godzin dziennie, śpią tylko krótkimi okresami.",
+      "appliesTo": "kawia domowa",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Kawie żyją zwykle 5–6 lat.",
+      "sourceIndex": 0,
+      "evidence": "Zwykle żyją 5–6 lat, niektóre dłużej.",
+      "appliesTo": "kawia domowa",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Chomiki są ogólnie samotnikami; syryjski i chiński osobno; niektóre karłowate mogą żyć razem przy właściwych warunkach.",
+      "sourceIndex": 1,
+      "evidence": "Chomiki generalnie samotnicze, mogą być agresywne; syryjskie i chińskie lepiej same; niektóre karłowate razem przy odpowiedniej opiece.",
+      "appliesTo": "chomiki (różne gatunki)",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Chomiki są nocne, żyją zwykle do około dwóch lat, łatwo je zranić; opiekę powinien przejąć dorosły.",
+      "sourceIndex": 1,
+      "evidence": "Nocne; zwykle żyją do dwóch lat; łatwo zranić przy nieostrożnym obchodzeniu; za duża odpowiedzialność dla dziecka.",
+      "appliesTo": "chomiki",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Szczury nie powinny być trzymane pojedynczo; zalecana para lub trójka tej samej płci.",
+      "sourceIndex": 2,
+      "evidence": "Nigdy nie należy trzymać ich samotnie; para lub trójka zżytych szczurów tej samej płci.",
+      "appliesTo": "szczur",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Szczury są aktywne nocą, o zmierzchu i świcie; żyją około 2–3 lat; łatwiejsze w obsłudze, ale przestraszone mogą ugryźć; mają czuły słuch.",
+      "sourceIndex": 2,
+      "evidence": "Nocne, aktywne o zmierzchu i świcie; żyją ok. 2–3 lata; łatwiejsze w obsłudze niż mniejsze gryzonie; mogą gryźć przestraszone; bardzo czuły słuch.",
+      "appliesTo": "szczur",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Myszy są aktywne głównie nocą, o świcie i zmierzchu, żyją zwykle około trzech lat, budują gniazda i są wrażliwe na światło i hałas.",
+      "sourceIndex": 3,
+      "evidence": "Aktywne głównie nocą, o świcie i zmierzchu; zwykle żyją ok. trzech lat; budują gniazda; wrażliwe na światło i hałas.",
+      "appliesTo": "mysz",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Myszy potrzebują towarzystwa w zgodnych grupach jednej płci; pojedynczo tylko na zalecenie lekarza weterynarii.",
+      "sourceIndex": 4,
+      "evidence": "Potrzebują towarzystwa innych myszy; zgodne grupy jednej płci; samotnie tylko, jeśli zaleci to weterynarz.",
+      "appliesTo": "mysz",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Szynszyle nie powinny być trzymane pojedynczo, są nocne, żyją 10–20 lat, nie lubią brania na ręce, pochodzą z chłodnego, suchego klimatu i nie kopią nor.",
+      "sourceIndex": 5,
+      "evidence": "Nie wolno trzymać pojedynczo; nocne; żyją 10–20 lat; płochliwe, nie lubią głaskania; przystosowane do chłodu; nie kopią nor.",
+      "appliesTo": "szynszyla",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Koszatniczki są towarzyskie, dzienne, żyją zwykle 6–7 lat w niewoli; RSPCA odsyła do weterynarza od zwierząt egzotycznych.",
+      "sourceIndex": 6,
+      "evidence": "Towarzyskie, żyją w grupach; dzienne; zwykle 6–7 lat w niewoli; skonsultuj się ze specjalistą od zwierząt egzotycznych.",
+      "appliesTo": "koszatniczka",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Myszoskoczki są towarzyskie, zasadniczo dzienne, żyją do 3–4 lat, kopią nory, słabo się wspinają, łatwo je zranić.",
+      "sourceIndex": 7,
+      "evidence": "Towarzyskie, rodziny; zasadniczo dzienne; do 3–4 lat; kopią głębokie nory; słabo się wspinają; łatwo zranić.",
+      "appliesTo": "myszoskoczek",
+      "accessedAt": "2026-11-22"
+    }
   ],
-  "authorDisplay": "Redakcja ZOO24 (szkic przygotowany z pomocą AI)",
+  "authorDisplay": "Redakcja ZOO24",
   "status": "needs_review",
   "demo": false,
   "publishedAt": null,
@@ -76,11 +172,24 @@
     "Długość życia myszy (ok. 3 lata) podana za RSPCA; recenzent może zweryfikować z drugim źródłem."
   ],
   "reviewedBy": null,
-  "animal": { "group": "gryzonie", "species": null, "breed": null },
-  "needs": ["wybor-zwierzecia"],
+  "animal": {
+    "group": "gryzonie",
+    "species": null,
+    "breed": null
+  },
+  "needs": [
+    "wybor-zwierzecia"
+  ],
   "format": "guide",
   "risk": "welfare",
-  "review": { "required": "species_specialist", "by": null, "byKind": null, "at": null, "note": null, "waitingReason": "potrzebna osoba z wiedzą o gryzoniach (towarzystwo i środowisko gatunków)" },
+  "review": {
+    "required": "species_specialist",
+    "by": null,
+    "byKind": null,
+    "at": null,
+    "note": null,
+    "waitingReason": "potrzebna osoba z wiedzą o gryzoniach (towarzystwo i środowisko gatunków)"
+  },
   "reviewDueAt": "2027-05-22T00:00:00.000Z",
   "legacyPath": null
 }

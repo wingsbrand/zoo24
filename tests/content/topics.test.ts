@@ -12,9 +12,9 @@ const art = (p: Partial<Article> & Pick<Article, "slug" | "title">): Article => 
 });
 
 describe("tematy poradników (lib/content/topics)", () => {
-  it("5 tematów z unikalnymi slugami i kolorami okładek", () => {
-    expect(TOPICS.map((t) => t.name)).toEqual(["Rasy psów", "Rasy kotów", "Pielęgnacja", "Wybór usługi", "Zachowanie i wychowanie"]);
-    expect(new Set(TOPICS.map((t) => t.slug)).size).toBe(5);
+  it("tematy z unikalnymi slugami i kolorami okładek", () => {
+    expect(TOPICS.map((t) => t.name)).toEqual(["Rasy psów", "Rasy kotów", "Przygotowanie i opieka", "Wyjazdy i opieka zastępcza", "Pielęgnacja", "Wybór usługi", "Zachowanie i wychowanie"]);
+    expect(new Set(TOPICS.map((t) => t.slug)).size).toBe(TOPICS.length);
     for (const t of TOPICS) for (const c of Object.values(t.colors)) expect(c).toMatch(/^#[0-9a-f]{6}$/);
     expect(isTopicSlug("rasy-psow")).toBe(true);
     expect(isTopicSlug("nieznany")).toBe(false);
@@ -34,7 +34,21 @@ describe("tematy poradników (lib/content/topics)", () => {
     expect(topicSlugForArticle({ slug: "x3", title: "Kąpiel i czesanie psa długowłosego" })).toBe("pielegnacja");
     expect(topicSlugForArticle({ slug: "x4", title: "Kot syberyjski — charakter" })).toBe("rasy-kotow");
     expect(topicSlugForArticle({ slug: "x5", title: "Beagle — rasa dla aktywnych" })).toBe("rasy-psow");
-    expect(topicSlugForArticle({ slug: "x6", title: "Coś zupełnie innego" })).toBe("pielegnacja"); // domyślny
+    expect(topicSlugForArticle({ slug: "x6", title: "Coś zupełnie innego" })).toBe("przygotowanie-i-opieka"); // domyślny
+  });
+
+  it("audyt V4 A05–A06: temat z danych — rasa, wyjazd, usługa; poradnik dla opiekuna kota nie trafia do ras kotów", () => {
+    const files = Object.fromEntries(loadContentArticles().map((a) => [a.slug, a]));
+    expect(topicSlugForArticle(files["informacje-dla-opiekuna-kota"])).toBe("wyjazdy");
+    expect(topicSlugForArticle(files["ptaki-opieka-na-czas-wyjazdu"])).toBe("wyjazdy");
+    expect(topicSlugForArticle(files["akwarium-objetosc-nominalna-a-rzeczywista"])).toBe("przygotowanie-i-opieka");
+    expect(topicSlugForArticle(files["co-ustalic-przed-pierwsza-wizyta-u-groomera"])).toBe("wybor-uslugi");
+    for (const slug of ["cane-corso-n63", "maltanczyk-n77", "kot-brytyjski-n66", "border-collie-n61"]) {
+      expect(files[slug].animal?.breed, slug).toBeTruthy();
+      expect(files[slug].format, slug).toBe("breed_profile");
+    }
+    // Każdy materiał z repo ma grupę zwierząt => liczniki grup sumują się do liczby materiałów.
+    expect(loadContentArticles().every((a) => !!a.animal?.group)).toBe(true);
   });
 });
 
@@ -54,6 +68,9 @@ describe("hub /poradniki — parametry i filtrowanie", () => {
     expect(matchesQuery(a, "MALTAŃCZYK siersc")).toBe(true);
     expect(matchesQuery(a, "maltańczyk kot")).toBe(false);
     expect(matchesQuery(a, "")).toBe(true);
+    // synonimy i nazwa działu/rasy (A11–A12)
+    expect(matchesQuery({ title: "Border collie", summary: "", animal: { group: "psy", breed: "border collie" } }, "pies")).toBe(true);
+    expect(matchesQuery({ title: "Objętość zbiornika", summary: "", animal: { group: "akwarystyka" } }, "rybki")).toBe(true);
   });
 
   it("filterArticles: tylko opublikowane, liczniki per temat, filtr tematu, sortowanie po aktualizacji", () => {
@@ -99,11 +116,25 @@ describe("hub /poradniki — parametry i filtrowanie", () => {
     expect(hubHref({ temat: "pielegnacja", q: "zima pies" })).toBe("/poradniki?temat=pielegnacja&q=zima+pies");
   });
 
-  it("powiązane: ten sam temat, opublikowane, bez bieżącego, max 3", () => {
+  it("powiązane: tylko opublikowane, bez bieżącego, max 3; bez wspólnego zwierzęcia ani potrzeby — brak polecenia", () => {
+    const aq = art({ slug: "aq", title: "Objętość akwarium", animal: { group: "akwarystyka" }, needs: ["wyposazenie"] });
+    const gad = art({ slug: "gad", title: "Gady — wyposażenie", animal: { group: "gady" }, needs: ["wybor-zwierzecia", "wyposazenie"] });
+    const ptakWyj = art({ slug: "pw", title: "Ptaki — wyjazd", animal: { group: "ptaki" }, needs: ["wyjazdy"] });
+    const psWyj = art({ slug: "dw", title: "Pies — wyjazd", animal: { group: "psy" }, needs: ["wyjazdy"] });
+    const bc = art({ slug: "bc", title: "Border collie", animal: { group: "psy", species: "pies-domowy", breed: "border collie" }, needs: ["wybor-zwierzecia"] });
+    const jr = art({ slug: "jr", title: "Jack russell", animal: { group: "psy", species: "pies-domowy", breed: "jrt" }, needs: ["wybor-zwierzecia"] });
+    const set = [aq, gad, ptakWyj, psWyj, bc, jr];
+    expect(relatedArticles(aq, set).map((a) => a.slug)).toEqual([]); // akwarium nie poleca gadów (A07)
+    expect(relatedArticles(ptakWyj, set).map((a) => a.slug)).toEqual(["dw"]); // wyjazd łączy grupy
+    expect(relatedArticles(bc, set)[0].slug).toBe("jr"); // rasa => rasy tej samej grupy
+    expect(relatedArticles({ ...bc, related: ["aq"] }, set)[0].slug).toBe("aq"); // ręczne nadpisanie
+  });
+
+  it("powiązane (bez klasyfikacji): sortowanie i limit", () => {
     const all = Array.from({ length: 6 }, (_, i) => art({ slug: `g${i}`, title: `Jak wybrać groomera ${i}`, updatedAt: `2026-11-0${i + 1}T00:00:00.000Z` }));
     all.push(art({ slug: "draft", title: "Jak wybrać hotel", status: "needs_review", updatedAt: "2026-12-01T00:00:00.000Z" }));
     all.push(art({ slug: "kot", title: "Kot perski" }));
-    const rel = relatedArticles(all[0], all);
+    const rel = relatedArticles({ ...all[0], needs: ["profesjonalna-pomoc"] }, all.map((a) => (a.slug === "kot" ? a : { ...a, needs: ["profesjonalna-pomoc" as const] })));
     expect(rel.map((a) => a.slug)).toEqual(["g5", "g4", "g3"]);
   });
 });

@@ -17,8 +17,11 @@ export interface EditorialDecision {
   publishAfter: string;
 }
 
-export function articleContentHash(a: Pick<Article, "title" | "summary" | "body" | "checklist" | "sources">): string {
-  return createHash("sha256").update(JSON.stringify([a.title, a.summary, a.body, a.checklist, a.sources])).digest("hex");
+export function articleContentHash(a: Pick<Article, "title" | "summary" | "body" | "checklist" | "sources"> & { comparison?: Article["comparison"] }): string {
+  // Tabela porównawcza jest treścią redakcyjną: gdy występuje, wchodzi do hasha (brak tabeli = hash jak dotąd).
+  const parts: unknown[] = [a.title, a.summary, a.body, a.checklist, a.sources];
+  if (a.comparison) parts.push(a.comparison);
+  return createHash("sha256").update(JSON.stringify(parts)).digest("hex");
 }
 
 /** Akceptacja aktualna: decyzja approved i hash zgodny z bieżącą treścią; redaktor-AI tylko nazwany w polityce. */

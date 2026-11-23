@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { SITE_IMAGES, CATEGORY_IMAGES } from "@/lib/content/images";
-import { ArrowRight, BadgeCheck, BedDouble, BookOpen, Bot, Compass, Handshake, Scissors, Search, ShieldCheck, Wrench } from "lucide-react";
+import { ArrowRight, BadgeCheck, BedDouble, BookOpen, Calculator, ClipboardList, Compass, Handshake, PawPrint, Scissors, Search, ShieldCheck, Wrench } from "lucide-react";
 import { getStore } from "@/lib/store/file-store";
 import { CATEGORIES, CITIES } from "@/lib/site";
 import { AiBadge, ButtonLink, Container, Section, SectionHeading } from "@/components/ui";
@@ -10,14 +10,30 @@ import { ServiceSearch } from "@/components/directory/search-form";
 import { firmCount } from "@/lib/directory/format";
 import { computeVisibility, isPublicArticle, TOOLS } from "@/lib/portal/visibility";
 import { serviceLinks } from "@/lib/portal/services";
-import { QUERY_MAX, hubHref, sortArticles } from "@/lib/content/topics";
+import { QUERY_MAX, hubHref, sortArticles, topicSlugForArticle } from "@/lib/content/topics";
+import type { Article } from "@/lib/types";
+
+/** Polecane: po jednym materiale z różnych tematów (nie tylko profile ras psów) — audyt V4 B §3.3. */
+function diversePicks(list: Article[], n: number): Article[] {
+  const seen = new Set<string>();
+  const out: Article[] = [];
+  const ordered = [...list.filter((a) => !a.animal?.breed), ...list.filter((a) => a.animal?.breed)];
+  for (const a of ordered) {
+    const key = a.animal?.breed ? `rasy-${a.animal.group}` : topicSlugForArticle(a) + (a.animal?.group ?? "");
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push(a);
+    if (out.length === n) break;
+  }
+  return out;
+}
 import { articlesLabel } from "@/components/editorial/format";
 import { ArticleGrid, GroupCard, ToolList } from "@/components/portal/portal-blocks";
 
 export const dynamic = "force-dynamic";
 
 const TITLE = "ZOO24 — wiedza o zwierzętach, poradniki i usługi dla opiekunów";
-const DESCRIPTION = "Praktyczna wiedza o zwierzętach towarzyszących: poradniki ze źródłami i jawnym przeglądem, narzędzia dla opiekunów oraz katalog usług z podanym źródłem danych.";
+const DESCRIPTION = "Praktyczne poradniki dla opiekunów psów, kotów, ptaków, ryb i gadów: wybór zwierzęcia, przygotowanie domu, wyjazdy i codzienna opieka. Narzędzia i katalog usług.";
 
 export const metadata: Metadata = {
   title: { absolute: TITLE },
@@ -34,8 +50,14 @@ export default function Home() {
   const s = getStore().read();
   const vis = computeVisibility(s.articles);
   // Tylko prawdziwe, opublikowane poradniki (bez DEMO).
-  const guides = sortArticles(s.articles.filter(isPublicArticle)).slice(0, 3);
   const planning = vis.needCounts["wybor-zwierzecia"];
+  const guides = diversePicks(sortArticles(s.articles.filter(isPublicArticle)), 3);
+  const tasks = [
+    { href: hubHref({ potrzeba: "wybor-zwierzecia" }), icon: PawPrint, t: "Wybieram zwierzę", d: "Sprawdź wymagania rasy lub gatunku, zanim zdecydujesz.", show: planning > 0 },
+    { href: "/narzedzia/lista-dla-opiekuna", icon: ClipboardList, t: "Wyjeżdżam", d: "Porównaj formy opieki i przygotuj listę dla opiekuna.", show: true },
+    { href: "/narzedzia/kalkulator-akwarium", icon: Calculator, t: "Planuję akwarium", d: "Policz rzeczywistą objętość zbiornika.", show: true },
+    { href: "/uslugi", icon: Scissors, t: "Szukam usługi", d: "Groomerzy z podanym źródłem danych.", show: true },
+  ].filter((x) => x.show);
   // Tylko niepuste kombinacje usługa × miasto (≥1 realna firma).
   const services = serviceLinks(s.businesses);
   const realByCat = new Map(services.categories.map((c) => [c.category, c]));
@@ -61,10 +83,10 @@ export default function Home() {
             Zrozum swojego zwierzaka. <span className="text-accent-dark">Zadbaj o niego lepiej</span>
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-ink-muted sm:text-xl">
-            Praktyczne poradniki o przygotowaniu domu, codziennej opiece i warunkach — z podanymi źródłami i jawnym zakresem przeglądu.
+            Pomagamy opiekunom wybrać zwierzę, przygotować dom, zorganizować opiekę na czas wyjazdu i znaleźć usługę. Każdy poradnik ma listę źródeł.
           </p>
           <form action="/poradniki" method="get" role="search" aria-label="Szukaj wiedzy o zwierzętach" className="mt-8 max-w-2xl rounded-[var(--radius-xl)] border border-line bg-surface p-4 shadow-[var(--shadow-raised)] sm:p-6">
-            <label htmlFor="home-q" className="mb-1.5 block font-semibold text-ink">Szukaj w poradnikach i działach o zwierzętach</label>
+            <label htmlFor="home-q" className="mb-1.5 block font-semibold text-ink">Szukaj w poradnikach, działach i narzędziach</label>
             <div className="flex flex-col gap-2 sm:flex-row">
               <input
                 id="home-q"
@@ -79,10 +101,27 @@ export default function Home() {
                 <Search aria-hidden size={18} /> Szukaj
               </button>
             </div>
-            <p id="home-q-hint" className="mt-2 text-sm text-ink-muted">Przeszukujemy opublikowane poradniki. Firm szukasz niżej, w module usług.</p>
+            <p id="home-q-hint" className="mt-2 text-sm text-ink-muted">Szukamy w opublikowanych poradnikach, działach i narzędziach. Firm szukasz niżej, w module usług.</p>
           </form>
         </Container>
       </section>
+
+      {/* 1b. ZADANIA — wybór przez potrzebę */}
+      <Section labelledBy="h-zadania" className="pb-0">
+        <Container>
+          <h2 id="h-zadania" className="mb-4 text-2xl font-bold sm:text-3xl">Co chcesz zrobić?</h2>
+          <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {tasks.map((x) => (
+              <li key={x.href}>
+                <Link href={x.href} className="flex h-full min-h-11 gap-3 rounded-[var(--radius-lg)] border border-line bg-surface p-4 no-underline shadow-[var(--shadow-card)] hover:border-brand hover:bg-brand-tint">
+                  <x.icon aria-hidden size={24} className="mt-0.5 shrink-0 text-accent-dark" />
+                  <span><span className="block font-semibold text-brand-dark">{x.t}</span><span className="mt-0.5 block text-sm text-ink-muted">{x.d}</span></span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </Container>
+      </Section>
 
       {/* 2. WYBÓR GRUPY ZWIERZĄT — tylko działy publiczne */}
       <Section labelledBy="h-zwierzeta">
@@ -123,7 +162,7 @@ export default function Home() {
       {/* 4. WYBRANE OPUBLIKOWANE PORADNIKI */}
       <Section tone="surface" labelledBy="h-poradniki" className="border-y border-line">
         <Container>
-          <SectionHeading id="h-poradniki" eyebrow="Poradniki" title="Najnowsze poradniki"
+          <SectionHeading id="h-poradniki" eyebrow="Poradniki" title="Polecane materiały"
             action={<ButtonLink href="/poradniki" variant="secondary" icon={<BookOpen aria-hidden size={18} />}>Wszystkie poradniki</ButtonLink>} />
           {guides.length === 0 ? (
             <p className="rounded-[var(--radius-lg)] border border-dashed border-line-strong bg-canvas p-6 text-ink-muted">Pierwsze poradniki są w redakcji — publikujemy je po sprawdzeniu faktów i źródeł.</p>
@@ -147,7 +186,7 @@ export default function Home() {
       <Section tone="soft" labelledBy="h-uslugi" className="border-y border-line">
         <Container>
           <SectionHeading id="h-uslugi" eyebrow="Usługi" title="Szukasz usługi dla zwierzęcia?"
-            lead="Katalog groomerów i hoteli dla zwierząt w 10 największych miastach. Przy każdej firmie podajemy źródło danych; kontaktujesz się z nią bezpośrednio." />
+            lead="Katalog dopiero budujemy: na razie pojedyncze, sprawdzone salony groomerskie w wybranych miastach. Przy każdej firmie podajemy źródło i datę sprawdzenia danych; kontaktujesz się z nią bezpośrednio." />
           <div className="mb-8 max-w-3xl">
             <ServiceSearch variant="compact" idPrefix="home-uslugi" />
           </div>
@@ -192,13 +231,13 @@ export default function Home() {
       {/* 7. JAK PRACUJEMY */}
       <Section labelledBy="h-zasady">
         <Container>
-          <SectionHeading id="h-zasady" eyebrow="Jak pracujemy" title="Wiedza ze źródłami, przegląd dopasowany do tematu"
+          <SectionHeading id="h-zasady" eyebrow="Jak pracujemy" title="Wiedza ze źródłami"
             action={<ButtonLink href="/zasady-redakcyjne" variant="secondary">Zasady redakcyjne</ButtonLink>} />
           <ol className="grid gap-6 md:grid-cols-3">
             {[
-              { icon: BookOpen, t: "Źródła przy kluczowych informacjach", d: "Każdy poradnik ma listę źródeł, a najważniejsze informacje wskazują konkretne źródło. Brakujących danych nie zgadujemy — piszemy wprost, czego jeszcze nie potwierdziliśmy." },
-              { icon: ShieldCheck, t: "Przegląd zależny od tematu", d: "Żywienie, warunki utrzymania i transport sprawdza osoba z wiedzą o danym gatunku, a tematy zdrowotne — lekarz weterynarii. Przy artykule widać, kto go sprawdził i kiedy kolejny przegląd." },
-              { icon: Bot, t: "Udział AI oznaczony jawnie", d: "Asystent AI pomaga w redakcji. Taki przegląd oznaczamy jako „redakcja ZOO24 z udziałem AI” — nigdy nie przedstawiamy go jako przeglądu człowieka. Nie udzielamy porad weterynaryjnych." },
+              { icon: BookOpen, t: "Źródła przy każdym materiale", d: "Opieramy się na organizacjach kynologicznych i felinologicznych, organizacjach dobrostanu zwierząt i publikacjach specjalistycznych. Brakujących danych nie zgadujemy." },
+              { icon: ShieldCheck, t: "Zdrowie i warunki utrzymania po przeglądzie specjalisty", d: "Materiały o żywieniu, warunkach utrzymania, transporcie i zdrowiu publikujemy dopiero po sprawdzeniu przez osobę z odpowiednią wiedzą. Nie udzielamy porad weterynaryjnych." },
+              { icon: BadgeCheck, t: "Jawnie o tym, jak powstał tekst", d: "Przy materiale podajemy datę publikacji i informację, czy powstał z użyciem narzędzi AI. Błędy można zgłosić przy każdym tekście." },
             ].map((x, i) => (
               <li key={x.t} className="relative rounded-[var(--radius-lg)] border border-line bg-surface p-6">
                 <span className="absolute right-5 top-4 font-[family-name:var(--font-display)] text-4xl font-extrabold text-line-strong" aria-hidden>{i + 1}</span>

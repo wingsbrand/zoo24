@@ -3,7 +3,7 @@
 import type { Article } from "../types";
 import { GROUPS, NEEDS, isGroupSlug, isNeedSlug, type GroupSlug, type NeedSlug } from "../taxonomy/animals";
 
-export type TopicSlug = "rasy-psow" | "rasy-kotow" | "pielegnacja" | "wybor-uslugi" | "zachowanie";
+export type TopicSlug = "rasy-psow" | "rasy-kotow" | "przygotowanie-i-opieka" | "wyjazdy" | "wybor-uslugi" | "zachowanie" | "pielegnacja";
 
 export interface TopicColors {
   /** tło okładki */
@@ -25,12 +25,14 @@ export interface Topic {
 export const TOPICS: readonly Topic[] = [
   { slug: "rasy-psow", name: "Rasy psów", description: "Charakter, potrzeby i opieka nad psami różnych ras.", colors: { bg: "#0e4f5c", fg: "#faf7f2", motif: "#ef8a6c" } },
   { slug: "rasy-kotow", name: "Rasy kotów", description: "Wygląd, temperament i codzienna opieka nad kotami.", colors: { bg: "#a93f1d", fg: "#faf7f2", motif: "#f6c3ae" } },
+  { slug: "przygotowanie-i-opieka", name: "Przygotowanie i opieka", description: "Przygotowanie domu, wyposażenie i codzienna opieka.", colors: { bg: "#e4f0ef", fg: "#0a3842", motif: "#0e4f5c" } },
+  { slug: "wyjazdy", name: "Wyjazdy i opieka zastępcza", description: "Jak zorganizować opiekę nad zwierzęciem, gdy wyjeżdżasz.", colors: { bg: "#fdebe4", fg: "#0a3842", motif: "#d4552d" } },
   { slug: "pielegnacja", name: "Pielęgnacja", description: "Szata, pazury, kąpiel i pielęgnacja sezonowa.", colors: { bg: "#e4f0ef", fg: "#0a3842", motif: "#0e4f5c" } },
   { slug: "wybor-uslugi", name: "Wybór usługi", description: "Jak wybrać groomera, hotel lub opiekuna — pytania i checklisty.", colors: { bg: "#fdebe4", fg: "#0a3842", motif: "#d4552d" } },
   { slug: "zachowanie", name: "Zachowanie i wychowanie", description: "Socjalizacja, nauka, zostawanie w domu.", colors: { bg: "#0a3842", fg: "#faf7f2", motif: "#7fb3ad" } },
 ];
 
-export const DEFAULT_TOPIC: TopicSlug = "pielegnacja";
+export const DEFAULT_TOPIC: TopicSlug = "przygotowanie-i-opieka";
 
 const BY_SLUG = new Map(TOPICS.map((t) => [t.slug, t]));
 export const isTopicSlug = (s: unknown): s is TopicSlug => typeof s === "string" && BY_SLUG.has(s as TopicSlug);
@@ -77,14 +79,27 @@ const RULES: { test: RegExp; topic: TopicSlug }[] = [
   { test: /\b(rasa|rasy|pies|psa|psy|szczeni\w*|molos\w*)\b/, topic: "rasy-psow" },
 ];
 
-export function topicSlugForArticle(a: Pick<Article, "slug" | "title">): TopicSlug {
+/**
+ * Temat (sekcja prezentacji) wyliczany z danych, w tej kolejności (audyt V4 A05–A07):
+ * rasa → „Rasy psów/kotów”; wyjazdy → „Wyjazdy”; wybór usługi → „Wybór usługi”; zachowanie; reszta → „Przygotowanie i opieka”.
+ * Ręczne przypisania i reguły tytułowe zostają tylko dla materiałów bez klasyfikacji (np. DEMO).
+ */
+export function topicSlugForArticle(a: Pick<Article, "slug" | "title"> & Partial<Pick<Article, "animal" | "needs">>): TopicSlug {
+  if (a.animal?.breed) return a.animal.group === "koty" ? "rasy-kotow" : "rasy-psow";
+  const needs = a.needs ?? [];
+  if (a.animal || needs.length) {
+    if (needs.includes("wyjazdy")) return "wyjazdy";
+    if (needs.includes("profesjonalna-pomoc")) return "wybor-uslugi";
+    if (needs[0] === "zachowanie") return "zachowanie";
+    return "przygotowanie-i-opieka";
+  }
   const fixed = ARTICLE_TOPICS[a.slug];
   if (fixed) return fixed;
   const hay = normalizeText(`${a.title} ${a.slug.replace(/-/g, " ")}`);
   return RULES.find((r) => r.test.test(hay))?.topic ?? DEFAULT_TOPIC;
 }
 
-export const topicForArticle = (a: Pick<Article, "slug" | "title">): Topic => getTopic(topicSlugForArticle(a));
+export const topicForArticle = (a: Pick<Article, "slug" | "title"> & Partial<Pick<Article, "animal" | "needs">>): Topic => getTopic(topicSlugForArticle(a));
 
 // ---------- Hub /poradniki ----------
 
@@ -127,12 +142,31 @@ export function parsePortalHubQuery(sp: Record<string, string | string[] | undef
 
 export const isPublished = (a: Article) => a.status === "published";
 
-/** Proste wyszukiwanie: wszystkie słowa zapytania muszą wystąpić w tytule lub leadzie (bez polskich znaków). */
-export function matchesQuery(a: Pick<Article, "title" | "summary">, q: string): boolean {
+/** Proste synonimy potoczne → słowa występujące w nazwach działów/gatunków/tytułach (po normalizacji). */
+const SYNONYMS: Record<string, string[]> = {
+  pies: ["psy", "pies", "psa"], psa: ["psy", "pies", "psa"], piesek: ["psy", "pies", "psa"], szczeniak: ["psy", "pies", "szczeni"],
+  kot: ["koty", "kot"], kota: ["koty", "kot"], kotek: ["koty", "kot"], kociak: ["koty", "kot"],
+  krolik: ["kroliki", "krolik"], krolika: ["kroliki", "krolik"],
+  swinka: ["kawia", "gryzonie"], chomika: ["chomik"],
+  papuga: ["papuzka", "ptaki", "nimfa"], papuzka: ["papuzka", "ptaki"], ptak: ["ptaki", "ptak"],
+  ryba: ["ryby", "akwarystyka"], rybki: ["ryby", "akwarystyka"], akwarium: ["akwarystyka", "akwarium", "ryby"],
+  gad: ["gady", "gad"], gekon: ["gekon", "gady"], jaszczurka: ["gady"], terrarium: ["gady", "terrarium"],
+  wyjazd: ["wyjazd", "opiekuna"], urlop: ["wyjazd", "opiekuna"], wakacje: ["wyjazd", "opiekuna"],
+};
+
+/** Każde słowo zapytania (lub jego synonim) musi wystąpić w tekście (bez polskich znaków). */
+export function matchesWithSynonyms(haystack: string, q: string): boolean {
+  const hay = normalizeText(haystack);
   const words = normalizeText(q).split(/\s+/).filter(Boolean);
-  if (!words.length) return true;
-  const hay = normalizeText(`${a.title} ${a.summary}`);
-  return words.every((w) => hay.includes(w));
+  if (!words.length) return false;
+  return words.every((w) => [w, ...(SYNONYMS[w] ?? [])].some((v) => hay.includes(v)));
+}
+
+/** Wyszukiwanie artykułów: każde słowo (lub synonim) w tytule, leadzie, rasie albo nazwie działu. */
+export function matchesQuery(a: Pick<Article, "title" | "summary"> & Partial<Pick<Article, "animal">>, q: string): boolean {
+  if (!normalizeText(q).trim()) return true;
+  const group = a.animal?.group ? GROUPS.find((g) => g.slug === a.animal!.group) : null;
+  return matchesWithSynonyms(`${a.title} ${a.summary} ${a.animal?.breed ?? ""} ${group?.name ?? ""}`, q);
 }
 
 /** Najnowsze najpierw (wg daty aktualizacji), potem tytuł — stabilnie. */
@@ -192,8 +226,41 @@ export function hubHref(p: { temat?: TopicSlug | null; q?: string; zwierze?: Gro
   return s ? `/poradniki?${s}` : "/poradniki";
 }
 
-/** Powiązane poradniki: opublikowane, ten sam temat, bez bieżącego, max `limit`. */
-export function relatedArticles(current: Pick<Article, "slug" | "title">, all: Article[], limit = 3): Article[] {
-  const topic = topicSlugForArticle(current);
-  return sortArticles(all.filter((a) => isPublished(a) && a.slug !== current.slug && topicSlugForArticle(a) === topic)).slice(0, limit);
+/** Potrzeby-zadania wspólne dla różnych zwierząt (dopuszczają rekomendację między grupami). */
+const CROSS_GROUP_NEEDS: readonly NeedSlug[] = ["wyjazdy", "profesjonalna-pomoc", "transport"];
+
+/**
+ * Powiązane materiały (audyt V4 A07): najpierw ręczne nadpisanie (`related`), potem punktacja według
+ * tego samego zwierzęcia (gatunek > grupa), wspólnej potrzeby i rodzaju materiału. Bez dopełniania losowymi
+ * kategoriami — materiał bez wspólnego zwierzęcia ani potrzeby nie jest polecany.
+ */
+export function relatedArticles(current: Pick<Article, "slug" | "title"> & Partial<Pick<Article, "animal" | "needs" | "related">>, all: Article[], limit = 3): Article[] {
+  const pool = all.filter((a) => isPublished(a) && a.slug !== current.slug);
+  const manual = (current.related ?? []).map((s) => pool.find((a) => a.slug === s)).filter((a): a is Article => !!a);
+  const curNeeds = new Set(current.needs ?? []);
+  const curBreed = !!current.animal?.breed;
+  const scored = pool
+    .filter((a) => !manual.includes(a))
+    .map((a) => {
+      let score = 0;
+      const sameGroup = !!current.animal && a.animal?.group === current.animal.group;
+      if (sameGroup) score += 4;
+      if (sameGroup && current.animal?.species && a.animal?.species === current.animal.species) score += 2;
+      const shared = (a.needs ?? []).filter((n) => curNeeds.has(n)).length;
+      score += shared * 2;
+      // Profile ras polecają przede wszystkim profile ras tej samej grupy; poradniki — poradniki.
+      if (sameGroup && curBreed === !!a.animal?.breed) score += 1;
+      // Poradnik zadaniowy nie poleca profili ras ponad poradniki o tym samym zadaniu.
+      if (sameGroup && !curBreed && a.animal?.breed && shared === 0) score -= 3;
+      // Inna grupa zwierząt: tylko gdy łączy je zadanie przekrojowe (wyjazd, wybór usługi) — nie np. „wyposażenie” akwarium i terrarium.
+      if (current.animal && a.animal && !sameGroup) {
+        const crossTask = (a.needs ?? []).filter((n) => curNeeds.has(n) && CROSS_GROUP_NEEDS.includes(n)).length;
+        score = crossTask > 0 && !curBreed ? crossTask * 3 : 0;
+      }
+      return { a, score };
+    })
+    .filter((x) => x.score > 0)
+    .sort((x, y) => y.score - x.score || y.a.updatedAt.localeCompare(x.a.updatedAt) || x.a.title.localeCompare(y.a.title, "pl"))
+    .map((x) => x.a);
+  return [...manual, ...scored].slice(0, limit);
 }
