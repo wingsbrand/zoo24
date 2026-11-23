@@ -1,14 +1,14 @@
 {
   "schema_version": "zoo24.ops.policy.v1",
-  "status": "APPROVED_AI_EDITOR_SHADOW_UNTIL_LIVE",
-  "mode": "shadow",
+  "status": "LIVE_SCOPED_CMS_AI_EDITOR",
+  "mode": "live_scoped",
   "enabled": true,
   "timezone": "Europe/Warsaw",
   "owner_approval": {
     "approved": true,
     "approved_by": "owner",
-    "approved_at": "2026-11-22T14:41:54.301Z",
-    "policy_hash": "9bc00f53c86a65767149d8fedfa7cba4248a14c171a9a0467d45c05beb24d91c",
+    "approved_at": "2026-11-23T00:18:20.926Z",
+    "policy_hash": "3caa2a5590ad8ae3476395fdffee1a3b0d084685f3e982579dbe4111a8a66044",
     "review_due_at": null
   },
   "resources": {
@@ -94,7 +94,7 @@
     "new_factual_content_requires_human_review": false,
     "health_legal_insurance_requires_specialist": true,
     "approval_bound_to_content_and_evidence_versions": true,
-    "editor_note": "Redaktor = agent Claude, jawnie oznaczony jako AI (na stronie: „redakcja ZOO24 z udziałem AI”). Zatwierdza treści poza kategoriami wrażliwymi; zdrowie/prawo/ubezpieczenia/sponsorowane/ceny wymagają człowieka. Właściciel przegląda opublikowane treści na wersji live.",
+    "editor_note": "Redaktor = agent Claude, jawnie oznaczony jako AI (na stronie: „redakcja ZOO24 z udziałem AI”). Zatwierdza treści poza kategoriami wrażliwymi; zdrowie/prawo/ubezpieczenia/sponsorowane/ceny wymagają człowieka. Właściciel przegląda opublikowane treści na wersji live. V3: żywienie, środowisko (temperatura, wilgotność, oświetlenie), łączenie zwierząt i transport — wyłącznie przegląd człowieka z wiedzą gatunkową.",
     "ai_editor_allowed": true,
     "ai_editor_id": "claude-ai-editor",
     "ai_editor_excluded_categories": [
@@ -102,7 +102,13 @@
       "legal",
       "insurance",
       "sponsored",
-      "dynamic_prices"
+      "dynamic_prices",
+      "welfare",
+      "nutrition",
+      "environment",
+      "temperature_humidity_lighting",
+      "cohabitation",
+      "transport"
     ],
     "post_publication_owner_review": true
   },
@@ -131,16 +137,17 @@
     "cancel_provider_schedules": true,
     "unknown_cancel_state": "partially_paused"
   },
-  "notes": "Polityka v2 ZOO24 podpisana przez właściciela: redaktor-AI, bez pilota, koszt tylko w ramach subskrypcji. Tryb shadow do czasu uruchomienia serwisu (deploy/DNS = osobna zgoda). Każda zmiana pliku unieważnia podpis. Role zoo24-ops-* nie mogą zapisywać tego pliku.",
+  "notes": "Polityka v3 ZOO24: live_scoped wyłącznie dla publikacji artykułów zaakceptowanych przez redaktora-AI (cms) na https://zoo24.pl. Social, SEO, deploy, FAQ, e-mail/DM, reklamy — wyłączone. Koszt tylko w ramach subskrypcji. Każda zmiana pliku unieważnia podpis. Role zoo24-ops-* nie mogą zapisywać tego pliku.",
   "scope": {
-    "name": "ai_editor_no_pilot",
+    "name": "live_cms_ai_editor",
     "pilot_days": 0,
     "allowed": [
       "odczyt stanu i agregatów",
       "szkice i redakcja artykułów/postów",
       "akceptacja treści przez redaktora-AI poza kategoriami wrażliwymi",
       "publikacja zaakceptowanych artykułów — dopiero na serwisie live, przez gateway",
-      "karty faktów, kalendarz 14 dni, propozycje SEO, raport tygodniowy"
+      "karty faktów, kalendarz 14 dni, propozycje SEO, raport tygodniowy",
+      "publikacja artykułów zaakceptowanych przez redaktora-AI przez gateway na https://zoo24.pl"
     ],
     "forbidden": [
       "deploy produkcji i zmiana DNS bez osobnej zgody",
@@ -150,6 +157,6 @@
       "wydatki ponad subskrypcję",
       "zmiana tej polityki przez agentów"
     ],
-    "approval_evidence": "właściciel w czacie Claude Code 2026-11-22: „możesz samodzielnie redagować, bez pilota. Ja będę sprawdzał już na wersji live. limit kosztów AI - róbmy tak aby mieścić się w limicie mojego konta.”"
+    "approval_evidence": "właściciel w czacie Claude Code 2026-11-22: „możesz samodzielnie redagować, bez pilota. Ja będę sprawdzał już na wersji live. limit kosztów AI - róbmy tak aby mieścić się w limicie mojego konta.” | start serwisu: właściciel „GO” (czat orkiestratora 2026-11-22); publikacja artykułów: właściciel „Yes, publish when ready” (sesja zoo24-ops 2026-11-22) oraz „zacznijmy narazie od artykułów SEO pisanych przez Claude” (czat orkiestratora 2026-11-22; tylko klasa standard)."
   }
 }

@@ -17,9 +17,10 @@ function livePolicy(): ActivationPolicy {
 }
 
 describe("cms.publish_approved_version — artykuły TOP 3", () => {
-  it("polityka z repo (shadow do live): dry_run, w bazie nadal needs_review", async () => {
+  it("polityka z repo po edycji (podpis unieważniony): dry_run, w bazie nadal needs_review", async () => {
     const store = tempStore();
-    const r = await publishApprovedArticles(store, loadPolicy(), { now: NOW, fetchFn: async () => ({ status: 200 }) });
+    const tampered = { ...loadPolicy()!, notes: "edycja bez podpisu" };
+    const r = await publishApprovedArticles(store, tampered, { now: NOW, fetchFn: async () => ({ status: 200 }) });
     expect(SLUGS.every((s) => r.some((x) => x.slug === s))).toBe(true);
     expect(r.every((x) => x.outcome === "dry_run")).toBe(true);
     expect(store.read().articles.filter((a) => SLUGS.includes(a.slug)).every((a) => a.status === "needs_review")).toBe(true);

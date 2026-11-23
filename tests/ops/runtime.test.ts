@@ -141,7 +141,7 @@ describe("R08/R09 pauza", () => {
 });
 
 describe("P04 polityka chroniona", () => {
-  it("agent nie może zapisać polityki ani podnieść budżetu; polityka w repo podpisana tylko dla shadow", () => {
+  it("agent nie może zapisać polityki ani podnieść budżetu; polityka w repo podpisana live_scoped wyłącznie dla CMS", () => {
     const dir = fs.mkdtempSync(path.join(process.cwd(), ".data", "policy-test-"));
     try {
       const p = testPolicy("live_scoped");
@@ -153,17 +153,19 @@ describe("P04 polityka chroniona", () => {
       expect(() => writePolicy(dir, "owner", p, { ownerConfirmed: true })).toThrow("BUDGET_CHANGE_REQUIRES_OWNER_SIGNATURE");
       expect(fs.existsSync(path.join(dir, "ops", "config", "activation.json"))).toBe(false);
     } finally { fs.rmSync(dir, { recursive: true, force: true }); }
-    // Polityka w repo: podpisana przez właściciela wyłącznie dla zakresu shadow, tylko odczyt + szkice.
+    // Polityka w repo: po starcie HTTPS (2026-11-23) live_scoped wyłącznie dla publikacji zatwierdzonych artykułów (CMS).
     const repo = loadPolicy()!;
-    expect(repo.status).toBe("APPROVED_AI_EDITOR_SHADOW_UNTIL_LIVE");
+    expect(repo.status).toBe("LIVE_SCOPED_CMS_AI_EDITOR");
     expect(isPolicyApproved(repo)).toBe(true);
-    expect(repo.mode).toBe("shadow"); // do czasu serwisu live
+    expect(repo.mode).toBe("live_scoped");
+    expect(repo.review.ai_editor_excluded_categories).toEqual(expect.arrayContaining(["welfare", "nutrition", "environment", "transport"]));
     expect(Object.entries(repo.autonomy).filter(([, v]) => v).map(([k]) => k).sort()).toEqual(["create_drafts", "publish_human_reviewed_content", "read_approved_sources"]);
     expect(repo.review.ai_editor_allowed).toBe(true);
     expect(repo.review.ai_editor_excluded_categories).toEqual(expect.arrayContaining(["health", "legal", "sponsored"]));
     expect(repo.budgets.paid_advertising_monthly).toBe(0);
     expect(repo.budgets.approved_monthly_extra_ai_automation).toBe(0); // tylko w limicie subskrypcji
-    expect(effectiveMode(repo, "design")).toBe("shadow");
+    expect(effectiveMode(repo, "design")).toBe("live_scoped");
+    expect(repo.autonomy.publish_reviewed_social_versions).toBe(false); // social nadal wyłączone
     expect(effectiveMode(repo, "paused")).toBe("paused");
     expect(isAgentIdentity("owner-local")).toBe(false);
   });
