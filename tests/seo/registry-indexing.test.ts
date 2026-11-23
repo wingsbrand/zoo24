@@ -8,11 +8,29 @@ describe("buildPageRegistry", () => {
   const reg = buildPageRegistry(demoState());
 
   it("zawiera trasy publiczne, huby i strony statyczne jako indeksowalne", () => {
-    for (const p of ["/", "/uslugi", "/uslugi/groomer", "/uslugi/hotel-dla-zwierzat", "/poradniki", "/o-nas", "/dla-firm"]) {
+    for (const p of ["/", "/uslugi", "/o-nas", "/dla-firm"]) {
       expect(reg.get(p), p).not.toBeNull();
       expect(reg.get(p)!.indexable, p).toBe(true);
     }
+    // N5: huby kategorii i poradników indeksowane tylko wtedy, gdy mają realną (nie-DEMO) treść.
+    const s = demoState();
+    const realIn = (cat: string) => s.businesses.some((b) => b.status === "published" && !b.demo && b.category === cat);
+    for (const cat of ["groomer", "hotel-dla-zwierzat"]) {
+      expect(reg.get(`/uslugi/${cat}`), cat).not.toBeNull();
+      expect(reg.get(`/uslugi/${cat}`)!.indexable, cat).toBe(realIn(cat));
+    }
+    expect(reg.get("/poradniki")!.indexable).toBe(s.articles.some((a) => a.status === "published" && !a.demo));
     expect(HUB_PATHS).toContain("/poradniki");
+  });
+
+  it("N6: realna firma bez potwierdzenia danych (checkedAt=null) nie jest indeksowana; po weryfikacji — jest", () => {
+    const s = demoState();
+    const real = { ...s.businesses[0], id: "rx", slug: "realna-x", demo: false, status: "published" as const, checkedAt: null };
+    const verified = { ...real, id: "ry", slug: "realna-y", checkedAt: "2026-11-22T12:00:00.000Z" };
+    const r = buildPageRegistry({ ...s, businesses: [...s.businesses, real, verified] });
+    expect(r.get("/firma/realna-x")!.indexable).toBe(false);
+    expect(r.get("/firma/realna-y")!.indexable).toBe(true);
+    expect(r.get(`/uslugi/${real.category}`)!.indexable).toBe(true);
   });
 
   it("firmy i poradniki DEMO: obecne, ale noindex i demo", () => {

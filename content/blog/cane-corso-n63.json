@@ -4,11 +4,12 @@
   "title": "Cane corso — włoski molos dla doświadczonego opiekuna",
   "summary": "Duży, silny i czujny pies stróżujący o włoskim rodowodzie. Sprawdź, jak wygląda cane corso według standardu FCI, jakiego wychowania potrzebuje i komu naprawdę pasuje.",
   "body": [
-    "Cane corso (cane corso italiano) to włoska rasa psów w typie molosa, uznana przez Międzynarodową Federację Kynologiczną (FCI) i opisana w standardzie nr 343. Należy do grupy 2 FCI — pinczery, sznaucery, molosy i szwajcarskie psy pasterskie. Historycznie psy tego typu pilnowały gospodarstw i pomagały przy pracy z bydłem.",
+    "Cane corso (cane corso italiano) to włoska rasa psów w typie molosa, uznana przez Międzynarodową Federację Kynologiczną (FCI) i opisana w standardzie nr 343. Należy do grupy 2 FCI — pinczery i sznaucery, molosy, szwajcarskie psy górskie i do bydła (sekcja 2 — molosy). Historycznie psy tego typu pilnowały gospodarstw i pomagały przy pracy z bydłem.",
     "## Wygląd",
-    "Standard FCI opisuje cane corso jako psa średniej do dużej wielkości, mocnego i muskularnego, ale przy tym eleganckiego i zgrabnego w ruchu. Głowa jest szeroka, typowa dla molosów, kufa krótsza od czaszki. Sierść jest krótka, błyszcząca i gęsta, z niewielkim podszerstkiem. Standard dopuszcza m.in. umaszczenie czarne, w odcieniach szarości, płowe i pręgowane. Dokładne zakresy wzrostu i masy ciała podaje aktualna wersja standardu FCI — warto je sprawdzić przed wyborem szczenięcia.",
+    "Standard FCI opisuje cane corso jako psa średniej do dużej wielkości, solidnego i muskularnego, a przy tym z pewną elegancją sylwetki. Głowa jest typowa dla molosów: czaszka szeroka, kufa wyraźnie krótsza od czaszki. Sierść jest krótka, błyszcząca i bardzo gęsta, z niewielkim podszerstkiem. Standard dopuszcza umaszczenie czarne, w odcieniach szarości, płowe (od jasnego do ciemnego i jeleniej czerwieni), ciemną pszenicę oraz pręgowane; mała biała plama na piersi, palcach lub grzbiecie nosa jest dopuszczalna.",
+    "Według wersji standardu z 25.09.2023 wysokość w kłębie wynosi 64–68 cm u psów i 60–64 cm u suk (z tolerancją 2 cm), a masa ciała 45–50 kg u psów i 40–45 kg u suk.",
     "## Charakter i temperament",
-    "Według standardu cane corso jest czujnym obrońcą domu i rodziny, przywiązanym do opiekuna i łatwym w szkoleniu przy właściwym prowadzeniu. W praktyce oznacza to psa, który potrzebuje jasnych zasad, konsekwencji i dużo pracy nad socjalizacją od szczenięcia — z ludźmi, innymi psami i bodźcami miejskimi. Pies tej wielkości i siły musi być przewidywalny w każdej sytuacji.",
+    "Standard opisuje cane corso jako strażnika mienia, rodziny i stada — psa wyjątkowo zwinnego i szybko reagującego. W praktyce oznacza to psa, który potrzebuje jasnych zasad, konsekwencji i dużo pracy nad socjalizacją od szczenięcia — z ludźmi, innymi psami i bodźcami miejskimi. Pies tej wielkości i siły musi być przewidywalny w każdej sytuacji.",
     "To nie jest rasa dla każdego. Cane corso najlepiej sprawdzi się u osoby, która ma doświadczenie z dużymi psami, czas na codzienną aktywność i gotowość do pracy z trenerem. Pierwszym psem w domu może być wyzwaniem.",
     "## Wychowanie i szkolenie",
     "Zacznij od zajęć dla szczeniąt i podstawowego posłuszeństwa: chodzenia na luźnej smyczy, przywołania i spokojnego zachowania w obecności gości. Stosuj metody oparte na nagradzaniu — siłowe rozwiązania u dużego, pewnego siebie psa łatwo przynoszą odwrotny skutek. Jeśli widzisz nadmierną czujność lub reaktywność, skonsultuj się z doświadczonym behawiorystą.",
@@ -30,20 +31,70 @@
     "Kto zajmie się psem podczas mojego wyjazdu (hotel dla psów, opiekun)?"
   ],
   "sources": [
-    { "label": "FCI — standard nr 343, Cane Corso Italiano (EN, wersja obowiązująca)", "url": "https://www.fci.be/Nomenclature/Standards/343g02-en.pdf" },
-    { "label": "FCI — nomenklatura ras, Cane Corso (343)", "url": "https://fci.be/en/nomenclature/CANE-CORSO-343.html" }
+    {
+      "label": "FCI — standard nr 343, Cane Corso Italiano (EN, wersja obowiązująca)",
+      "url": "https://www.fci.be/Nomenclature/Standards/343g02-en.pdf"
+    },
+    {
+      "label": "FCI — nomenklatura ras, Cane Corso (343)",
+      "url": "https://fci.be/en/nomenclature/CANE-CORSO-343.html"
+    },
+    {
+      "label": "ZKwP — Systematyka ras (grupy i sekcje FCI, wersja polska; PDF) oraz zkwp.pl/wzorce.php",
+      "url": "https://www.zkwp.pl/regulaminy/Systematyka_Ras.pdf"
+    }
   ],
   "authorDisplay": "Redakcja ZOO24",
   "status": "needs_review",
   "demo": false,
   "publishedAt": null,
-  "updatedAt": "2026-11-22T12:00:00.000Z",
-  "relatedServicePaths": ["/uslugi/hotel-dla-zwierzat/warszawa", "/uslugi/hotel-dla-zwierzat/bialystok"],
+  "updatedAt": "2026-11-22T20:04:17.544Z",
+  "relatedServicePaths": [
+    "/uslugi/hotel-dla-zwierzat/warszawa",
+    "/uslugi/hotel-dla-zwierzat/bialystok"
+  ],
   "disclosure": null,
   "reviewNotes": [
-    "Szkic przygotowany z pomocą AI na podstawie standardu FCI nr 343 — wymaga weryfikacji faktów przez redaktora.",
-    "Celowo nie podano liczb wzrostu/masy — redaktor może je dodać z aktualnego standardu FCI (wersja z 25.09.2023).",
-    "Rozważyć konsultację trenera/behawiorysty przy akapicie o wychowaniu.",
-    "Adres /blog/cane-corso-n63 = dawny URL z TOP 100 GA4 (#2, 11 812 sesji org.) — po akceptacji: decyzja keep_200."
+    "Recenzja redaktora-AI (claude-ai-editor, ADR-013) na podstawie kart faktów z przebiegu knowledge 22.11.2026 (gałąź ops/knowledge, evidence-2026-11-22).",
+    "Poprawiono wg FCI 343 (25.09.2023): „pewna elegancja” zamiast „elegancki w ruchu”; czaszka szeroka; pełna lista umaszczeń; dodano wzrost 64–68/60–64 cm (±2 cm) i masę 45–50/40–45 kg.",
+    "Usunięto niepoparte standardem „przywiązany do opiekuna, łatwy w szkoleniu”; temperament wg standardu: strażnik mienia, rodziny i stada, zwinny i reagujący.",
+    "Sekcje „Wychowanie”, „Aktywność”, „Zdrowie” to ogólne wskazówki bez twierdzeń medycznych, z odesłaniem do lekarza weterynarii/behawiorysty — poza kategorią zdrowotną.",
+    "Publikacja dopiero po przełączeniu domeny zoo24.pl, przez gateway; właściciel przegląda po publikacji. Decyzja URL: keep_200."
+  ],
+  "reviewedBy": "claude-ai-editor",
+  "editorialDecision": {
+    "decision": "approved",
+    "by": "claude-ai-editor",
+    "byKind": "ai",
+    "at": "2026-11-22T20:04:17.544Z",
+    "contentHash": "aaccbb2cf080836e8bce507c967cee8979dcbfdc52164a31ba6c9af4cbd16058",
+    "evidenceRef": "claims[] w pliku + weryfikacja źródeł 22.11.2026 (FCI/FIFe/CFA/RSPCA/The Cat Group)",
+    "excludedCategoriesChecked": [
+      "health",
+      "legal",
+      "insurance",
+      "sponsored",
+      "dynamic_prices",
+      "welfare",
+      "nutrition",
+      "environment",
+      "temperature_humidity_lighting",
+      "cohabitation",
+      "transport"
+    ],
+    "notes": [
+      "Kategoria: przewodnik po rasie (nie porada zdrowotna).",
+      "Nazwy grup i sekcji FCI ujednolicone do polskiej nomenklatury ZKwP (Systematyka ras); dodane źródło i claim — ponowna akceptacja z nowym hashem."
+    ],
+    "publishAfter": "serwis live na https://zoo24.pl; publikacja przez gateway (cms.publish_approved_version)"
+  },
+  "claims": [
+    {
+      "text": "Grupa 2 FCI wg ZKwP: pinczery i sznaucery, molosy, szwajcarskie psy górskie i do bydła; sekcja 2 — molosy.",
+      "evidence": "ZKwP, Systematyka ras: polskie nazwy grup i sekcji FCI (odczyt 22.11.2026; nagłówki grup także na zkwp.pl/wzorce.php).",
+      "appliesTo": "nazewnictwo grup FCI",
+      "accessedAt": "2026-11-22",
+      "sourceIndex": 2
+    }
   ]
 }

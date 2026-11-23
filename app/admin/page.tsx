@@ -10,8 +10,10 @@ import { formatWarsaw } from "@/lib/time";
 import { Alert, Badge, Button, Card } from "@/components/ui";
 import { Tile } from "@/components/kpi";
 import { loadPolicy } from "@/lib/ops/policy";
+import { loadScheduleConfig } from "@/lib/ops/schedule";
 import { toggleKillSwitch, resetDemo, enableChannel, runOpsShadow } from "./actions";
 import { VisitMarker } from "./visit-marker";
+import { requireAdmin } from "@/lib/admin/guard";
 
 export const dynamic = "force-dynamic";
 
@@ -28,11 +30,12 @@ function Q({ n, icon: Icon, title, children, id }: { n: number; icon: typeof Lis
 }
 
 export default async function AdminHome() {
+  await requireAdmin();
   const s = getStore().read();
   const d = await buildDashboard(s, getReadSources());
   const decisions = pendingDecisions(s);
   const totalDecisions = decisions.reduce((a, x) => a + x.count, 0);
-  const auto = automationStatus(s, loadPolicy());
+  const auto = automationStatus(s, loadPolicy(), loadScheduleConfig());
   const lastVisit = (await cookies()).get("zoo24_admin_lv")?.value ?? null;
   const changes = changesSince(s, lastVisit);
   const keyTiles = [...d.organic.filter((t) => t.key === "ga4_organic_sessions" || t.key === "gsc_clicks"), ...d.social.filter((t) => t.key === "facebook_followers_total" || t.key === "facebook_engagements"), ...d.directory.slice(0, 2)];
@@ -80,7 +83,7 @@ export default async function AdminHome() {
               Publikacje social: {auto.publishEnabled ? "zwolnione (tylko symulacja MOCK)" : "wstrzymane"}
             </Badge>
             <Badge tone="neutral">Tryb {auto.socialMode} · {auto.socialMode === 0 ? "offline / MOCK" : "assisted"}</Badge>
-            <Badge tone={auto.schedulerActive ? "ok" : "info"}>{auto.schedulerActive ? "Harmonogram: aktywny" : "Harmonogram: nieaktywny — joby uruchamiane ręcznie"}</Badge>
+            <Badge tone={auto.schedulerActive ? "ok" : "info"}>{auto.schedulerActive ? "Harmonogram: aktywny — zadania chmurowe 6 ról (shadow)" : "Harmonogram: nieaktywny — joby uruchamiane ręcznie"}</Badge>
           </div>
           <form action={toggleKillSwitch} className="mt-3 flex flex-wrap gap-2">
             {auto.publishEnabled ? (
@@ -125,12 +128,12 @@ export default async function AdminHome() {
             <p className="mt-1 text-xs text-ink-muted">Runtime: {auto.ops.runtime}. Przebieg shadow czyta stan serwisu i zapisuje wynik roli — nic nie publikuje.</p>
             <div className="mt-2 overflow-x-auto"><table className="w-full min-w-[26rem] text-sm">
               <caption className="sr-only">Role operacyjne i ich ostatnie przebiegi</caption>
-              <thead className="text-left text-xs uppercase tracking-wide text-ink-muted"><tr><th className="py-1">Rola</th><th className="py-1">Plan (nieaktywny)</th><th className="py-1">Ostatni przebieg</th></tr></thead>
+              <thead className="text-left text-xs uppercase tracking-wide text-ink-muted"><tr><th className="py-1">Rola</th><th className="py-1">Plan (czas lokalny)</th><th className="py-1">Ostatni przebieg</th></tr></thead>
               <tbody className="divide-y divide-line">
                 {auto.ops.roles.map((r) => (
                   <tr key={r.role}>
                     <td className="py-2 pr-2 font-mono text-xs">{r.agent}</td>
-                    <td className="py-2 pr-2 text-xs text-ink-muted">{r.plan}</td>
+                    <td className="py-2 pr-2 text-xs text-ink-muted">{r.plan}<span className="block">{r.enabled ? "zadanie chmurowe aktywne" : "nieaktywne"}</span></td>
                     <td className="py-2 text-xs">{r.last ? <>{formatWarsaw(r.last.at)} · <span className="font-semibold">{r.last.status}</span><span className="block text-ink-muted">{r.last.mode}{r.last.reason ? ` · ${r.last.reason}` : ""}</span></> : <span className="text-ink-muted">brak przebiegu</span>}</td>
                   </tr>
                 ))}

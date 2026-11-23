@@ -1,6 +1,44 @@
-﻿# ZOO24 — status wdrożenia (v1.2)
+# ZOO24 — status wdrożenia (v1.2)
 
-**Aktualizacja:** 2026-11-22 — sesja 1 Claude Code (F0 + lokalne F1). **Tryb:** Mode 0 / MOCK. Nic nie jest live.
+**Aktualizacja:** 2026-11-23 — serwis live na https://zoo24.pl; publikacja CMS live_scoped (26 materiałów). Social nadal Mode 0.
+
+## LIVE 2026-11-23 ok. 01:45 — HTTPS i pierwsza publikacja redakcyjna
+- **HTTPS:** DNS wskazywał Vercel, ale certyfikat nie powstał automatycznie; wystawiony ręcznie przez API Vercel (`cert_SohBRo1DwE3Zk4xzATZUGKUl`, zoo24.pl + www, autoRenew). `www` → 308 na `https://zoo24.pl/`.
+- **Polityka:** `ops/config/activation.json` podpisana `live_scoped` (status `LIVE_SCOPED_CMS_AI_EDITOR`) — wyłącznie publikacja artykułów zaakceptowanych przez redaktora-AI; social, SEO-patche, deploy, e-mail/DM, reklamy nadal wyłączone; welfare/żywienie/środowisko/transport wykluczone z akceptacji AI (commit c1365b9).
+- **Opublikowane (potwierdzone HTTP 200 na https://zoo24.pl):** 26 materiałów — 20 artykułów o rasach pod dawnymi adresami `/blog/*` + 6 poradników klasy standard `/poradniki/*`. 6 poradników welfare **czeka** na specjalistę (404, zgodnie z zasadą). Publiczne działy: psy, koty, ptaki, akwarystyka, gady. Sitemap: 36 URL. Canonical poprawny, brak noindex na domenie kanonicznej. `preflight:live --url https://zoo24.pl` = GOTOWE; vitest 348/348.
+- **Incydent ~01:33–01:43 (ok. 10 min niedostępności):** zmiana hooka publikacji na `await` (commit d9977c7) spowodowała blokadę zimnego startu (read-back do własnej domeny → timeout 300 s). Wycofana (2d74b32); w tym czasie publikacja jednak się wykonała (stan bazy v204). Wniosek: publikacji nie uruchamiać synchronicznie przy starcie modułu; docelowo osobny endpoint/cron z sekretem.
+- **Status odbioru V3:** wersja techniczna — TAK; **częściowe uruchomienie redakcyjne — TAK**; pełny zakres 10 grup — NIE.
+
+## Portal V3 — pakiet 1 (2026-11-22, wieczór)
+Plan i statusy: `docs/PORTAL_V3_PLAN.md`; treści: `docs/CONTENT_COVERAGE.md`; QA: `docs/PORTAL_V3_QA.md` (+ `docs/qa-screens/`); dawne URL: `docs/seo/URL_RECOVERY_MAP_V3.md`; social: `docs/social/CALENDAR_V3.md`.
+| Status odbioru | Stan |
+|---|---|
+| Wersja techniczna gotowa | **TAK** — wdrożona na produkcję (commit f87d8e7); sprawdzone na serwerze Vercel jako zoo24.pl: strona główna portalu, /zwierzeta, /poradniki, /narzedzia (2 narzędzia), /polec-miejsce, sitemap 11 URL bez DEMO, /admin 404 bez wycieku |
+| Częściowe uruchomienie redakcyjne | **NIE (jeszcze)** — 9 materiałów zatwierdzonych (3 /blog + 6 poradników standard, redaktor-AI jawnie) czeka na publikację przez gateway po działającym HTTPS i podpisie polityki live_scoped; do tego czasu grupy zwierząt zwracają 404 (brak opublikowanej treści) |
+| Pełny zakres 10 grup | **NIE** — 6 poradników welfare czeka na specjalistów; 3 grupy bez materiałów (fretki/małe ssaki, płazy, bezkręgowce) |
+Testy: vitest 348/348, tsc PASS; QA niezależny: brak blokerów, defekty high naprawione (D-01, D-04, D-06), D-02 (restart dev), pozostałe low w raporcie.
+
+## START 2026-11-22 ok. 19:15 — zoo24.pl w trybie produkcyjnym (decyzja właściciela: „GO”)
+| Element | Stan (zweryfikowany) |
+|---|---|
+| DNS (aftermarket, zmienił właściciel) | A `@` → 216.198.79.1 + 64.29.17.1; CNAME `www` → Vercel; MX/SPF bez zmian (sprawdzone na ns1.aftermarket.pl) |
+| Vercel Production | `ZOO24_ENV=production`, `ZOO24_SITE_URL=https://zoo24.pl`; Preview pozostaje `staging` |
+| Wdrożenie | `dpl_ELUQ1UVSwWQPqcAGiNrx7xQrCfXU` READY (fra1) |
+| Baza Supabase | `app_state` v3: 10 realnych firm, 0 DEMO, legacy pusty (sync produkcyjny zadziałał) |
+| zoo24.pl na serwerze Vercel (HTTP) | 200, robots `Allow` + sitemap, canonical https://zoo24.pl, sitemap 8 URL, 404 dla DEMO/admin/nieopublikowanych |
+| zoo24.vercel.app | `noindex` + `Disallow` (alias) |
+| Propagacja / HTTPS | **w toku** — publiczne DNS trzymają stary A (TTL 6 h); certyfikat Vercel po propagacji |
+| Klucz Supabase | wymieniony po wycieku fragmentu do logów builda (kod naprawiony: normalizacja + brak wartości w błędach) |
+Do zrobienia: GSC (usługa Domena + TXT), Ahrefs (import z GSC), publikacja 3 artykułów /blog/* (sesja ops, gateway), weryfikacja 7 firm.
+
+## Aktualizacja 2026-11-22 (wieczór) — przygotowanie startu na zoo24.pl (ADR-014)
+Plan i kroki: `docs/GO_LIVE_RUNBOOK.md`. Bramka: `npm run preflight:live` — **GOTOWE** po uzupełnieniu danych operatora (WINGS RETAIL sp. z o.o., NIP 5423261087, office@zoo24.pl, dokumenty obowiązują od 23.11.2026). KRS, sąd rejestrowy i kapitał zakładowy celowo pominięte — decyzja właściciela 2026-11-22 (poinformowany o art. 206 KSH).
+- Tryb produkcyjny przetestowany lokalnie (`next build` + `next start` z `ZOO24_ENV=production`, Host zoo24.pl vs alias): 30/30 PASS — brak DEMO, sitemap 8 URL tylko https://zoo24.pl, robots/X-Robots-Tag zależne od hosta, meta GSC/Ahrefs, canonical, 404 dla /admin, /demo-legacy, dawnych URL sklepu; linki wewnętrzne z / bez błędów.
+- **Naprawiona podatność** (znaleziona w tym teście, dotyczyła też stagingu): `/admin` zwracał 404, ale dane panelu trafiały do ładunku RSC (notFound tylko w layoucie). Teraz `requireAdmin()` w każdej stronie panelu + test regresyjny `tests/security/admin-guard.test.ts`.
+- Indeksacja: strona firmy tylko po weryfikacji danych (checkedAt); huby bez realnej treści (poradniki, hotele) noindex i poza sitemap; teksty strony głównej nie obiecują „sprawdzonych danych” dla każdej firmy.
+- Dokumenty prawne: pełny regulamin (§1–§11, DSA, kolejność wyników) i polityka prywatności; dane operatora z `lib/legal/operator.ts` (brakuje: pełnej nazwy, adresu siedziby, e-maila, daty wejścia w życie).
+- Domena: `zoo24.pl` + `www` (308) dodane w Vercel; DNS (aftermarket) bez zmian do dnia startu.
+- Otwarte: klucz Supabase (właściciel), 3 artykuły /blog/* (recenzja redaktora AI — sesja ops), 7 firm do weryfikacji, licencja komercyjna ilustracji AI.
 
 ## Aktualizacja 2026-11-22 (popołudnie) — staging na Vercel (ADR-012)
 | Element | Stan (zweryfikowany) |

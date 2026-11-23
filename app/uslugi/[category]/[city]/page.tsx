@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { BookOpen, SearchX, Store } from "lucide-react";
+import { BookOpen, ClipboardList, SearchX, Store } from "lucide-react";
 import { getStore } from "@/lib/store/file-store";
 import { CATEGORIES, CITIES, isCategory, isCity } from "@/lib/site";
 import type { CategorySlug, CitySlug } from "@/lib/types";
-import { Alert, ButtonLink, Container, EmptyState, PageHeader, buttonClasses } from "@/components/ui";
+import { Alert, ButtonLink, Container, EmptyState, PageHeader } from "@/components/ui";
 import { BusinessCard } from "@/components/directory/business-card";
 import { ServiceSearch } from "@/components/directory/search-form";
 import { ActiveFilters, FilterPanel } from "@/components/directory/filters";
@@ -14,7 +14,8 @@ import {
   activeFilterChips, buildListingModel, clearFiltersHref, hasListingParams, publishedListing, toSearchParams,
   type RawSearchParams,
 } from "@/lib/directory/query";
-import { listingCounts, MIN_REAL_LISTINGS, PILOT_CATEGORIES, PILOT_CITIES } from "@/lib/directory/stats";
+import { MIN_REAL_LISTINGS } from "@/lib/directory/stats";
+import { emptyListingSuggestions, type EmptyListingSuggestions } from "@/lib/directory/empty-state";
 import { capitalize, firmCount } from "@/lib/directory/format";
 
 export const dynamic = "force-dynamic";
@@ -39,15 +40,14 @@ export default async function ListingPage({ params, searchParams }: P) {
   const [{ category, city }, sp] = await Promise.all([params, searchParams]);
   if (!isCategory(category) || !isCity(city)) notFound();
 
-  const all = getStore().read().businesses;
-  const listing = publishedListing(all, category, city);
+  const state = getStore().read();
+  const listing = publishedListing(state.businesses, category, city);
   const base = `/uslugi/${category}/${city}`;
   const { filters, page, facets } = buildListingModel(listing, sp);
   const from = toSearchParams(filters).toString() || undefined;
   const filtered = page.total !== listing.length;
   const anyDemo = listing.some((b) => b.demo);
   const cat = CATEGORIES[category];
-  const counts = listingCounts(all);
 
   return (
     <>
@@ -77,7 +77,7 @@ export default async function ListingPage({ params, searchParams }: P) {
 
       <Container className="py-8 sm:py-10">
         {listing.length === 0 ? (
-          <NoBusinesses category={category} city={city} counts={counts} />
+          <NoBusinesses category={category} city={city} suggestions={emptyListingSuggestions(state, category, city)} />
         ) : (
           <div className="grid gap-6 lg:grid-cols-[17rem_minmax(0,1fr)] lg:gap-8">
             <aside aria-label="Filtry" className="lg:sticky lg:top-24 lg:self-start">
@@ -133,40 +133,70 @@ export default async function ListingPage({ params, searchParams }: P) {
   );
 }
 
-function NoBusinesses({ category, city, counts }: { category: CategorySlug; city: CitySlug; counts: ReturnType<typeof listingCounts> }) {
-  const otherCities = PILOT_CITIES.filter((c) => c !== city && counts[category][c].total > 0);
-  const otherCats = PILOT_CATEGORIES.filter((c) => c !== category && counts[c][city].total > 0);
+function NoBusinesses({ category, city, suggestions: s }: { category: CategorySlug; city: CitySlug; suggestions: EmptyListingSuggestions }) {
+  const hasAlternatives = s.guides.length > 0 || s.tools.length > 0;
   return (
     <EmptyState
       icon={<Store aria-hidden size={24} />}
       title={`Nie mamy jeszcze firm w tej kategorii ${CITIES[city].locative}`}
       actions={
         <>
-          <ButtonLink href="/dodaj-firme" variant="primary">Zgłoś firmę</ButtonLink>
-          <Link href="/poradniki" className={buttonClasses("secondary")}><BookOpen aria-hidden size={18} /> Przeczytaj poradniki</Link>
+          <ButtonLink href="/polec-miejsce" variant="primary">Poleć znane miejsce</ButtonLink>
+          <ButtonLink href="/dodaj-firme" variant="secondary">Prowadzisz firmę? Zgłoś ją</ButtonLink>
         </>
       }
     >
-      <p>Katalog dopiero rośnie. Możesz sprawdzić:</p>
-      {(otherCities.length > 0 || otherCats.length > 0) && (
-        <ul className="mt-3 space-y-1">
-          {otherCities.map((c) => (
-            <li key={c}>
-              <Link href={`/uslugi/${category}/${c}`} className="font-semibold text-brand underline">
-                {CATEGORIES[category].plural} {CITIES[c].locative}
-              </Link>{" "}({firmCount(counts[category][c].total)})
-            </li>
-          ))}
-          {otherCats.map((c) => (
-            <li key={c}>
-              <Link href={`/uslugi/${c}/${city}`} className="font-semibold text-brand underline">
-                {CATEGORIES[c].plural} {CITIES[city].locative}
-              </Link>{" "}({firmCount(counts[c][city].total)})
-            </li>
-          ))}
-        </ul>
+      <p>Katalog dopiero rośnie — nie pokazujemy firm, których nie sprawdziliśmy.</p>
+
+      {hasAlternatives && (
+        <div className="mt-4">
+          <h3 className="font-semibold text-ink">{s.needLabel} — co możesz zrobić teraz</h3>
+          <ul className="mt-2 space-y-2">
+            {s.tools.map((t) => (
+              <li key={t.href}>
+                <Link href={t.href} className="inline-flex items-center gap-1.5 font-semibold text-brand underline">
+                  <ClipboardList aria-hidden size={18} /> {t.label}
+                </Link>
+                <span className="block text-sm text-ink-muted">{t.description}</span>
+              </li>
+            ))}
+            {s.guides.map((g) => (
+              <li key={g.slug}>
+                <Link href={g.href} className="inline-flex items-center gap-1.5 font-semibold text-brand underline">
+                  <BookOpen aria-hidden size={18} /> {g.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
       )}
-      <p className="mt-3">Prowadzisz taką firmę lub znasz sprawdzoną? Zgłoś ją — po moderacji pojawi się w katalogu bezpłatnie.</p>
+
+      {(s.otherCities.length > 0 || s.relatedCategories.length > 0) && (
+        <div className="mt-4">
+          <h3 className="font-semibold text-ink">{CATEGORIES[category].plural} w innych miastach</h3>
+          <ul className="mt-2 space-y-1">
+            {s.otherCities.map((c) => (
+              <li key={c.city}>
+                <Link href={c.href} className="font-semibold text-brand underline">
+                  {CATEGORIES[category].plural} {CITIES[c.city].locative}
+                </Link>{" "}({firmCount(c.real)})
+              </li>
+            ))}
+            {s.relatedCategories.map((c) => (
+              <li key={c.category}>
+                <Link href={c.href} className="font-semibold text-brand underline">
+                  {CATEGORIES[c.category].plural} {CITIES[city].locative}
+                </Link>{" "}({firmCount(c.real)})
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      <p className="mt-4">
+        <strong>Znasz dobre miejsce?</strong> Poleć je — redakcja sprawdzi dane w publicznych źródłach, zanim cokolwiek opublikuje.{" "}
+        <strong>Prowadzisz taką firmę?</strong> Zgłoś ją jako właściciel lub upoważniony pracownik — obecność w katalogu jest bezpłatna.
+      </p>
     </EmptyState>
   );
 }

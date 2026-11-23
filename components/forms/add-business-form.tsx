@@ -22,12 +22,12 @@ export function AddBusinessForm({ action, categories, cities, roles, profile }: 
   const e = errorsOf(state);
   const v = valuesOf(state, profile ? { companyName: profile.name, category: profile.category, city: profile.city } : {});
   const [city, setCity] = useState(v.city ?? "");
-  const againHref = profile ? `/dodaj-firme?firma=${encodeURIComponent(profile.slug)}` : "/dodaj-firme";
+  const againHref = profile ? `/dodaj-firme?profil=${encodeURIComponent(profile.slug)}` : "/dodaj-firme";
 
   if (state.status === "success") {
     return (
       <FormSuccess code={state.code} title={profile ? "Dziękujemy — zgłoszenie aktualizacji przyjęte" : "Dziękujemy — zgłoszenie firmy przyjęte"} againHref={againHref}>
-        <li>Moderator sprawdzi, czy masz prawo reprezentować firmę (np. kontakt przez publiczny telefon lub stronę firmy). Do tego czasu {profile ? "profil pozostaje bez zmian" : "firma nie pojawi się w katalogu"}.</li>
+        <li>Moderator sprawdzi, czy masz prawo reprezentować firmę (np. kontakt przez oficjalny e-mail lub telefon firmy). Do tego czasu {profile ? "profil pozostaje bez zmian" : "firma nie pojawi się w katalogu"}.</li>
         <li>Jeśli zgłoszenie zostanie odrzucone, przy kodzie zobaczysz powód.</li>
       </FormSuccess>
     );
@@ -43,11 +43,19 @@ export function AddBusinessForm({ action, categories, cities, roles, profile }: 
       </p>
 
       {profile && (
-        <div id="firma" tabIndex={-1} className="rounded-[var(--radius-md)] border border-line bg-brand-tint p-4 text-sm">
-          <p className="font-semibold">Dotyczy profilu: <span className="break-words">{profile.name}</span></p>
-          <p className="text-ink-muted">Wpisz aktualne dane. Zmiany wprowadzi moderator po weryfikacji.</p>
+        <div id="firma" tabIndex={-1} className="space-y-1 rounded-[var(--radius-md)] border border-line bg-brand-tint p-4 text-sm">
+          <p className="font-semibold">
+            Rodzaj zgłoszenia: aktualizacja / przejęcie profilu <span className="break-words">{profile.name}</span>
+          </p>
+          <p className="text-ink-muted">
+            Wpisz aktualne dane. Zanim cokolwiek zmienimy, moderator potwierdzi Twoje prawo do reprezentowania firmy — np. kontaktem
+            przez oficjalny e-mail lub telefon firmy. Do czasu weryfikacji profil publicznie się nie zmienia.
+          </p>
+          <p>
+            <a href="/dodaj-firme" className="text-brand underline">To nie ta firma? Zgłoś nową</a>
+          </p>
           {e.firma && <p className="mt-1 font-medium text-danger">{e.firma}</p>}
-          <input type="hidden" name="firma" value={profile.slug} />
+          <input type="hidden" name="profil" value={profile.slug} />
         </div>
       )}
 

@@ -6,8 +6,17 @@ import type { AppState, Submission, SubmissionKind } from "./types";
 import type { Store } from "./store/file-store";
 import { CATEGORIES, CITIES, isCategory, isCity } from "./site";
 import { redact, redactString, safeLog } from "./security/redact";
+import { GROUPS, isGroupSlug } from "./taxonomy/animals";
 
 // ---------- Typy ----------
+/**
+ * Rodzaje zgłoszeń obsługiwane przez formularze. `recommend_place` (A08: polecenie miejsca przez użytkownika,
+ * który NIE reprezentuje firmy) — docelowo do dopisania w `SubmissionKind` w lib/types.ts; do tego czasu
+ * poszerzamy typ tutaj, a przy zapisie rzutujemy (wartość jest walidowana i zapisywana jak pozostałe).
+ */
+export type FormKind = SubmissionKind | "recommend_place";
+export const FORM_KINDS: readonly FormKind[] = ["add_business", "report_error", "contact", "recommend_place"];
+
 export type FieldErrors = Record<string, string>;
 export type ValidationResult = { ok: true; data: Record<string, string> } | { ok: false; errors: FieldErrors };
 
@@ -15,7 +24,7 @@ export type ValidationResult = { ok: true; data: Record<string, string> } | { ok
 export type FormState =
   | { status: "idle" }
   | { status: "error"; errors: FieldErrors; values: Record<string, string>; message?: string }
-  | { status: "success"; code: string; kind: SubmissionKind };
+  | { status: "success"; code: string; kind: FormKind };
 
 export const INITIAL_FORM_STATE: FormState = { status: "idle" };
 
@@ -41,11 +50,18 @@ export type ContactTopic = keyof typeof CONTACT_TOPICS;
 
 export const OTHER_CITY = "inne";
 
-export const KIND_LABELS: Record<SubmissionKind, string> = {
+export const KIND_LABELS: Record<FormKind, string> = {
   add_business: "Zgłoszenie firmy",
   report_error: "Zgłoszenie błędu",
   contact: "Wiadomość z formularza kontaktowego",
+  recommend_place: "Polecenie miejsca",
 };
+
+/** Etykieta rodzaju zgłoszenia (odporna na nieznane wartości w starym stanie). */
+export const kindLabel = (kind: string): string => (KIND_LABELS as Record<string, string>)[kind] ?? kind;
+
+/** „Poleć miejsce”: rodzaj usługi spoza katalogu. */
+export const OTHER_CATEGORY = "inna";
 
 export const STATUS_LABELS: Record<Submission["status"], string> = {
   pending: "Oczekuje na moderację",
@@ -107,17 +123,24 @@ export function normalizeHttpsUrl(raw: string): { url: string } | { error: strin
 export interface ValidationContext {
   /** Czy istnieje profil o danym slugu (przejęcie/aktualizacja). Brak = sprawdzany tylko format. */
   businessExists?: (slug: string) => boolean;
+  /** Id opublikowanego profilu po slugu (zapis celu przejęcia/aktualizacji). Wyznaczane na serwerze, nigdy z formularza. */
+  businessIdBySlug?: (slug: string) => string | null;
 }
 
 export function validateAddBusiness(input: Record<string, unknown>, ctx: ValidationContext = {}): ValidationResult {
   const errors: FieldErrors = {};
   const data: Record<string, string> = {};
 
-  const firma = clean(input.firma).toLowerCase();
+  // Przejęcie/aktualizacja istniejącego profilu: `profil` (nowy parametr) albo `firma` (zgodność wstecz).
+  const firma = (clean(input.profil) || clean(input.firma)).toLowerCase();
   if (firma) {
     if (!SLUG_RE.test(firma) || firma.length > 160) errors.firma = "Nieprawidłowy adres profilu firmy.";
     else if (ctx.businessExists && !ctx.businessExists(firma)) errors.firma = "Nie znaleziono profilu, którego dotyczy zgłoszenie. Zgłoś firmę jako nową.";
-    else data.firma = firma;
+    else {
+      data.firma = firma;
+      const id = ctx.businessIdBySlug?.(firma);
+      if (id) data.targetBusinessId = id;
+    }
   }
 
   const companyName = clean(input.companyName);
@@ -243,9 +266,81 @@ export function validateContact(input: Record<string, unknown>): ValidationResul
   return Object.keys(errors).length ? { ok: false, errors } : { ok: true, data };
 }
 
-export function validateSubmission(kind: SubmissionKind, input: Record<string, unknown>, ctx: ValidationContext = {}): ValidationResult {
+/** Nazwa pola checkboxa grupy zwierząt w formularzu „Poleć miejsce”. */
+export const animalField = (slug: string) => `zw_${slug}`;
+
+/**
+ * „Poleć miejsce” (A08). Osoba polecająca NIE reprezentuje firmy: walidator przyjmuje wyłącznie pola z białej listy —
+ * rola, profil (`firma`/`profil`), id celu i tryb są ignorowane, więc polecenie nie może przejąć ani zmienić profilu.
+ * Nie pytamy o adres (tylko miejscowość); e-mail opcjonalny, wyłącznie do kontaktu w sprawie polecenia, nigdy publikowany.
+ */
+export function validateRecommendPlace(input: Record<string, unknown>): ValidationResult {
+  const errors: FieldErrors = {};
+  const data: Record<string, string> = {};
+
+  const placeName = clean(input.placeName);
+  if (!placeName) errors.placeName = "Podaj nazwę firmy lub miejsca.";
+  else if (len(placeName) < 2) errors.placeName = "Nazwa musi mieć co najmniej 2 znaki.";
+  else if (len(placeName) > 120) errors.placeName = "Nazwa może mieć najwyżej 120 znaków.";
+  else data.placeName = placeName;
+
+  const city = clean(input.city);
+  if (!city) errors.city = "Wybierz miasto.";
+  else if (city === OTHER_CITY) {
+    const other = clean(input.cityOther);
+    if (!other) errors.cityOther = "Wpisz nazwę miejscowości.";
+    else if (len(other) < 2 || len(other) > 80 || !CITY_NAME_RE.test(other)) errors.cityOther = "Wpisz samą nazwę miejscowości (2–80 liter), bez adresu.";
+    else {
+      data.city = OTHER_CITY;
+      data.cityOther = other;
+    }
+  } else if (!Object.hasOwn(CITIES, city) || !isCity(city)) errors.city = "Wybierz miasto z listy albo „Inna miejscowość”.";
+  else data.city = city;
+
+  const category = clean(input.category);
+  if (!category) errors.category = "Wybierz rodzaj usługi.";
+  else if (category === OTHER_CATEGORY) {
+    const other = clean(input.categoryOther);
+    if (!other) errors.categoryOther = "Napisz krótko, jaka to usługa.";
+    else if (len(other) < 3 || len(other) > 80) errors.categoryOther = "Opis usługi: 3–80 znaków.";
+    else {
+      data.category = OTHER_CATEGORY;
+      data.categoryOther = other;
+    }
+  } else if (!Object.hasOwn(CATEGORIES, category) || !isCategory(category)) errors.category = "Wybierz rodzaj usługi z listy albo „Inna usługa”.";
+  else data.category = category;
+
+  // Grupy zwierząt: checkboxy `zw_<grupa>` (formularz) albo lista po przecinku `animals` (np. testy).
+  const fromList = typeof input.animals === "string" ? input.animals.split(",").map((x) => x.trim()).filter(Boolean) : [];
+  const animals = GROUPS.map((g) => g.slug).filter((g) => isChecked(input[animalField(g)]) || fromList.includes(g));
+  if (fromList.some((x) => !isGroupSlug(x))) errors.animals = "Wybierz zwierzęta z listy.";
+  else if (!animals.length) errors.animals = "Zaznacz co najmniej jedną grupę zwierząt, którymi według Ciebie zajmuje się to miejsce.";
+  else data.animals = animals.join(",");
+
+  const website = clean(input.website);
+  if (website) {
+    const r = normalizeHttpsUrl(website);
+    if ("error" in r) errors.website = r.error;
+    else data.website = r.url;
+  }
+
+  const source = cleanMultiline(input.source);
+  if (!source) errors.source = "Napisz krótko, skąd znasz to miejsce (np. korzystam z usług od roku).";
+  else if (len(source) < 3) errors.source = "Odpowiedź musi mieć co najmniej 3 znaki.";
+  else if (len(source) > 300) errors.source = "Odpowiedź może mieć najwyżej 300 znaków.";
+  else data.source = source;
+
+  const email = checkEmail(input.email, false, errors);
+  if (email && !errors.email) data.email = email;
+
+  data.relation = "recommender";
+  return Object.keys(errors).length ? { ok: false, errors } : { ok: true, data };
+}
+
+export function validateSubmission(kind: FormKind, input: Record<string, unknown>, ctx: ValidationContext = {}): ValidationResult {
   if (kind === "add_business") return validateAddBusiness(input, ctx);
   if (kind === "report_error") return validateReportError(input, ctx);
+  if (kind === "recommend_place") return validateRecommendPlace(input);
   return validateContact(input);
 }
 
@@ -299,14 +394,24 @@ export function findPublicBusiness(state: AppState, slug: string | undefined | n
   return b ? { slug: b.slug, name: b.name, category: b.category, city: b.city, demo: b.demo } : null;
 }
 
+/** Id opublikowanego profilu po slugu (cel przejęcia/aktualizacji). */
+export function publishedBusinessId(state: AppState, slug: string): string | null {
+  return state.businesses.find((b) => b.slug === slug && b.status === "published")?.id ?? null;
+}
+
+const contextFor = (state: AppState): ValidationContext => ({
+  businessExists: (slug) => isPublishedBusiness(state, slug),
+  businessIdBySlug: (slug) => publishedBusinessId(state, slug),
+});
+
 export function createSubmission(
   state: AppState,
-  kind: SubmissionKind,
+  kind: FormKind,
   data: Record<string, unknown>,
   opts: { now?: Date; rand?: (max: number) => number } = {},
 ): Submission {
-  const ctx: ValidationContext = { businessExists: (slug) => isPublishedBusiness(state, slug) };
-  const v = validateSubmission(kind, data, ctx);
+  if (!FORM_KINDS.includes(kind)) throw new SubmissionError("invalid", "Nieznany rodzaj zgłoszenia.");
+  const v = validateSubmission(kind, data, contextFor(state));
   if (!v.ok) throw new SubmissionError("invalid", "Zgłoszenie zawiera nieprawidłowe dane.");
   if (!Array.isArray(state.submissions)) state.submissions = [];
 
@@ -316,7 +421,8 @@ export function createSubmission(
     code = generateSubmissionCode(opts.rand);
   }
   const at = (opts.now ?? new Date()).toISOString();
-  const sub: Submission = { code, kind, status: "pending", createdAt: at, processedAt: null, reason: null, payload: v.data };
+  // `recommend_place` jest spoza SubmissionKind (lib/types.ts) — patrz FormKind.
+  const sub: Submission = { code, kind: kind as Submission["kind"], status: "pending", createdAt: at, processedAt: null, reason: null, payload: v.data };
   state.submissions.push(sub);
   state.audit.push({
     at,
@@ -368,6 +474,7 @@ export function moderateSubmission(
 
 export interface PublicSubmissionStatus {
   code: string;
+  /** Typ z lib/types.ts (strona statusu indeksuje po nim słowniki); w praktyce może to być także `recommend_place`. */
   kind: SubmissionKind;
   kindLabel: string;
   status: Submission["status"];
@@ -382,7 +489,7 @@ export function publicStatus(sub: Submission): PublicSubmissionStatus {
   return {
     code: sub.code,
     kind: sub.kind,
-    kindLabel: KIND_LABELS[sub.kind],
+    kindLabel: kindLabel(sub.kind),
     status: sub.status,
     statusLabel: STATUS_LABELS[sub.status],
     createdAt: sub.createdAt,
@@ -442,7 +549,7 @@ export function fingerprint(userAgent: string | null, acceptLanguage: string | n
 
 // ---------- Obsługa formularza (wywoływana przez server actions) ----------
 export async function processFormSubmission(
-  kind: SubmissionKind,
+  kind: FormKind,
   input: Record<string, string>,
   opts: { store: Store; fingerprint: string; limiter?: RateLimiter; now?: Date },
 ): Promise<FormState> {
@@ -453,9 +560,7 @@ export async function processFormSubmission(
   // Bot: udajemy sukces, nic nie zapisujemy.
   if (isHoneypotTripped(input)) return { status: "success", code: generateSubmissionCode(), kind };
 
-  const snapshot = opts.store.read();
-  const ctx: ValidationContext = { businessExists: (slug) => isPublishedBusiness(snapshot, slug) };
-  const v = validateSubmission(kind, input, ctx);
+  const v = validateSubmission(kind, input, contextFor(opts.store.read()));
   if (!v.ok) return { status: "error", errors: v.errors, values };
 
   const nowMs = (opts.now ?? new Date()).getTime();
@@ -478,4 +583,8 @@ export function categoryOptions() {
 }
 export function cityOptions() {
   return Object.entries(CITIES).map(([value, c]) => ({ value, label: c.name }));
+}
+/** Grupy zwierząt (lib/taxonomy/animals.ts) dla formularza „Poleć miejsce”. */
+export function animalGroupOptions() {
+  return GROUPS.map((g) => ({ value: g.slug, label: g.name }));
 }

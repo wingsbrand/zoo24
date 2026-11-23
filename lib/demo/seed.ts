@@ -174,24 +174,29 @@ export function loadAssets(): SocialAsset[] {
 }
 
 /** Prawdziwe (nie-DEMO) treści redakcyjne z content/blog/*.json — startują jako needs_review. */
+/** Treści z repo: content/blog (dawne adresy /blog/*) i content/guides (portal V3). Zawsze trafiają jako nieopublikowane. */
 export function loadContentArticles(): Article[] {
-  const dir = path.join(/*turbopackIgnore: true*/ process.cwd(), "content", "blog");
-  try {
-    return fs.readdirSync(dir).filter((f) => f.endsWith(".json")).map((f) => {
-      const a = JSON.parse(fs.readFileSync(path.join(dir, f), "utf8")) as Article;
-      return { ...a, demo: false, status: a.status === "published" ? "needs_review" : a.status, publishedAt: null };
-    });
-  } catch {
-    return [];
-  }
+  return ["blog", "guides"].flatMap((sub) => {
+    const dir = path.join(/*turbopackIgnore: true*/ process.cwd(), "content", sub);
+    try {
+      return fs.readdirSync(dir).filter((f) => f.endsWith(".json")).map((f) => {
+        const a = JSON.parse(fs.readFileSync(path.join(dir, f), "utf8")) as Article;
+        return { ...a, demo: false, status: a.status === "published" ? "needs_review" : a.status, publishedAt: null } as Article;
+      });
+    } catch {
+      return [];
+    }
+  });
 }
 
-export function buildSeedState(): AppState {
+export function buildSeedState(opts: { production?: boolean } = {}): AppState {
+  // Produkcja: bez publicznych rekordów DEMO (fikcyjne firmy, artykuły, przykładowe stare URL).
+  const prod = opts.production ?? process.env.ZOO24_ENV === "production";
   return {
     schemaVersion: 1,
-    businesses: [...structuredClone(DEMO_BUSINESSES), ...loadRealBusinesses()],
-    articles: [...structuredClone(DEMO_ARTICLES), ...loadContentArticles()],
-    legacyUrls: structuredClone(DEMO_LEGACY_URLS),
+    businesses: [...(prod ? [] : structuredClone(DEMO_BUSINESSES)), ...loadRealBusinesses()],
+    articles: [...(prod ? [] : structuredClone(DEMO_ARTICLES)), ...loadContentArticles()],
+    legacyUrls: prod ? [] : structuredClone(DEMO_LEGACY_URLS),
     socialPosts: loadDraftPosts(),
     socialAssets: loadAssets(),
     attempts: [],

@@ -6,9 +6,22 @@ import { buildPageRegistry, createLegacyResolver, sitemapEntries } from "@/lib/s
 const BLOG = ["kot-brytyjski-n66", "cane-corso-n63", "maltanczyk-n77"];
 
 describe("treści redakcyjne (content/blog)", () => {
-  it("3 nowe artykuły pod dawnymi adresami z TOP 3 GA4, nie-DEMO, startują jako needs_review", () => {
-    const arts = loadContentArticles();
-    expect(arts.map((a) => a.slug).sort()).toEqual([...BLOG].sort());
+  it("poradniki V3 (content/guides): needs_review, przypisanie do zwierzęcia, klasa ryzyka, polityka redakcyjna", () => {
+    const guides = loadContentArticles().filter((a) => a.basePath !== "/blog");
+    expect(guides.length).toBeGreaterThan(0);
+    for (const a of guides) {
+      expect(a.status, a.slug).toBe("needs_review");
+      expect(a.animal?.group, a.slug).toBeTruthy();
+      expect(a.risk, a.slug).toBeTruthy();
+      // Recenzja AI dopuszczalna tylko dla klasy standard (V3, ADR-013); pozostałe czekają na człowieka.
+      if (a.review?.by) expect([a.risk, a.review.byKind, a.review.by], a.slug).toEqual(["standard", "ai", "claude-ai-editor"]);
+      expect(checkArticlePolicy(a), a.slug).toEqual([]);
+    }
+  });
+
+  it("artykuły pod dawnymi adresami /blog (m.in. TOP 3 GA4), nie-DEMO, startują jako needs_review", () => {
+    const arts = loadContentArticles().filter((a) => a.basePath === "/blog");
+    expect(arts.map((a) => a.slug)).toEqual(expect.arrayContaining(BLOG));
     for (const a of arts) {
       expect(a.demo).toBe(false);
       expect(a.status).toBe("needs_review");
@@ -18,7 +31,7 @@ describe("treści redakcyjne (content/blog)", () => {
   });
 
   it("każdy ma weryfikowalne źródła z URL, checklistę i przechodzi politykę redakcyjną", () => {
-    for (const a of loadContentArticles()) {
+    for (const a of loadContentArticles().filter((x) => x.basePath === "/blog")) {
       expect(a.sources.filter((s) => s.url).length).toBeGreaterThanOrEqual(2);
       expect(a.checklist.length).toBeGreaterThanOrEqual(5);
       expect(checkArticlePolicy(a)).toEqual([]);

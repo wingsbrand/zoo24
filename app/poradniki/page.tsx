@@ -1,23 +1,25 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import type { Metadata } from "next";
 import { BookOpen, Search, SearchX } from "lucide-react";
 import { Alert, ButtonLink, Container, EmptyState, PageHeader, cn } from "@/components/ui";
 import { ArticleCard } from "@/components/editorial/article-card";
 import { allArticles } from "@/components/editorial/queries";
 import { articlesLabel } from "@/components/editorial/format";
-import { QUERY_MAX, TOPICS, filterArticles, getTopic, hubHref, parseHubQuery } from "@/lib/content/topics";
+import { QUERY_MAX, TOPICS, filterArticles, getTopic, hubHref, parsePortalHubQuery, type PortalHubQuery } from "@/lib/content/topics";
+import { GROUPS, NEEDS, getGroup } from "@/lib/taxonomy/animals";
+import { needName } from "@/lib/portal/labels";
 
 export const dynamic = "force-dynamic";
 
 type P = { searchParams: Promise<Record<string, string | string[] | undefined>> };
 
 const TITLE = "Poradniki dla opiekunów zwierząt";
-const LEAD = "Praktyczne teksty o rasach, pielęgnacji i wyborze usług. Każdy poradnik ma źródła i przechodzi weryfikację redakcyjną przed publikacją.";
+const LEAD = "Praktyczna wiedza o zwierzętach towarzyszących: przygotowanie domu, codzienna opieka, warunki i wybór usług. Każdy poradnik ma źródła i przechodzi weryfikację redakcyjną przed publikacją.";
 /** Poniżej tej liczby opublikowanych tekstów hub uczciwie informuje, że kolejne są w redakcji. */
 const FEW_ARTICLES = 6;
 
 export async function generateMetadata({ searchParams }: P): Promise<Metadata> {
-  const { filtered } = parseHubQuery(await searchParams);
+  const { filtered } = parsePortalHubQuery(await searchParams);
   return {
     title: TITLE,
     description: LEAD,
@@ -28,12 +30,48 @@ export async function generateMetadata({ searchParams }: P): Promise<Metadata> {
 }
 
 const chip = "inline-flex min-h-11 items-center gap-2 rounded-full border px-4 text-sm font-semibold no-underline transition-colors";
+const chipOn = "border-brand bg-brand text-white";
+const chipOff = "border-line-strong bg-surface text-brand hover:border-brand hover:bg-brand-tint";
+
+/** Rząd filtrów: „Wszystkie” + tylko opcje z ≥1 opublikowanym poradnikiem (przy pozostałych filtrach). */
+function ChipRow({ label, allHref, allCount, allOn, options }: {
+  label: string; allHref: string; allCount: number; allOn: boolean;
+  options: { key: string; name: string; href: string; count: number; on: boolean }[];
+}) {
+  return (
+    <nav aria-label={label}>
+      <p className="mb-2 text-sm font-semibold text-ink-muted">{label}</p>
+      <ul className="flex flex-wrap gap-2">
+        <li>
+          <Link href={allHref} aria-current={allOn ? "page" : undefined} className={cn(chip, allOn ? chipOn : chipOff)}>
+            Wszystkie <span className="tabular-nums opacity-80">({allCount})</span>
+          </Link>
+        </li>
+        {options.filter((o) => o.count > 0 || o.on).map((o) => (
+          <li key={o.key}>
+            <Link href={o.href} aria-current={o.on ? "page" : undefined} className={cn(chip, o.on ? chipOn : chipOff)}>
+              {o.name} <span className="tabular-nums opacity-80">({o.count})</span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+}
+
+const keep = (q: PortalHubQuery) => ({ temat: q.temat, q: q.q, zwierze: q.zwierze, potrzeba: q.potrzeba });
 
 export default async function Poradniki({ searchParams }: P) {
-  const query = parseHubQuery(await searchParams);
-  const { items, counts, countAll, totalPublished } = filterArticles(allArticles(), query);
+  const query = parsePortalHubQuery(await searchParams);
+  const { items, counts, countAll, totalPublished, countsByGroup, countsByNeed } = filterArticles(allArticles(), query);
+  const allGroups = filterArticles(allArticles(), { ...query, zwierze: null });
+  const allNeeds = filterArticles(allArticles(), { ...query, potrzeba: null });
   const active = query.temat ? getTopic(query.temat) : null;
-  const hasFilter = !!(query.temat || query.q);
+  const activeGroup = query.zwierze ? getGroup(query.zwierze) : null;
+  const hasFilter = !!(query.temat || query.q || query.zwierze || query.potrzeba);
+  const heading = [activeGroup?.name, query.potrzeba ? needName(query.potrzeba) : null, active?.name].filter(Boolean).join(" · ") || "Wszystkie poradniki";
+  const groupOptions = GROUPS.map((g) => ({ key: g.slug, name: g.name, href: hubHref({ ...keep(query), zwierze: g.slug }), count: countsByGroup[g.slug], on: query.zwierze === g.slug }));
+  const needOptions = NEEDS.map((n) => ({ key: n.slug, name: n.name, href: hubHref({ ...keep(query), potrzeba: n.slug }), count: countsByNeed[n.slug], on: query.potrzeba === n.slug }));
   const demoShown = items.some((a) => a.demo);
 
   return (
@@ -42,6 +80,8 @@ export default async function Poradniki({ searchParams }: P) {
         <form action="/poradniki" method="get" role="search" className="mt-6 max-w-xl">
           <label htmlFor="q" className="mb-1.5 block font-semibold text-ink">Szukaj w poradnikach</label>
           {query.temat && <input type="hidden" name="temat" value={query.temat} />}
+          {query.zwierze && <input type="hidden" name="zwierze" value={query.zwierze} />}
+          {query.potrzeba && <input type="hidden" name="potrzeba" value={query.potrzeba} />}
           <div className="flex gap-2">
             <input
               id="q"
@@ -49,45 +89,33 @@ export default async function Poradniki({ searchParams }: P) {
               type="search"
               defaultValue={query.q}
               maxLength={QUERY_MAX}
-              placeholder="np. maltańczyk, groomer"
+              placeholder="np. nazwa zwierzęcia lub temat"
               className="min-h-11 w-full min-w-0 rounded-[var(--radius-md)] border border-line-strong bg-surface px-3 text-base text-ink placeholder:text-ink-muted/70 hover:border-brand focus:border-brand"
             />
             <button type="submit" className="inline-flex min-h-11 shrink-0 items-center gap-2 rounded-[var(--radius-md)] bg-brand px-4 font-semibold text-white hover:bg-brand-dark">
               <Search aria-hidden size={18} /> Szukaj
             </button>
           </div>
-          {active && <p className="mt-1.5 text-sm text-ink-muted">Szukasz w temacie: {active.name}.</p>}
+          {hasFilter && heading !== "Wszystkie poradniki" && <p className="mt-1.5 text-sm text-ink-muted">Szukasz w: {heading}.</p>}
         </form>
       </PageHeader>
 
       <Container className="py-8 sm:py-10">
-        <nav aria-label="Tematy poradników">
-          <ul className="flex flex-wrap gap-2">
-            <li>
-              <Link
-                href={hubHref({ q: query.q })}
-                aria-current={!query.temat ? "page" : undefined}
-                className={cn(chip, !query.temat ? "border-brand bg-brand text-white" : "border-line-strong bg-surface text-brand hover:border-brand hover:bg-brand-tint")}
-              >
-                Wszystkie <span className="tabular-nums opacity-80">({countAll})</span>
-              </Link>
-            </li>
-            {TOPICS.map((t) => {
-              const on = query.temat === t.slug;
-              return (
-                <li key={t.slug}>
-                  <Link
-                    href={hubHref({ temat: t.slug, q: query.q })}
-                    aria-current={on ? "page" : undefined}
-                    className={cn(chip, on ? "border-brand bg-brand text-white" : "border-line-strong bg-surface text-brand hover:border-brand hover:bg-brand-tint")}
-                  >
-                    {t.name} <span className="tabular-nums opacity-80">({counts[t.slug]})</span>
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
+        <div className="space-y-5">
+          {(allGroups.items.length > 0 && groupOptions.some((o) => o.count > 0 || o.on)) && (
+            <ChipRow label="Zwierzę" allHref={hubHref({ ...keep(query), zwierze: null })} allCount={allGroups.items.length} allOn={!query.zwierze} options={groupOptions} />
+          )}
+          {(allNeeds.items.length > 0 && needOptions.some((o) => o.count > 0 || o.on)) && (
+            <ChipRow label="Potrzeba" allHref={hubHref({ ...keep(query), potrzeba: null })} allCount={allNeeds.items.length} allOn={!query.potrzeba} options={needOptions} />
+          )}
+          <ChipRow
+            label="Temat"
+            allHref={hubHref({ ...keep(query), temat: null })}
+            allCount={countAll}
+            allOn={!query.temat}
+            options={TOPICS.map((t) => ({ key: t.slug, name: t.name, href: hubHref({ ...keep(query), temat: t.slug }), count: counts[t.slug], on: query.temat === t.slug }))}
+          />
+        </div>
 
         {totalPublished > 0 && totalPublished < FEW_ARTICLES && (
           <Alert tone="info" title="Kolejne poradniki są w redakcji" className="mt-6">
@@ -100,12 +128,12 @@ export default async function Poradniki({ searchParams }: P) {
 
         <div className="mt-8">
           <div className="mb-5 flex flex-wrap items-baseline justify-between gap-2">
-            <h2 className="text-2xl font-bold sm:text-3xl">{active ? active.name : "Wszystkie poradniki"}</h2>
+            <h2 className="text-2xl font-bold sm:text-3xl">{heading}</h2>
             <p role="status" className="text-sm text-ink-muted">
               {query.q ? <>Wyniki dla „{query.q}”: </> : null}{articlesLabel(items.length)}
             </p>
           </div>
-          {active && <p className="-mt-3 mb-5 text-ink-muted">{active.description}</p>}
+          {active && !activeGroup && !query.potrzeba && <p className="-mt-3 mb-5 text-ink-muted">{active.description}</p>}
 
           {totalPublished === 0 ? (
             <EmptyState icon={<BookOpen aria-hidden />} title="Pierwsze poradniki są w redakcji" actions={<ButtonLink href="/uslugi" variant="primary">Przejdź do katalogu usług</ButtonLink>}>
@@ -114,7 +142,7 @@ export default async function Poradniki({ searchParams }: P) {
           ) : items.length === 0 ? (
             <EmptyState
               icon={<SearchX aria-hidden />}
-              title={query.q ? `Brak poradników pasujących do „${query.q}”` : "Brak poradników w tym temacie"}
+              title={query.q ? `Brak poradników pasujących do „${query.q}”` : "Brak poradników dla wybranych filtrów"}
               actions={
                 <>
                   <ButtonLink href="/poradniki" variant="primary">Wyczyść filtry</ButtonLink>
@@ -122,7 +150,7 @@ export default async function Poradniki({ searchParams }: P) {
                 </>
               }
             >
-              <p>{query.q ? "Spróbuj innego słowa albo krótszej frazy." : "Teksty w tym temacie są w przygotowaniu."} Możesz też przejrzeć wszystkie poradniki.</p>
+              <p>{query.q ? "Spróbuj innego słowa albo krótszej frazy." : "Teksty dla tych filtrów są w przygotowaniu."} Możesz też przejrzeć wszystkie poradniki.</p>
             </EmptyState>
           ) : (
             <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

@@ -23,16 +23,19 @@ const NEXT_STEP: Record<PublicSubmissionStatus["status"], Record<PublicSubmissio
     add_business: "Moderator sprawdzi dane i to, czy reprezentujesz firmę. Do tego czasu nic nie jest publikowane.",
     report_error: "Sprawdzimy zgłoszoną informację w źródle.",
     contact: "Wiadomość czeka na odpowiedź człowieka.",
+    recommend_place: "Redakcja sprawdzi polecane miejsce w publicznych źródłach. Polecenie nie tworzy profilu automatycznie.",
   },
   approved: {
     add_business: "Zgłoszenie zaakceptowano. Dane w katalogu wprowadza moderator — mogą pojawić się z opóźnieniem.",
     report_error: "Zgłoszenie potwierdzone. Poprawkę wprowadza redakcja.",
     contact: "Wiadomość została rozpatrzona.",
+    recommend_place: "Dziękujemy. Jeśli dane się potwierdzą, profil może pojawić się w katalogu — z podanym źródłem danych.",
   },
   rejected: {
     add_business: "Możesz wysłać nowe zgłoszenie z uzupełnionymi danymi.",
     report_error: "Jeśli masz dodatkowe informacje, wyślij nowe zgłoszenie.",
     contact: "Jeśli sprawa jest nadal aktualna, napisz ponownie.",
+    recommend_place: "Nie udało się potwierdzić danych w publicznych źródłach. Możesz polecić inne miejsce.",
   },
 };
 
@@ -49,7 +52,7 @@ export default async function StatusPage({ searchParams }: P) {
   const formatError = raw && !code ? "Kod ma postać ZG- i 6 znaków, np. ZG-7K3P9Q. Sprawdź, czy nie brakuje znaku." : null;
   const sub = code ? findSubmission(getStore().read(), code) : null;
   const status = sub ? publicStatus(sub) : null;
-  const again = status?.kind === "contact" ? "/kontakt" : status?.kind === "report_error" ? "/zglos-blad" : "/dodaj-firme";
+  const again = status?.kind === "contact" ? "/kontakt" : status?.kind === "report_error" ? "/zglos-blad" : status?.kind === "recommend_place" ? "/polec-miejsce" : "/dodaj-firme";
 
   return (
     <InfoPage prose={false} title="Status zgłoszenia" lead="Wpisz kod otrzymany po wysłaniu formularza. Status nie zawiera żadnych danych osobowych.">

@@ -6,10 +6,12 @@ import { Menu, X } from "lucide-react";
 import { Logo } from "./logo";
 import { cn } from "@/components/ui/cn";
 
+// Portal V3 §8: menu opiekuna. Dostęp dla firm pozostaje czytelny jako osobny przycisk „Dla firm”.
 export const NAV = [
-  { href: "/uslugi", label: "Usługi" },
+  { href: "/zwierzeta", label: "Zwierzęta" },
   { href: "/poradniki", label: "Poradniki" },
-  { href: "/dla-firm", label: "Dla firm" },
+  { href: "/narzedzia", label: "Narzędzia" },
+  { href: "/uslugi", label: "Usługi" },
   { href: "/o-nas", label: "O ZOO24" },
 ];
 
@@ -24,7 +26,10 @@ export function SiteHeader({ showAdmin }: { showAdmin: boolean }) {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
-  const active = (href: string) => path === href || path.startsWith(href + "/") || (href === "/poradniki" && path.startsWith("/blog/"));
+  const active = (href: string) =>
+    path === href || path.startsWith(href + "/") ||
+    (href === "/poradniki" && path.startsWith("/blog/")) ||
+    (href === "/uslugi" && (path.startsWith("/firma/") || path === "/szukaj"));
 
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-canvas/95 backdrop-blur supports-[backdrop-filter]:bg-canvas/85">
@@ -49,8 +54,9 @@ export function SiteHeader({ showAdmin }: { showAdmin: boolean }) {
               Panel
             </Link>
           )}
-          <Link href="/dodaj-firme" className="hidden min-h-11 items-center rounded-[var(--radius-md)] bg-accent px-4 text-sm font-semibold text-white no-underline hover:bg-accent-dark lg:flex">
-            Dodaj firmę
+          <Link href="/dla-firm" aria-current={active("/dla-firm") ? "page" : undefined}
+            className="hidden min-h-11 items-center rounded-[var(--radius-md)] border border-line-strong bg-surface px-4 text-sm font-semibold text-brand no-underline hover:border-brand hover:bg-brand-soft lg:flex">
+            Dla firm
           </Link>
           <button ref={btn} type="button" onClick={() => setOpen((v) => !v)} aria-expanded={open} aria-controls="mobile-nav"
             className="flex size-11 items-center justify-center rounded-[var(--radius-md)] text-brand hover:bg-brand-soft lg:hidden">
@@ -69,7 +75,7 @@ export function SiteHeader({ showAdmin }: { showAdmin: boolean }) {
                 </Link>
               </li>
             ))}
-            <li className="py-3"><Link href="/dodaj-firme" className="flex min-h-12 items-center justify-center rounded-[var(--radius-md)] bg-accent font-semibold text-white no-underline">Dodaj firmę</Link></li>
+            <li className="py-3"><Link href="/dla-firm" aria-current={active("/dla-firm") ? "page" : undefined} className="flex min-h-12 items-center justify-center rounded-[var(--radius-md)] border border-line-strong bg-surface font-semibold text-brand no-underline">Dla firm — dodaj firmę</Link></li>
             {showAdmin && <li className="pb-2"><Link href="/admin" className="flex min-h-11 items-center justify-center rounded-[var(--radius-md)] border border-line-strong text-brand no-underline">Panel (lokalnie)</Link></li>}
           </ul>
         </nav>

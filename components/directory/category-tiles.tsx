@@ -1,33 +1,47 @@
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
-import type { CategorySlug, CitySlug } from "@/lib/types";
+import type { CategorySlug } from "@/lib/types";
 import { CATEGORIES, CITIES } from "@/lib/site";
 import { CATEGORY_DESCRIPTIONS } from "@/lib/directory/search";
 import { firmCount } from "@/lib/directory/format";
-import { PILOT_CITIES, type listingCounts } from "@/lib/directory/stats";
+import type { listingCounts } from "@/lib/directory/stats";
+import { cityTiles } from "@/lib/directory/empty-state";
 import { CategoryTile } from "./category-icon";
 
 type Counts = ReturnType<typeof listingCounts>;
 
+/**
+ * Kafle miast. Miasta bez firm: liczba widoczna, ale kafel wyciszony i bez linku (A07) —
+ * strona nadal działa po wejściu z adresu, tylko nie kierujemy do niej z huba.
+ */
 function CityLinks({ category, counts }: { category: CategorySlug; counts: Counts }) {
   return (
     <ul className="mt-4 grid gap-2 sm:grid-cols-2">
-      {PILOT_CITIES.map((c: CitySlug) => {
-        const n = counts[category][c];
+      {cityTiles(category, counts).map(({ city: c, count: n, linked, href }) => {
+        const label = (
+          <span className="min-w-0">
+            <span className={linked ? "block font-semibold text-brand-dark" : "block font-medium text-ink-muted"}>{CITIES[c].name}</span>
+            <span className="block text-sm text-ink-muted">
+              {linked ? firmCount(n.total) : "0 firm — jeszcze nikogo nie dodaliśmy"}
+              {n.demo > 0 && n.demo === n.total ? " (DEMO)" : n.demo > 0 ? `, w tym ${n.demo} DEMO` : ""}
+            </span>
+          </span>
+        );
         return (
           <li key={c}>
-            <Link
-              href={`/uslugi/${category}/${c}`}
-              className="flex min-h-12 items-center justify-between gap-2 rounded-[var(--radius-md)] border border-line bg-canvas px-4 py-2 no-underline hover:border-brand hover:bg-brand-tint"
-            >
-              <span className="min-w-0">
-                <span className="block font-semibold text-brand-dark">{CITIES[c].name}</span>
-                <span className="block text-sm text-ink-muted">
-                  {firmCount(n.total)}{n.demo > 0 && n.demo === n.total ? " (DEMO)" : n.demo > 0 ? `, w tym ${n.demo} DEMO` : ""}
-                </span>
-              </span>
-              <ChevronRight aria-hidden size={18} className="shrink-0 text-brand" />
-            </Link>
+            {linked ? (
+              <Link
+                href={href}
+                className="flex min-h-12 items-center justify-between gap-2 rounded-[var(--radius-md)] border border-line bg-canvas px-4 py-2 no-underline hover:border-brand hover:bg-brand-tint"
+              >
+                {label}
+                <ChevronRight aria-hidden size={18} className="shrink-0 text-brand" />
+              </Link>
+            ) : (
+              <div data-empty-city className="flex min-h-12 items-center justify-between gap-2 rounded-[var(--radius-md)] border border-dashed border-line px-4 py-2 opacity-80">
+                {label}
+              </div>
+            )}
           </li>
         );
       })}

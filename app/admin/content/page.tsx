@@ -1,11 +1,17 @@
 import Link from "next/link";
 import { getStore } from "@/lib/store/file-store";
-import { articleHref, checkArticlePolicy } from "@/lib/content/editorial";
+import { articleHref, checkArticlePolicy, requiredReviewRole, reviewBlockers } from "@/lib/content/editorial";
+import { effectiveRisk } from "@/lib/taxonomy/animals";
+
+const ROLE_PL: Record<string, string> = { editor: "redaktor", species_specialist: "specjalista gatunkowy (człowiek)", veterinarian: "lekarz weterynarii", legal: "weryfikacja prawna" };
+const RISK_PL: Record<string, string> = { standard: "standard", welfare: "dobrostan", health: "zdrowie", legal: "prawo" };
 import { articleAction } from "../actions";
+import { requireAdmin } from "@/lib/admin/guard";
 
 export const dynamic = "force-dynamic";
 
-export default function ContentAdmin() {
+export default async function ContentAdmin() {
+  await requireAdmin();
   const s = getStore().read();
   const items = [...s.articles].sort((a, b) => Number(a.demo) - Number(b.demo) || a.status.localeCompare(b.status));
   const lastErrors = s.audit.filter((x) => x.entity === "article" && (x.action.endsWith("failed") || x.action === "approve_blocked")).slice(-3).reverse();
@@ -28,22 +34,29 @@ export default function ContentAdmin() {
       )}
       <div className="overflow-x-auto">
         <table className="w-full min-w-[760px] text-sm">
-          <thead className="bg-canvas text-left"><tr><th className="p-2">Artykuł / adres</th><th className="p-2">Status</th><th className="p-2">Źródła</th><th className="p-2">Blokady</th><th className="p-2">Akcje</th></tr></thead>
+          <thead className="bg-canvas text-left"><tr><th className="p-2">Artykuł / adres</th><th className="p-2">Status</th><th className="p-2">Źródła</th><th className="p-2">Przegląd i blokady</th><th className="p-2">Akcje</th></tr></thead>
           <tbody>
             {items.map((a) => {
               const issues = checkArticlePolicy(a);
+              const role = requiredReviewRole(a);
+              const roleBlock = reviewBlockers(a, { id: "owner", kind: "human", roles: ["editor"] });
               return (
                 <tr key={a.slug} className="border-t border-line align-top">
                   <td className="p-2"><p className="font-medium">{a.title}</p><p className="font-mono text-xs text-ink-muted">{articleHref(a)}{a.demo ? " · DEMO" : ""}</p></td>
                   <td className="p-2">{a.status}{a.reviewedBy ? <p className="text-xs text-ink-muted">zatw.: {a.reviewedBy}</p> : null}</td>
                   <td className="p-2">{a.sources.filter((x) => x.url).length}</td>
-                  <td className="p-2 text-xs">{issues.length ? <span className="text-danger">{issues.join(", ")}</span> : <span className="text-ok">OK</span>}</td>
+                  <td className="p-2 text-xs">
+                    <p>Klasa: <strong>{RISK_PL[effectiveRisk(a.risk ?? "standard", a.needs ?? [])]}</strong> · wymagany: <strong>{ROLE_PL[role]}</strong></p>
+                    {a.review?.waitingReason && a.status !== "published" ? <p className="mt-1 text-warn">Czeka: {a.review.waitingReason}</p> : null}
+                    {roleBlock.length && a.status === "needs_review" ? <p className="mt-1 text-danger">Panel właściciela nie może zatwierdzić — potrzebny {ROLE_PL[role]}.</p> : null}
+                    {issues.length ? <p className="mt-1 text-danger">{issues.join(", ")}</p> : <p className="mt-1 text-ok">Polityka treści: OK</p>}
+                  </td>
                   <td className="p-2">
                     <div className="flex flex-col gap-1">
                       <Link href={`/admin/content/${a.slug}`} className="rounded-[var(--radius-sm)] border border-line px-2 py-1 text-center text-xs no-underline">Podgląd</Link>
                       <form action={articleAction} className="flex flex-col gap-1">
                         <input type="hidden" name="slug" value={a.slug} />
-                        {a.status === "needs_review" && <button name="op" value="approve" className="rounded-[var(--radius-sm)] bg-brand min-h-10 px-3 text-xs text-white">Zatwierdź</button>}
+                        {a.status === "needs_review" && roleBlock.length === 0 && <button name="op" value="approve" className="rounded-[var(--radius-sm)] bg-brand min-h-10 px-3 text-xs text-white">Zatwierdź</button>}
                         {a.status === "draft" && <button name="op" value="submit" className="rounded-[var(--radius-sm)] border border-line min-h-10 px-3 text-xs">Do akceptacji</button>}
                         {a.status !== "draft" && <button name="op" value="draft" className="rounded-[var(--radius-sm)] border border-line min-h-10 px-3 text-xs">Cofnij do draftu</button>}
                       </form>

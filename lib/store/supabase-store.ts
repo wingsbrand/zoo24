@@ -8,6 +8,15 @@ import type { Store } from "./file-store";
 import { redactString } from "../security/redact";
 
 const ROW_ID = "main";
+
+/** Usuwa białe znaki; odrzuca znaki niedozwolone w nagłówku HTTP. Komunikat błędu NIE zawiera wartości klucza. */
+export function normalizeSecretKey(raw: string): string {
+  const key = (raw ?? "").replace(/\s+/g, "");
+  if (!key || !/^[\x21-\x7e]+$/.test(key)) {
+    throw new Error("SUPABASE_KEY_INVALID_FORMAT: klucz pusty lub z niedozwolonymi znakami — wklej go ponownie jedną linią");
+  }
+  return key;
+}
 const REFRESH_MS = 5_000;
 const MAX_RETRIES = 6;
 
@@ -17,7 +26,21 @@ export class SupabaseStore implements Store {
   private fetchedAt = 0;
   private refreshing: Promise<void> | null = null;
 
-  constructor(private url: string, private key: string, private seed: () => AppState) {}
+  private key: string;
+
+  constructor(private url: string, rawKey: string, private seed: () => AppState) {
+    // Klucze Supabase nigdy nie zawierają białych znaków — usuwamy np. złamanie wiersza z wklejania w panelu.
+    this.key = normalizeSecretKey(rawKey);
+  }
+
+  /** Każdy fetch przez tę metodę: błąd sieci/nagłówków nigdy nie przenosi wartości klucza (ani `cause`). */
+  private async call(url: string, init: RequestInit): Promise<Response> {
+    try {
+      return await fetch(url, init);
+    } catch (e) {
+      throw new Error(`SUPABASE_FETCH_FAILED: ${redactString(e instanceof Error ? e.message : String(e)).slice(0, 160)}`);
+    }
+  }
 
   private headers(extra: Record<string, string> = {}): Record<string, string> {
     const h: Record<string, string> = { apikey: this.key, "Content-Type": "application/json", ...extra };
@@ -30,7 +53,7 @@ export class SupabaseStore implements Store {
   }
 
   private async fetchRow(): Promise<{ data: AppState; version: number } | null> {
-    const r = await fetch(this.endpoint(`?id=eq.${ROW_ID}&select=data,version`), { headers: this.headers(), cache: "no-store" });
+    const r = await this.call(this.endpoint(`?id=eq.${ROW_ID}&select=data,version`), { headers: this.headers(), cache: "no-store" });
     if (!r.ok) throw new Error(`SUPABASE_READ_${r.status}: ${redactString(await r.text()).slice(0, 200)}`);
     const rows = (await r.json()) as { data: AppState; version: number }[];
     return rows[0] ?? null;
@@ -41,7 +64,7 @@ export class SupabaseStore implements Store {
     let row = await this.fetchRow();
     if (!row) {
       const data = this.seed();
-      const r = await fetch(this.endpoint(), {
+      const r = await this.call(this.endpoint(), {
         method: "POST",
         headers: this.headers({ Prefer: "resolution=ignore-duplicates,return=minimal" }),
         body: JSON.stringify({ id: ROW_ID, version: 1, data }),
@@ -67,7 +90,7 @@ export class SupabaseStore implements Store {
       const row = (await this.fetchRow()) ?? (await this.hydrate(), { data: this.cache!, version: this.version });
       const state = structuredClone(row.data);
       const result = await fn(state);
-      const r = await fetch(this.endpoint(`?id=eq.${ROW_ID}&version=eq.${row.version}`), {
+      const r = await this.call(this.endpoint(`?id=eq.${ROW_ID}&version=eq.${row.version}`), {
         method: "PATCH",
         headers: this.headers({ Prefer: "return=representation" }),
         body: JSON.stringify({ data: state, version: row.version + 1, updated_at: new Date().toISOString() }),

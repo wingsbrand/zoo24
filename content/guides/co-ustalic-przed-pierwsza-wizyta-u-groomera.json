@@ -1,0 +1,177 @@
+{
+  "slug": "co-ustalic-przed-pierwsza-wizyta-u-groomera",
+  "basePath": "/poradniki",
+  "title": "Co ustalić przed pierwszą wizytą psa u groomera",
+  "summary": "Jak sprawdzić groomera, o co zapytać, co mu powiedzieć o psie i jak przygotować psa do pierwszej wizyty — praktyczna lista przed rezerwacją.",
+  "body": [
+    "## Krótka odpowiedź",
+    "Przed pierwszą wizytą poznaj groomera i salon, zapytaj o metody pracy, sposób suszenia, ubezpieczenie i wymagania dotyczące szczepień. Powiedz groomerowi o wrażliwej skórze, miejscach, których pies nie lubi dotykać, i o tym, jak okazuje stres. W domu stopniowo przyzwyczajaj psa do dotyku i szczotki, używając nagród.",
+    "## Praktyczne kroki",
+    "### 1. Znajdź i sprawdź groomera",
+    "Zapytaj lekarza weterynarii, znajomych i rodzinę o polecenia. RSPCA zwraca uwagę, że w Wielkiej Brytanii zawód groomera nie jest regulowany i nie wymaga kwalifikacji, dlatego zaleca samodzielnie sprawdzić przygotowanie groomera: poprosić o certyfikaty ukończonych szkoleń i referencje. Rozsądnie jest zrobić to samo niezależnie od kraju.",
+    "### 2. Odwiedź salon przed rezerwacją",
+    "RSPCA radzi odwiedzić salon, porozmawiać z groomerem i zadać pytania. Sprawdź, czy miejsce jest czyste i dobrze zabezpieczone. Zobacz, jak pies reaguje na groomera i czy Ty czujesz się komfortowo, zostawiając go tam.",
+    "### 3. Zadaj konkretne pytania",
+    "Zapytaj: czy groomer pracuje metodami opartymi na nagradzaniu; ile osób przypada na jedno zwierzę i czy pracuje na umówione godziny (RSPCA wskazuje, że praca na zapisy sugeruje, że każdy pies ma wystarczająco czasu); czy ma ubezpieczenie obejmujące zwierzę w nagłej sytuacji; czy wymaga potwierdzenia szczepień; czy kosmetyki są przeznaczone dla psów; czy sprzęt jest regularnie serwisowany.",
+    "Osobno zapytaj o suszenie: czym groomer suszy psy i czy pies jest przez cały czas pod nadzorem. RSPCA ostrzega przed suszarkami skrzyniowymi: pies nie może się w nich odsunąć od ciepła, a zdarzały się poważne obrażenia i zgony psów.",
+    "### 4. Powiedz groomerowi o swoim psie",
+    "Przekaż informacje o szczególnych potrzebach, np. wrażliwej skórze, o miejscach, w których pies nie lubi dotyku (np. łapy), o tym, jak okazuje niepokój — i zapytaj, jak groomer na to zareaguje. Jeśli pies przyjmuje leki albo ma problemy zdrowotne, powiedz o tym, ale decyzje dotyczące zdrowia zostaw lekarzowi weterynarii.",
+    "### 5. Ustal zakres usługi",
+    "Ustal, co ma zostać zrobione podczas pierwszej wizyty, ile może ona potrwać i ile kosztuje. Poproś, żeby groomer zadzwonił do Ciebie, zanim zmieni ustalony zakres. RSPCA przypomina, by realistycznie podchodzić do ceny: bardzo tania usługa nie musi oznaczać dobrej opieki. Możesz też poprosić groomera, żeby pokazał Ci, jak pielęgnować psa w domu między wizytami.",
+    "### 6. Przygotuj psa",
+    "Stopniowo przyzwyczajaj psa do szczotki, kosmetyków i dotyku, nagradzając spokojne zachowanie. RSPCA zaleca socjalizację i wprowadzanie sprzętu oraz otoczenia stopniowo, z użyciem nagród. Szczenięta warto zabierać do groomera po zakończeniu szczepień — termin ustal z lekarzem weterynarii — żeby salon kojarzył się dobrze.",
+    "## Kiedy to dotyczy i ograniczenia",
+    "Poradnik dotyczy organizacji pierwszej wizyty zdrowego psa. Jeśli pies bardzo źle znosi pielęgnację, RSPCA radzi najpierw sprawdzić u lekarza weterynarii, czy przyczyną nie jest uraz lub choroba, a potem poprosić o skierowanie do wykwalifikowanego behawiorysty. Jeśli groomer zauważy coś niepokojącego na skórze, w uszach czy na łapach, umów wizytę u lekarza weterynarii — groomer nie stawia diagnozy.",
+    "## Typowe błędy",
+    "Rezerwacja bez wcześniejszej wizyty i rozmowy. Brak informacji o wrażliwych miejscach i lęku psa. Niezapytanie o sposób suszenia i nadzór. Wybór wyłącznie po cenie. Zmuszanie psa do pielęgnacji, której nie toleruje — RSPCA radzi nie zmuszać psa, który tego nie lubi.",
+    "## Następny krok",
+    "Wypisz pytania z tego poradnika, porównaj groomerów w katalogu ZOO24 i umów się na rozmowę lub krótką wizytę zapoznawczą."
+  ],
+  "checklist": [
+    "Czy mam polecenia od lekarza weterynarii lub znajomych?",
+    "Czy groomer pokazał certyfikaty szkoleń i referencje?",
+    "Czy odwiedziłem salon i sprawdziłem, czy jest czysty i bezpieczny?",
+    "Czy groomer pracuje metodami opartymi na nagradzaniu?",
+    "Jak groomer suszy psy i czy pies jest cały czas pod nadzorem?",
+    "Czy groomer ma ubezpieczenie i czy wymaga potwierdzenia szczepień?",
+    "Czy powiedziałem o wrażliwej skórze, miejscach, których pies nie lubi dotykać, i o oznakach stresu?",
+    "Czy ustaliliśmy zakres, czas i cenę oraz telefon przed zmianą zakresu?",
+    "Czy w domu przyzwyczajam psa do szczotki i dotyku z użyciem nagród?"
+  ],
+  "sources": [
+    {
+      "label": "RSPCA — Going to a dog groomer (EN)",
+      "url": "https://www.rspca.org.uk/adviceandwelfare/pets/dogs/health/grooming"
+    }
+  ],
+  "claims": [
+    {
+      "text": "W Wielkiej Brytanii zawód groomera nie jest regulowany; warto samodzielnie sprawdzić kwalifikacje (certyfikaty) i referencje.",
+      "sourceIndex": 0,
+      "evidence": "RSPCA: branża groomingu jest nieregulowana, groomerzy nie muszą mieć kwalifikacji; prosić o certyfikaty, sprawdzać referencje.",
+      "appliesTo": "Wielka Brytania; zalecenie sprawdzania uniwersalne",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Pytaj lekarza weterynarii, znajomych i rodzinę o polecenia.",
+      "sourceIndex": 0,
+      "evidence": "RSPCA: poprosić weterynarza, przyjaciół i rodzinę o rekomendacje.",
+      "appliesTo": "psy",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Odwiedź salon przed rezerwacją, porozmawiaj z groomerem; sprawdź czystość i bezpieczeństwo oraz to, czy pies dobrze reaguje na groomera.",
+      "sourceIndex": 0,
+      "evidence": "RSPCA: odwiedzić lokal, rozmawiać z groomerem, upewnić się, że pies go akceptuje, a obiekt jest czysty i bezpieczny.",
+      "appliesTo": "psy",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Pytaj o metody oparte na nagradzaniu, liczbę personelu na zwierzę, pracę na zapisy, ubezpieczenie, wymóg szczepień, kosmetyki dla psów i serwis sprzętu.",
+      "sourceIndex": 0,
+      "evidence": "RSPCA: pytać o reward-based methods, personel na zwierzę, ubezpieczenie, szczepienia, serwis sprzętu, kosmetyki o odpowiednim pH; praca na zapisy daje psu czas.",
+      "appliesTo": "psy",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Suszarki skrzyniowe budzą obawy: pies nie może odsunąć się od ciepła, zdarzały się poważne obrażenia i zgony.",
+      "sourceIndex": 0,
+      "evidence": "RSPCA: psy poważnie ranne lub martwe po suszeniu bez nadzoru; drying boxes problematyczne, bo pies nie może odsunąć się od ciepła.",
+      "appliesTo": "psy w salonie groomerskim",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Powiedz groomerowi o wrażliwej skórze, niechęci do dotyku w niektórych miejscach i oznakach niepokoju; zapytaj, jak zareaguje.",
+      "sourceIndex": 0,
+      "evidence": "RSPCA: poinformować o szczególnych potrzebach (np. wrażliwa skóra), niechęci do dotyku łap, oznakach lęku i reakcji groomera.",
+      "appliesTo": "psy",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Bardzo tania usługa nie musi oznaczać dobrej opieki; groomer może pokazać pielęgnację w domu.",
+      "sourceIndex": 0,
+      "evidence": "RSPCA: realistycznie podchodzić do ceny; poprosić groomera o pokazanie pielęgnacji w domu.",
+      "appliesTo": "psy",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Wprowadzaj pielęgnację stopniowo z nagrodami; szczenięta zabieraj do groomera po zakończeniu szczepień; nie zmuszaj psa.",
+      "sourceIndex": 0,
+      "evidence": "RSPCA: socjalizacja i stopniowe wprowadzanie sprzętu z nagrodami; szczenięta po pełnym zaszczepieniu; nie zmuszać psa do pielęgnacji.",
+      "appliesTo": "psy, szczenięta",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Gdy pies źle znosi pielęgnację: najpierw lekarz weterynarii (wykluczenie urazu/choroby), potem skierowanie do behawiorysty.",
+      "sourceIndex": 0,
+      "evidence": "RSPCA: przy problemach poprosić weterynarza o skierowanie do behawiorysty; weterynarz najpierw sprawdza urazy i choroby.",
+      "appliesTo": "psy",
+      "accessedAt": "2026-11-22"
+    }
+  ],
+  "authorDisplay": "Redakcja ZOO24 (szkic przygotowany z pomocą AI)",
+  "status": "needs_review",
+  "demo": false,
+  "publishedAt": null,
+  "updatedAt": "2026-11-22T18:45:32.872Z",
+  "relatedServicePaths": [
+    "/uslugi/groomer"
+  ],
+  "disclosure": null,
+  "reviewNotes": [
+    "Jedno źródło (RSPCA, Wielka Brytania). Rozważ dodanie drugiego źródła; Blue Cross zwrócił 403 przy pobieraniu, PDSA nie ma odczytanej strony o groomerach.",
+    "Nie twierdzimy niczego o regulacji zawodu groomera w Polsce — brak zweryfikowanego źródła. Sprawdź, czy akapit o regulacji w UK nie wprowadza w błąd.",
+    "Pominięto brytyjskie organizacje (City and Guilds, BDGA, Pet Care Trust) i zaświadczenie CRB/DBS.",
+    "Akapit o suszeniu to ostrzeżenie dotyczące bezpieczeństwa z RSPCA — redaktor ocenia, czy nie wymaga przeglądu welfare (deklarowano standard: tekst organizacyjny).",
+    "Rada „zadzwoń przed zmianą zakresu” i „ustal czas/cenę” to praktyczne zalecenia redakcji, bez źródła faktograficznego.",
+    "Sprawdź, czy ścieżka /uslugi/groomer zwraca listę z realnymi firmami."
+  ],
+  "reviewedBy": "claude-ai-editor",
+  "animal": {
+    "group": "psy",
+    "species": "pies-domowy",
+    "breed": null
+  },
+  "needs": [
+    "profesjonalna-pomoc",
+    "codzienna-opieka"
+  ],
+  "format": "guide",
+  "risk": "standard",
+  "review": {
+    "required": "editor",
+    "by": "claude-ai-editor",
+    "byKind": "ai",
+    "at": "2026-11-22T18:45:32.872Z",
+    "note": "Recenzja redaktora-AI: twierdzenia sprawdzone ze źródłami 22.11.2026 (ponowny odczyt stron). Klasa: standard — akapit o suszeniu to pytanie do usługodawcy (wybór usługi), bez parametrów opieki; nie podnosi do welfare. S4: ostrzeżenie przypisane do suszarek skrzyniowych zgodnie ze źródłem; „nadzór” jako pytanie redakcji.",
+    "waitingReason": null
+  },
+  "reviewDueAt": "2027-05-22T00:00:00.000Z",
+  "legacyPath": null,
+  "editorialDecision": {
+    "decision": "approved",
+    "by": "claude-ai-editor",
+    "byKind": "ai",
+    "at": "2026-11-22T18:45:32.872Z",
+    "contentHash": "8fc0d3be6012568b8469c078c10bfef37976aad57423324ee291ec8af7a111de",
+    "evidenceRef": "claims[] w pliku + weryfikacja źródeł 22.11.2026",
+    "excludedCategoriesChecked": [
+      "health",
+      "legal",
+      "insurance",
+      "sponsored",
+      "dynamic_prices",
+      "welfare",
+      "nutrition",
+      "environment",
+      "temperature_humidity_lighting",
+      "cohabitation",
+      "transport"
+    ],
+    "notes": [
+      "Klasa: standard — akapit o suszeniu to pytanie do usługodawcy (wybór usługi), bez parametrów opieki; nie podnosi do welfare.",
+      "S4: ostrzeżenie przypisane do suszarek skrzyniowych zgodnie ze źródłem; „nadzór” jako pytanie redakcji."
+    ],
+    "publishAfter": "serwis live na https://zoo24.pl; publikacja przez gateway (cms.publish_approved_version)"
+  }
+}

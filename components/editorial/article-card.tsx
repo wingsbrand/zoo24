@@ -1,9 +1,11 @@
-// Karta poradnika: okładka 16:9, temat, tytuł (line-clamp), lead, data aktualizacji, DEMO. Cała karta klikalna (rozciągnięty link).
+// Karta poradnika: okładka 16:9, grupa zwierząt (jeśli przypisana), temat, tytuł (line-clamp), lead, data aktualizacji, DEMO. Cała karta klikalna (rozciągnięty link).
 import Link from "next/link";
 import type { Article } from "@/lib/types";
 import { articleHref } from "@/lib/content/editorial";
 import { topicForArticle } from "@/lib/content/topics";
 import { articleImage } from "@/lib/content/images";
+import { groupName } from "@/lib/portal/labels";
+import { NEEDS } from "@/lib/taxonomy/animals";
 import { DemoBadge, cn } from "@/components/ui";
 import { Cover } from "./cover";
 import { formatDatePl } from "./format";
@@ -12,6 +14,9 @@ export function ArticleCard({ a, headingLevel = 3, className }: { a: Article; he
   const topic = topicForArticle(a);
   const H = headingLevel === 2 ? "h2" : "h3";
   const updated = formatDatePl(a.updatedAt);
+  const animal = groupName(a);
+  // V3: dla materiałów z osią potrzeb pokazujemy potrzebę opiekuna zamiast starego tematu (psy/koty).
+  const label = a.needs?.length ? (NEEDS.find((n) => n.slug === a.needs![0])?.name ?? topic.name) : topic.name;
   return (
     <article
       className={cn(
@@ -22,7 +27,10 @@ export function ArticleCard({ a, headingLevel = 3, className }: { a: Article; he
     >
       <Cover topic={topic} image={articleImage(a.slug)} />
       <div className="flex flex-1 flex-col gap-2 p-5">
-        <p className="text-sm font-semibold text-accent-dark">{topic.name}</p>
+        <p className="text-sm font-semibold text-accent-dark">
+          {animal ? <><span className="text-brand">{animal}</span><span aria-hidden> · </span><span className="sr-only">, temat: </span></> : null}
+          {label}
+        </p>
         <H className="text-xl font-bold leading-snug">
           <Link
             href={articleHref(a)}

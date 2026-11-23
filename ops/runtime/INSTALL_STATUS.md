@@ -15,7 +15,8 @@ Wersja pakietu 1.0 · aktualizacja 2026-11-22 · tryb **design/shadow** · nic n
 - [x] decyzja właściciela 2026-11-22 (ADR-013): redaktor-AI zatwierdza treści poza kategoriami wrażliwymi, **bez pilota**, koszt tylko w limicie subskrypcji; polityka v2 podpisana; testy 255/255
 - [x] decyzja właściciela 2026-11-22: **bez zadań Desktop**; harmonogram tylko jako zadania chmurowe. Warunek (repo GitHub) spełniony; pilot 7 dni anulowany (ADR-013). Uruchomienie zadań chmurowych w trybie shadow — czeka na potwierdzenie właściciela
 - [ ] pierwsza produkcja / canary z receipts — zablokowane (serwis offline, bramka G2)
-- [ ] harmonogramy działają i przeżywają zamknięcie sesji — `ops/config/schedule.json` wszystko `enabled:false`; **żadnych zadań nie utworzono**
+- [x] 2026-11-22: 6 zadań chmurowych utworzonych (shadow; ID w `ops/config/schedule.json`); pierwszy run testowy knowledge uruchomiony ręcznie; panel `/admin` pokazuje „Harmonogram: aktywny”
+- [ ] harmonogramy działają i przeżywają zamknięcie sesji (dowód: pierwsze runy wg crona 23.11 rano) — `ops/config/schedule.json` wszystko `enabled:false`; **żadnych zadań nie utworzono**
 - [ ] test pauzy także zewnętrznego schedulera — logika przetestowana na mocku (R09); realne Meta N/A
 - [ ] raport tygodniowy — po uruchomieniu zadań chmurowych (bez pilota)
 

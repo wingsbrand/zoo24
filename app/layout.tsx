@@ -16,9 +16,18 @@ export const metadata: Metadata = {
   // Poza produkcją nigdy nie indeksować (N2). W produkcji decyduje każda strona.
   robots: IS_PRODUCTION ? undefined : { index: false, follow: false },
   openGraph: { siteName: "ZOO24", locale: "pl_PL", type: "website" },
+  // Weryfikacja własności (publiczne kody, nie sekrety): Google Search Console i Ahrefs Webmaster Tools.
+  verification: {
+    google: process.env.ZOO24_GSC_VERIFICATION || undefined,
+    other: process.env.ZOO24_AHREFS_VERIFICATION ? { "ahrefs-site-verification": process.env.ZOO24_AHREFS_VERIFICATION } : undefined,
+  },
 };
 
 export const viewport: Viewport = { themeColor: "#0e4f5c" };
+
+// Strony statyczne (o-nas, regulamin…) odświeżane co 5 min — stopka/nawigacja pokazują aktualne niepuste działy
+// po publikacji treści w bazie (bez czekania na kolejny build).
+export const revalidate = 300;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

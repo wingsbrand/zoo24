@@ -14,7 +14,8 @@
     "jobs:run": "node scripts/run-job.mjs",
     "import:gsc": "node scripts/import-gsc.mjs",
     "import:ga4": "node scripts/import-ga4-landing.mjs",
-    "check": "npm run typecheck && npm test && npm run scan:secrets"
+    "check": "npm run typecheck && npm test && npm run scan:secrets",
+    "preflight:live": "node scripts/preflight-live.mjs"
   },
   "dependencies": {
     "lucide-react": "1.77.0",

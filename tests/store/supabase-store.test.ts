@@ -79,6 +79,30 @@ describe("SupabaseStore (PostgREST, optymistyczna współbieżność)", () => {
     expect(pg.getRow()!.data.socialPosts.find((p) => p.id === "soc-007")!.status).toBe("published");
   });
 
+  it("klucz wklejony ze złamaniem wiersza/spacjami jest normalizowany; nagłówek nie zawiera białych znaków", async () => {
+    const pg = fakePostgrest();
+    vi.stubGlobal("fetch", pg.fetchMock);
+    const s = new SupabaseStore("https://x.supabase.co", "  sb_secret_\nTEST \r\n", buildSeedState);
+    await s.hydrate(); // fakePostgrest sprawdza apikey === "sb_secret_TEST"
+    expect(pg.getRow()?.version).toBe(1);
+  });
+
+  it("klucz z niedozwolonymi znakami => czytelny błąd bez wartości klucza", () => {
+    expect(() => new SupabaseStore("https://x.supabase.co", "sb_secret_ABCé", buildSeedState)).toThrow(/SUPABASE_KEY_INVALID_FORMAT/);
+    try { new SupabaseStore("https://x.supabase.co", "sb_secret_ABCé", buildSeedState); } catch (e) {
+      expect((e as Error).message).not.toContain("sb_secret_ABC");
+    }
+  });
+
+  it("błąd sieci/nagłówka z fetch nie przenosi klucza ani cause", async () => {
+    vi.stubGlobal("fetch", vi.fn(async () => { throw new TypeError('Headers.append: "sb_secret_LEAK123" is an invalid header value.'); }));
+    const s = new SupabaseStore("https://x.supabase.co", "sb_secret_TEST", buildSeedState);
+    const err = await s.hydrate().catch((e: Error) => e);
+    expect((err as Error).message).toMatch(/SUPABASE_FETCH_FAILED/);
+    expect((err as Error).message).not.toContain("sb_secret_LEAK123");
+    expect((err as Error & { cause?: unknown }).cause).toBeUndefined();
+  });
+
   it("błąd zapisu nie ujawnia klucza", async () => {
     vi.stubGlobal("fetch", vi.fn(async () => new Response("apikey=sb_secret_TEST invalid", { status: 401 })));
     const s = new SupabaseStore("https://x.supabase.co", "sb_secret_TEST", buildSeedState);

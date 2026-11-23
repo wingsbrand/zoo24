@@ -20,11 +20,13 @@ Poprzednie wyniki: `git fetch origin ops/<rola>` (jeśli gałąź istnieje) i pr
 
 ## 4. Zapis
 ```
+git fetch origin main ops/<rola> 2>/dev/null; git fetch origin main
 git checkout -B ops/<rola> origin/ops/<rola> 2>/dev/null || git checkout -B ops/<rola> origin/main
+git merge --no-edit origin/main   # OBOWIĄZKOWO: aktualny vercel.json (wyłączone deploye dla ops/**)
 git add ops/runtime/work/<rola>/
 git commit -m "zoo24-ops-<rola>: przebieg shadow RRRR-MM-DD"
 git push origin ops/<rola>
 ```
-Commituj WYŁĄCZNIE `ops/runtime/work/<rola>/`. Nigdy `main`.
+Commituj WYŁĄCZNIE `ops/runtime/work/<rola>/` (merge z `origin/main` to jedyny wyjątek). Nigdy nie pushuj na `main`. Przed `git push` sprawdź, że `vercel.json` na gałęzi zawiera `"ops/**": false`; jeśli nie — nie pushuj i zgłoś to w raporcie. Jeśli merge da konflikt poza `ops/runtime/work/<rola>/` — przerwij (`git merge --abort`) i zgłoś.
 
 Na końcu: krótkie podsumowanie — co zrobione, status, 1–3 następne zadania, decyzje dla właściciela (jeśli są).

@@ -7,7 +7,7 @@ export type CitySlug =
 export type PetType = "psy" | "koty";
 
 // ---------- Zgłoszenia (formularze publiczne) ----------
-export type SubmissionKind = "add_business" | "report_error" | "contact";
+export type SubmissionKind = "add_business" | "report_error" | "contact" | "recommend_place";
 export interface Submission {
   code: string; // publiczny kod do sprawdzania statusu, np. ZG-7K3P9Q
   kind: SubmissionKind;
@@ -59,6 +59,34 @@ export interface Article {
   /** Notatki dla redaktora (nie są publikowane). */
   reviewNotes?: string[];
   reviewedBy?: string | null;
+  /** Decyzja redakcyjna związana z hashem treści (lib/ops/article-review.ts). */
+  editorialDecision?: import("./ops/article-review").EditorialDecision;
+  // ---------- Portal V3 (opcjonalne — stare artykuły działają bez nich) ----------
+  /** Przypisanie do zwierzęcia: grupa nawigacyjna, opcjonalnie gatunek i rasa. */
+  animal?: { group: import("./taxonomy/animals").GroupSlug; species?: string | null; breed?: string | null };
+  /** Potrzeby opiekuna (druga oś nawigacji). */
+  needs?: import("./taxonomy/animals").NeedSlug[];
+  format?: import("./taxonomy/animals").ContentFormat;
+  /** Klasa ryzyka (deklarowana); efektywna = effectiveRisk(risk, needs). */
+  risk?: import("./taxonomy/animals").RiskClass;
+  /** Kluczowe twierdzenia z dowodem (V3 §10): indeks źródła, opis dowodu, warunki zastosowania. */
+  claims?: { text: string; sourceIndex: number; evidence: string; appliesTo?: string; accessedAt: string }[];
+  /** Przegląd wymagany i wykonany — realna osoba albo jawnie AI; brak = oczekuje. */
+  review?: {
+    required: import("./taxonomy/animals").ReviewerRole;
+    by: string | null; // np. "claude-ai-editor" albo id osoby w content/people
+    byKind: "human" | "ai" | null;
+    at: string | null;
+    note?: string | null;
+    /** Powód oczekiwania widoczny w panelu (np. „brak specjalisty od gadów”). */
+    waitingReason?: string | null;
+  };
+  /** Termin kolejnego przeglądu treści (ISO). */
+  reviewDueAt?: string | null;
+  /** Historyczny adres starego zoo24.pl, który ten materiał zastępuje (mapa odzyskiwania). */
+  legacyPath?: string | null;
+  /** Korekta opublikowanego materiału: czeka na zatwierdzenie; do tego czasu publicznie widoczna jest poprzednia wersja. */
+  revision?: { patch: Partial<Pick<Article, "title" | "summary" | "body" | "checklist" | "sources" | "claims">>; by: string; at: string; reason: string } | null;
 }
 
 // ---------- SEO ----------

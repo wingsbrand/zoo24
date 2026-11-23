@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getStore } from "@/lib/store/file-store";
+import { buildPageRegistry } from "@/lib/seo";
 import { CATEGORIES, isCategory } from "@/lib/site";
 import { Container, PageHeader } from "@/components/ui";
 import { CATEGORY_IMAGES } from "@/lib/content/images";
@@ -20,6 +21,8 @@ export async function generateMetadata({ params }: P): Promise<Metadata> {
     title: CATEGORIES[category].plural,
     description: `${CATEGORIES[category].plural} w największych miastach Polski. ${CATEGORY_DESCRIPTIONS[category]}`,
     alternates: { canonical: `/uslugi/${category}` },
+    // N5: kategoria bez żadnej opublikowanej realnej firmy — noindex (spójnie z rejestrem stron i sitemap).
+    robots: buildPageRegistry(getStore().read()).get(`/uslugi/${category}`)?.indexable ? undefined : { index: false, follow: true },
   };
 }
 
@@ -46,7 +49,9 @@ export default async function CategoryPage({ params }: P) {
           <h2 id="miasta" className="text-2xl font-bold">Wybierz miasto</h2>
           <CityCards category={category} counts={counts} />
           <p className="mt-3 text-sm text-ink-muted">
-            Nie ma Twojego miasta? Na razie działamy w 10 największych miastach. <Link href="/dodaj-firme" className="text-brand underline">Zgłoś firmę</Link> — zgłoszenia z innych miast pomagają nam zdecydować o rozszerzeniu katalogu.
+            Nie ma Twojego miasta albo firm na liście? Na razie działamy w 10 największych miastach.{" "}
+            <Link href="/polec-miejsce" className="text-brand underline">Poleć znane miejsce</Link> albo — jeśli prowadzisz firmę —{" "}
+            <Link href="/dodaj-firme" className="text-brand underline">zgłoś ją</Link>. Zgłoszenia z innych miast pomagają nam zdecydować o rozszerzeniu katalogu.
           </p>
         </section>
         {others.length > 0 && (

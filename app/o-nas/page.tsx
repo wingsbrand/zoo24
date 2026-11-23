@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { InfoPage, Todo } from "@/components/forms/info-page";
+import { OPERATOR } from "@/lib/legal/operator";
 
 export const metadata: Metadata = {
   title: "O nas",
@@ -36,10 +37,15 @@ export default function ONas() {
 
       <h2>Kto prowadzi ZOO24</h2>
       <p>
-        Operator serwisu: <Todo>dane operatora do uzupełnienia przez prawnika</Todo>.
+        Operator serwisu:{" "}
+        {OPERATOR.legalName ?? <>{OPERATOR.shortName} <Todo>pełna nazwa spółki z formą prawną</Todo></>}, z siedzibą:{" "}
+        {OPERATOR.registeredAddress ?? <Todo>adres siedziby</Todo>}, NIP: {OPERATOR.nip ?? <Todo>NIP</Todo>}
+        {OPERATOR.krs ? <>, KRS: {OPERATOR.krs}</> : null}.
       </p>
       <p>
-        Kontakt z redakcją: <Link href="/kontakt">formularz kontaktowy</Link>.
+        Kontakt z redakcją: <Link href="/kontakt">formularz kontaktowy</Link> lub e-mail:{" "}
+        {OPERATOR.contactEmail ? <a href={`mailto:${OPERATOR.contactEmail}`}>{OPERATOR.contactEmail}</a> : <Todo>adres e-mail usługodawcy</Todo>}.
+        Zasady korzystania z serwisu: <Link href="/regulamin">regulamin</Link> i <Link href="/polityka-prywatnosci">polityka prywatności</Link>.
       </p>
     </InfoPage>
   );

@@ -3,10 +3,12 @@ import { buildDashboard } from "@/lib/analytics/kpi";
 import { getReadSources } from "@/lib/integrations/read-sources";
 import { Alert, Breadcrumbs } from "@/components/ui";
 import { TileRow } from "@/components/kpi";
+import { requireAdmin } from "@/lib/admin/guard";
 
 export const dynamic = "force-dynamic";
 
 export default async function Wyniki() {
+  await requireAdmin();
   const d = await buildDashboard(getStore().read(), getReadSources());
   return (
     <div className="space-y-6">

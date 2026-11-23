@@ -2,6 +2,8 @@
 // Cron interpretowany lokalnie dla każdego dnia => poprawna obsługa DST (R11): 07:00 to 05:00Z latem
 // i 06:00Z zimą; godzina powtórzona jesienią daje jeden run; nieistniejąca wiosną — jeden run godzinę później.
 // Brak catch-upu (R10): dispatcher uruchamia tylko najnowszy slot w oknie `graceMinutes`.
+import fs from "node:fs";
+import path from "node:path";
 import { TZ, warsawLocalToUtcIso } from "../time";
 import type { OpsRole } from "./types";
 
@@ -25,7 +27,16 @@ export const OPS_SCHEDULE: OpsScheduleEntry[] = [
   { jobKey: "zoo24-ops-growth", role: "growth", cronLocal: "0 10 * * 2,4", promptFile: "zoo24-ops/ops/prompts/growth.txt", maxRuntimeSeconds: 1200, maxTurns: 30, maxAttemptsTotal: 3, enabled: false },
 ];
 
-const DOW_PL = ["nd", "pn", "wt", "śr", "cz", "pt", "sb"];
+/** Stan rzeczywistego runtime z ops/config/schedule.json (zadania chmurowe Claude Code). */
+export function loadScheduleConfig(root = process.cwd()): { status: string; dispatcher: string | null; jobs: { job_key: string; enabled: boolean; routine_id?: string; cron_utc?: string }[] } | null {
+  try {
+    return JSON.parse(fs.readFileSync(path.join(/*turbopackIgnore: true*/ root, "ops", "config", "schedule.json"), "utf8"));
+  } catch {
+    return null;
+  }
+}
+
+const DOW_PL =["nd", "pn", "wt", "śr", "cz", "pt", "sb"];
 
 function parseField(f: string, min: number, max: number): number[] {
   const out = new Set<number>();

@@ -20,6 +20,7 @@ export const JOBS: JobDef[] = [
   { id: "social_queue_daily", proposedSchedule: "codziennie 08:00", description: "plan 7 dni, prawa assetów, brakujące akceptacje", live: false },
   { id: "social_publish_approved", proposedSchedule: "co 5 min (w oknach publikacji)", description: "publikacja zatwierdzonych (MOCK adapter)", live: false },
   { id: "weekly_kpi_report", proposedSchedule: "poniedziałek 08:00", description: "raport 28d/7d z N/A przy brakach", live: false },
+  { id: "ops_publish_approved_articles", proposedSchedule: "ręcznie (po starcie live)", description: "publikacja artykułów zaakceptowanych przez redaktora (gateway, read-back HTTP 200)", live: false },
   { id: "ops_shadow_tick", proposedSchedule: "ręcznie (shadow 6 ról zoo24-ops)", description: "przebieg shadow ról build/content/growth/knowledge/social/seo — tylko odczyt", live: false },
 ];
 
@@ -45,6 +46,11 @@ export async function socialQueueDaily(store: Store, now = new Date()): Promise<
 
 export async function runJobOnce(id: string, deps: { store: Store; adapter: MetaAdapter; now?: Date }): Promise<JobResult | QueueReport | TickReport | { note: string }> {
   switch (id) {
+    case "ops_publish_approved_articles": {
+      // Publikacja zaakceptowanych artykułów przez gateway; w shadow = dry_run (zero zapisu).
+      const { publishApprovedArticles } = await import("../ops/cms-publish");
+      return { note: JSON.stringify(await publishApprovedArticles(deps.store, loadPolicy(), { now: deps.now })) };
+    }
     case "ops_shadow_tick": {
       // Ręczny przebieg shadow sześciu ról zoo24-ops (tylko odczyt stanu, zero zapisów zewnętrznych).
       const policy = loadPolicy();

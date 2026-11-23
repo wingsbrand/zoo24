@@ -1,10 +1,12 @@
 import { getStore } from "@/lib/store/file-store";
 import { buildPageRegistry, createLegacyResolver, runSeoChecks, robotsTxt } from "@/lib/seo";
 import { SITE_ENV, SITE_URL } from "@/lib/site";
+import { requireAdmin } from "@/lib/admin/guard";
 
 export const dynamic = "force-dynamic";
 
-export default function SeoAdmin() {
+export default async function SeoAdmin() {
+  await requireAdmin();
   const s = getStore().read();
   const registry = buildPageRegistry(s);
   const { resolve, validation } = createLegacyResolver(s.legacyUrls, registry);

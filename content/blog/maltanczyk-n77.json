@@ -2,13 +2,13 @@
   "slug": "maltanczyk-n77",
   "basePath": "/blog",
   "title": "Maltańczyk — mały pies o białej, długiej szacie. Charakter i pielęgnacja",
-  "summary": "Pogodny, przywiązany do ludzi pies do towarzystwa z długą, jedwabistą sierścią. Dowiedz się, jak wygląda maltańczyk według standardu FCI i jak zaplanować pielęgnację jego szaty.",
+  "summary": "Żywy i czuły pies do towarzystwa z długą, jedwabistą sierścią. Dowiedz się, jak wygląda maltańczyk według standardu FCI i jak zaplanować pielęgnację jego szaty.",
   "body": [
-    "Maltańczyk to jedna z najstarszych ras psów do towarzystwa w basenie Morza Śródziemnego. FCI opisuje go w standardzie nr 65 i zalicza do grupy 9 — psy ozdobne i do towarzystwa. Za kraj patronacki rasy uznawane są Włochy.",
+    "Maltańczyk to pies do towarzystwa wywodzący się z basenu Morza Śródziemnego. FCI opisuje go w standardzie nr 65 i zalicza do grupy 9 — psy ozdobne i do towarzystwa. Za kraj patronacki rasy uznawane są Włochy.",
     "## Wygląd",
-    "Według standardu FCI maltańczyk ma wydłużony tułów, a jego najbardziej charakterystyczną cechą jest biała, długa, gęsta i jedwabista sierść, opadająca prosto wzdłuż ciała, bez podszerstka. Dopuszczalny jest bardzo jasny, kości słoniowej odcień, ale nie wyraźne plamy. Oczy i nos są ciemne. To pies mały — dokładną masę i wysokość w kłębie podaje aktualny standard FCI.",
+    "Według standardu FCI maltańczyk ma wydłużony tułów, a jego najbardziej charakterystyczną cechą jest biała, długa, gęsta i jedwabista sierść, opadająca prosto wzdłuż ciała, bez podszerstka. Pożądana jest czysta biel; dopuszczalny jest blady odcień kości słoniowej. Nos jest czarny, oczy ciemne. To pies mały: według standardu wysokość w kłębie wynosi 21–25 cm u psów i 20–23 cm u suk, a masa ciała 3–4 kg.",
     "## Charakter",
-    "Standard opisuje maltańczyka jako psa żywego, przywiązanego do opiekuna, bardzo inteligentnego i łagodnego. Zwykle chętnie towarzyszy domownikom i źle znosi długie godziny samotności, dlatego warto od szczenięcia uczyć go spokojnego zostawania w domu. Mały rozmiar nie zwalnia z wychowania: podstawowe posłuszeństwo i socjalizacja są tak samo ważne jak u dużych psów.",
+    "Standard opisuje maltańczyka jako psa żywego, czułego, bardzo spokojnego i bardzo inteligentnego. Jak każdy pies do towarzystwa chętnie przebywa z domownikami, dlatego warto od szczenięcia stopniowo uczyć go spokojnego zostawania w domu. Mały rozmiar nie zwalnia z wychowania: podstawowe posłuszeństwo i socjalizacja są tak samo ważne jak u dużych psów.",
     "## Pielęgnacja szaty — najważniejsze zadanie opiekuna",
     "Długa sierść bez podszerstka łatwo się plącze, dlatego wymaga regularnego czesania, najlepiej codziennie lub co drugi dzień. Przydają się szczotka typu pin, metalowy grzebień i preparat ułatwiający rozczesywanie. Kąpiel zwykle co kilka tygodni, z dokładnym wysuszeniem sierści.",
     "Wielu opiekunów decyduje się na krótsze, praktyczne strzyżenie, które ułatwia codzienną pielęgnację. Wybierając groomera, zapytaj, czy pracuje z rasami o długiej, jedwabistej sierści, jak przyzwyczaja psy do suszarki i ile trwa pierwsza wizyta. Regularne wizyty co kilka tygodni pomagają utrzymać szatę w dobrym stanie.",
@@ -28,21 +28,71 @@
     "Kto zajmie się psem, gdy wyjadę (hotel dla psów małych ras, opiekun)?"
   ],
   "sources": [
-    { "label": "FCI — standard nr 65, Maltese (EN, ważny od 01.01.2016)", "url": "https://www.fci.be/medias/065g09-en-20160101-2139.pdf" },
-    { "label": "FCI — nomenklatura ras, Maltese (65)", "url": "https://www.fci.be/en/nomenclature/MALTESE-65.html" },
-    { "label": "The Kennel Club (UK) — standard rasy Maltese (porównawczo)", "url": "https://thekennelclub.org.uk/breed-standards/toy/maltese" }
+    {
+      "label": "FCI — standard nr 65, Maltese (EN, ważny od 01.01.2016)",
+      "url": "https://www.fci.be/medias/065g09-en-20160101-2139.pdf"
+    },
+    {
+      "label": "FCI — nomenklatura ras, Maltese (65)",
+      "url": "https://www.fci.be/en/nomenclature/MALTESE-65.html"
+    },
+    {
+      "label": "ZKwP — Systematyka ras (grupy i sekcje FCI, wersja polska; PDF) oraz zkwp.pl/wzorce.php",
+      "url": "https://www.zkwp.pl/regulaminy/Systematyka_Ras.pdf"
+    }
   ],
   "authorDisplay": "Redakcja ZOO24",
   "status": "needs_review",
   "demo": false,
   "publishedAt": null,
-  "updatedAt": "2026-11-22T12:00:00.000Z",
-  "relatedServicePaths": ["/uslugi/groomer/warszawa", "/uslugi/groomer/bialystok"],
+  "updatedAt": "2026-11-22T20:04:17.544Z",
+  "relatedServicePaths": [
+    "/uslugi/groomer/warszawa",
+    "/uslugi/groomer/bialystok"
+  ],
   "disclosure": null,
   "reviewNotes": [
-    "Szkic przygotowany z pomocą AI na podstawie standardu FCI nr 65 — wymaga weryfikacji faktów przez redaktora.",
-    "Akapit o oczach/uszach ogranicza się do pielęgnacji i odsyła do weterynarza — nie rozszerzać o diagnozy.",
-    "Naturalne powiązanie z katalogiem: groomerzy (lejek poradnik → katalog).",
-    "Adres /blog/maltanczyk-n77 = dawny URL z TOP 100 GA4 (#3, 11 604 sesji org.) — po akceptacji: decyzja keep_200."
+    "Recenzja redaktora-AI (claude-ai-editor, ADR-013) na podstawie kart faktów z przebiegu knowledge 22.11.2026 (gałąź ops/knowledge, evidence-2026-11-22).",
+    "Poprawiono wg FCI 65 (ważny od 01.01.2016): temperament „żywy, czuły, bardzo spokojny, bardzo inteligentny”; kolor: czysta biel, dopuszczalny blady odcień kości słoniowej; dodano wzrost 21–25/20–23 cm i masę 3–4 kg.",
+    "Usunięto niepoparte „jedna z najstarszych ras” i „źle znosi samotność” (przeformułowano na wskazówkę wychowawczą).",
+    "Akapit o oczach/uszach: pielęgnacja bez diagnoz, odesłanie do lekarza weterynarii — poza kategorią zdrowotną.",
+    "Usunięto nieodczytane źródło porównawcze (The Kennel Club).",
+    "Publikacja dopiero po przełączeniu domeny zoo24.pl, przez gateway; właściciel przegląda po publikacji. Decyzja URL: keep_200."
+  ],
+  "reviewedBy": "claude-ai-editor",
+  "editorialDecision": {
+    "decision": "approved",
+    "by": "claude-ai-editor",
+    "byKind": "ai",
+    "at": "2026-11-22T20:04:17.544Z",
+    "contentHash": "190b887935f91db274a57225d7edb0e1ae28da5219a65057cef8c7bcbb76f7be",
+    "evidenceRef": "claims[] w pliku + weryfikacja źródeł 22.11.2026 (FCI/FIFe/CFA/RSPCA/The Cat Group)",
+    "excludedCategoriesChecked": [
+      "health",
+      "legal",
+      "insurance",
+      "sponsored",
+      "dynamic_prices",
+      "welfare",
+      "nutrition",
+      "environment",
+      "temperature_humidity_lighting",
+      "cohabitation",
+      "transport"
+    ],
+    "notes": [
+      "Kategoria: przewodnik po rasie (nie porada zdrowotna).",
+      "Nazwa grupy 9 zgodna z nomenklaturą ZKwP (bez zmiany tekstu); dodane źródło i claim — ponowna akceptacja z nowym hashem."
+    ],
+    "publishAfter": "serwis live na https://zoo24.pl; publikacja przez gateway (cms.publish_approved_version)"
+  },
+  "claims": [
+    {
+      "text": "Grupa 9 FCI wg ZKwP: psy ozdobne i do towarzystwa.",
+      "evidence": "ZKwP, Systematyka ras: polskie nazwy grup i sekcji FCI (odczyt 22.11.2026; nagłówki grup także na zkwp.pl/wzorce.php).",
+      "appliesTo": "nazewnictwo grup FCI",
+      "accessedAt": "2026-11-22",
+      "sourceIndex": 2
+    }
   ]
 }
