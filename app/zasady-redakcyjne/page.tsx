@@ -27,7 +27,7 @@ export default function ZasadyRedakcyjne() {
         Materiały o żywieniu, warunkach utrzymania, transporcie, zdrowiu, prawie, cenach oraz treści sponsorowane publikujemy dopiero po sprawdzeniu przez człowieka z odpowiednią wiedzą. Gdy tekst sprawdził specjalista, podajemy przy nim jego imię i nazwisko lub rolę oraz datę. Nie publikujemy hurtowo tekstów generowanych maszynowo i nie przedstawiamy osób, konsultacji ani testów, których nie było.
       </p>
       <p>
-        Ilustracje wygenerowane z użyciem AI oznaczamy na obrazie napisem „Ilustracja AI”. Nie przedstawiają one rzeczywistych osób, firm ani konkretnych zwierząt.
+        Część ilustracji w serwisie wygenerowano z użyciem narzędzi AI. Nie przedstawiają one rzeczywistych osób, firm, salonów ani konkretnych zwierząt i nie są zdjęciami firm z katalogu.
       </p>
 
       <h2>3. Bez porad weterynaryjnych</h2>

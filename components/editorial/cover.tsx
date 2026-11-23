@@ -1,5 +1,5 @@
 // Okładka poradnika. Stałe proporcje 16:9 => brak przesunięć układu.
-// Gdy artykuł ma ilustrację (lib/content/images.ts) — zdjęcie z oznaczeniem „Ilustracja AI”.
+// Gdy artykuł ma ilustrację (lib/content/images.ts) — zdjęcie (bez napisu na obrazie, ADR-016).
 // W przeciwnym razie szablon: tło w kolorze tematu, motyw łapki z poduszką-sercem, nazwa tematu (marginesy ≥ 8%).
 import Image from "next/image";
 import type { Topic } from "@/lib/content/topics";

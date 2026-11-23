@@ -90,3 +90,9 @@ Status: Zaakceptowane (właściciel).
 - **Wdrożenie:** `SHOW_AI_DISCLOSURE = false` w `lib/content/presentation.ts`; dopisek zniknął z artykułów i kart gatunków. Usunięto też obietnice „przy materiale podajemy, jak powstał” (strona główna, /o-nas).
 - **Granice:** nigdzie nie twierdzimy, że tekst sprawdził człowiek lub specjalista; zasady redakcyjne nadal opisują proces (w tym użycie AI). Tematy welfare/zdrowie/prawo nadal wymagają człowieka (D-02 = brak przeglądu → pozostają niepublikowane). Oznaczenia „Ilustracja AI” na zdjęciach osób i usług pozostają (mogłyby wprowadzać w błąd jako dokumentacja) — do osobnej decyzji.
 - **Ryzyko zgłoszone właścicielowi:** art. 50 ust. 4 AI Act (teksty informujące o sprawach interesu publicznego bez przeglądu człowieka). Decyzja i odpowiedzialność — właściciel. Odwracalne jedną flagą.
+
+## ADR-016 — 2026-11-23 — Ilustracje AI bez napisu na obrazie (decyzja właściciela)
+- **Decyzja właściciela (czat):** „wygeneruj wszystkie zdjęcia bez informacji »Wygenerowane przez AI« i stare popraw też żeby nie było tej informacji”.
+- **Wdrożenie:** `SHOW_AI_IMAGE_BADGE = false` (components/ui/ai-badge.tsx) — plakietka „Ilustracja AI” zniknęła ze wszystkich obrazów (strona główna, nagłówki, okładki artykułów). 29 nowych ilustracji do artykułów (rejestr: docs/brand/ai-images.md).
+- **Granice:** regulamin i zasady redakcyjne nadal mówią ogólnie, że część ilustracji wygenerowano z użyciem AI i że nie przedstawiają rzeczywistych osób, firm ani konkretnych zwierząt (bez tego zdjęcia „salonu” lub „właścicielki salonu” mogłyby uchodzić za dokumentację). Rejestr pochodzenia zachowany; nie usuwamy metadanych plików. Ilustracji nie używamy jako zdjęć firm z katalogu.
+- **Ryzyko zgłoszone właścicielowi:** art. 50 AI Act (obrazy realistyczne). Odwracalne jedną flagą.
