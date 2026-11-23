@@ -61,6 +61,42 @@ describe("cms.publish_approved_version — artykuły TOP 3", () => {
     expect(again.every((x) => x.outcome === "already_done")).toBe(true);
   });
 
+  it("verifyPendingReadbacks: po 200 zamyka READBACK_PENDING (verifiedAt, check, bez next_tasks), idempotentnie; nie-200 i obcy URL zostają", async () => {
+    const { verifyPendingReadbacks } = await import("@/lib/ops/cms-publish");
+    const store = tempStore();
+    const policy = livePolicy();
+    await publishApprovedArticles(store, policy, { now: NOW, fetchFn: async () => { throw new Error("ENOTFOUND"); } });
+    const pending = store.read().ops.receipts.filter((r) => r.status === "succeeded" && !r.verifiedAt);
+    expect(pending.length).toBeGreaterThan(3);
+    // jeden URL nadal 404, jeden receipt z obcą domeną
+    const bad = pending[0].url!;
+    await store.transact((s) => { s.ops.receipts.find((r) => r.operationKey === pending[1].operationKey)!.url = "https://example.com/blog/x"; });
+    const fetched: string[] = [];
+    const later = new Date("2026-11-23T12:00:00Z");
+    const r = await verifyPendingReadbacks(store, policy, { now: later, fetchFn: async (u) => { fetched.push(u); return { status: u === bad ? 404 : 200 }; } });
+    expect(fetched).not.toContain("https://example.com/blog/x");
+    expect(r.find((x) => x.url === bad)).toMatchObject({ outcome: "still_pending", reason: "HTTP_404" });
+    expect(r.find((x) => x.url === "https://example.com/blog/x")).toMatchObject({ outcome: "skipped", reason: "URL_OUTSIDE_SITE_ORIGIN" });
+    expect(r.filter((x) => x.outcome === "verified")).toHaveLength(pending.length - 2);
+    const s = store.read();
+    const ok = s.ops.receipts.filter((x) => x.verifiedAt === later.toISOString());
+    expect(ok).toHaveLength(pending.length - 2);
+    for (const rc of ok) {
+      const res = s.ops.results.find((x) => x.job_id === rc.jobDedupeKey)!;
+      expect(res.next_tasks).toEqual([]);
+      expect(res.checks.some((c) => c.name === "public_readback_http_200" && c.status === "pass")).toBe(true);
+    }
+    expect(s.ops.receipts.find((x) => x.url === bad)!.verifiedAt).toBeNull();
+    expect(s.audit.filter((e) => e.action === "readback_verified")).toHaveLength(1);
+    // drugi przebieg: weryfikuje tylko zaległy, bez duplikatów checków
+    const r2 = await verifyPendingReadbacks(store, policy, { now: later, fetchFn: async () => ({ status: 200 }) });
+    expect(r2.filter((x) => x.outcome === "verified").map((x) => x.url)).toEqual([bad]);
+    expect(store.read().ops.results.every((x) => x.checks.filter((c) => c.name === "public_readback_http_200").length <= 1)).toBe(true);
+    // pauza: nic nie robi
+    await store.transact((st) => { st.ops.mode = "paused"; });
+    expect(await verifyPendingReadbacks(store, policy, { now: later, fetchFn: async () => ({ status: 200 }) })).toEqual([]);
+  });
+
   it("V3: materiał z klasą ryzyka (np. dobrostan/żywienie) z akceptacją AI => needs_human HUMAN_REVIEW_REQUIRED_FOR_RISK, zero zapisu", async () => {
     const store = tempStore();
     const { loadContentArticles } = await import("@/lib/demo/seed");

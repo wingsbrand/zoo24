@@ -9,7 +9,7 @@ import { articleHref, checkArticlePolicy, requiredReviewRole } from "../content/
 import { articleContentHash, isEditorialApprovalCurrent } from "./article-review";
 import { executeAction, operationKey, type ActionRequest, type Executor, type GatewayOutcome } from "./gateway";
 import { claim, complete, enqueue } from "./registry";
-import type { ActivationPolicy } from "./policy";
+import { effectiveMode, type ActivationPolicy } from "./policy";
 import type { OpsJobResult } from "./types";
 
 type FetchFn = (url: string) => Promise<{ status: number }>;
@@ -102,6 +102,53 @@ export async function publishApprovedArticles(store: Store, policy: ActivationPo
     };
     await complete(store, dedupeKey, token, result, now);
     out.push({ slug: file.slug, outcome: o.status, reasons: o.reasons, url: o.receipt?.url ?? null });
+  }
+  return out;
+}
+
+export interface ReadbackReport { slug: string; url: string; outcome: "verified" | "still_pending" | "skipped"; reason: string }
+
+/**
+ * Zamyka READBACK_PENDING: dla receipts `cms.publish_approved_version` (succeeded, bez verifiedAt) sprawdza,
+ * czy artykuł jest w bazie opublikowany w tej samej wersji (hash) i czy publiczny URL na site_origin z polityki
+ * zwraca 200. Tylko odczyt HTTP + wpis w rejestrze (verifiedAt, check w job-result, audit) — bez zewnętrznych zapisów.
+ * Nie uruchamiać przy starcie modułu (zimny start); przeznaczone dla osobnego endpointu/crona albo skryptu.
+ */
+export async function verifyPendingReadbacks(store: Store, policy: ActivationPolicy | null, opts: { now?: Date; fetchFn?: FetchFn } = {}): Promise<ReadbackReport[]> {
+  const now = opts.now ?? new Date();
+  const fetchFn = opts.fetchFn ?? (async (u: string) => ({ status: (await fetch(u, { redirect: "manual" })).status }));
+  const s0 = store.read();
+  if (effectiveMode(policy, s0.ops.mode) === "paused") return [];
+  const origin = (policy?.resources.site_origin ?? "").replace(/\/$/, "");
+  const pending = s0.ops.receipts.filter((r) => r.op === "cms.publish_approved_version" && r.status === "succeeded" && !r.verifiedAt && r.url);
+  const out: ReadbackReport[] = [];
+  const verified: { key: string; job: string; url: string; slug: string }[] = [];
+  for (const r of pending) {
+    const url = r.url!;
+    const slug = r.artifactId.replace(/^article:/, "");
+    if (!origin || !url.startsWith(`${origin}/`)) { out.push({ slug, url, outcome: "skipped", reason: "URL_OUTSIDE_SITE_ORIGIN" }); continue; }
+    const a = s0.articles.find((x) => x.slug === slug);
+    if (!a || a.status !== "published" || articleContentHash(a) !== r.artifactHash) { out.push({ slug, url, outcome: "skipped", reason: "DB_VERSION_MISMATCH" }); continue; }
+    let status: number | null = null;
+    try { status = (await fetchFn(url)).status; } catch { status = null; }
+    if (status !== 200) { out.push({ slug, url, outcome: "still_pending", reason: `HTTP_${status ?? "ERROR"}` }); continue; }
+    verified.push({ key: r.operationKey, job: r.jobDedupeKey, url, slug });
+    out.push({ slug, url, outcome: "verified", reason: "HTTP_200" });
+  }
+  if (verified.length) {
+    const at = now.toISOString();
+    await store.transact((s) => {
+      for (const v of verified) {
+        const r = s.ops.receipts.find((x) => x.operationKey === v.key && x.status === "succeeded" && !x.verifiedAt);
+        if (!r) continue;
+        r.verifiedAt = at;
+        for (const res of s.ops.results.filter((x) => x.job_id === v.job && (x.reason ?? "").split(",").includes("READBACK_PENDING"))) {
+          res.next_tasks = [];
+          if (!res.checks.some((c) => c.name === "public_readback_http_200")) res.checks.push({ name: "public_readback_http_200", status: "pass", detail: `${v.url} HTTP 200 (${at})` });
+        }
+      }
+      s.audit.push({ at, actor: "gateway:cms", entity: "ops_receipt", entityId: null, action: "readback_verified", meta: { count: verified.length, slugs: verified.map((v) => v.slug) } });
+    });
   }
   return out;
 }
