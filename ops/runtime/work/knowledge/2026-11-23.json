@@ -1,0 +1,62 @@
+{
+  "schema_version": "zoo24.ops.job-result.v1",
+  "job_id": null,
+  "role": "knowledge",
+  "mode": "shadow",
+  "policy_version": "unsigned (shadow; activation.json live_scoped nie używany w tym przebiegu)",
+  "status": "partial_success",
+  "reason": "6 źródeł pierwotnych FCI (3 PDF standardów + 3 strony nomenklatury) odczytane; źródło ZKwP zablokowane przez proxy (403) — twierdzenia polskiej nomenklatury grup niezweryfikowane",
+  "artifacts": [
+    {
+      "id": "evidence-2026-11-23",
+      "type": "evidence_bundle",
+      "version": "1",
+      "path": "ops/runtime/work/knowledge/evidence/evidence-2026-11-23.json",
+      "note": "18 kart candidate dla doberman-n60, dalmatynczyk-n76, owczarek-niemiecki-n96; weryfikacja przez agenta (nie human review); żadna karta nie approved"
+    }
+  ],
+  "checks": [
+    {
+      "name": "sources_fetched",
+      "status": "partial",
+      "detail": "6/7: FCI 143/153/166 PDF + nomenklatura OK; zkwp.pl/regulaminy/Systematyka_Ras.pdf -> blocked_access (proxy 403)"
+    },
+    {
+      "name": "source_limit",
+      "status": "pass",
+      "detail": "6 źródeł ≤ 10"
+    },
+    {
+      "name": "card_status_candidate_only",
+      "status": "pass",
+      "detail": "wszystkie candidate"
+    },
+    {
+      "name": "no_external_writes",
+      "status": "pass",
+      "detail": "tylko odczyt GET źródeł"
+    }
+  ],
+  "external_actions": [],
+  "metrics": [],
+  "cost": {
+    "value": null,
+    "currency": null,
+    "status": "unknown"
+  },
+  "findings": [
+    "Wszystkie sprawdzone twierdzenia z FCI w 3 artykułach zgodne ze standardami (17 kart; 16 confirmed, 1 partial).",
+    "dalmatynczyk: głuchota to wada dyskwalifikująca w standardzie FCI 153 — artykuł ją pomija (świadoma decyzja redaktora-AI; temat zdrowotny → wymaga człowieka).",
+    "Niezweryfikowane (blocked_access): claim 'grupa wg ZKwP' w doberman-n60 (#11) i owczarek-niemiecki-n96 (#12) oraz nazwy polskie sekcji.",
+    "Poza zakresem tego przebiegu (nie ponownie sprawdzane): RSPCA (szkolenie/socjalizacja/ruch) i członkostwo ZKwP w FCI.",
+    "Licencja cytowania standardów FCI nadal unknown; użycie ograniczone do własnych streszczeń."
+  ],
+  "next_tasks": [
+    "Kolejne artykuły bez kart: basenji, border-collie, chihuahua, corgi, jack-russell, jamnik, 5 kotów (bengalski, syberyjski, syjamski, maine coon, ragdoll), shiba, shih-tzu, westie.",
+    "Zweryfikować RSPCA (3 strony) dla claimów wspólnych.",
+    "Ponowić ZKwP, gdy proxy dopuści host zkwp.pl."
+  ],
+  "human_decisions_required": [
+    "Czy dodać do artykułu o dalmatyńczyku wzmiankę o głuchocie (kategoria zdrowia — wymaga człowieka)?"
+  ]
+}
