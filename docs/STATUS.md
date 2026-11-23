@@ -2,6 +2,11 @@
 
 **Aktualizacja:** 2026-11-23 — serwis live na https://zoo24.pl; publikacja CMS live_scoped (26 materiałów). Social nadal Mode 0.
 
+## D-05 — 16 przekierowań starych adresów (2026-11-23, ok. 11:40)
+- Decyzja właściciela D-05 (arkusz). Wdrożone (commit e38f363) z `content/redirects/approved-301.json`; router waliduje R1–R12. **Produkcja: 16/16 działa jednym skokiem** — indeks i kategorie bloga → `/poradniki`, `/zwierzeta/*`; aliasy ras (kot angielski, majkun) → profile ras; aliasy strony głównej → `/` (301). Adresy pod `/blog/*` zwracają 308 (stałe przekierowanie Next.js, dla Google równoważne 301). Nieznane adresy dalej 404.
+- Przy okazji: porównania w synchronizacji odporne na kolejność kluczy jsonb (koniec zbędnych zapisów przy zimnym starcie).
+- Kolejne partie (odtworzenia treści pod dawnymi adresami, 301 warunkowe) — wg mapy, każda po decyzji.
+
 ## Audyt V4 — publikacja wzorców (2026-11-23, ok. 11:00)
 - `CRON_SECRET` ustawiony przez właściciela (D-10); cron `/api/ops/publish` uruchomiony ręcznie w Vercel. **4 wzorce opublikowane** (Border collie, wyjazd psa, akwarium, gady) — na produkcji tabela porównawcza, „Zaktualizowano”, blok „Co dalej”.
 - Znaleziony i naprawiony błąd (4150cb6): Postgres `jsonb` przestawia klucze obiektów, a hash treści zależał od kolejności → po odczycie z bazy każdy artykuł wyglądał na zmieniony (read-back `DB_VERSION_MISMATCH`, publikacja odrzucana przez dedupe — bez podwójnych publikacji). Hash normalizuje kolejność wg plików; akceptacje pozostały ważne (test).
