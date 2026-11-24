@@ -1,0 +1,30 @@
+diff --git a/tests/ops/publish-endpoint.test.ts b/tests/ops/publish-endpoint.test.ts
+index 43276d2..41d0d2a 100644
+--- a/tests/ops/publish-endpoint.test.ts
++++ b/tests/ops/publish-endpoint.test.ts
+@@ -6,11 +6,11 @@ const req = (auth?: string) => new Request("http://localhost/api/ops/publish", {
+ 
+ describe("GET /api/ops/publish", () => {
+   afterEach(() => { delete process.env.CRON_SECRET; });
+-  it("brak CRON_SECRET => 503 NOT_CONFIGURED", async () => {
++  it("brak CRON_SECRET → 503 NOT_CONFIGURED", async () => {
+     expect((await GET(req("Bearer x"))).status).toBe(503);
+   });
+   it("zły lub brakujący nagłówek => 401", async () => {
+-    process.env.CRON_SECRET = "s".repeat(40);
++    process.env.CRON_SECRET = "TEST-" + "s".repeat(40);
+     expect((await GET(req())).status).toBe(401);
+     expect((await GET(req("Bearer " + "t".repeat(40)))).status).toBe(401);
+   });
+diff --git a/tests/ops/runtime.test.ts b/tests/ops/runtime.test.ts
+index f07ea3a..74d0602 100644
+--- a/tests/ops/runtime.test.ts
++++ b/tests/ops/runtime.test.ts
+@@ -142,6 +142,7 @@ describe("R08/R09 pauza", () => {
+ 
+ describe("P04 polityka chroniona", () => {
+   it("agent nie może zapisać polityki ani podnieść budżetu; polityka w repo podpisana live_scoped wyłącznie dla CMS", () => {
++    fs.mkdirSync(path.join(process.cwd(), ".data"), { recursive: true });
+     const dir = fs.mkdtempSync(path.join(process.cwd(), ".data", "policy-test-"));
+     try {
+       const p = testPolicy("live_scoped");

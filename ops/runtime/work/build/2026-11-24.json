@@ -1,0 +1,25 @@
+{
+  "schema_version": "zoo24.ops.job-result.v1",
+  "job_id": "build-shadow-2026-11-24",
+  "role": "zoo24-ops-build",
+  "mode": "shadow",
+  "policy_version": null,
+  "status": "partial",
+  "reason": "2 failing checks on main (350d796); small test-only patch prepared, not merged",
+  "artifacts": ["ops/runtime/work/build/drafts/fix-test-env-and-scan.patch"],
+  "checks": [
+    {"name": "npm ci", "result": "pass"},
+    {"name": "npx tsc --noEmit -p .", "result": "pass"},
+    {"name": "npx vitest run (main)", "result": "fail", "detail": "372/373; tests/ops/runtime.test.ts P04 — ENOENT mkdtemp .data/ (katalog .data/ jest w .gitignore, brak na świeżym klonie/CI)"},
+    {"name": "npm run scan:secrets (main)", "result": "fail", "detail": "2 false positives in tests/ops/publish-endpoint.test.ts (tytuł testu 'CRON_SECRET => 503' i fixture bez TEST/FAKE); brak realnych sekretów"},
+    {"name": "with patch: vitest", "result": "pass", "detail": "373/373"},
+    {"name": "with patch: scan:secrets", "result": "pass"}
+  ],
+  "external_actions": [],
+  "metrics": [],
+  "cost": {"value": null, "currency": null, "status": "unknown"},
+  "risk": "niskie — tylko pliki testów; brak zmian w kodzie produkcyjnym ani obszarach chronionych",
+  "rollback": "git revert commita z patchem (zmiana tylko w tests/)",
+  "next_tasks": ["Zastosować patch w PR przez zwykły flow review (poza ops/build) — CI na czystym klonie padałoby tak samo", "Review przez zoo24-qa"],
+  "human_decisions_required": []
+}
