@@ -1,0 +1,60 @@
+{
+  "schema_version": "zoo24.ops.job-result.v1",
+  "job_id": null,
+  "role": "knowledge",
+  "mode": "shadow",
+  "policy_version": "unsigned (shadow)",
+  "status": "success",
+  "reason": null,
+  "artifacts": [
+    {
+      "id": "evidence-2026-11-24",
+      "type": "evidence_bundle",
+      "version": "1",
+      "path": "ops/runtime/work/knowledge/evidence/evidence-2026-11-24.json",
+      "note": "35 kart candidate: basenji, border-collie, chihuahua, jack-russell-terrier, corgi (Pembroke); weryfikacja przez agenta, nie human review; żadna karta nie approved"
+    }
+  ],
+  "checks": [
+    {
+      "name": "sources_fetched",
+      "status": "pass",
+      "detail": "10/10: 5 PDF standardów FCI + 5 stron nomenklatury (chihuahua: 302 -> CHIHUAHUA-218.html)"
+    },
+    {
+      "name": "source_limit",
+      "status": "pass",
+      "detail": "10 ≤ 10"
+    },
+    {
+      "name": "card_status_candidate_only",
+      "status": "pass",
+      "detail": "wszystkie candidate"
+    },
+    {
+      "name": "no_external_writes",
+      "status": "pass",
+      "detail": "tylko GET źródeł"
+    }
+  ],
+  "external_actions": [],
+  "metrics": [],
+  "cost": {
+    "value": null,
+    "currency": null,
+    "status": "unknown"
+  },
+  "findings": [
+    "34/35 kart confirmed, 1 partial (jack-russell #1: PDF „próby pracy opcjonalne” vs nomenklatura „tylko w krajach, które o to wnioskowały” — brak sprzeczności, rekomendacja doprecyzowania).",
+    "Chihuahua: standard ostrzega o dyskwalifikacji typu „jeleń”; artykuł zgodny.",
+    "Adres nomenklatury chihuahua w artykule (CHIHUAHUENO-218) przekierowuje 302 na CHIHUAHUA-218 — do aktualizacji URL w źródłach.",
+    "Pembroke: tylko twierdzenia Pembroke; Cardigan (std 38) poza zakresem tego przebiegu.",
+    "Licencja cytowania standardów FCI nadal unknown."
+  ],
+  "next_tasks": [
+    "Karty dla: jamnik, kot-bengalski, kot-syberyjski, kot-syjamski, maine-coon, ragdoll, shiba-inu, shih-tzu, westie (FIFe dla kotów).",
+    "Cardigan 038 oraz RSPCA (3 strony) dla twierdzeń wspólnych.",
+    "Ponowić ZKwP, gdy proxy dopuści zkwp.pl."
+  ],
+  "human_decisions_required": []
+}
