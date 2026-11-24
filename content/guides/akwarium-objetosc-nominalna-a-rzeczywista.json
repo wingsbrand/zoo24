@@ -2,39 +2,99 @@
   "slug": "akwarium-objetosc-nominalna-a-rzeczywista",
   "basePath": "/poradniki",
   "title": "Objętość nominalna a rzeczywista ilość wody w akwarium",
-  "summary": "Dlaczego „akwarium 60 l” mieści mniej wody: wymiary wewnętrzne, grubość szyb, poziom wody, podłoże i dekoracje. Jak policzyć objętość.",
+  "summary": "Policz, ile wody naprawdę mieści Twoje akwarium: przykład krok po kroku od wymiarów zewnętrznych do wody w urządzonym zbiorniku, jak czytać trzy wyniki kalkulatora ZOO24 i do czego litraż się nie nadaje.",
   "body": [
     "## Krótka odpowiedź",
-    "Objętość podawana w opisie akwarium (nominalna) zwykle wynika z wymiarów zbiornika i zakłada wypełnienie po brzegi. Rzeczywista ilość wody jest mniejsza, bo: wymiary wewnętrzne są mniejsze od zewnętrznych o grubość szyb, wody nie nalewa się do samej krawędzi, a podłoże, kamienie, korzenie i inne elementy wypierają część wody. Do obliczeń użyj wymiarów wewnętrznych i rzeczywistej wysokości słupa wody. Pamiętaj też, że objętość nie mówi, ile i jakich ryb możesz trzymać.",
+    "Objętość podawana w opisie akwarium jest liczona z wymiarów zbiornika i zakłada wypełnienie po brzegi — sprawdź w opisie producenta, czy z wymiarów zewnętrznych, czy wewnętrznych. W tym poradniku i w kalkulatorze ZOO24 „objętość nominalna” oznacza wnętrze zbiornika wypełnione do krawędzi. Rzeczywista ilość wody jest mniejsza, bo: wymiary wewnętrzne są mniejsze od zewnętrznych o grubość szyb, wody nie nalewa się do samej krawędzi, a podłoże, kamienie, korzenie i inne elementy wypierają część wody. Do obliczeń użyj wymiarów wewnętrznych i rzeczywistej wysokości słupa wody. Pamiętaj też, że objętość nie mówi, ile i jakich ryb możesz trzymać.",
     "## Wzór dla akwarium prostopadłościennego",
     "Objętość prostopadłościanu to długość × szerokość × wysokość. Jeśli mierzysz w centymetrach, wynik otrzymasz w centymetrach sześciennych, a ponieważ 1 litr to 1000 cm³, dzielisz wynik przez 1000: długość (cm) × szerokość (cm) × wysokość (cm) ÷ 1000 = litry. Ten sam wzór podaje MSD Veterinary Manual w tabeli wzorów do obliczania objętości zbiorników — w jego przykładzie jako wysokość przyjęto głębokość wody, a nie wysokość szkła.",
     "## Krok 1. Zmierz wymiary wewnętrzne, nie zewnętrzne",
     "Wymiary katalogowe często dotyczą zewnętrznej bryły akwarium. Ściany mają jednak swoją grubość — po każdej stronie zbiornika szyba „zabiera” kilka milimetrów lub więcej. Przy długości odejmujesz grubość dwóch szyb bocznych, przy szerokości — szyby przedniej i tylnej, a przy wysokości — szyby dennej. Jeśli możesz, zmierz długość i szerokość od wewnątrz albo zmierz zewnętrzne wymiary i grubość szkła, a następnie odejmij.",
     "## Krok 2. Zmierz wysokość wody, a nie zbiornika",
     "Wody zwykle nie nalewa się do samej krawędzi — poziom jest niżej, m.in. ze względu na pokrywę, filtr czy oświetlenie. Do obliczeń przyjmij wysokość słupa wody, czyli odległość od dna do lustra wody. Jeśli na dnie jest już podłoże, możesz mierzyć od powierzchni podłoża do lustra wody — wtedy od razu pomijasz część objętości zajętą przez podłoże (choć woda wnika też między ziarna, więc to nadal przybliżenie).",
-    "## Przykład obliczenia",
-    "To przykład liczbowy, nie dane konkretnego modelu. Akwarium o wymiarach zewnętrznych 60 × 30 × 36 cm ma objętość „brutto” 60 × 30 × 36 ÷ 1000 = 64,8 l. Załóżmy, że szyby mają 6 mm grubości. Wymiary wewnętrzne wynoszą wtedy 58,8 × 28,8 cm, a wysokość od szyby dennej 35,4 cm, co daje około 59,9 l. Jeśli poziom wody jest 3 cm poniżej krawędzi, wysokość słupa wody to 32,4 cm, a objętość — około 54,9 l. Podłoże i dekoracje zmniejszą tę wartość jeszcze bardziej. Zatem „akwarium 65 l” może w praktyce zawierać wyraźnie mniej wody.",
     "## Krok 3. Uwzględnij podłoże i wystrój",
-    "Podłoże, kamienie, korzenie, jaskinie i urządzenia w zbiorniku zajmują miejsce, którego nie wypełnia woda. Ile — zależy od konkretnego wystroju, dlatego nie podajemy tu stałej wartości procentowej. Jeśli potrzebujesz dokładniejszej liczby, najpewniejszą metodą jest pomiar ilości wody przy napełnianiu (np. naczyniem o znanej pojemności) już po urządzeniu zbiornika. MSD Veterinary Manual przy nietypowych zbiornikach również proponuje pomiar zamiast wzoru — przez sprawdzenie, ile czasu zajmuje napełnienie naczynia o znanej objętości.",
-    "## Dlaczego to ma znaczenie",
-    "Rzeczywista ilość wody przydaje się, gdy instrukcja jakiegoś preparatu podaje ilość w przeliczeniu na litry wody. MSD Veterinary Manual podkreśla, że kąpiel lecznicza wymaga dokładnego zmierzenia objętości wody, którą się traktuje. Zawsze postępuj zgodnie z instrukcją producenta danego produktu, a w sprawach leczenia ryb — z zaleceniami lekarza weterynarii zajmującego się rybami. Ten poradnik nie podaje dawek żadnych środków.",
-    "## Objętość nie wyznacza obsady",
-    "Liczba litrów nie mówi, ile ryb zmieści się w akwarium. RSPCA podkreśla, że zbyt wiele ryb zanieczyszcza wodę, a przeliczniki objętości na długość ryb należy traktować wyłącznie jako orientacyjne, bo na jakość wody wpływa wiele czynników. O doborze ryb decydują m.in. wymagania gatunku, zgodność z innymi gatunkami i zachowanie stadne — RSPCA radzi sprawdzić dokładne wymagania i zgodność każdego gatunku, w tym to, czy żyje on w ławicy. Dobór obsady i wielkość grup to osobny temat — skonsultuj go z osobą znającą wybrane gatunki.",
+    "Podłoże, kamienie, korzenie, jaskinie i urządzenia w zbiorniku zajmują miejsce, którego nie wypełnia woda. Ile — zależy od konkretnego wystroju, dlatego nie podajemy stałej wartości procentowej. Objętość pojedynczego kamienia lub korzenia możesz zmierzyć przed włożeniem do akwarium: zanurz go całkowicie w naczyniu z podziałką i odczytaj, o ile podniósł się poziom wody. Przy podłożu sprawa jest trudniejsza, bo woda wnika między ziarna — dlatego w przykładzie poniżej liczymy dolną granicę. Najpewniejszą metodą jest pomiar ilości wody przy napełnianiu już urządzonego zbiornika (np. naczyniem o znanej pojemności). MSD Veterinary Manual przy nietypowych zbiornikach również proponuje pomiar: najpierw ustal przepływ wody (np. ile czasu zajmuje napełnienie naczynia 1 l), a potem zmierz, jak długo napełnia się cały zbiornik, i przelicz objętość.",
+    "## Przykład liczbowy krok po kroku",
+    "To przykład z przyjętymi założeniami, a nie dane konkretnego modelu ani wynik pomiaru. Założenia: wymiary zewnętrzne 60 × 30 × 36 cm (długość × szerokość × wysokość); wszystkie szyby, także denna, mają grubość 6 mm (0,6 cm); lustro wody jest 3 cm poniżej górnej krawędzi; na dnie leży równa warstwa podłoża grubości 5 cm; kamienie i korzeń zmierzone w naczyniu z podziałką mają łącznie 2,0 l.",
+    "1. Z wymiarów zewnętrznych: 60 × 30 × 36 ÷ 1000 = 64,8 l. Tak wygląda liczba, którą łatwo wziąć za pojemność, choć część tej bryły to szkło.",
+    "2. Wymiary wewnętrzne: długość 60 − 2 × 0,6 = 58,8 cm, szerokość 30 − 2 × 0,6 = 28,8 cm, wysokość 36 − 0,6 = 35,4 cm (odejmujemy tylko szybę denną, bo zbiornik jest otwarty od góry). Powierzchnia dna wewnątrz: 58,8 × 28,8 = 1693,44 cm². Objętość do krawędzi: 1693,44 × 35,4 ÷ 1000 ≈ 59,9 l.",
+    "3. Woda do zadanego poziomu: 35,4 − 3 = 32,4 cm słupa wody, czyli 1693,44 × 32,4 ÷ 1000 ≈ 54,9 l.",
+    "4. Podłoże: warstwa 5 cm to 1693,44 × 5 ÷ 1000 ≈ 8,5 l. Jeśli przyjmiemy, że woda w ogóle nie wnika w podłoże, nad nim zostaje 27,4 cm wody: 1693,44 × 27,4 ÷ 1000 ≈ 46,4 l.",
+    "5. Wystrój: 46,4 − 2,0 ≈ 44,4 l. To dolna granica — w rzeczywistości wody jest nieco więcej, bo wypełnia ona przestrzenie między ziarnami podłoża. Górną granicę daje założenie, że podłoże nie wypiera wody wcale: 54,9 − 2,0 = 52,9 l. Prawdziwa wartość leży w tym przedziale; dokładnie ustalisz ją tylko pomiarem przy napełnianiu.",
+    "Wniosek z przykładu: zbiornik, który z wymiarów zewnętrznych „ma” 64,8 l, po urządzeniu może zawierać około 44–53 l wody, czyli nawet o mniej więcej jedną trzecią mniej. Przy innych wymiarach, grubości szkła i wystroju różnica będzie inna — policz ją dla swojego akwarium.",
+    "## Jak czytać wynik kalkulatora ZOO24",
+    "Kalkulator pokazuje trzy wartości. Wpisując dane z przykładu (wymiary zewnętrzne 60 × 30 × 36 cm, szkło 6 mm, odstęp lustra wody 3 cm), zobaczysz: „Objętość nominalna (wnętrze do krawędzi)” — ok. 59,9 l, czyli wnętrze zbiornika wypełnione po brzegi, już bez szkła; „Woda do zadanego poziomu” — ok. 54,9 l; „Szacowana objętość wody” — wynik po odjęciu procentu, który sam wpisujesz jako zajęty przez podłoże i dekoracje.",
+    "Kalkulator nie zna Twojego wystroju — procent wyparcia jest Twoim założeniem i wynik jest tak dobry, jak to założenie. Jeśli chcesz odwzorować dolną granicę z przykładu, policz: (8,5 + 2,0) ÷ 54,9 ≈ 0,19, czyli ok. 19%. Po wpisaniu 19% kalkulator pokaże ok. 44,4 l. Pamiętaj też, że liczba 64,8 l z wymiarów zewnętrznych nie pojawia się w kalkulatorze jako wynik: gdy wybierzesz wymiary zewnętrzne, narzędzie od razu odejmuje grubość szkła.",
+    "## Do czego używać wyniku, a do czego nie",
+    "Rzeczywista ilość wody przydaje się, gdy instrukcja preparatu lub urządzenia odnosi się do litrów wody albo gdy planujesz podmianę określonej części wody. Sprawdź w instrukcji producenta, czy chodzi o pojemność zbiornika, czy o ilość wody, i postępuj zgodnie z nią. MSD Veterinary Manual podkreśla, że kąpiel lecznicza wymaga dokładnego zmierzenia objętości wody, którą się traktuje — w sprawach leczenia ryb kieruj się zaleceniami lekarza weterynarii zajmującego się rybami. Ten poradnik nie podaje dawek żadnych środków.",
+    "Wynik nie mówi, ile ani jakich ryb możesz trzymać. RSPCA podkreśla, że zbyt wiele ryb zanieczyszcza wodę, a przeliczniki objętości na długość ryb należy traktować wyłącznie jako orientacyjne, bo na jakość wody wpływa wiele czynników. RSPCA radzi sprawdzić dokładne wymagania i zgodność każdego gatunku, w tym to, czy żyje on w ławicy. Dlatego ani ten poradnik, ani kalkulator nie wyprowadzają z litrażu zaleceń obsady — dobór ryb i wielkość grup skonsultuj z osobą znającą wybrane gatunki.",
     "## Kiedy dotyczy i ograniczenia",
-    "Wzór dotyczy zbiorników prostopadłościennych. Akwaria narożne, panoramiczne z wygiętą szybą czy cylindryczne wymagają innych wzorów albo pomiaru przy napełnianiu. Wynik obliczeń to przybliżenie. Poradnik nie dotyczy doboru wyposażenia ani obsady.",
+    "Wzór dotyczy zbiorników prostopadłościennych; kalkulator obsługuje też zbiorniki cylindryczne. Akwaria narożne czy panoramiczne z wygiętą szybą wymagają innych wzorów albo pomiaru przy napełnianiu. Przykład zakłada równą grubość wszystkich szyb i równą warstwę podłoża — w Twoim zbiorniku może być inaczej (np. grubsza szyba denna, podłoże usypane skośnie). Wynik obliczeń zawsze jest przybliżeniem.",
     "## Typowe błędy",
-    "Liczenie objętości z wymiarów zewnętrznych. Przyjmowanie wysokości szkła zamiast wysokości słupa wody. Traktowanie objętości z opisu produktu jako ilości wody w urządzonym akwarium. Dobieranie obsady na podstawie samej liczby litrów. Odmierzanie preparatów według objętości nominalnej zamiast rzeczywistej, gdy instrukcja odnosi się do ilości wody.",
+    "Liczenie objętości z wymiarów zewnętrznych. Przyjmowanie wysokości szkła zamiast wysokości słupa wody. Traktowanie objętości z opisu produktu jako ilości wody w urządzonym akwarium. Wpisywanie do kalkulatora przypadkowego procentu wyparcia bez pomiaru lub uzasadnienia. Dobieranie obsady na podstawie samej liczby litrów. Odmierzanie preparatów według objętości nominalnej zamiast rzeczywistej, gdy instrukcja odnosi się do ilości wody.",
     "## Następny krok",
-    "Policz orientacyjną objętość swojego zbiornika w kalkulatorze ZOO24 (/narzedzia/kalkulator-akwarium), który rozróżnia wymiary wewnętrzne i zewnętrzne oraz objętość nominalną i rzeczywistą. Kalkulator nie wyznacza dopuszczalnej obsady."
+    "Zmierz swój zbiornik i grubość szkła, a potem policz objętość w kalkulatorze: [Kalkulator objętości akwarium](/narzedzia/kalkulator-akwarium). Zanotuj wszystkie trzy wyniki i założony procent wyparcia. Jeśli potrzebujesz dokładnej liczby, przy następnym napełnianiu zmierz ilość wlanej wody i porównaj ją z wynikiem."
   ],
   "checklist": [
-    "Czy mierzę wymiary wewnętrzne (albo odjąłem grubość szyb od zewnętrznych)?",
+    "Czy znam wymiary wewnętrzne (albo zmierzyłem grubość szyb i odjąłem ją od zewnętrznych)?",
     "Czy jako wysokość przyjąłem wysokość słupa wody, a nie szkła?",
-    "Czy uwzględniłem, że podłoże i wystrój wypierają część wody?",
+    "Czy zmierzyłem objętość kamieni i korzeni w naczyniu z podziałką?",
+    "Czy wiem, że wynik z odjętym podłożem to dolna granica, a dokładną liczbę da pomiar przy napełnianiu?",
+    "Czy rozumiem, co oznacza każdy z trzech wyników kalkulatora i skąd wziąłem procent wyparcia?",
     "Czy przy nietypowym kształcie zbiornika zmierzę ilość wody przy napełnianiu?",
-    "Czy dawkując preparat, kieruję się instrukcją producenta i rzeczywistą ilością wody?",
+    "Czy używając preparatu, kieruję się instrukcją producenta i rzeczywistą ilością wody?",
     "Czy obsadę dobieram według wymagań gatunków, a nie samej liczby litrów?"
   ],
+  "comparison": {
+    "caption": "Przykład: akwarium 60 × 30 × 36 cm (wymiary zewnętrzne), szkło 6 mm, woda 3 cm poniżej krawędzi, podłoże 5 cm, wystrój 2,0 l — założenia przykładu",
+    "columns": [
+      "Jak policzono",
+      "Wynik",
+      "Odpowiednik w kalkulatorze"
+    ],
+    "rows": [
+      {
+        "label": "Z wymiarów zewnętrznych",
+        "cells": [
+          "60 × 30 × 36 ÷ 1000",
+          "64,8 l",
+          "Brak — kalkulator odejmuje szkło"
+        ]
+      },
+      {
+        "label": "Wnętrze do krawędzi",
+        "cells": [
+          "58,8 × 28,8 × 35,4 ÷ 1000",
+          "ok. 59,9 l",
+          "„Objętość nominalna (wnętrze do krawędzi)”"
+        ]
+      },
+      {
+        "label": "Woda do zadanego poziomu",
+        "cells": [
+          "58,8 × 28,8 × 32,4 ÷ 1000",
+          "ok. 54,9 l",
+          "„Woda do zadanego poziomu”"
+        ]
+      },
+      {
+        "label": "Woda nad podłożem minus wystrój (dolna granica)",
+        "cells": [
+          "58,8 × 28,8 × 27,4 ÷ 1000 − 2,0",
+          "ok. 44,4 l",
+          "„Szacowana objętość wody” przy ok. 19% wyparcia"
+        ]
+      },
+      {
+        "label": "Bez wyparcia przez podłoże, minus wystrój (górna granica)",
+        "cells": [
+          "54,9 − 2,0",
+          "ok. 52,9 l",
+          "„Szacowana objętość wody” przy ok. 3,6% wyparcia"
+        ]
+      }
+    ]
+  },
   "sources": [
     {
       "label": "MSD Veterinary Manual — Formulae to Calculate Tank Volumes",
@@ -90,11 +150,11 @@
       "accessedAt": "2026-11-22"
     }
   ],
-  "authorDisplay": "Redakcja ZOO24 (szkic przygotowany z pomocą AI)",
+  "authorDisplay": "Redakcja ZOO24",
   "status": "needs_review",
   "demo": false,
   "publishedAt": null,
-  "updatedAt": "2026-11-22T18:45:32.872Z",
+  "updatedAt": "2026-11-23T08:12:17.440Z",
   "relatedServicePaths": [],
   "disclosure": null,
   "reviewNotes": [
@@ -120,7 +180,7 @@
     "required": "editor",
     "by": "claude-ai-editor",
     "byKind": "ai",
-    "at": "2026-11-22T18:45:32.872Z",
+    "at": "2026-11-23T08:12:17.440Z",
     "note": "Recenzja redaktora-AI: twierdzenia sprawdzone ze źródłami 22.11.2026 (ponowny odczyt stron). Usunięto liczbową wielkość grupy ryb ławicowych (parametr łączenia zwierząt = klasa welfare wg V3); poradnik pozostaje obliczeniowy — klasa standard. Wzór i pomiar przepływu potwierdzone w MSD; brak dawek preparatów.",
     "waitingReason": null
   },
@@ -130,9 +190,9 @@
     "decision": "approved",
     "by": "claude-ai-editor",
     "byKind": "ai",
-    "at": "2026-11-22T18:45:32.872Z",
-    "contentHash": "7a869a91ca9b590a17e96edcef404feafe705e51ebac669e35357de778d33bb7",
-    "evidenceRef": "claims[] w pliku + weryfikacja źródeł 22.11.2026",
+    "at": "2026-11-23T08:12:17.440Z",
+    "contentHash": "160781dc206ad910c698c8db21cfd46d63f5313093b3d2471cab2eb88ed11c5c",
+    "evidenceRef": "docs/BACKLOG_V4.md#wzorce (przegląd redaktora-AI 2026-11-23: źródła, klasa standard, arytmetyka)",
     "excludedCategoriesChecked": [
       "health",
       "legal",
@@ -147,9 +207,8 @@
       "transport"
     ],
     "notes": [
-      "Usunięto liczbową wielkość grupy ryb ławicowych (parametr łączenia zwierząt = klasa welfare wg V3); poradnik pozostaje obliczeniowy — klasa standard.",
-      "Wzór i pomiar przepływu potwierdzone w MSD; brak dawek preparatów."
+      "Wzorzec V4: przegląd źródeł i 11 poprawek naniesionych przed akceptacją; bez przeglądu człowieka."
     ],
-    "publishAfter": "serwis live na https://zoo24.pl; publikacja przez gateway (cms.publish_approved_version)"
+    "publishAfter": "2026-11-23T08:12:17.440Z"
   }
 }

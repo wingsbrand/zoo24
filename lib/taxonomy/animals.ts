@@ -78,7 +78,7 @@ export const NEEDS: readonly { slug: NeedSlug; name: string }[] = [
 export const isNeedSlug = (s: unknown): s is NeedSlug => typeof s === "string" && NEEDS.some((n) => n.slug === s);
 
 // ---------- Format i ryzyko treści ----------
-export type ContentFormat = "hub" | "species_card" | "guide" | "checklist";
+export type ContentFormat = "hub" | "species_card" | "breed_profile" | "guide" | "checklist";
 
 /**
  * Klasa ryzyka decyduje o wymaganym przeglądzie (V3 §10):

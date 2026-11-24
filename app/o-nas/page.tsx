@@ -32,7 +32,7 @@ export default function ONas() {
 
       <h2>Jak pracujemy</h2>
       <p>
-        Treści przygotowujemy według <Link href="/zasady-redakcyjne">zasad redakcyjnych</Link>: korzystamy z wiarygodnych źródeł, a przy każdym artykule piszemy, kto go sprawdził — także gdy była to redakcja z udziałem AI. Tematy zdrowotne, prawne i sponsorowane zawsze zatwierdza człowiek. Błędy poprawiamy — możesz je <Link href="/zglos-blad">zgłosić tutaj</Link>.
+        Treści przygotowujemy według <Link href="/zasady-redakcyjne">zasad redakcyjnych</Link>: korzystamy z wiarygodnych źródeł i podajemy je przy każdym artykule. Tematy zdrowotne, warunki utrzymania, prawo i treści sponsorowane publikujemy dopiero po sprawdzeniu przez człowieka z odpowiednią wiedzą. Błędy poprawiamy — możesz je <Link href="/zglos-blad">zgłosić tutaj</Link>.
       </p>
 
       <h2>Kto prowadzi ZOO24</h2>

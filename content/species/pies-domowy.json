@@ -1,0 +1,99 @@
+{
+  "slug": "pies-domowy",
+  "group": "psy",
+  "name": "Pies domowy",
+  "scientific": "Canis familiaris",
+  "scientificNote": "Nazwa za ITIS (rekord TSN 183815, status: valid; Canis lupus familiaris figuruje tam jako synonim). GBIF Backbone Taxonomy (rekord 6164210) traktuje psa jako podgatunek wilka i przyjmuje zapis Canis lupus familiaris. Obie formy spotyka się w literaturze; wybór zależy od przyjętego ujęcia taksonomicznego.",
+  "scientificSourceIndex": 0,
+  "lead": "Ta karta pomaga ocenić, czy możesz zapewnić psu to, czego potrzebuje na co dzień: czas, ruch, towarzystwo, bezpieczny dom i opiekę, gdy wyjeżdżasz. Zbiera zobowiązania opiekuna w jednym miejscu i wskazuje, kiedy zwrócić się do specjalisty. Nie podaje ilości karmy, schematów szczepień ani porad zdrowotnych — te ustalasz z lekarzem weterynarii.",
+  "sections": [
+    {
+      "id": "potrzeby",
+      "title": "Podstawowe potrzeby",
+      "points": [
+        "Pies potrzebuje bezpiecznego, odpowiednio urządzonego domu, w którym czuje się pewnie.",
+        "Potrzebuje pełnowartościowej, zbilansowanej diety; przysmaki podaje się z umiarem, a niektórych produktów psu nie należy dawać.",
+        "Codzienne wyjścia i ruch powinny być dopasowane do wieku, wielkości, rasy, zdrowia i temperamentu psa.",
+        "Zabawa i zajęcia angażujące głowę są równie ważne jak spacer — znudzony pies może się stresować.",
+        "Pies potrzebuje ciepłego, suchego i cichego miejsca do odpoczynku, z dala od przeciągów, oraz kryjówki, do której może się wycofać, gdy się boi.",
+        "W ciągu dnia pies musi mieć regularną możliwość załatwienia potrzeb fizjologicznych."
+      ],
+      "sourceIndexes": [2, 3, 5]
+    },
+    {
+      "id": "zobowiazania",
+      "title": "Zobowiązania opiekuna",
+      "points": [
+        "Każdego dnia trzeba mieć czas na towarzystwo, wyjścia, szkolenie i zabawę; jeśli często nie ma Cię w domu, zaplanuj np. osobę do wyprowadzania psa lub opiekę dzienną.",
+        "Pies ogranicza spontaniczność: wyjazdy planujesz razem z psem albo organizujesz mu opiekę.",
+        "Koszty jednorazowe obejmują m.in. wyposażenie, pierwsze szczepienia, czipowanie i zabieg kastracji lub sterylizacji.",
+        "Koszty stałe to m.in. karma, coroczne wizyty kontrolne i szczepienia przypominające, profilaktyka przeciwpasożytnicza i ubezpieczenie; do tego dochodzą koszty sytuacyjne (pielęgnacja, szkolenie, opieka na czas wyjazdu, specjalna dieta) i nieplanowane leczenie.",
+        "To zobowiązanie na całe życie psa — warto sprawdzić, jak pies wpisuje się w plany na kolejne lata: przeprowadzkę, zmianę pracy, rodzinę.",
+        "Psa nie zostawia się bez odpowiedzialnej osoby; opiekę na czas wyjazdu organizuje się z wyprzedzeniem i przekazuje opiekunowi rutynę, sposób karmienia, kontakt do siebie i dane lekarza weterynarii z dyżurem.",
+        "W Polsce psy powyżej 3. miesiąca życia podlegają obowiązkowemu szczepieniu przeciw wściekliźnie, które wykonuje lekarz weterynarii (podstawa wskazana przez GIW: ustawa z 21 listopada 2025 r. o zdrowiu zwierząt); terminy ustal z lekarzem weterynarii."
+      ],
+      "sourceIndexes": [7, 8, 9, 10]
+    },
+    {
+      "id": "zachowanie",
+      "title": "Zachowanie i potrzeby społeczne",
+      "points": [
+        "Psy lubią towarzystwo; wczesne, dobre doświadczenia z ludźmi i innymi psami poprawiają jakość ich życia.",
+        "Pies nie powinien zostawać sam tak długo, by zaczął się denerwować; samotność oswaja się stopniowo, a szczeniak nie może zostawać sam godzinami.",
+        "Szkolenie oparte na nagrodach, zaczęte wcześnie, ułatwia wspólne życie i buduje więź; kary i krzyk zwiększają ryzyko problemów.",
+        "Wszyscy domownicy powinni reagować na psa w ten sam, przewidywalny sposób.",
+        "Psa zapoznaje się ostrożnie z innymi psami i z kotami; przy kilku psach każdy potrzebuje możliwości odejścia od pozostałych.",
+        "Małe dzieci zawsze powinny przebywać z psem pod nadzorem dorosłego."
+      ],
+      "sourceIndexes": [2, 3, 4, 5, 8]
+    },
+    {
+      "id": "przygotowanie-domu",
+      "title": "Przygotowanie domu",
+      "points": [
+        "Psy są ciekawskie i pozostawione same mogą zrobić sobie krzywdę — zabezpiecz dom przed przyjazdem psa.",
+        "Przygotuj podstawowe wyposażenie: legowisko, smycz, obrożę z identyfikatorem, miski, szczotkę, zabawki i zabezpieczenie do przewozu w samochodzie.",
+        "Wyznacz miejsce odpoczynku i kryjówkę, zanim pies się pojawi.",
+        "Przy kilku psach zapewnij wystarczającą liczbę legowisk, zabawek i kryjówek, by ograniczyć rywalizację.",
+        "Zaplanuj odpowiednie miejsce na zewnątrz na co najmniej jedno codzienne wyjście, podczas którego pies może się poruszać i eksplorować."
+      ],
+      "sourceIndexes": [2, 5, 7]
+    },
+    {
+      "id": "profesjonalna-pomoc",
+      "title": "Kiedy szukać profesjonalnej pomocy",
+      "points": [
+        "Lekarz weterynarii: rutynowe kontrole, szczepienia, czipowanie i profilaktyka pasożytów — wybierz lecznicę i sprawdź możliwość pomocy poza godzinami pracy, zanim pies zamieszka z Tobą.",
+        "Gdy zachowanie psa się zmienia albo oznaki strachu lub stresu pojawiają się regularnie, zacznij od lekarza weterynarii — może skierować do behawiorysty.",
+        "Każde zachowanie agresywne wymaga pełnej oceny przez specjalistę od zachowania zwierząt.",
+        "Przy trudnościach w szkoleniu pomoże wykwalifikowany trener psów lub behawiorysta.",
+        "Groomera wybieraj z polecenia, poznaj go przed wizytą i sprawdź czystość, bezpieczeństwo miejsca, obsadę oraz to, czy wymaga potwierdzenia szczepień; do pielęgnacji przyzwyczajaj psa stopniowo, z nagrodami."
+      ],
+      "sourceIndexes": [2, 3, 4, 6, 9]
+    }
+  ],
+  "beforeDecision": [
+    "Czy każdego dnia mam czas na towarzystwo, wyjścia, szkolenie i zabawę — i kto zajmie się psem, gdy będę poza domem?",
+    "Czy jestem gotów planować wyjazdy razem z psem albo organizować mu opiekę z wyprzedzeniem?",
+    "Czy mój budżet pokryje koszty jednorazowe, stałe i sytuacyjne oraz nieplanowane leczenie przez całe życie psa?",
+    "Czy pies pasuje do moich planów na najbliższe lata (przeprowadzka, praca, rodzina)?",
+    "Czy wszyscy domownicy są gotowi na psa, a zwierzęta, które już mam, mogą z nim bezpiecznie mieszkać?",
+    "Czy mam warunki, by zapewnić psu miejsce odpoczynku, kryjówkę i codzienny ruch?",
+    "Czy decyzja jest przemyślana, a nie impulsem lub prezentem dla kogoś innego?",
+    "Jeśli nigdy nie miałem psa — czy rozważałem najpierw dom tymczasowy?"
+  ],
+  "sources": [
+    { "label": "ITIS — Canis familiaris Linnaeus, 1758 (TSN 183815)", "url": "https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=183815", "accessedAt": "2026-11-23" },
+    { "label": "GBIF Backbone Taxonomy — Canis lupus familiaris (rekord 6164210, API)", "url": "https://api.gbif.org/v1/species/6164210", "accessedAt": "2026-11-23" },
+    { "label": "RSPCA — Dogs: care and welfare (EN)", "url": "https://www.rspca.org.uk/adviceandwelfare/pets/dogs", "accessedAt": "2026-11-23" },
+    { "label": "RSPCA — Dog behaviour (EN)", "url": "https://www.rspca.org.uk/adviceandwelfare/pets/dogs/behaviour", "accessedAt": "2026-11-23" },
+    { "label": "RSPCA — Dog company (EN)", "url": "https://www.rspca.org.uk/adviceandwelfare/pets/dogs/company", "accessedAt": "2026-11-23" },
+    { "label": "RSPCA — Dog environment (EN)", "url": "https://www.rspca.org.uk/adviceandwelfare/pets/dogs/environment", "accessedAt": "2026-11-23" },
+    { "label": "RSPCA — Dog grooming (EN)", "url": "https://www.rspca.org.uk/adviceandwelfare/pets/dogs/health/grooming", "accessedAt": "2026-11-23" },
+    { "label": "PDSA — The cost of owning a dog (EN)", "url": "https://www.pdsa.org.uk/pet-help-and-advice/looking-after-your-pet/puppies-dogs/the-cost-of-owning-a-dog", "accessedAt": "2026-11-23" },
+    { "label": "Dogs Trust — Should I get a dog? 10 questions to ask yourself (EN)", "url": "https://www.dogstrust.org.uk/dog-advice/getting-dog/dog-ready/are-you-dog-ready", "accessedAt": "2026-11-23" },
+    { "label": "RSPCA — Leaving your pet when you go away (EN)", "url": "https://www.rspca.org.uk/adviceandwelfare/pets/general/holiday/leavingyourpet", "accessedAt": "2026-11-23" },
+    { "label": "Główny Inspektorat Weterynarii — Szczepienie na wściekliznę", "url": "https://www.wetgiw.gov.pl/nadzor-weterynaryjny/szczepienie-na-wscieklizne", "accessedAt": "2026-11-23" }
+  ],
+  "checkedAt": "2026-11-23"
+}

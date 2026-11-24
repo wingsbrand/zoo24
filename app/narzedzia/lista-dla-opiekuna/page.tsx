@@ -42,9 +42,12 @@ export default function ListaDlaOpiekunaPage() {
             <li>Lista nie zastępuje kontaktu z lekarzem weterynarii. W razie niepokojących objawów opiekun powinien się z nim skontaktować.</li>
             <li>Dane są zapisywane tylko w tej przeglądarce. Wyczyszczenie danych przeglądarki lub tryb prywatny usuwa listę — zachowaj wydruk lub plik.</li>
           </ul>
-          <p className="mt-6 text-sm text-ink-muted">
-            Więcej o opiece nad zwierzętami znajdziesz w <Link href="/poradniki" className="text-brand underline">poradnikach ZOO24</Link>.
-          </p>
+          <h2 id="przed-wyjazdem" className="mt-10 text-2xl font-bold">Zanim wypełnisz listę</h2>
+          <ul className="mt-3 space-y-3">
+            <li><Link href="/poradniki/jak-wybrac-opieke-dla-psa-na-czas-wyjazdu" className="font-semibold text-brand underline">Jak wybrać opiekę dla psa na czas wyjazdu</Link> — porównanie form opieki i lista ustaleń z opiekunem.</li>
+            <li><Link href="/poradniki/informacje-dla-opiekuna-kota" className="font-semibold text-brand underline">Informacje dla opiekuna kota</Link> — co spisać i pokazać przed wyjazdem.</li>
+            <li><Link href="/poradniki/ptaki-opieka-na-czas-wyjazdu" className="font-semibold text-brand underline">Ptaki: opieka na czas wyjazdu</Link> — na co zwrócić uwagę przy ptakach.</li>
+          </ul>
         </Container>
       </Section>
     </>

@@ -141,7 +141,7 @@
       "accessedAt": "2026-11-22"
     }
   ],
-  "authorDisplay": "Redakcja ZOO24 (szkic przygotowany z pomocą AI)",
+  "authorDisplay": "Redakcja ZOO24",
   "status": "needs_review",
   "demo": false,
   "publishedAt": null,
@@ -165,7 +165,7 @@
     "wybor-zwierzecia",
     "codzienna-opieka"
   ],
-  "format": "species_card",
+  "format": "breed_profile",
   "risk": "standard",
   "review": {
     "required": "editor",

@@ -75,5 +75,16 @@
       "Kategoria: przewodnik po rasie (nie porada zdrowotna)."
     ],
     "publishAfter": "przełączenie domeny zoo24.pl na serwis live; publikacja przez gateway (cms.publish_approved_version)"
-  }
+  },
+  "animal": {
+    "group": "koty",
+    "species": "kot-domowy",
+    "breed": "kot brytyjski krótkowłosy"
+  },
+  "needs": [
+    "wybor-zwierzecia",
+    "codzienna-opieka"
+  ],
+  "risk": "standard",
+  "format": "breed_profile"
 }

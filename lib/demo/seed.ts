@@ -6,6 +6,7 @@ import type { AppState, Article, Business, LegacyUrl, SocialAsset, SocialPost } 
 import { contentHash } from "../social/hash";
 import { warsawLocalToUtcIso } from "../time";
 import { emptyOpsState } from "../ops/types";
+import { loadApprovedRedirects } from "../seo/approved-redirects";
 import { loadRealBusinesses } from "../catalog/real-businesses";
 
 const SEED_DATE = "2026-11-22T09:00:00.000Z";
@@ -196,7 +197,7 @@ export function buildSeedState(opts: { production?: boolean } = {}): AppState {
     schemaVersion: 1,
     businesses: [...(prod ? [] : structuredClone(DEMO_BUSINESSES)), ...loadRealBusinesses()],
     articles: [...(prod ? [] : structuredClone(DEMO_ARTICLES)), ...loadContentArticles()],
-    legacyUrls: prod ? [] : structuredClone(DEMO_LEGACY_URLS),
+    legacyUrls: [...(prod ? [] : structuredClone(DEMO_LEGACY_URLS)), ...loadApprovedRedirects()],
     socialPosts: loadDraftPosts(),
     socialAssets: loadAssets(),
     attempts: [],

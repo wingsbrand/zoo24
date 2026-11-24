@@ -78,7 +78,7 @@ export function KnowledgeSourceNote({ className }: { className?: string }) {
     <aside aria-labelledby="skad-wiedza" className={cn("rounded-[var(--radius-lg)] border border-line bg-surface p-6", className)}>
       <h2 id="skad-wiedza" className="flex items-center gap-2 text-xl font-bold"><Info aria-hidden size={22} className="text-brand" /> Skąd bierzemy wiedzę</h2>
       <p className="mt-2 text-ink-muted">
-        Każdy materiał ma listę źródeł, a kluczowe informacje są powiązane z konkretnym źródłem. Treści o żywieniu, warunkach utrzymania i transporcie wymagają przeglądu osoby z wiedzą o danym gatunku, a tematy zdrowotne — lekarza weterynarii. Udział AI w redakcji oznaczamy jawnie. Nie udzielamy porad weterynaryjnych.
+        Każdy materiał ma listę źródeł. Materiały o żywieniu, warunkach utrzymania, transporcie i zdrowiu publikujemy dopiero po sprawdzeniu przez osobę z odpowiednią wiedzą. Nie udzielamy porad weterynaryjnych.
       </p>
       <Link href="/zasady-redakcyjne" className="mt-3 inline-flex min-h-11 items-center gap-1 font-semibold text-brand">Zasady redakcyjne <ArrowRight aria-hidden size={18} /></Link>
     </aside>

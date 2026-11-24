@@ -16,12 +16,18 @@ export default function ZasadyRedakcyjne() {
     >
       <h2>1. Źródła</h2>
       <p>
-        Każdy poradnik ma listę źródeł. Korzystamy przede wszystkim z publikacji instytucji, organizacji branżowych i specjalistów. Przy artykule podajemy datę ostatniej aktualizacji oraz informację, kto go sprawdził.
+        Każdy poradnik ma listę źródeł. Korzystamy przede wszystkim z publikacji instytucji, organizacji branżowych i specjalistów. Przy artykule podajemy datę publikacji, datę ostatniej zmiany treści (jeśli nastąpiła po publikacji) i informację, jak tekst powstał.
       </p>
 
-      <h2>2. Redakcja z udziałem AI — jawnie</h2>
+      <h2>2. Kto odpowiada za treści i jak powstają</h2>
       <p>
-        Część pracy redakcyjnej wykonuje asystent AI: przygotowuje szkice, sprawdza je ze źródłami i może zatwierdzić tekst do publikacji. Taki artykuł jest oznaczony jako sprawdzony przez „redakcję ZOO24 z udziałem AI” — nigdy nie przedstawiamy go jako przeglądu człowieka. Tematy zdrowotne, prawne, ubezpieczeniowe, sponsorowane i dotyczące cen zawsze zatwierdza człowiek. Opublikowane teksty przegląda wydawca serwisu. Nie publikujemy hurtowo tekstów generowanych maszynowo.
+        Autorem materiałów jest Redakcja ZOO24 — zespół serwisu wydawanego przez WINGS RETAIL sp. z o.o., który odpowiada za publikację. Część tekstów przygotowujemy z użyciem narzędzi AI: szkic powstaje na podstawie wskazanych źródeł, a przed publikacją jest automatycznie sprawdzany pod kątem zgodności ze źródłami i naszymi zasadami. Taka kontrola nie jest przeglądem człowieka — gdy tekst sprawdził specjalista, podajemy to przy materiale.
+      </p>
+      <p>
+        Materiały o żywieniu, warunkach utrzymania, transporcie, zdrowiu, prawie, cenach oraz treści sponsorowane publikujemy dopiero po sprawdzeniu przez człowieka z odpowiednią wiedzą. Gdy tekst sprawdził specjalista, podajemy przy nim jego imię i nazwisko lub rolę oraz datę. Nie publikujemy hurtowo tekstów generowanych maszynowo i nie przedstawiamy osób, konsultacji ani testów, których nie było.
+      </p>
+      <p>
+        Część ilustracji w serwisie wygenerowano z użyciem narzędzi AI. Nie przedstawiają one rzeczywistych osób, firm, salonów ani konkretnych zwierząt i nie są zdjęciami firm z katalogu.
       </p>
 
       <h2>3. Bez porad weterynaryjnych</h2>

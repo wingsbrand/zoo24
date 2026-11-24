@@ -66,3 +66,19 @@ describe("poradniki V3 (content/guides)", () => {
     }
   });
 });
+
+describe("hash treści niezależny od kolejności kluczy (Postgres jsonb)", () => {
+  it("źródła i tabela z przestawionymi kluczami dają ten sam hash; akceptacje z repo nadal ważne", async () => {
+    const { loadContentArticles } = await import("@/lib/demo/seed");
+    const { articleContentHash } = await import("@/lib/ops/article-review");
+    for (const a of loadContentArticles().filter((x) => x.editorialDecision?.decision === "approved")) {
+      expect(articleContentHash(a), a.slug).toBe(a.editorialDecision!.contentHash);
+      const reordered = {
+        ...a,
+        sources: a.sources.map((s) => ({ url: s.url, label: s.label })),
+        comparison: a.comparison ? { rows: a.comparison.rows.map((r) => ({ cells: r.cells, label: r.label })), columns: a.comparison.columns, caption: a.comparison.caption } : a.comparison,
+      };
+      expect(articleContentHash(reordered), a.slug).toBe(a.editorialDecision!.contentHash);
+    }
+  });
+});

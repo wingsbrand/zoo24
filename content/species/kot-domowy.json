@@ -1,0 +1,105 @@
+{
+  "slug": "kot-domowy",
+  "group": "koty",
+  "name": "Kot domowy",
+  "scientific": "Felis catus",
+  "scientificNote": "Nazwa za ITIS (rekord TSN 183798, status: valid) i GBIF Backbone Taxonomy (rekord 2435035, status: accepted) — oba źródła są zgodne. W części literatury spotyka się zapis Felis silvestris catus; w tej weryfikacji nie odczytano źródła taksonomicznego, które go obecnie przyjmuje.",
+  "scientificSourceIndex": 0,
+  "lead": "Ta karta pomaga ocenić, czy możesz zapewnić kotu to, czego potrzebuje: bezpieczny dom, zajęcie, spokój i opiekę przez kilkanaście lat. Zbiera zobowiązania opiekuna i przygotowanie mieszkania w jednym miejscu oraz wskazuje, kiedy zwrócić się do specjalisty. Nie podaje ilości karmy, schematów szczepień ani porad zdrowotnych — te ustalasz z lekarzem weterynarii.",
+  "sections": [
+    {
+      "id": "potrzeby",
+      "title": "Podstawowe potrzeby",
+      "points": [
+        "Kot potrzebuje domu z kryjówkami, miejscem do eksploracji i zabawy oraz spokojnym miejscem, w którym może się odizolować.",
+        "Jest bezwzględnym mięsożercą i potrzebuje pełnowartościowej, zbilansowanej diety; przysmaki podaje się z umiarem.",
+        "Podchodzenie, polowanie i zabawa to potrzeby kota — pomagają w tym zabawy z opiekunem, bezpieczne zabawki i zabawki-łamigłówki z karmą.",
+        "Drapanie służy oznaczaniu terenu, rozciąganiu mięśni i pielęgnacji pazurów; drapak powinien być stabilny i na tyle wysoki, by kot mógł się przy nim wyciągnąć.",
+        "Koty często czują się najbezpieczniej wyżej, dlatego potrzebują półek lub podwyższeń z bezpiecznym wejściem i zejściem.",
+        "Jedzenie, woda, kuweta i miejsce do spania powinny znajdować się w osobnych miejscach."
+      ],
+      "sourceIndexes": [2, 3, 5, 6, 10]
+    },
+    {
+      "id": "zobowiazania",
+      "title": "Zobowiązania opiekuna",
+      "points": [
+        "To zobowiązanie na wiele lat: PDSA podaje średnią długość życia kota 11,7–14 lat, a niektóre koty żyją dłużej.",
+        "Koszty jednorazowe obejmują m.in. legowisko, miski, kuwety, drapak, transporter, zabawki, czipowanie, pierwsze szczepienia i kastrację lub sterylizację.",
+        "Koszty stałe to m.in. coroczne kontrole i szczepienia przypominające, ochrona przed pasożytami, ubezpieczenie, karma i żwirek; do tego dochodzą opieka na czas wyjazdu, ewentualna specjalna dieta, nieplanowane leczenie i wymiana zużytych rzeczy.",
+        "Koty dobrze funkcjonują przy stałej rutynie; kot, który lubi towarzystwo, nie powinien zostawać sam na długo.",
+        "Koty zwykle źle znoszą podróże i nowe miejsca, dlatego na czas wyjazdu najlepiej sprawdza się opieka w domu — najlepiej przez osobę, którą kot już zna.",
+        "Opiekun planuje coroczne wizyty kontrolne u lekarza weterynarii i obserwuje zmiany w zachowaniu kota.",
+        "Według GIW polskie przepisy nie pozwalają na wwóz młodych psów, kotów i fretek bez ważnego szczepienia przeciw wściekliźnie — przed podróżą z kotem przez granicę sprawdź aktualne wymogi."
+      ],
+      "sourceIndexes": [4, 8, 9, 11, 14]
+    },
+    {
+      "id": "zachowanie",
+      "title": "Zachowanie i potrzeby społeczne",
+      "points": [
+        "Wiele kotów woli być jedynym kotem w domu i lubi kontakt na własnych warunkach.",
+        "Jeśli chcesz dwa koty, wybierz rodzeństwo lub zżytą parę i zapewnij każdemu własne zasoby; nawet zżyte koty mogą się poróżnić, gdy dojrzewają.",
+        "Nowego kota zapoznaje się stopniowo: wymiana zapachów, osobny pokój, kontakt przez barierę, krótkie spotkania pod nadzorem — może to trwać od tygodnia do kilku miesięcy.",
+        "Kot może ugryźć lub podrapać, gdy czuje się zagrożony, bezbronny albo cierpi; nie zmuszaj go do kontaktu z ludźmi ani zwierzętami.",
+        "Małe dzieci powinny przebywać z kotem pod nadzorem dorosłego i uczyć się delikatnego obchodzenia się z nim.",
+        "Koty, zwłaszcza kocięta, są najbardziej aktywne o świcie i o zmierzchu, co może oznaczać wczesne pobudki.",
+        "Charakter kocięcia wyjaśnia się mniej więcej w pierwszym roku; dorosłe koty są zwykle spokojniejsze, a ich charakter jest już znany."
+      ],
+      "sourceIndexes": [2, 4, 7, 8]
+    },
+    {
+      "id": "przygotowanie-domu",
+      "title": "Przygotowanie domu",
+      "points": [
+        "Na początek przygotuj cichy pokój z dala od ruchliwych części domu; okna i drzwi na zewnątrz trzymaj zamknięte.",
+        "Zasoby liczy się według zasady: jeden na każdego kota plus jeden zapasowy (miski, kuwety, legowiska, drapaki).",
+        "Usuń z zasięgu kota kable, środki czystości, trujące rośliny i przedmioty, które może strącić; każdą roślinę sprawdź w bazie roślin trujących ASPCA.",
+        "Okna zabezpiecz dopasowanymi, solidnymi siatkami — ASPCA ostrzega, że zabezpieczenia dla dzieci nie wystarczą, a upadki zdarzają się też z okien niskich budynków i z tarasów.",
+        "Kot niewychodzący potrzebuje więcej zabawy, drapaków i miejsc na wysokości; bezpieczną alternatywą dostępu na zewnątrz jest zabezpieczony wybieg (catio).",
+        "Nowy kot powinien przez kilka pierwszych tygodni zostać w domu, by poznać jego zapach i poczuć się bezpiecznie.",
+        "Na start zachowaj dotychczasową karmę i żwirek, a rzecz z Twoim zapachem (np. koszulkę) przekaż do miejsca kota jeszcze przed jego odbiorem."
+      ],
+      "sourceIndexes": [5, 6, 7, 8, 10, 12, 13]
+    },
+    {
+      "id": "profesjonalna-pomoc",
+      "title": "Kiedy szukać profesjonalnej pomocy",
+      "points": [
+        "Lekarza weterynarii wybierz przed przyjazdem kota, najlepiej z polecenia, i sprawdź, jak uzyskać pomoc poza godzinami pracy lecznicy.",
+        "Gdy zachowanie kota się zmienia lub staje się trudne, zacznij od lekarza weterynarii — sprawdzi przyczyny zdrowotne i w razie potrzeby skieruje do klinicznego behawiorysty.",
+        "Jeśli podejrzewasz, że kot zjadł coś trującego, natychmiast skontaktuj się z lekarzem weterynarii.",
+        "Jeśli rozważasz kota o szczególnych potrzebach albo masz wątpliwości co do dopasowania, porozmawiaj z lekarzem weterynarii przed adopcją."
+      ],
+      "sourceIndexes": [3, 4, 6, 7, 13]
+    }
+  ],
+  "beforeDecision": [
+    "Czy mogę zapewnić kotu stałą rutynę i nie zostawiać go samego na długo?",
+    "Czy jestem gotów opiekować się kotem przez kilkanaście lat?",
+    "Czy mój budżet pokryje koszty jednorazowe, stałe, opiekę na czas wyjazdu i nieplanowane leczenie?",
+    "Czy kot będzie wychodzący, czy niewychodzący — i jak zapewnię mu bezpieczeństwo oraz zajęcie?",
+    "Jaki charakter kota pasuje do mojego domu i czy lepiej sprawdzi się kocię, czy dorosły kot?",
+    "Czy w domu są inne koty lub małe dzieci i czy mam czas na stopniowe zapoznawanie?",
+    "Czy mogę zabezpieczyć okna i usunąć niebezpieczne rośliny oraz przedmioty, zanim kot przyjedzie?",
+    "Kto zaopiekuje się kotem w domu, gdy wyjadę?"
+  ],
+  "sources": [
+    { "label": "ITIS — Felis catus Linnaeus, 1758 (TSN 183798)", "url": "https://www.itis.gov/servlet/SingleRpt/SingleRpt?search_topic=TSN&search_value=183798", "accessedAt": "2026-11-23" },
+    { "label": "GBIF Backbone Taxonomy — Felis catus (rekord 2435035, API)", "url": "https://api.gbif.org/v1/species/match?name=Felis%20catus", "accessedAt": "2026-11-23" },
+    { "label": "RSPCA — Cats: care and welfare (EN)", "url": "https://www.rspca.org.uk/adviceandwelfare/pets/cats", "accessedAt": "2026-11-23" },
+    { "label": "RSPCA — Cat behaviour (EN)", "url": "https://www.rspca.org.uk/adviceandwelfare/pets/cats/behaviour", "accessedAt": "2026-11-23" },
+    { "label": "RSPCA — Cat company (EN)", "url": "https://www.rspca.org.uk/adviceandwelfare/pets/cats/company", "accessedAt": "2026-11-23" },
+    { "label": "RSPCA — Cat environment (EN)", "url": "https://www.rspca.org.uk/adviceandwelfare/pets/cats/environment", "accessedAt": "2026-11-23" },
+    { "label": "Cats Protection — Preparing for a cat (EN)", "url": "https://www.cats.org.uk/adopt-a-cat/preparing-for-a-cat", "accessedAt": "2026-11-23" },
+    { "label": "Cats Protection — Choosing a cat (EN)", "url": "https://www.cats.org.uk/adopt-a-cat/choosing-a-cat", "accessedAt": "2026-11-23" },
+    { "label": "Cats Protection — 9 things to know before getting your first cat (blog, 26.06.2023, EN)", "url": "https://www.cats.org.uk/cats-blog/9-things-to-know-before-getting-your-first-cat", "accessedAt": "2026-11-23" },
+    { "label": "PDSA — The cost of owning a cat (EN)", "url": "https://www.pdsa.org.uk/pet-help-and-advice/looking-after-your-pet/kittens-cats/the-cost-of-owning-a-cat", "accessedAt": "2026-11-23" },
+    { "label": "PDSA — How to create a cat-friendly home (EN)", "url": "https://www.pdsa.org.uk/pet-help-and-advice/looking-after-your-pet/kittens-cats/ideal-environment-for-cats", "accessedAt": "2026-11-23" },
+    { "label": "RSPCA — Leaving your pet when you go away (EN)", "url": "https://www.rspca.org.uk/adviceandwelfare/pets/general/holiday/leavingyourpet", "accessedAt": "2026-11-23" },
+    { "label": "ASPCA — High-Rise Syndrome: Lifesaving Tips for Cat Parents (06.07.2023, EN)", "url": "https://www.aspca.org/news/high-rise-syndrome-lifesaving-tips-cat-parents", "accessedAt": "2026-11-23" },
+    { "label": "ASPCA — Toxic and Non-Toxic Plants (EN)", "url": "https://www.aspca.org/pet-care/animal-poison-control/toxic-and-non-toxic-plants", "accessedAt": "2026-11-23" },
+    { "label": "Główny Inspektorat Weterynarii — Szczepienie na wściekliznę", "url": "https://www.wetgiw.gov.pl/nadzor-weterynaryjny/szczepienie-na-wscieklizne", "accessedAt": "2026-11-23" }
+  ],
+  "checkedAt": "2026-11-23"
+}
