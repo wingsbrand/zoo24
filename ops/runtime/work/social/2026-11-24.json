@@ -1,0 +1,37 @@
+{
+ "schema_version": "zoo24.ops.job-result.v1",
+ "job_id": null,
+ "role": "social",
+ "mode": "shadow",
+ "policy_version": "activation.json LIVE_SCOPED_CMS_AI_EDITOR; social wyłączony (publish_reviewed_social_versions=false, facebook/instagram can_publish=false)",
+ "status": "produced",
+ "reason": null,
+ "artifacts": [
+  {"id": "calendar-14d-refresh", "path": "ops/runtime/work/social/drafts/calendar-14d-refresh-2026-11-24.json", "note": "7 pozycji (4 FB + 3 IG, 01-14.12.2026) z paczka-01 p01-01..07; osobne copy FB/IG, status draft"}
+ ],
+ "checks": [
+  {"name": "utm_valid", "status": "pass", "detail": "7/7: source=facebook|instagram, medium=organic_social, campaign=paczka01, content=id"},
+  {"name": "ig_link_in_caption", "status": "pass", "detail": "0 linków w podpisach IG; CTA 'link w bio'"},
+  {"name": "banned_wording", "status": "pass", "detail": "brak wzmianek o sklepie/zamówieniach/dawnej formule/promocjach"},
+  {"name": "weekly_caps", "status": "pass", "detail": "max 3 posty/tydz./kanał, odstęp >=24h w kanale"},
+  {"name": "target_live_200", "status": "N/A", "detail": "curl z runtime -> 000 (proxy). STATUS.md: poradniki live, read-back 20/20 (23.11); sprawdzić w dniu publikacji"},
+  {"name": "asset_rights", "status": "fail", "detail": "brak plików grafik i wpisów w asset-register dla paczka01; assetId=null => ASSET_MISSING"},
+  {"name": "calendar_conflict", "status": "warn", "detail": "V3 (30.11-13.12) i drafts-14d.json nakładają się na paczka01; nie publikować równolegle"},
+  {"name": "policy_engine_gap", "status": "warn", "detail": "isTargetLive nie obejmuje /narzedzia/* i /zwierzeta/* (p01-03,06 -> TARGET_NOT_PUBLISHED) - zadanie dla build"}
+ ],
+ "external_actions": [],
+ "metrics": [
+  {"name": "fb_ig_followers_engagement", "value": null, "unit": null, "source": null, "data_status": "unavailable", "note": "N/A; brak dostępu Meta"}
+ ],
+ "cost": {"value": null, "currency": null, "status": "unknown"},
+ "next_tasks": [
+  "Wyrenderować/dostarczyć grafiki typograficzne i wpisać je do asset-register (prawa do logo)",
+  "Build: rozszerzyć isTargetLive o /narzedzia/* i /zwierzeta/*",
+  "Po potwierdzeniu dostępu Meta: kontrola uprawnień i formatów API (tryb asystowany do tego czasu)"
+ ],
+ "human_decisions_required": [
+  "Paczka01 zastępuje V3 i drafts-14d.json (oznaczyć superseded)",
+  "URL/ID profili FB/IG i uprawnienia Meta; zgoda na publikację social (policy wyłączona)",
+  "Prawa do logo/grafik typograficznych"
+ ]
+}

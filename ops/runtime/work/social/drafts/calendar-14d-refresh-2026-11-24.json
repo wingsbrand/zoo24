@@ -1,0 +1,217 @@
+{
+ "schema": "zoo24.social.drafts-refresh.v2",
+ "mode": "shadow",
+ "generated": "2026-11-24",
+ "source": "docs/social/paczka-01.json (p01-01..p01-07)",
+ "period": {
+  "start": "2026-12-01",
+  "end": "2026-12-14"
+ },
+ "supersedes": "calendar-v3-refresh-2026-11-23.json (V3 30.11-13.12) i docs/social/drafts-14d.json - rekomendacja, wymaga decyzji właściciela",
+ "caps_check": {
+  "fb_per_week_max": 3,
+  "ig_per_week_max": 3,
+  "min_gap_h": 24
+ },
+ "items": [
+  {
+   "id": "p01-01",
+   "date_time_warsaw": "2026-12-01 18:00 Europe/Warsaw",
+   "platform": "facebook",
+   "format": "post",
+   "topic": "Powrot ZOO24 jako portalu wiedzy (post przypiety)",
+   "cta": "Zobacz poradniki",
+   "cta_mode": "link w poście",
+   "link": "https://zoo24.pl/poradniki?utm_source=facebook&utm_medium=organic_social&utm_campaign=paczka01&utm_content=p01-01",
+   "utm_valid": true,
+   "copy": "ZOO24 wraca - tym razem jako portal wiedzy dla opiekunów zwierząt.\n\nNa zoo24.pl znajdziecie:\n• poradniki z podanymi źródłami - o psach, kotach, ptakach, akwarystyce i gadach,\n• dwa bezpłatne narzędzia: listę informacji dla opiekuna na czas wyjazdu i kalkulator objętości akwarium,\n• działy uporządkowane według grup zwierząt.\n\nNie prowadzimy sprzedaży i nie udzielamy porad weterynaryjnych. W sprawach zdrowia zwierzęcia skontaktujcie się z lekarzem weterynarii.\n\nO jakim zwierzęciu mamy napisać kolejny poradnik? Napiszcie w komentarzu.\n\nPoradniki: https://zoo24.pl/poradniki?utm_source=facebook&utm_medium=organic_social&utm_campaign=paczka01&utm_content=p01-01",
+   "alt_text": "Grafika w barwach ZOO24 z napisem: ZOO24 - portal wiedzy dla opiekunów zwierząt. Pod spodem trzy ikony: książka, lista kontrolna i akwarium.",
+   "asset_id": null,
+   "asset_license": "unknown - brak pliku i wpisu w asset-register",
+   "ai_label": "nie wymagana (ADR-015/016); asset typograficzny własny, prawa do logo do potwierdzenia",
+   "source_refs": [
+    "https://zoo24.pl/poradniki",
+    "https://zoo24.pl/zwierzeta",
+    "https://zoo24.pl/narzedzia/kalkulator-akwarium",
+    "https://zoo24.pl/narzedzia/lista-dla-opiekuna"
+   ],
+   "gates": {
+    "A1_live_200": "N/A - runtime bez sieci (curl 000); sprawdzić w dniu publikacji",
+    "A2_copy_review": "open",
+    "A3_asset_rights": "open",
+    "A4_meta_access": "blocked (facebook_page_id/instagram_account_id=null)"
+   },
+   "status": "draft",
+   "scheduled_at_provider": null
+  },
+  {
+   "id": "p01-02",
+   "date_time_warsaw": "2026-12-02 18:30 Europe/Warsaw",
+   "platform": "instagram",
+   "format": "karuzela",
+   "topic": "Powrot ZOO24 jako portalu wiedzy (karuzela przypieta)",
+   "cta": "Link w bio",
+   "cta_mode": "link w bio",
+   "link": "https://zoo24.pl/poradniki?utm_source=instagram&utm_medium=organic_social&utm_campaign=paczka01&utm_content=p01-02",
+   "utm_valid": true,
+   "copy": "ZOO24 to teraz portal wiedzy dla opiekunów zwierząt.\n\nPrzesuń, żeby zobaczyć, co jest w serwisie: poradniki ze źródłami, lista do wydruku dla osoby, która zaopiekuje się Twoim zwierzęciem, kalkulator objętości akwarium i działy według grup zwierząt.\n\nBez sprzedaży i bez porad weterynaryjnych - w sprawach zdrowia zawsze lekarz weterynarii.\n\nLink do poradników znajdziesz w bio.\n\n#zoo24 #opiekunzwierzat #poradnik",
+   "alt_text": "Karuzela czterech plansz w barwach ZOO24. Plansza 1: ZOO24 - portal wiedzy dla opiekunów zwierząt. Plansza 2: Poradniki ze źródłami. Plansza 3: Narzędzia - lista dla opiekuna i kalkulator akwarium. Plansza 4: Działy - psy, koty, ptaki, akwarystyka, gady.",
+   "asset_id": null,
+   "asset_license": "unknown - brak pliku i wpisu w asset-register",
+   "ai_label": "nie wymagana (ADR-015/016); asset typograficzny własny, prawa do logo do potwierdzenia",
+   "source_refs": [
+    "https://zoo24.pl/poradniki",
+    "https://zoo24.pl/zwierzeta",
+    "https://zoo24.pl/narzedzia/kalkulator-akwarium"
+   ],
+   "gates": {
+    "A1_live_200": "N/A - runtime bez sieci (curl 000); sprawdzić w dniu publikacji",
+    "A2_copy_review": "open",
+    "A3_asset_rights": "open",
+    "A4_meta_access": "blocked (facebook_page_id/instagram_account_id=null)"
+   },
+   "status": "draft",
+   "scheduled_at_provider": null
+  },
+  {
+   "id": "p01-03",
+   "date_time_warsaw": "2026-12-04 18:00 Europe/Warsaw",
+   "platform": "facebook",
+   "format": "post",
+   "topic": "Narzedzie: lista informacji dla opiekuna przed swietami",
+   "cta": "Wypełnij listę",
+   "cta_mode": "link w poście",
+   "link": "https://zoo24.pl/narzedzia/lista-dla-opiekuna?utm_source=facebook&utm_medium=organic_social&utm_campaign=paczka01&utm_content=p01-03",
+   "utm_valid": true,
+   "copy": "Wyjeżdżacie na święta, a zwierzę zostaje pod opieką kogoś innego?\n\nNa zoo24.pl jest bezpłatna lista informacji dla opiekuna. Wpisujecie tylko to, co potrzebne: imię i gatunek zwierzęcia, karmienie, leki (przepisane z zaleceń lekarza weterynarii), zachowanie i to, czego unikać, kontakty do Was i do lekarza weterynarii, plan wizyt i uwagi na nagłą sytuację.\n\nPuste pola nie trafiają na wydruk. Listę drukujecie, zapisujecie jako PDF albo pobieracie jako plik tekstowy.\n\nNic z formularza nie jest wysyłane do ZOO24 - lista zostaje w Waszej przeglądarce. Na wspólnym komputerze użyjcie przycisku „Wyczyść”.\n\nRSPCA radzi zostawić opiekunowi m.in. dane lekarza weterynarii, także do pomocy całodobowej, oraz leki na cały wyjazd z pisemną instrukcją.\n\nLista: https://zoo24.pl/narzedzia/lista-dla-opiekuna?utm_source=facebook&utm_medium=organic_social&utm_campaign=paczka01&utm_content=p01-03",
+   "alt_text": "Grafika: kartka z nagłówkiem Lista dla opiekuna i rubrykami Zwierzę, Karmienie, Leki, Kontakty, Plan wizyt, Uwagi awaryjne. Obok napis: bezpłatnie na zoo24.pl.",
+   "asset_id": null,
+   "asset_license": "unknown - brak pliku i wpisu w asset-register",
+   "ai_label": "nie wymagana (ADR-015/016); asset typograficzny własny, prawa do logo do potwierdzenia",
+   "source_refs": [
+    "https://zoo24.pl/narzedzia/lista-dla-opiekuna",
+    "https://www.rspca.org.uk/adviceandwelfare/pets/general/holiday/leavingyourpet"
+   ],
+   "gates": {
+    "A1_live_200": "N/A - runtime bez sieci (curl 000); sprawdzić w dniu publikacji",
+    "A2_copy_review": "open",
+    "A3_asset_rights": "open",
+    "A4_meta_access": "blocked (facebook_page_id/instagram_account_id=null)"
+   },
+   "status": "draft",
+   "scheduled_at_provider": null
+  },
+  {
+   "id": "p01-04",
+   "date_time_warsaw": "2026-12-07 18:30 Europe/Warsaw",
+   "platform": "instagram",
+   "format": "karuzela",
+   "topic": "Checklista: opieka dla psa na czas wyjazdu",
+   "cta": "Link w bio",
+   "cta_mode": "link w bio",
+   "link": "https://zoo24.pl/poradniki/jak-wybrac-opieke-dla-psa-na-czas-wyjazdu?utm_source=instagram&utm_medium=organic_social&utm_campaign=paczka01&utm_content=p01-04",
+   "utm_valid": true,
+   "copy": "Pies zostaje na święta z petsitterem, u opiekuna albo w hotelu? Zapisz tę checklistę.\n\nNa planszach: co sprawdzić przed rezerwacją, o co zapytać i co spakować. Punkty oparliśmy na zaleceniach brytyjskich organizacji RSPCA i PDSA.\n\nPDSA zwraca uwagę, że dobre miejsca szybko się zapełniają w okresie świątecznym - warto rezerwować wcześniej i mieć plan awaryjny.\n\nPełny poradnik z porównaniem form opieki: link w bio.\n\n#pies #opiekanadpsem #petsitter #zoo24",
+   "alt_text": "Karuzela sześciu plansz z checklistą: rezerwuj wcześnie i miej plan awaryjny; poznaj opiekuna lub odwiedź hotel; zapytaj o spacery, liczbę opiekunów, obserwację, leki i ubezpieczenie; zorganizuj próbny pobyt; sprawdź szczepienia z lekarzem weterynarii; spakuj rzecz pachnącą domem.",
+   "asset_id": null,
+   "asset_license": "unknown - brak pliku i wpisu w asset-register",
+   "ai_label": "nie wymagana (ADR-015/016); asset typograficzny własny, prawa do logo do potwierdzenia",
+   "source_refs": [
+    "https://zoo24.pl/poradniki/jak-wybrac-opieke-dla-psa-na-czas-wyjazdu",
+    "https://pdsa.org.uk/pet-help-and-advice/looking-after-your-pet/all-pets/pet-boarding-kennels-and-holiday-care",
+    "https://www.rspca.org.uk/adviceandwelfare/pets/general/holiday/leavingyourpet"
+   ],
+   "gates": {
+    "A1_live_200": "N/A - runtime bez sieci (curl 000); sprawdzić w dniu publikacji",
+    "A2_copy_review": "open",
+    "A3_asset_rights": "open",
+    "A4_meta_access": "blocked (facebook_page_id/instagram_account_id=null)"
+   },
+   "status": "draft",
+   "scheduled_at_provider": null
+  },
+  {
+   "id": "p01-05",
+   "date_time_warsaw": "2026-12-09 18:00 Europe/Warsaw",
+   "platform": "facebook",
+   "format": "post",
+   "topic": "Pytanie i odpowiedz: jak czesto opiekun powinien zagladac do kota",
+   "cta": "Przeczytaj poradnik",
+   "cta_mode": "link w poście",
+   "link": "https://zoo24.pl/poradniki/informacje-dla-opiekuna-kota?utm_source=facebook&utm_medium=organic_social&utm_campaign=paczka01&utm_content=p01-05",
+   "utm_valid": true,
+   "copy": "Pytanie przed wyjazdem: jak często ktoś powinien zaglądać do kota, który zostaje w domu?\n\nCats Protection zaleca wizyty co najmniej dwa razy dziennie, a częściej, jeśli kot jest bardzo młody, starszy albo wymaga opieki medycznej.\n\nPrzy pierwszym spotkaniu pokażcie opiekunowi, gdzie są karma, miski, kuweta i transporter - transporter przyda się w nagłej sytuacji. Sprawdźcie razem klucz, a zapasowy zostawcie zaufanej osobie.\n\nCo jeszcze przekazać (kuweta, rutyna, kontakty, dane lekarza weterynarii) - w poradniku:\nhttps://zoo24.pl/poradniki/informacje-dla-opiekuna-kota?utm_source=facebook&utm_medium=organic_social&utm_campaign=paczka01&utm_content=p01-05",
+   "alt_text": "Grafika typograficzna: pytanie Jak często zaglądać do kota podczas wyjazdu? i odpowiedź: co najmniej dwa razy dziennie, częściej przy kotach bardzo młodych, starszych lub wymagających opieki medycznej. Źródło: Cats Protection.",
+   "asset_id": null,
+   "asset_license": "unknown - brak pliku i wpisu w asset-register",
+   "ai_label": "nie wymagana (ADR-015/016); asset typograficzny własny, prawa do logo do potwierdzenia",
+   "source_refs": [
+    "https://zoo24.pl/poradniki/informacje-dla-opiekuna-kota",
+    "https://www.cats.org.uk/help-and-advice/home-and-environment/going-on-holiday"
+   ],
+   "gates": {
+    "A1_live_200": "N/A - runtime bez sieci (curl 000); sprawdzić w dniu publikacji",
+    "A2_copy_review": "open",
+    "A3_asset_rights": "open",
+    "A4_meta_access": "blocked (facebook_page_id/instagram_account_id=null)"
+   },
+   "status": "draft",
+   "scheduled_at_provider": null
+  },
+  {
+   "id": "p01-06",
+   "date_time_warsaw": "2026-12-11 18:30 Europe/Warsaw",
+   "platform": "instagram",
+   "format": "reels-scenariusz",
+   "topic": "Reels: lista dla opiekuna w 30 sekund",
+   "cta": "Link w bio",
+   "cta_mode": "link w bio",
+   "link": "https://zoo24.pl/narzedzia/lista-dla-opiekuna?utm_source=instagram&utm_medium=organic_social&utm_campaign=paczka01&utm_content=p01-06",
+   "utm_valid": true,
+   "copy": "Wyjazd i zastępczy opiekun? Zamiast karteczek na lodówce - jedna lista.\n\nW nagraniu pokazujemy, jak w kilka chwil wypełnić listę dla opiekuna na zoo24.pl i zapisać ją jako PDF. Dane w filmie są przykładowe.\n\nWażne: nic z formularza nie trafia do ZOO24 - lista zostaje w Twojej przeglądarce.\n\nNarzędzie: link w bio i w dzisiejszej relacji.\n\n#zoo24 #petsitter #wyjazdzezwierzeciem",
+   "alt_text": "Nagranie ekranu telefonu: wypełnianie formularza Lista dla opiekuna na zoo24.pl przykładowymi danymi, a następnie przycisk Drukuj lub zapisz jako PDF. Napisy na ekranie streszczają kroki.",
+   "asset_id": null,
+   "asset_license": "unknown - brak pliku i wpisu w asset-register",
+   "ai_label": "nie wymagana (ADR-015/016); asset typograficzny własny, prawa do logo do potwierdzenia",
+   "source_refs": [
+    "https://zoo24.pl/narzedzia/lista-dla-opiekuna"
+   ],
+   "gates": {
+    "A1_live_200": "N/A - runtime bez sieci (curl 000); sprawdzić w dniu publikacji",
+    "A2_copy_review": "open",
+    "A3_asset_rights": "open",
+    "A4_meta_access": "blocked (facebook_page_id/instagram_account_id=null)"
+   },
+   "status": "draft",
+   "scheduled_at_provider": null
+  },
+  {
+   "id": "p01-07",
+   "date_time_warsaw": "2026-12-14 18:00 Europe/Warsaw",
+   "platform": "facebook",
+   "format": "karuzela",
+   "topic": "Checklista: pierwsza wizyta psa u groomera",
+   "cta": "Zobacz listę pytań",
+   "cta_mode": "link w poście",
+   "link": "https://zoo24.pl/poradniki/co-ustalic-przed-pierwsza-wizyta-u-groomera?utm_source=facebook&utm_medium=organic_social&utm_campaign=paczka01&utm_content=p01-07",
+   "utm_valid": true,
+   "copy": "Pierwsza wizyta psa u groomera? Pięć rzeczy do ustalenia wcześniej - na podstawie wskazówek RSPCA:\n\n1. Odwiedźcie salon przed rezerwacją i porozmawiajcie z groomerem. Zobaczcie, czy jest czysto i bezpiecznie i jak pies reaguje na tę osobę.\n2. Zapytajcie o metody pracy oparte na nagradzaniu, liczbę osób na jedno zwierzę i ubezpieczenie.\n3. Zapytajcie, czy salon wymaga szczepień.\n4. Powiedzcie o wrażliwej skórze, miejscach, w których pies nie lubi dotyku, i o oznakach niepokoju - i zapytajcie, jak groomer na nie zareaguje.\n5. Zapytajcie o suszenie. RSPCA zwraca uwagę na suszarki skrzyniowe, w których pies nie może odsunąć się od ciepła.\n\nRSPCA przypomina też, że bardzo tania usługa nie musi oznaczać dobrej opieki.\n\nPełna lista pytań: https://zoo24.pl/poradniki/co-ustalic-przed-pierwsza-wizyta-u-groomera?utm_source=facebook&utm_medium=organic_social&utm_campaign=paczka01&utm_content=p01-07",
+   "alt_text": "Seria pięciu grafik z checklistą przed wizytą u groomera: odwiedź salon; zapytaj o metody z nagradzaniem, personel i ubezpieczenie; zapytaj o wymóg szczepień; powiedz o wrażliwych miejscach psa; zapytaj o sposób suszenia.",
+   "asset_id": null,
+   "asset_license": "unknown - brak pliku i wpisu w asset-register",
+   "ai_label": "nie wymagana (ADR-015/016); asset typograficzny własny, prawa do logo do potwierdzenia",
+   "source_refs": [
+    "https://zoo24.pl/poradniki/co-ustalic-przed-pierwsza-wizyta-u-groomera",
+    "https://www.rspca.org.uk/adviceandwelfare/pets/dogs/health/grooming"
+   ],
+   "gates": {
+    "A1_live_200": "N/A - runtime bez sieci (curl 000); sprawdzić w dniu publikacji",
+    "A2_copy_review": "open",
+    "A3_asset_rights": "open",
+    "A4_meta_access": "blocked (facebook_page_id/instagram_account_id=null)"
+   },
+   "status": "draft",
+   "scheduled_at_provider": null
+  }
+ ]
+}
