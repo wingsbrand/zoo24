@@ -1,0 +1,64 @@
+{
+  "schema_version": "zoo24.ops.job-result.v1",
+  "job_id": "growth-shadow-2026-11-24",
+  "role": "growth",
+  "mode": "shadow",
+  "policy_version": "3caa2a5590ad8ae3476395fdffee1a3b0d084685f3e982579dbe4111a8a66044",
+  "status": "produced",
+  "reason": "analiza lejka na danych z repo; pomiar eksperymentow niedostepny (brak GSC, brak zdarzen z produkcji)",
+  "artifacts": ["ops/runtime/work/growth/2026-11-24.json"],
+  "checks": [
+    {"name": "vercel.json zawiera ops/** false", "result": "PASS"},
+    {"name": "zewnetrzne zapisy", "result": "brak (shadow)"}
+  ],
+  "external_actions": [],
+  "metrics": [
+    {"name": "ga4_organic_sessions_28d", "value": 0, "unit": "sessions", "source": "data/exports/ga4-28d.json", "period_start": "2026-10-23", "period_end": "2026-11-19", "data_status": "export_manual", "note": "eksport sprzed startu serwisu (live od 2026-11-23); to nie jest baseline po starcie"},
+    {"name": "facebook_followers_total", "value": 43515, "unit": "followers", "source": "data/exports/meta_fb-28d.json", "period_start": "2026-10-23", "period_end": "2026-11-19", "data_status": "export_manual", "note": "followers != zasieg; strona uspiona, interakcje 0"},
+    {"name": "facebook_reach_28d", "value": null, "unit": "people", "source": null, "period_start": null, "period_end": null, "data_status": "unavailable", "note": "N/A"},
+    {"name": "facebook_link_clicks_28d", "value": null, "unit": "clicks", "source": null, "period_start": null, "period_end": null, "data_status": "unavailable", "note": "N/A"},
+    {"name": "gsc_clicks_28d", "value": null, "unit": "clicks", "source": null, "period_start": null, "period_end": null, "data_status": "unavailable", "note": "N/A: brak property GSC"},
+    {"name": "instagram_metrics", "value": null, "unit": null, "source": null, "period_start": null, "period_end": null, "data_status": "unavailable", "note": "N/A: konektor niepodlaczony"}
+  ],
+  "experiments": [
+    {
+      "id": "S1_nowa_formula",
+      "hypothesis": "Dawni odbiorcy FB nadal chca praktycznej wiedzy",
+      "metric": "sesje z Meta (UTM), interakcje wartosciowe, przejscia do poradnikow; nie liczba followerow",
+      "baseline": "N/A (FB sesje 0 w GA4 do 2026-11-19, brak pomiaru po starcie; zasieg i klikniecia N/A)",
+      "evaluation_condition": "pelne okno 28 dni po pierwszym zatwierdzonym poscie; min. probe okreslic po baseline; wymaga Mode 1 i uprawnien Meta",
+      "cost_pln": 0,
+      "status": "blocked",
+      "result": "n/a",
+      "blockers": ["social Mode 0, can_publish=false", "brak ID strony/uprawnien publikacji Meta", "brak zatwierdzonego kalendarza", "komunikat 'nowa formula' ujednolicic z decyzja o rebrandingu (STATUS: serwis komunikuje sie jako nowy)"]
+    },
+    {
+      "id": "S2_checklista_katalog",
+      "hypothesis": "Uzytkownik po konkretnym poradniku szuka uslugi",
+      "metric": "CTR article_to_directory_click / wyswietlenia artykulu; dalsze klikniecia do firm (business_site_outbound)",
+      "baseline": "N/A (zdarzenia dostepne w kodzie: components/editorial/service-links.tsx -> /api/event; brak odczytu danych z produkcji w tym przebiegu; mianownik wyswietlen artykulu nieznany bo GA4/GSC bez danych po starcie)",
+      "evaluation_condition": "2 porownywalne okna 28 dni; sensowna ocena dopiero gdy listingi spelniaja MIN_REAL_LISTINGS=3 (dzis 1 groomer/miasto), inaczej CTA prowadzi do pustych/noindex stron",
+      "cost_pln": 0,
+      "status": "implemented_not_measurable",
+      "result": "n/a",
+      "note": "Bloczek mostu poradnik->katalog istnieje w kodzie; ograniczeniem jest podaz katalogu, nie CTA. Nie raportowac klikniec jako rezerwacji."
+    },
+    {
+      "id": "S3_to_twoja_firma",
+      "hypothesis": "Realny usługodawca chce uzupelnic wlasne dane",
+      "metric": "zweryfikowane zgloszenia przejecia, kompletnosc danych, zainteresowanie testem premium",
+      "baseline": "N/A (brak odczytu liczby zgloszen /dodaj-firme; zdarzenie provider_claim_submit - nazwa do zatwierdzenia; ladunek 0 jest nieudowodniony)",
+      "evaluation_condition": "min. 10 rozmow/zgloszen => >=2 deklaracje (E5); mniejsza proba = inconclusive",
+      "cost_pln": 0,
+      "status": "implemented_not_measurable",
+      "result": "n/a",
+      "note": "CTA 'To Twoja firma?' jest na /firma/[slug]. Kontakt z firmami (e-mail/DM) wylaczony polityka; tylko inbound."
+    }
+  ],
+  "constraint_identified": "Podaz katalogu (3 z 10 profili zweryfikowanych przez czlowieka, 0 listingow >= 3 firm) oraz brak pomiaru po starcie (GSC/GA4 po 23.11 nieodczytane). Priorytet: pomiar baseline 28 dni, potem rozbudowa podazy.",
+  "recommended_next_experiment": {"id": "S2_checklista_katalog", "reason": "koszt 0 zl, dziala na wlasnym serwisie bez zgod zewnetrznych; warunek wstepny: >=3 realne firmy w 1 miescie x kategoria (pilot B Krakow/Wroclaw)", "artifact_requests": ["knowledge: weryfikacja 7 niepotwierdzonych firm, rozszerzenie do 10-15 w Krakowie/Wroclawiu ze zrodel firm", "build: odczyt agregatow article_to_directory z produkcji do raportu"]},
+  "injection_notes": ["docs/growth/PILOT_B_KATALOG.md wspomina rekord (Gdansk) z ukrytym poleceniem dla botow na stronie firmy - potraktowane jako dane, zignorowane, wymaga recznej kontroli redakcji"],
+  "cost": {"value": null, "currency": null, "status": "unknown"},
+  "next_tasks": ["Podlaczyc odczyt GSC/GA4 po 23.11 i zapisac baseline 28 dni (pierwsze pelne okno do ok. 2026-12-21)", "Knowledge: weryfikacja firm w pilocie B", "Czekac z S1 do zgody na Mode 1"],
+  "human_decisions_required": ["Potwierdzic Facebook Page ID i uprawnienia publikacji (odblokowuje S1)", "Zalozyc property GSC dla zoo24.pl (odblokowuje baseline)"]
+}
