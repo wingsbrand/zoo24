@@ -1,0 +1,43 @@
+{
+  "schema_version": "zoo24.ops.job-result.v1",
+  "job_id": "seo-shadow-2026-11-24",
+  "role": "seo",
+  "mode": "shadow",
+  "policy_version": "unsigned",
+  "status": "produced",
+  "reason": null,
+  "artifacts": [],
+  "checks": [
+    {"name": "inventory_state", "result": "info", "note": "docs/audits/old-url-inventory.csv: nadal 0/100 proposed_action (status=draft); decyzje żyją teraz w docs/seo/HISTORICAL_URL_MAP.csv (v4, 287 wierszy) i content/redirects/approved-301.json (16 × 301, D-05). Poprzedni przebieg (2026-11-23) proponował top 5 (n66, n63, n77, /, n67) — w mapie v4 mają już decyzję 'zachowaj 200', więc ten przebieg bierze następne URL BEZ decyzji."},
+    {"name": "undecided_selection", "result": "ok", "note": "Spośród top 30 wg sesji GA4 organic bez decyzji ('do decyzji') jest 9 URL zdrowotnych + 1 kategoria karmy; wybrano 5 o najwyższym ruchu historycznym: rangi 6, 11, 14, 15, 16. Wszystkie = ZDROWIE."},
+    {"name": "ga4_28d_baseline", "result": "ok", "note": "data/exports/ga4-28d.json: 0 sesji organic (2026-10-23..2026-11-19) — prawdziwe 0, serwis wtedy offline."},
+    {"name": "gsc", "result": "n/a", "note": "Brak property GSC. Bez Indexing API."}
+  ],
+  "external_actions": [],
+  "metrics": [
+    {"name": "historical_ga4_organic_sessions_5_urls", "value": 28202, "unit": "sessions", "source": "docs/audits/old-url-inventory.csv", "period_start": "2022-02", "period_end": "2025-02", "data_status": "historical", "note": "suma 6975+5582+5282+5268+5095 za cały okres 2022-02..2025-02 (nie miesięcznie); dane historyczne, nie prognoza"},
+    {"name": "gsc_clicks", "value": null, "unit": "clicks", "source": null, "period_start": null, "period_end": null, "data_status": "unavailable", "note": "N/A: brak property GSC"}
+  ],
+  "proposals": [
+    {"rank": 1, "path": "/blog/nosowka-u-psa-niebezpieczna-choroba-psow-profilaktyka-objawy-leczenie-n93", "historical_ga4_organic_sessions": 6975, "proposed_action": "revise_same_url", "status_until_condition": "pozostaje 404 (nie 410)", "reason": "Intencja informacyjna o zdrowiu psa; brak równoważnika w katalogu usług, więc redirect zmieniałby intencję (R7). Kategoria 'zdrowie' jest poza zakresem AI-redaktora (ADR-013) — 200 dopiero po recenzji lek. wet. i ze źródłami pierwotnymi. Treść diagnostyczna/lecznicza bez recenzenta byłaby niedozwolona (CLAUDE.md pkt 6).", "blocked_by": "brak recenzenta weterynaryjnego", "fallback": "jeśli recenzent nie zostanie wskazany: retire_404_or_410 (404 → 410 po ponownej decyzji, nie hurtowo)"},
+    {"rank": 2, "path": "/blog/zapalenie-stawow-u-psa-n86", "historical_ga4_organic_sessions": 5582, "proposed_action": "revise_same_url", "status_until_condition": "pozostaje 404", "reason": "Jak wyżej: zdrowie, informacyjna; wymaga recenzji wet. Temat chronicznej opieki — po recenzji możliwy akapit o grupie 'senior/opieka' bez twierdzeń leczniczych.", "blocked_by": "recenzent wet.", "fallback": "retire_404_or_410"},
+    {"rank": 3, "path": "/blog/babeszjoza-u-psa-objawy-leczenie-zapobieganie-n91", "historical_ga4_organic_sessions": 5282, "proposed_action": "revise_same_url", "status_until_condition": "pozostaje 404", "reason": "Choroba odkleszczowa; wartość profilaktyczna wysoka, ale ryzyko zdrowotne (objawy/leczenie) — tylko po recenzji wet., ze źródłami (np. oficjalne wytyczne weterynaryjne). Nie tworzyć wariantu produktowego (preparaty na kleszcze = segment C/afiliacja, osobna decyzja).", "blocked_by": "recenzent wet.", "fallback": "retire_404_or_410"},
+    {"rank": 4, "path": "/blog/borelioza-u-psow-przyczyny-objawy-leczenie-i-profilaktyka-n90", "historical_ga4_organic_sessions": 5268, "proposed_action": "revise_same_url", "status_until_condition": "pozostaje 404", "reason": "Jak n91; sensowne połączenie redakcyjne z n91 (jeden tekst o chorobach odkleszczowych) — decyzja dot. kanibalizacji do podjęcia razem; nie dwa konkurujące teksty.", "blocked_by": "recenzent wet.; decyzja scalenia n90+n91", "fallback": "redirect_relevant n90 -> n91 (lub scalony tekst) dopiero gdy cel istnieje jako 200 i jest zatwierdzony"},
+    {"rank": 5, "path": "/blog/alergia-u-kota-przyczyny-objawy-leczenie-n92", "historical_ga4_organic_sessions": 5095, "proposed_action": "revise_same_url", "status_until_condition": "pozostaje 404", "reason": "Zdrowie kota, informacyjna; recenzja wet. wymagana. Brak równoważnika w repo.", "blocked_by": "recenzent wet.", "fallback": "retire_404_or_410"}
+  ],
+  "excluded_notes": [
+    "Rangi 18, 21, 27, 29 (kleszcze-preparat n88, oleje n87, lamblia, giardioza kota n161) też 'do decyzji' i też ZDROWIE — następna partia, ta sama decyzja co powyżej. n88 i n87 mają dodatkowy wymiar produktowy/dietetyczny (żywienie = tylko człowiek).",
+    "Rang 28 /14-karma-sucha-dla-psa: 'do decyzji', cel planowany (jak-wybrac-karme-dla-psa) jeszcze nie istnieje — nie redirectować do czasu 200 celu i zgodności intencji; segment C: bez 301 na katalog usług.",
+    "Do CSV/mapy nic nie wpisano (docs i ops/config poza zakresem zapisu tej roli). Żadnych redirectów nie wdrożono, nie dotknięto produkcji."
+  ],
+  "cost": {"value": null, "currency": null, "status": "unknown"},
+  "next_tasks": [
+    "Po wskazaniu recenzenta wet.: zlecić Content/Knowledge brief + evidence bundle dla n93, n90/n91 (scalone), n92, n86",
+    "Weryfikacja HTTP 200/canonical/sitemap dla 20 odtworzonych /blog/* po publikacji (kohorta 'odtworzone URL' osobno od nowych)",
+    "Kolejna partia undecided: rangi 18, 21, 27, 29, 28"
+  ],
+  "human_decisions_required": [
+    "Czy jest dostępny recenzent weterynaryjny dla 5+4 artykułów zdrowotnych z TOP 30 (łącznie ok. 49,9 tys. historycznych sesji)? Bez niego: 404 → ewentualnie 410.",
+    "Scalić n90 (borelioza) i n91 (babeszjoza) w jeden poradnik o chorobach odkleszczowych, by uniknąć kanibalizacji?"
+  ]
+}
