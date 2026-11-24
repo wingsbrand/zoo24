@@ -2,6 +2,26 @@
 
 **Aktualizacja:** 2026-11-23 — serwis live na https://zoo24.pl; publikacja CMS live_scoped (26 materiałów). Social nadal Mode 0.
 
+## D-05 — 16 przekierowań starych adresów (2026-11-23, ok. 11:40)
+- Decyzja właściciela D-05 (arkusz). Wdrożone (commit e38f363) z `content/redirects/approved-301.json`; router waliduje R1–R12. **Produkcja: 16/16 działa jednym skokiem** — indeks i kategorie bloga → `/poradniki`, `/zwierzeta/*`; aliasy ras (kot angielski, majkun) → profile ras; aliasy strony głównej → `/` (301). Adresy pod `/blog/*` zwracają 308 (stałe przekierowanie Next.js, dla Google równoważne 301). Nieznane adresy dalej 404.
+- Przy okazji: porównania w synchronizacji odporne na kolejność kluczy jsonb (koniec zbędnych zapisów przy zimnym starcie).
+- Kolejne partie (odtworzenia treści pod dawnymi adresami, 301 warunkowe) — wg mapy, każda po decyzji.
+
+## Audyt V4 — publikacja wzorców (2026-11-23, ok. 11:00)
+- `CRON_SECRET` ustawiony przez właściciela (D-10); cron `/api/ops/publish` uruchomiony ręcznie w Vercel. **4 wzorce opublikowane** (Border collie, wyjazd psa, akwarium, gady) — na produkcji tabela porównawcza, „Zaktualizowano”, blok „Co dalej”.
+- Znaleziony i naprawiony błąd (4150cb6): Postgres `jsonb` przestawia klucze obiektów, a hash treści zależał od kolejności → po odczycie z bazy każdy artykuł wyglądał na zmieniony (read-back `DB_VERSION_MISMATCH`, publikacja odrzucana przez dedupe — bez podwójnych publikacji). Hash normalizuje kolejność wg plików; akceptacje pozostały ważne (test).
+- Read-back: **20/20 aktualnych publikacji potwierdzonych HTTP 200** + 4 nowe wzorce potwierdzone przy publikacji. 4 stare potwierdzenia dotyczą zastąpionych wersji wzorców (oczekiwane `DB_VERSION_MISMATCH`, do oznaczenia jako `superseded` w kolejnej poprawce).
+- Cron dalej codziennie 05:00 UTC; endpoint loguje `[ops/publish] changed=… readback=…`.
+
+## Audyt V4 — partia 1 (2026-11-23, rano)
+- **Backlog i odbiór:** `docs/BACKLOG_V4.md` (status A01–A16, wspólne kryteria). Decyzje właściciela: arkusz https://claude.ai/artifact/Fs8MvZ9yLSMaJc48iidubw (D-01…D-09), przypomnienie e-mail codziennie 8:30 (zadanie `zoo24-przypomnienie-decyzje`, działa przy otwartej aplikacji Claude).
+- **Wdrożone w kodzie:** autorstwo „Redakcja ZOO24” + jedno ujawnienie AI (art. 50 AI Act; akceptacja redaktora-AI ≠ przegląd człowieka); usunięte publiczne logi (klasa ryzyka, recenzent, termin przeglądu, rejestr twierdzeń); daty (`dateModified ≥ datePublished`); JSON-LD Organization/WebSite/BreadcrumbList/Article; format `breed_profile`; brakujące `animal/needs` (cane corso, maltańczyk, kot brytyjski — przyczyna 26 vs 23); synchronizacja metadanych repo→baza; rekomendacje wg zwierzęcia/zadania + „Co dalej”; wyszukiwarka działów/kart/narzędzi; karty psa i kota (`content/species`); strona główna z zadaniami; zasady redakcyjne zgodne z procesem; 2 strony informacyjne w sitemap.
+- **Wzorce (5 ścieżek):** Border collie, wyjazd psa (tabela porównawcza + lista), objętość akwarium (przykład 64,8 → 44–53 l, zgodny z kalkulatorem), gady (metoda na gekonie lamparcim, bez parametrów welfare), karta psa/kota. Przegląd redaktora-AI: 11 poprawek źródłowych, potem APPROVE; nowe hashe w `editorialDecision`. Bez przeglądu człowieka.
+- **Agenci:** mapa URL (`docs/seo/HISTORICAL_URL_MAP.csv`, 287 wierszy; produkcja: wszystkie stare adresy → 404, 20 z 67 TOP-blog działa), tech check (`docs/seo/TECH_CHECK_2026-11-23.md`), pilotaże (`docs/growth/`), paczka social 12 szkiców Mode 0 (`docs/social/PACZKA_01_GRUDZIEN_2026.md`), paczka welfare dla specjalisty (`docs/review-packages/PACZKA_WELFARE_01.md`).
+- **Testy:** vitest 367/367, tsc PASS, `next build` PASS, skan sekretów PASS; podgląd lokalny: artykuł, karta psa, wyszukiwanie „królik”, strona główna, wzorce.
+- **Produkcja (commity 7c26c16, 5ddf664):** nowy szablon, JSON-LD, taksonomia i karty psa/kota działają na https://zoo24.pl (200, `article:author` = Redakcja ZOO24, daty zgodne). **4 poprawione wzorce NIE są jeszcze opublikowane** — hook przy starcie modułu okazał się nieskuteczny na Vercel (funkcja zamrażana po odpowiedzi; pierwsza publikacja 00:42 zadziałała tylko w wersji z `await`). Zastąpiony endpointem `GET /api/ops/publish` (Vercel Cron 05:00 UTC, `CRON_SECRET`). Ustawienie sekretu w Vercel zablokowane w sesji → działanie właściciela D-10; do tego czasu endpoint zwraca 503.
+- **Nie zrobione / ograniczenia:** LocalBusiness i opisy profili firm (A08/A15), pomiar zdarzeń narzędzi, CWV (brak danych terenowych), redirecty 301 (czekają na D-05), endpoint/cron publikacji z sekretem.
+
 ## LIVE 2026-11-23 ok. 01:45 — HTTPS i pierwsza publikacja redakcyjna
 - **HTTPS:** DNS wskazywał Vercel, ale certyfikat nie powstał automatycznie; wystawiony ręcznie przez API Vercel (`cert_SohBRo1DwE3Zk4xzATZUGKUl`, zoo24.pl + www, autoRenew). `www` → 308 na `https://zoo24.pl/`.
 - **Polityka:** `ops/config/activation.json` podpisana `live_scoped` (status `LIVE_SCOPED_CMS_AI_EDITOR`) — wyłącznie publikacja artykułów zaakceptowanych przez redaktora-AI; social, SEO-patche, deploy, e-mail/DM, reklamy nadal wyłączone; welfare/żywienie/środowisko/transport wykluczone z akceptacji AI (commit c1365b9).

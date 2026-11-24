@@ -96,5 +96,16 @@
       "accessedAt": "2026-11-22",
       "sourceIndex": 2
     }
-  ]
+  ],
+  "animal": {
+    "group": "psy",
+    "species": "pies-domowy",
+    "breed": "cane corso"
+  },
+  "needs": [
+    "wybor-zwierzecia",
+    "codzienna-opieka"
+  ],
+  "risk": "standard",
+  "format": "breed_profile"
 }

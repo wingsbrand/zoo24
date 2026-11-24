@@ -6,6 +6,7 @@ import { isAgentIdentity } from "../ops/identity";
 export const FORMAT_LABEL: Record<ContentFormat, string> = {
   hub: "Centrum wiedzy",
   species_card: "Karta gatunku",
+  breed_profile: "Profil rasy",
   guide: "Poradnik",
   checklist: "Checklista",
 };

@@ -143,7 +143,7 @@ export default function Regulamin() {
         <li>Usługodawca nie odpowiada za treść stron internetowych Firm i innych stron zewnętrznych, do których prowadzą linki.</li>
         <li>Usługodawca może czasowo ograniczyć dostęp do Serwisu z powodu prac technicznych, awarii lub ze względów bezpieczeństwa.</li>
         <li>Postanowienia niniejszego paragrafu nie wyłączają ani nie ograniczają odpowiedzialności Usługodawcy w zakresie, w jakim nie może być ona wyłączona lub ograniczona zgodnie z bezwzględnie obowiązującymi przepisami prawa, w szczególności wobec konsumentów.</li>
-        <li>Treści Serwisu (teksty, układ, grafiki) są chronione prawem autorskim. Ilustracje wygenerowane z użyciem AI są oznaczone jako „Ilustracja AI”. Kopiowanie treści w celach innych niż dozwolony użytek osobisty lub prawo cytatu wymaga zgody Usługodawcy.</li>
+        <li>Treści Serwisu (teksty, układ, grafiki) są chronione prawem autorskim. Część ilustracji w Serwisie wygenerowano z użyciem narzędzi AI; nie przedstawiają one rzeczywistych osób, firm ani konkretnych zwierząt. Kopiowanie treści w celach innych niż dozwolony użytek osobisty lub prawo cytatu wymaga zgody Usługodawcy.</li>
       </ol>
 
       <h2>§9. Reklamacje dotyczące Serwisu</h2>

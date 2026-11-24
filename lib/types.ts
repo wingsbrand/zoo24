@@ -83,6 +83,10 @@ export interface Article {
   };
   /** Termin kolejnego przeglądu treści (ISO). */
   reviewDueAt?: string | null;
+  /** Ręczne nadpisanie rekomendacji (slugi materiałów, kolejność ma znaczenie). Metadane — poza hashem treści. */
+  related?: string[];
+  /** Tabela porównawcza (treść redakcyjna — wchodzi do hasha akceptacji, gdy występuje). */
+  comparison?: { caption: string; columns: string[]; rows: { label: string; cells: string[] }[] } | null;
   /** Historyczny adres starego zoo24.pl, który ten materiał zastępuje (mapa odzyskiwania). */
   legacyPath?: string | null;
   /** Korekta opublikowanego materiału: czeka na zatwierdzenie; do tego czasu publicznie widoczna jest poprzednia wersja. */

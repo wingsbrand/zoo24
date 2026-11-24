@@ -37,21 +37,75 @@
     "Czy zostawiłem dane lekarza weterynarii przyjmującego ryby i osoby znającej akwarystykę?"
   ],
   "sources": [
-    { "label": "RSPCA — Fish: diet", "url": "https://www.rspca.org.uk/adviceandwelfare/pets/fish/diet" },
-    { "label": "RSPCA — Fish: environment", "url": "https://www.rspca.org.uk/adviceandwelfare/pets/fish/environment" },
-    { "label": "RSPCA — Fish: health and welfare", "url": "https://www.rspca.org.uk/adviceandwelfare/pets/fish/health" },
-    { "label": "RSPCA — Pet sitting / leaving your pet", "url": "https://www.rspca.org.uk/adviceandwelfare/pets/general/holiday/leavingyourpet" }
+    {
+      "label": "RSPCA — Fish: diet",
+      "url": "https://www.rspca.org.uk/adviceandwelfare/pets/fish/diet"
+    },
+    {
+      "label": "RSPCA — Fish: environment",
+      "url": "https://www.rspca.org.uk/adviceandwelfare/pets/fish/environment"
+    },
+    {
+      "label": "RSPCA — Fish: health and welfare",
+      "url": "https://www.rspca.org.uk/adviceandwelfare/pets/fish/health"
+    },
+    {
+      "label": "RSPCA — Pet sitting / leaving your pet",
+      "url": "https://www.rspca.org.uk/adviceandwelfare/pets/general/holiday/leavingyourpet"
+    }
   ],
   "claims": [
-    { "text": "Na czas wyjazdu poproś odpowiedzialną osobę o codzienne sprawdzanie ryb i sprzętu; ryby tropikalne trzeba karmić codziennie.", "sourceIndex": 0, "evidence": "Ryby tropikalne wymagają codziennego karmienia; poproś odpowiedzialną osobę o codzienne sprawdzanie ryb i sprzętu.", "appliesTo": "akwaria słodkowodne, ryby tropikalne", "accessedAt": "2026-11-22" },
-    { "text": "Zostaw jasną instrukcję karmienia i przygotuj część posiłków wcześniej.", "sourceIndex": 0, "evidence": "Zostaw jasne instrukcje karmienia i przygotuj niektóre posiłki z wyprzedzeniem.", "appliesTo": "ryby akwariowe", "accessedAt": "2026-11-22" },
-    { "text": "Nie przekarmiaj; niedokarmienie jest bezpieczniejsze; karm tyle, ile ryby zjedzą w 2–5 minut.", "sourceIndex": 0, "evidence": "Nie przekarmiaj; zła jakość wody szkodzi bardziej niż brak pokarmu; tyle, ile zjedzą w dwie do pięciu minut.", "appliesTo": "ryby akwariowe", "accessedAt": "2026-11-22" },
-    { "text": "RSPCA nie zaleca kostek wakacyjnych; karmnik automatyczny trzeba sprawdzać codziennie.", "sourceIndex": 0, "evidence": "Nie zalecamy kostek wakacyjnych — uwalniają dużo pokarmu, część gnije; karmnik automatyczny sprawdzać codziennie.", "appliesTo": "ryby akwariowe", "accessedAt": "2026-11-22" },
-    { "text": "Filtr jest niezbędny; żadna ryba nie powinna przebywać bez dobrze działającego filtra; jakość wody sprawdza się regularnie.", "sourceIndex": 1, "evidence": "Filtry są niezbędne do usuwania odpadów; żadna ryba bez dobrze ustawionego filtra; sprawdzaj jakość wody co dwa tygodnie.", "appliesTo": "akwaria słodkowodne", "accessedAt": "2026-11-22" },
-    { "text": "Złe znaki: nietypowe pływanie, odłączanie się od ławicy, łapanie powietrza przy powierzchni; w chorobach — lekarz weterynarii od ryb.", "sourceIndex": 2, "evidence": "Opadanie lub pływanie na boku, opuszczanie ławicy, ciągłe łapanie powietrza; skontaktuj się ze specjalistą od ryb.", "appliesTo": "ryby akwariowe", "accessedAt": "2026-11-22" },
-    { "text": "Opiekunowi przekaż rutynę, kontakt do siebie i dane lekarza weterynarii.", "sourceIndex": 3, "evidence": "Przekaż rutynę, dane kontaktowe na wypadek pilnej sytuacji i dane weterynarza z dyżurem.", "appliesTo": "zwierzęta domowe ogólnie", "accessedAt": "2026-11-22" }
+    {
+      "text": "Na czas wyjazdu poproś odpowiedzialną osobę o codzienne sprawdzanie ryb i sprzętu; ryby tropikalne trzeba karmić codziennie.",
+      "sourceIndex": 0,
+      "evidence": "Ryby tropikalne wymagają codziennego karmienia; poproś odpowiedzialną osobę o codzienne sprawdzanie ryb i sprzętu.",
+      "appliesTo": "akwaria słodkowodne, ryby tropikalne",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Zostaw jasną instrukcję karmienia i przygotuj część posiłków wcześniej.",
+      "sourceIndex": 0,
+      "evidence": "Zostaw jasne instrukcje karmienia i przygotuj niektóre posiłki z wyprzedzeniem.",
+      "appliesTo": "ryby akwariowe",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Nie przekarmiaj; niedokarmienie jest bezpieczniejsze; karm tyle, ile ryby zjedzą w 2–5 minut.",
+      "sourceIndex": 0,
+      "evidence": "Nie przekarmiaj; zła jakość wody szkodzi bardziej niż brak pokarmu; tyle, ile zjedzą w dwie do pięciu minut.",
+      "appliesTo": "ryby akwariowe",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "RSPCA nie zaleca kostek wakacyjnych; karmnik automatyczny trzeba sprawdzać codziennie.",
+      "sourceIndex": 0,
+      "evidence": "Nie zalecamy kostek wakacyjnych — uwalniają dużo pokarmu, część gnije; karmnik automatyczny sprawdzać codziennie.",
+      "appliesTo": "ryby akwariowe",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Filtr jest niezbędny; żadna ryba nie powinna przebywać bez dobrze działającego filtra; jakość wody sprawdza się regularnie.",
+      "sourceIndex": 1,
+      "evidence": "Filtry są niezbędne do usuwania odpadów; żadna ryba bez dobrze ustawionego filtra; sprawdzaj jakość wody co dwa tygodnie.",
+      "appliesTo": "akwaria słodkowodne",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Złe znaki: nietypowe pływanie, odłączanie się od ławicy, łapanie powietrza przy powierzchni; w chorobach — lekarz weterynarii od ryb.",
+      "sourceIndex": 2,
+      "evidence": "Opadanie lub pływanie na boku, opuszczanie ławicy, ciągłe łapanie powietrza; skontaktuj się ze specjalistą od ryb.",
+      "appliesTo": "ryby akwariowe",
+      "accessedAt": "2026-11-22"
+    },
+    {
+      "text": "Opiekunowi przekaż rutynę, kontakt do siebie i dane lekarza weterynarii.",
+      "sourceIndex": 3,
+      "evidence": "Przekaż rutynę, dane kontaktowe na wypadek pilnej sytuacji i dane weterynarza z dyżurem.",
+      "appliesTo": "zwierzęta domowe ogólnie",
+      "accessedAt": "2026-11-22"
+    }
   ],
-  "authorDisplay": "Redakcja ZOO24 (szkic przygotowany z pomocą AI)",
+  "authorDisplay": "Redakcja ZOO24",
   "status": "needs_review",
   "demo": false,
   "publishedAt": null,
@@ -67,11 +121,25 @@
     "Link /narzedzia/lista-dla-opiekuna: sprawdzić istnienie przed publikacją."
   ],
   "reviewedBy": null,
-  "animal": { "group": "akwarystyka", "species": null, "breed": null },
-  "needs": ["wyjazdy", "zywienie"],
+  "animal": {
+    "group": "akwarystyka",
+    "species": null,
+    "breed": null
+  },
+  "needs": [
+    "wyjazdy",
+    "zywienie"
+  ],
   "format": "guide",
   "risk": "welfare",
-  "review": { "required": "species_specialist", "by": null, "byKind": null, "at": null, "note": null, "waitingReason": "potrzebna osoba z wiedzą akwarystyczną" },
+  "review": {
+    "required": "species_specialist",
+    "by": null,
+    "byKind": null,
+    "at": null,
+    "note": null,
+    "waitingReason": "potrzebna osoba z wiedzą akwarystyczną"
+  },
   "reviewDueAt": "2027-05-22T00:00:00.000Z",
   "legacyPath": null
 }

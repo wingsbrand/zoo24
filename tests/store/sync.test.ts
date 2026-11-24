@@ -8,7 +8,7 @@ describe("syncState / seed w produkcji", () => {
     expect(s.businesses.length).toBeGreaterThan(0);
     expect(s.businesses.every((b) => !b.demo)).toBe(true);
     expect(s.articles.every((a) => !a.demo)).toBe(true);
-    expect(s.legacyUrls).toEqual([]);
+    expect(s.legacyUrls.every((u) => !u.demo && u.status === "approved")).toBe(true); // tylko zatwierdzone przekierowania z repo (D-05)
     expect(s.socialPosts.length).toBeGreaterThan(0);
   });
 

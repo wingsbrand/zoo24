@@ -137,6 +137,8 @@ export function speciesCoverage(species: Pick<Species, "scientific">, list: read
 }
 
 /** Najnowsza realna data zmiany treści z listy materiałów (do lastmod); null = brak. */
-export function latestUpdate(list: readonly Pick<Article, "updatedAt">[]): string | null {
-  return list.reduce<string | null>((m, a) => (!m || a.updatedAt > m ? a.updatedAt : m), null);
+export function latestUpdate(list: readonly Pick<Article, "updatedAt" | "publishedAt">[]): string | null {
+  // Data zmiany widoczna dla czytelnika (≥ publikacja) — spójna z dateModified w artykule (audyt V4 A09).
+  const mod = (a: Pick<Article, "updatedAt" | "publishedAt">) => (a.publishedAt && a.publishedAt > a.updatedAt ? a.publishedAt : a.updatedAt);
+  return list.reduce<string | null>((m, a) => (!m || mod(a) > m ? mod(a) : m), null);
 }
