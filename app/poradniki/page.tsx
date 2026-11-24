@@ -8,13 +8,15 @@ import { articlesLabel } from "@/components/editorial/format";
 import { QUERY_MAX, TOPICS, filterArticles, getTopic, hubHref, parsePortalHubQuery, type PortalHubQuery } from "@/lib/content/topics";
 import { GROUPS, NEEDS, getGroup } from "@/lib/taxonomy/animals";
 import { needName } from "@/lib/portal/labels";
+import { searchSite } from "@/lib/portal/site-search";
+import { computeVisibility, TOOLS } from "@/lib/portal/visibility";
 
 export const dynamic = "force-dynamic";
 
 type P = { searchParams: Promise<Record<string, string | string[] | undefined>> };
 
 const TITLE = "Poradniki dla opiekunów zwierząt";
-const LEAD = "Praktyczna wiedza o zwierzętach towarzyszących: przygotowanie domu, codzienna opieka, warunki i wybór usług. Każdy poradnik ma źródła i przechodzi weryfikację redakcyjną przed publikacją.";
+const LEAD = "Praktyczna wiedza o zwierzętach towarzyszących: wybór zwierzęcia, przygotowanie domu, codzienna opieka, wyjazdy i wybór usług. Każdy poradnik ma listę źródeł.";
 /** Poniżej tej liczby opublikowanych tekstów hub uczciwie informuje, że kolejne są w redakcji. */
 const FEW_ARTICLES = 6;
 
@@ -73,12 +75,14 @@ export default async function Poradniki({ searchParams }: P) {
   const groupOptions = GROUPS.map((g) => ({ key: g.slug, name: g.name, href: hubHref({ ...keep(query), zwierze: g.slug }), count: countsByGroup[g.slug], on: query.zwierze === g.slug }));
   const needOptions = NEEDS.map((n) => ({ key: n.slug, name: n.name, href: hubHref({ ...keep(query), potrzeba: n.slug }), count: countsByNeed[n.slug], on: query.potrzeba === n.slug }));
   const demoShown = items.some((a) => a.demo);
+  const vis = computeVisibility(allArticles());
+  const site = searchSite(query.q, vis);
 
   return (
     <>
       <PageHeader title="Poradniki" lead={LEAD} breadcrumbs={[{ href: "/", label: "ZOO24" }, { label: "Poradniki" }]}>
         <form action="/poradniki" method="get" role="search" className="mt-6 max-w-xl">
-          <label htmlFor="q" className="mb-1.5 block font-semibold text-ink">Szukaj w poradnikach</label>
+          <label htmlFor="q" className="mb-1.5 block font-semibold text-ink">Szukaj w poradnikach, działach i narzędziach</label>
           {query.temat && <input type="hidden" name="temat" value={query.temat} />}
           {query.zwierze && <input type="hidden" name="zwierze" value={query.zwierze} />}
           {query.potrzeba && <input type="hidden" name="potrzeba" value={query.potrzeba} />}
@@ -126,6 +130,28 @@ export default async function Poradniki({ searchParams }: P) {
           </Alert>
         )}
 
+        {site.results.length > 0 && (
+          <section aria-labelledby="h-inne-wyniki" className="mt-8">
+            <h2 id="h-inne-wyniki" className="mb-4 text-xl font-bold">Działy i narzędzia</h2>
+            <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {site.results.map((r) => (
+                <li key={r.href}>
+                  <Link href={r.href} className="flex h-full min-h-11 flex-col gap-1 rounded-[var(--radius-md)] border border-line bg-surface p-4 no-underline hover:border-brand hover:bg-brand-tint">
+                    <span className="text-xs font-semibold uppercase tracking-wide text-accent-dark">{r.type}</span>
+                    <span className="font-semibold text-brand-dark">{r.title}</span>
+                    <span className="text-sm text-ink-muted">{r.description}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+        {site.upcomingGroups.length > 0 && (
+          <Alert tone="info" title={`Dział ${site.upcomingGroups.map((g) => g.name).join(", ")} jest w przygotowaniu`} className="mt-6">
+            <p>Materiały o tych zwierzętach czekają na sprawdzenie przez osobę z wiedzą o danym gatunku. Publikujemy je dopiero po takim przeglądzie.</p>
+          </Alert>
+        )}
+
         <div className="mt-8">
           <div className="mb-5 flex flex-wrap items-baseline justify-between gap-2">
             <h2 className="text-2xl font-bold sm:text-3xl">{heading}</h2>
@@ -150,7 +176,12 @@ export default async function Poradniki({ searchParams }: P) {
                 </>
               }
             >
-              <p>{query.q ? "Spróbuj innego słowa albo krótszej frazy." : "Teksty dla tych filtrów są w przygotowaniu."} Możesz też przejrzeć wszystkie poradniki.</p>
+              <p>{query.q ? "Spróbuj innego słowa albo krótszej frazy. Nie generujemy odpowiedzi automatycznie — pokazujemy tylko opublikowane materiały." : "Teksty dla tych filtrów są w przygotowaniu."}</p>
+              <p className="mt-3 font-semibold text-ink">Dostępne działy i narzędzia:</p>
+              <ul className="mt-1 flex flex-wrap gap-2">
+                {vis.publicGroups.map((g) => <li key={g.group.slug}><Link href={`/zwierzeta/${g.group.slug}`} className="font-semibold text-brand">{g.group.name}</Link></li>)}
+                {TOOLS.map((t) => <li key={t.path}><Link href={t.path} className="font-semibold text-brand">{t.title}</Link></li>)}
+              </ul>
             </EmptyState>
           ) : (
             <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

@@ -17,8 +17,14 @@ export interface EditorialDecision {
   publishAfter: string;
 }
 
-export function articleContentHash(a: Pick<Article, "title" | "summary" | "body" | "checklist" | "sources">): string {
-  return createHash("sha256").update(JSON.stringify([a.title, a.summary, a.body, a.checklist, a.sources])).digest("hex");
+export function articleContentHash(a: Pick<Article, "title" | "summary" | "body" | "checklist" | "sources"> & { comparison?: Article["comparison"] }): string {
+  // Tabela porównawcza jest treścią redakcyjną: gdy występuje, wchodzi do hasha (brak tabeli = hash jak dotąd).
+  // Stała kolejność kluczy: Postgres jsonb zmienia kolejność kluczy obiektów, a JSON.stringify od niej zależy.
+  // Kolejność = układ plików content/*.json, więc istniejące akceptacje (hash) pozostają ważne.
+  const sources = a.sources.map((s) => ({ label: s.label, url: s.url }));
+  const parts: unknown[] = [a.title, a.summary, a.body, a.checklist, sources];
+  if (a.comparison) parts.push({ caption: a.comparison.caption, columns: a.comparison.columns, rows: a.comparison.rows.map((r) => ({ label: r.label, cells: r.cells })) });
+  return createHash("sha256").update(JSON.stringify(parts)).digest("hex");
 }
 
 /** Akceptacja aktualna: decyzja approved i hash zgodny z bieżącą treścią; redaktor-AI tylko nazwany w polityce. */

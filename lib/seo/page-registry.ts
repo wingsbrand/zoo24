@@ -2,6 +2,7 @@
 import type { AppState, CategorySlug, CitySlug } from "../types";
 import { pathOnly } from "./paths";
 import { computeVisibility, latestUpdate, speciesArticles, TOOLS } from "../portal/visibility";
+import { articleDates } from "../content/presentation";
 
 export type PageKind = "home" | "hub" | "listing" | "business" | "article" | "static" | "animal";
 
@@ -36,7 +37,7 @@ export const HUB_PATHS: readonly string[] = [
   "/poradniki",
 ];
 
-export const STATIC_PATHS: readonly string[] = ["/o-nas", "/dla-firm"];
+export const STATIC_PATHS: readonly string[] = ["/o-nas", "/dla-firm", "/zasady-redakcyjne", "/reklama-i-wspolprace"];
 
 /** Narzędzia (V3 §9 D): strony samodzielnie użyteczne, indeksowalne niezależnie od liczby artykułów. */
 export const TOOL_PATHS: readonly string[] = ["/narzedzia", ...TOOLS.map((t) => t.path)];
@@ -120,7 +121,7 @@ export function buildPageRegistry(state: AppState, opts?: { minListings?: number
       kind: "article",
       demo: a.demo,
       indexable: !a.demo,
-      lastmod: a.updatedAt,
+      lastmod: articleDates(a).modified,
     });
   }
 

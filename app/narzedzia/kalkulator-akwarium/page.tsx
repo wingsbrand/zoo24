@@ -41,9 +41,11 @@ export default function KalkulatorAkwariumPage() {
             <li>Zakładamy idealny kształt: proste ściany, płaskie dno i jednakową grubość szkła. Zbiorniki gięte, panoramiczne lub z zaokrąglonymi narożnikami mają inną objętość.</li>
             <li>Procent zajęty przez podłoże i dekoracje to Twój szacunek — nie przyjmujemy ukrytych wartości domyślnych.</li>
           </ul>
-          <p className="mt-6 text-sm text-ink-muted">
-            Więcej wiedzy znajdziesz w <Link href="/poradniki" className="text-brand underline">poradnikach ZOO24</Link>.
-          </p>
+          <h2 id="co-dalej" className="mt-10 text-2xl font-bold">Co zrobić z wynikiem</h2>
+          <ul className="mt-3 space-y-3">
+            <li><Link href="/poradniki/akwarium-objetosc-nominalna-a-rzeczywista" className="font-semibold text-brand underline">Objętość nominalna a rzeczywista</Link> — przykład liczbowy i jak czytać wynik kalkulatora, zanim dobierzesz filtr, grzałkę czy ilość preparatów.</li>
+            <li><Link href="/zwierzeta/akwarystyka" className="font-semibold text-brand underline">Dział: ryby i akwarystyka</Link> — pozostałe materiały o planowaniu akwarium.</li>
+          </ul>
         </Container>
       </Section>
     </>

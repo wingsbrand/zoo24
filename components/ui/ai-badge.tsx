@@ -1,7 +1,15 @@
 import { cn } from "./cn";
 
-/** Jawne oznaczenie ilustracji wygenerowanej przez AI (nie przedstawia realnych osób, firm ani zwierząt). */
+/**
+ * Oznaczenie ilustracji wygenerowanej przez AI na obrazie.
+ * Decyzja właściciela (2026-11-23, ADR-016): bez napisu na obrazach. Ogólna informacja o ilustracjach AI
+ * pozostaje w regulaminie i zasadach redakcyjnych; rejestr pochodzenia: docs/brand/ai-images.md.
+ * Ponowne włączenie: SHOW_AI_IMAGE_BADGE = true.
+ */
+export const SHOW_AI_IMAGE_BADGE = false;
+
 export function AiBadge({ className }: { className?: string }) {
+  if (!SHOW_AI_IMAGE_BADGE) return null;
   return (
     <span
       className={cn(

@@ -5,6 +5,8 @@ import { contentHash } from "./hash";
 import { checkApprovalPolicy, type PolicyContext } from "./policy";
 import { redact } from "../security/redact";
 import { warsawWeekKey } from "../time";
+import { computeVisibility, isSpeciesPublic, TOOLS } from "../portal/visibility";
+import { isGroupSlug } from "../taxonomy/animals";
 
 export class WorkflowError extends Error {
   constructor(public code: string, public details: string[] = []) {
@@ -55,8 +57,14 @@ export function policyContext(state: AppState, now: Date, adapterKind: "mock" | 
       if (staticLive.has(p)) return true;
       const listing = /^\/uslugi\/(groomer|hotel-dla-zwierzat)\/(warszawa|krakow|lodz|wroclaw|poznan|gdansk|szczecin|bydgoszcz|lublin|bialystok)$/.test(p);
       if (listing) return true;
-      const art = /^\/poradniki\/([a-z0-9-]+)$/.exec(p);
-      if (art) return state.articles.some((a) => a.slug === art[1] && a.status === "published");
+      const art = /^\/(poradniki|blog)\/([a-z0-9-]+)$/.exec(p);
+      if (art) return state.articles.some((a) => a.slug === art[2] && a.status === "published" && (a.basePath ?? "/poradniki") === `/${art[1]}`);
+      if (TOOLS.some((t) => t.path === p)) return true;
+      const zoo = /^\/zwierzeta\/([a-z-]+)(?:\/([a-z0-9-]+))?$/.exec(p);
+      if (zoo && isGroupSlug(zoo[1])) {
+        const v = computeVisibility(state.articles);
+        return zoo[2] ? isSpeciesPublic(v, zoo[1], zoo[2]) : v.groups[zoo[1]].isPublic;
+      }
       const firm = /^\/firma\/([a-z0-9-]+)$/.exec(p);
       if (firm) return state.businesses.some((b) => b.slug === firm[1] && b.status === "published");
       return false;

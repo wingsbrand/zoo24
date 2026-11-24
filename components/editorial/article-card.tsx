@@ -9,11 +9,14 @@ import { NEEDS } from "@/lib/taxonomy/animals";
 import { DemoBadge, cn } from "@/components/ui";
 import { Cover } from "./cover";
 import { formatDatePl } from "./format";
+import { articleDates } from "@/lib/content/presentation";
 
 export function ArticleCard({ a, headingLevel = 3, className }: { a: Article; headingLevel?: 2 | 3; className?: string }) {
   const topic = topicForArticle(a);
   const H = headingLevel === 2 ? "h2" : "h3";
-  const updated = formatDatePl(a.updatedAt);
+  const dates = articleDates(a);
+  const shown = dates.published ? dates.modified : null;
+  const updated = formatDatePl(shown);
   const animal = groupName(a);
   // V3: dla materiałów z osią potrzeb pokazujemy potrzebę opiekuna zamiast starego tematu (psy/koty).
   const label = a.needs?.length ? (NEEDS.find((n) => n.slug === a.needs![0])?.name ?? topic.name) : topic.name;
@@ -43,7 +46,7 @@ export function ArticleCard({ a, headingLevel = 3, className }: { a: Article; he
         <div className="mt-auto flex flex-wrap items-center justify-between gap-2 pt-3 text-sm text-ink-muted">
           {updated ? (
             <span>
-              Zaktualizowano <time dateTime={a.updatedAt}>{updated}</time>
+              {dates.showUpdated ? "Zaktualizowano" : "Opublikowano"} <time dateTime={shown!}>{updated}</time>
             </span>
           ) : <span />}
           <span className="relative z-10"><DemoBadge show={a.demo} /></span>

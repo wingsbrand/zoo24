@@ -4,6 +4,8 @@ import "./globals.css";
 import { IS_PRODUCTION, SITE_URL, adminEnabled } from "@/lib/site";
 import { SiteHeader } from "@/components/site/header";
 import { SiteFooter } from "@/components/site/footer";
+import { JsonLd } from "@/components/seo/json-ld";
+import { organizationLd, websiteLd } from "@/lib/seo/structured-data";
 
 // Fonty self-hostowane przez next/font (bez zapytań do Google w przeglądarce), pełne polskie znaki (latin-ext).
 const inter = Inter({ subsets: ["latin", "latin-ext"], variable: "--font-inter", display: "swap" });
@@ -33,6 +35,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="pl" className={`${inter.variable} ${bricolage.variable}`}>
       <body className="flex min-h-screen flex-col antialiased">
+        <JsonLd nodes={[organizationLd(), websiteLd()]} />
         <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-surface focus:px-4 focus:py-2 focus:font-semibold focus:shadow-[var(--shadow-raised)]">
           Przejdź do treści
         </a>

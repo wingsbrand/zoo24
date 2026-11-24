@@ -80,5 +80,5 @@ export function brandOgImage(): Promise<ImageResponse> {
 export function articleOgImage(a: Article | null): Promise<ImageResponse> {
   if (!a) return brandOgImage();
   const topic = topicForArticle(a);
-  return render(<Frame colors={topic.colors} kicker={`· Poradnik · ${topic.name}`} title={a.title} footer={a.authorDisplay} badge={a.demo ? "DEMO" : null} />);
+  return render(<Frame colors={topic.colors} kicker={`· Poradnik · ${topic.name}`} title={a.title} footer="Redakcja ZOO24" badge={a.demo ? "DEMO" : null} />);
 }
