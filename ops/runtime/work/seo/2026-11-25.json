@@ -1,0 +1,42 @@
+{
+  "schema_version": "zoo24.ops.job-result.v1",
+  "job_id": "seo-shadow-2026-11-25",
+  "role": "seo",
+  "mode": "shadow",
+  "policy_version": "unsigned",
+  "status": "produced",
+  "reason": null,
+  "artifacts": [],
+  "checks": [
+    {"name": "undecided_selection", "result": "ok", "note": "docs/seo/HISTORICAL_URL_MAP.csv (v4): decyzja 'do decyzji' mają jeszcze 22 URL z TOP 100 GA4. Poprzednie przebiegi objęły rangi 6, 11, 14, 15, 16. Ten przebieg: rangi 18, 21, 27, 28, 29 (najwyższy ruch historyczny wśród pozostałych)."},
+    {"name": "target_exists_check", "result": "warn", "note": "content/blog zawiera 20 artykułów (rasy); brak /blog/jak-wybrac-karme-dla-psa i /blog/jak-dobrac-karme-dla-kota — cele 'planowany:' w mapie jeszcze nie istnieją, więc redirect nie przeszedłby reguły TARGET_NOT_200."},
+    {"name": "ga4_28d_baseline", "result": "ok", "note": "data/exports/ga4-28d.json: 0 sesji organic (2026-10-23..2026-11-19) wg wcześniejszego raportu; serwis był offline."},
+    {"name": "gsc", "result": "n/a", "note": "Brak property GSC. Bez Indexing API."}
+  ],
+  "external_actions": [],
+  "metrics": [
+    {"name": "historical_ga4_organic_sessions_5_urls", "value": 17535, "unit": "sessions", "source": "docs/seo/HISTORICAL_URL_MAP.csv", "period_start": "2022-02", "period_end": "2025-02", "data_status": "historical", "note": "4226+3741+2947+2924+2898 za cały okres, nie miesięcznie; dane historyczne, nie prognoza"},
+    {"name": "gsc_clicks", "value": null, "unit": "clicks", "source": null, "period_start": null, "period_end": null, "data_status": "unavailable", "note": "N/A: brak property GSC"}
+  ],
+  "proposals": [
+    {"rank": 18, "path": "/blog/jaki-preparat-na-kleszcze-dla-psa-wybrac-n88", "historical_ga4_organic_sessions": 4226, "proposed_action": "retire_404_or_410", "status_until_condition": "pozostaje 404 (nie 410 przy pierwszej decyzji)", "reason": "Zdrowie + wybór produktu leczniczego (preparaty). Poza zakresem AI-redaktora (ADR-013), ryzyko porady diagnostyczno-leczniczej i ukrytej afiliacji (CLAUDE.md pkt 6). Redirect na n90/n91 zmieniałby intencję z 'który preparat' na 'choroby'. Chyba że recenzent wet. + jawna afiliacja — wtedy revise_same_url.", "blocked_by": "brak recenzenta wet.; decyzja o afiliacji", "fallback": "revise_same_url po recenzji"},
+    {"rank": 21, "path": "/blog/oleje-w-diecie-psa-korzysci-zdrowotne-i-zalecenia-dotyczace-stosowania-n87", "historical_ga4_organic_sessions": 3741, "proposed_action": "retire_404_or_410", "status_until_condition": "pozostaje 404", "reason": "Żywienie z twierdzeniami zdrowotnymi i zaleceniami stosowania; wymaga recenzji wet./dietetycznej. Powiązane tematycznie z URL rang 43 i 44 (kwasy tłuszczowe, olej z łososia) — jeśli recenzent się znajdzie, jeden scalony poradnik zamiast trzech konkurujących.", "blocked_by": "recenzent wet.", "fallback": "revise_same_url jako scalony poradnik po recenzji"},
+    {"rank": 27, "path": "/blog/lamblia-u-psa-czy-gardioza-u-psa-jest-grozna-n149", "historical_ga4_organic_sessions": 2947, "proposed_action": "revise_same_url", "status_until_condition": "pozostaje 404", "reason": "Choroba pasożytnicza, informacyjna; 200 dopiero po recenzji wet. i źródłach pierwotnych. Kandydat do wspólnego briefu z rangą 29 (giardioza kota), bez kanibalizacji: osobne gatunki, osobne URL, wspólny evidence bundle.", "blocked_by": "recenzent wet.", "fallback": "retire_404_or_410"},
+    {"rank": 28, "path": "/14-karma-sucha-dla-psa", "historical_ga4_organic_sessions": 2924, "proposed_action": "redirect_relevant", "status_until_condition": "404 do czasu, gdy cel istnieje jako 200 i jest zatwierdzony", "reason": "Dawna intencja transakcyjna (segment C). Własny poradnik 'jak wybrać karmę' jest zbliżoną, informacyjną intencją — redirect dopuszczalny dopiero po stworzeniu celu (dziś nie istnieje) i akceptacji. Bez 301 na stronę główną, /poradniki ani katalog usług (R6). Razem z wariantami /14-karma-sucha-dla-psow, /478-..., fan-in małe (<20, M2). Poradnik żywieniowy: ogólne zasady, bez diet leczniczych, jawna afiliacja albo jej brak.", "blocked_by": "brak celu 200; review treści żywieniowej", "fallback": "retire_404_or_410 jeśli poradnik nie powstanie"},
+    {"rank": 29, "path": "/blog/giardioza-u-kota-rozpoznanie-i-leczenie-n161", "historical_ga4_organic_sessions": 2898, "proposed_action": "revise_same_url", "status_until_condition": "pozostaje 404", "reason": "Jak rang 27: zdrowie kota, 'rozpoznanie i leczenie' = treść diagnostyczna, niedozwolona bez recenzji wet.", "blocked_by": "recenzent wet.", "fallback": "retire_404_or_410"}
+  ],
+  "excluded_notes": [
+    "Wszystkie 5 propozycji to tylko rekomendacje shadow; do docs/seo/HISTORICAL_URL_MAP.csv ani content/redirects nic nie wpisano. Żadnych redirectów nie wdrożono, produkcji nie dotknięto.",
+    "Nie sprawdzano statusów HTTP na żywo (brak zapisów/ruchu zewnętrznego w trybie SHADOW); stany '404' pochodzą z mapy v4 (test 2026-11-23)."
+  ],
+  "cost": {"value": null, "currency": null, "status": "unknown"},
+  "next_tasks": [
+    "Kolejna partia 'do decyzji': rangi 39, 43, 44, 47, 50 (karma mokra, kwasy tłuszczowe, olej z łososia, pierwsze oznaki choroby)",
+    "Gdy powstanie jak-wybrac-karme-dla-psa jako 200: zweryfikować cel i zlecić mapę 301 dla /14-*, /478-*",
+    "Po wskazaniu recenzenta wet.: wspólne evidence bundle dla pasożytów (n149, n161) i kleszczy (n88, n90, n91)"
+  ],
+  "human_decisions_required": [
+    "Recenzent weterynaryjny dla artykułów zdrowotnych (łącznie ok. 70 tys. historycznych sesji w 'do decyzji')? Bez niego: 404, ew. 410.",
+    "Czy powstaje własny poradnik 'jak wybrać karmę' (pies/kot)? Jeśli nie: kategorie karm -> 404/410."
+  ]
+}
