@@ -141,7 +141,7 @@ describe("R08/R09 pauza", () => {
 });
 
 describe("P04 polityka chroniona", () => {
-  it("agent nie może zapisać polityki ani podnieść budżetu; polityka w repo podpisana live_scoped wyłącznie dla CMS", () => {
+  it("agent nie może zapisać polityki ani podnieść budżetu; polityka w repo podpisana live_scoped v4 (CMS, build, SEO, social po podłączeniu Meta)", () => {
     const dir = fs.mkdtempSync(path.join(process.cwd(), ".data", "policy-test-"));
     try {
       const p = testPolicy("live_scoped");
@@ -153,19 +153,23 @@ describe("P04 polityka chroniona", () => {
       expect(() => writePolicy(dir, "owner", p, { ownerConfirmed: true })).toThrow("BUDGET_CHANGE_REQUIRES_OWNER_SIGNATURE");
       expect(fs.existsSync(path.join(dir, "ops", "config", "activation.json"))).toBe(false);
     } finally { fs.rmSync(dir, { recursive: true, force: true }); }
-    // Polityka w repo: po starcie HTTPS (2026-11-23) live_scoped wyłącznie dla publikacji zatwierdzonych artykułów (CMS).
+    // Polityka w repo v4 (decyzja właściciela 2026-11-25): live_scoped dla CMS, wdrożeń kodu, poprawek SEO i social.
     const repo = loadPolicy()!;
-    expect(repo.status).toBe("LIVE_SCOPED_CMS_AI_EDITOR");
+    expect(repo.status).toBe("LIVE_SCOPED_OPS_V4");
     expect(isPolicyApproved(repo)).toBe(true);
     expect(repo.mode).toBe("live_scoped");
     expect(repo.review.ai_editor_excluded_categories).toEqual(expect.arrayContaining(["welfare", "nutrition", "environment", "transport"]));
-    expect(Object.entries(repo.autonomy).filter(([, v]) => v).map(([k]) => k).sort()).toEqual(["create_drafts", "publish_human_reviewed_content", "read_approved_sources"]);
+    expect(Object.entries(repo.autonomy).filter(([, v]) => v).map(([k]) => k).sort()).toEqual(["apply_low_risk_seo_patch", "auto_deploy_low_risk_code", "create_drafts", "publish_human_reviewed_content", "publish_reviewed_social_versions", "read_approved_sources"]);
+    // Nadal wyłączone: e-mail, DM, reklamy, FAQ, zmiana konfiguracji chronionej.
+    for (const k of ["send_email_campaigns", "send_private_messages", "activate_paid_ads", "reply_exact_public_faq", "change_protected_configuration"] as const) expect(repo.autonomy[k], k).toBe(false);
     expect(repo.review.ai_editor_allowed).toBe(true);
     expect(repo.review.ai_editor_excluded_categories).toEqual(expect.arrayContaining(["health", "legal", "sponsored"]));
     expect(repo.budgets.paid_advertising_monthly).toBe(0);
     expect(repo.budgets.approved_monthly_extra_ai_automation).toBe(0); // tylko w limicie subskrypcji
     expect(effectiveMode(repo, "design")).toBe("live_scoped");
-    expect(repo.autonomy.publish_reviewed_social_versions).toBe(false); // social nadal wyłączone
+    // Social: dozwolone, ale bez ID strony/konta Meta gateway nie ma zasobu docelowego (blokada do D-03/D-11).
+    expect(repo.resources.facebook_page_id).toBeNull();
+    expect(repo.resources.instagram_account_id).toBeNull();
     expect(effectiveMode(repo, "paused")).toBe("paused");
     expect(isAgentIdentity("owner-local")).toBe(false);
   });
