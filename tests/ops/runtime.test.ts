@@ -85,12 +85,14 @@ describe("R10/R11 harmonogram Europe/Warsaw", () => {
     expect(r.missedSlotsNotCaughtUp).toBeGreaterThan(20);
     expect(store.read().ops.jobs).toHaveLength(1);
   });
-  it("ops/config/schedule.json: zgodny z OPS_SCHEDULE, jeden dispatcher (zadania chmurowe), cron UTC = czas lokalny zimą, usługi publikacji wyłączone", () => {
+  it("ops/config/schedule.json: zgodny z OPS_SCHEDULE, jeden dispatcher na zadanie (lokalne live dla content/build/seo, chmura shadow dla reszty), cron UTC = czas lokalny zimą, usługi publikacji wyłączone", () => {
     const cfg = JSON.parse(fs.readFileSync(path.join(process.cwd(), "ops", "config", "schedule.json"), "utf8"));
-    type Job = { job_key: string; cron_local: string; cron_utc: string; routine_id: string; enabled: boolean };
+    type Job = { job_key: string; cron_local: string; cron_utc: string; routine_id?: string; scheduled_task_id?: string; dispatcher: string; enabled: boolean };
     expect(cfg.jobs.map((j: Job) => [j.job_key, j.cron_local])).toEqual(OPS_SCHEDULE.map((e) => [e.jobKey, e.cronLocal]));
-    expect(cfg.dispatcher).toBe("claude_code_cloud_routines");
-    expect(new Set(cfg.jobs.map((j: Job) => j.routine_id)).size).toBe(6);
+    expect(cfg.dispatcher).toBe("hybrid");
+    // Każde zadanie ma dokładnie jeden dispatcher: albo lokalne zadanie zaplanowane, albo rutynę chmurową (nigdy oba).
+    for (const j of cfg.jobs as Job[]) expect(!!j.scheduled_task_id !== !!j.routine_id, j.job_key).toBe(true);
+    expect((cfg.jobs as Job[]).filter((j) => j.scheduled_task_id).map((j) => j.job_key).sort()).toEqual(["zoo24-ops-build", "zoo24-ops-content", "zoo24-ops-seo"]);
     // cron_utc musi trafiać w ten sam slot co cron_local w tygodniu zimowym (CET)
     const from = new Date("2026-11-30T00:00:00Z"), to = new Date("2026-12-07T00:00:00Z");
     for (const j of cfg.jobs as Job[]) {
