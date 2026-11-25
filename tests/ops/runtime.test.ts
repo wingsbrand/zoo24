@@ -85,12 +85,14 @@ describe("R10/R11 harmonogram Europe/Warsaw", () => {
     expect(r.missedSlotsNotCaughtUp).toBeGreaterThan(20);
     expect(store.read().ops.jobs).toHaveLength(1);
   });
-  it("ops/config/schedule.json: zgodny z OPS_SCHEDULE, jeden dispatcher (zadania chmurowe), cron UTC = czas lokalny zimą, usługi publikacji wyłączone", () => {
+  it("ops/config/schedule.json: zgodny z OPS_SCHEDULE, jeden dispatcher na zadanie (lokalne live dla content/build/seo, chmura shadow dla reszty), cron UTC = czas lokalny zimą, usługi publikacji wyłączone", () => {
     const cfg = JSON.parse(fs.readFileSync(path.join(process.cwd(), "ops", "config", "schedule.json"), "utf8"));
-    type Job = { job_key: string; cron_local: string; cron_utc: string; routine_id: string; enabled: boolean };
+    type Job = { job_key: string; cron_local: string; cron_utc: string; routine_id?: string; scheduled_task_id?: string; dispatcher: string; enabled: boolean };
     expect(cfg.jobs.map((j: Job) => [j.job_key, j.cron_local])).toEqual(OPS_SCHEDULE.map((e) => [e.jobKey, e.cronLocal]));
-    expect(cfg.dispatcher).toBe("claude_code_cloud_routines");
-    expect(new Set(cfg.jobs.map((j: Job) => j.routine_id)).size).toBe(6);
+    expect(cfg.dispatcher).toBe("hybrid");
+    // Każde zadanie ma dokładnie jeden dispatcher: albo lokalne zadanie zaplanowane, albo rutynę chmurową (nigdy oba).
+    for (const j of cfg.jobs as Job[]) expect(!!j.scheduled_task_id !== !!j.routine_id, j.job_key).toBe(true);
+    expect((cfg.jobs as Job[]).filter((j) => j.scheduled_task_id).map((j) => j.job_key).sort()).toEqual(["zoo24-ops-build", "zoo24-ops-content", "zoo24-ops-seo"]);
     // cron_utc musi trafiać w ten sam slot co cron_local w tygodniu zimowym (CET)
     const from = new Date("2026-11-30T00:00:00Z"), to = new Date("2026-12-07T00:00:00Z");
     for (const j of cfg.jobs as Job[]) {
@@ -141,7 +143,8 @@ describe("R08/R09 pauza", () => {
 });
 
 describe("P04 polityka chroniona", () => {
-  it("agent nie może zapisać polityki ani podnieść budżetu; polityka w repo podpisana live_scoped wyłącznie dla CMS", () => {
+  it("agent nie może zapisać polityki ani podnieść budżetu; polityka w repo podpisana live_scoped v4 (CMS, build, SEO, social po podłączeniu Meta)", () => {
+    fs.mkdirSync(path.join(process.cwd(), ".data"), { recursive: true });
     const dir = fs.mkdtempSync(path.join(process.cwd(), ".data", "policy-test-"));
     try {
       const p = testPolicy("live_scoped");
@@ -153,19 +156,23 @@ describe("P04 polityka chroniona", () => {
       expect(() => writePolicy(dir, "owner", p, { ownerConfirmed: true })).toThrow("BUDGET_CHANGE_REQUIRES_OWNER_SIGNATURE");
       expect(fs.existsSync(path.join(dir, "ops", "config", "activation.json"))).toBe(false);
     } finally { fs.rmSync(dir, { recursive: true, force: true }); }
-    // Polityka w repo: po starcie HTTPS (2026-11-23) live_scoped wyłącznie dla publikacji zatwierdzonych artykułów (CMS).
+    // Polityka w repo v4 (decyzja właściciela 2026-11-25): live_scoped dla CMS, wdrożeń kodu, poprawek SEO i social.
     const repo = loadPolicy()!;
-    expect(repo.status).toBe("LIVE_SCOPED_CMS_AI_EDITOR");
+    expect(repo.status).toBe("LIVE_SCOPED_OPS_V4");
     expect(isPolicyApproved(repo)).toBe(true);
     expect(repo.mode).toBe("live_scoped");
     expect(repo.review.ai_editor_excluded_categories).toEqual(expect.arrayContaining(["welfare", "nutrition", "environment", "transport"]));
-    expect(Object.entries(repo.autonomy).filter(([, v]) => v).map(([k]) => k).sort()).toEqual(["create_drafts", "publish_human_reviewed_content", "read_approved_sources"]);
+    expect(Object.entries(repo.autonomy).filter(([, v]) => v).map(([k]) => k).sort()).toEqual(["apply_low_risk_seo_patch", "auto_deploy_low_risk_code", "create_drafts", "publish_human_reviewed_content", "publish_reviewed_social_versions", "read_approved_sources"]);
+    // Nadal wyłączone: e-mail, DM, reklamy, FAQ, zmiana konfiguracji chronionej.
+    for (const k of ["send_email_campaigns", "send_private_messages", "activate_paid_ads", "reply_exact_public_faq", "change_protected_configuration"] as const) expect(repo.autonomy[k], k).toBe(false);
     expect(repo.review.ai_editor_allowed).toBe(true);
     expect(repo.review.ai_editor_excluded_categories).toEqual(expect.arrayContaining(["health", "legal", "sponsored"]));
     expect(repo.budgets.paid_advertising_monthly).toBe(0);
     expect(repo.budgets.approved_monthly_extra_ai_automation).toBe(0); // tylko w limicie subskrypcji
     expect(effectiveMode(repo, "design")).toBe("live_scoped");
-    expect(repo.autonomy.publish_reviewed_social_versions).toBe(false); // social nadal wyłączone
+    // Social: dozwolone, ale bez ID strony/konta Meta gateway nie ma zasobu docelowego (blokada do D-03/D-11).
+    expect(repo.resources.facebook_page_id).toBeNull();
+    expect(repo.resources.instagram_account_id).toBeNull();
     expect(effectiveMode(repo, "paused")).toBe("paused");
     expect(isAgentIdentity("owner-local")).toBe(false);
   });

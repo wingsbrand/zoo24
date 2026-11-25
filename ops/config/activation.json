@@ -1,20 +1,20 @@
 {
   "schema_version": "zoo24.ops.policy.v1",
-  "status": "LIVE_SCOPED_CMS_AI_EDITOR",
+  "status": "LIVE_SCOPED_OPS_V4",
   "mode": "live_scoped",
   "enabled": true,
   "timezone": "Europe/Warsaw",
   "owner_approval": {
     "approved": true,
     "approved_by": "owner",
-    "approved_at": "2026-11-23T00:18:20.926Z",
-    "policy_hash": "3caa2a5590ad8ae3476395fdffee1a3b0d084685f3e982579dbe4111a8a66044",
+    "approved_at": "2026-11-25T06:46:25.381Z",
+    "policy_hash": "21a407a9c7c64d97e39b5e1d1c9400ad90a8567dfac4e19fe8bf24abb3aec969",
     "review_due_at": null
   },
   "resources": {
     "site_origin": "https://zoo24.pl",
-    "repository": null,
-    "production_environment_id": null,
+    "repository": "wingsbrand/zoo24",
+    "production_environment_id": "prj_O1SAXRLczmw1xaVvNtNYMj2BgK1E",
     "cms_project_id": null,
     "gsc_property": null,
     "ga4_property_id": null,
@@ -26,8 +26,8 @@
     "site_origin": "domena potwierdzona (docs/audits/asset-rights-status.md); serwis offline, DNS nietknięty",
     "repository": "folder projektu nie jest repozytorium git — warunek cloud runtime i flow branch/PR",
     "ga4_property_id": "property odczytywane przez Windsor.ai; ID do potwierdzenia przez właściciela (nie zgadujemy)",
-    "facebook_page_id": "strona ZOO24.PL odczytana przez Windsor.ai (agregaty); ID i uprawnienia publikacji do potwierdzenia",
-    "instagram_account_id": "konektor IG niepodłączony",
+    "facebook_page_id": "Profil https://www.facebook.com/zoo24pl/ — ID strony i uprawnienia Meta jeszcze niepodłączone (D-03/D-11); bez ID gateway blokuje publikację social.",
+    "instagram_account_id": "Profil https://www.instagram.com/zoo24.pl/ — konto niepodłączone (D-03/D-11).",
     "gsc_property": "do założenia po uruchomieniu serwera (decyzja właściciela)"
   },
   "runtime": {
@@ -63,9 +63,9 @@
     "read_approved_sources": true,
     "create_drafts": true,
     "publish_human_reviewed_content": true,
-    "publish_reviewed_social_versions": false,
-    "apply_low_risk_seo_patch": false,
-    "auto_deploy_low_risk_code": false,
+    "publish_reviewed_social_versions": true,
+    "apply_low_risk_seo_patch": true,
+    "auto_deploy_low_risk_code": true,
     "reply_exact_public_faq": false,
     "send_email_campaigns": false,
     "send_private_messages": false,
@@ -73,15 +73,15 @@
     "change_protected_configuration": false
   },
   "caps": {
-    "new_articles_per_week": 2,
-    "article_updates_per_week": 2,
+    "new_articles_per_week": 4,
+    "article_updates_per_week": 4,
     "facebook_posts_per_week": 3,
     "instagram_posts_per_week": 3,
     "social_min_gap_hours": 24,
     "active_growth_experiments": 2,
     "seo_changed_urls_per_week": 5,
     "seo_experiment_cooldown_days_per_url": 28,
-    "low_risk_deployments_per_day": 1,
+    "low_risk_deployments_per_day": 2,
     "sources_per_knowledge_run": 10,
     "automatic_faq_replies_per_thread": 1
   },
@@ -137,26 +137,29 @@
     "cancel_provider_schedules": true,
     "unknown_cancel_state": "partially_paused"
   },
-  "notes": "Polityka v3 ZOO24: live_scoped wyłącznie dla publikacji artykułów zaakceptowanych przez redaktora-AI (cms) na https://zoo24.pl. Social, SEO, deploy, FAQ, e-mail/DM, reklamy — wyłączone. Koszt tylko w ramach subskrypcji. Każda zmiana pliku unieważnia podpis. Role zoo24-ops-* nie mogą zapisywać tego pliku.",
+  "notes": "Polityka v4 ZOO24 (2026-11-25): live_scoped dla publikacji artykułów (cms), wdrażania małych zmian kodu (build), małych poprawek SEO (seo) i publikacji zatwierdzonych postów (social — po podłączeniu Meta). E-mail/DM, reklamy, DNS, billing — wyłączone. Koszt tylko w ramach subskrypcji. Każda zmiana pliku unieważnia podpis. Role zoo24-ops-* nie mogą zapisywać tego pliku.",
   "scope": {
-    "name": "live_cms_ai_editor",
+    "name": "live_ops_v4",
     "pilot_days": 0,
     "allowed": [
       "odczyt stanu i agregatów",
       "szkice i redakcja artykułów/postów",
       "akceptacja treści przez redaktora-AI poza kategoriami wrażliwymi",
-      "publikacja zaakceptowanych artykułów — dopiero na serwisie live, przez gateway",
-      "karty faktów, kalendarz 14 dni, propozycje SEO, raport tygodniowy",
-      "publikacja artykułów zaakceptowanych przez redaktora-AI przez gateway na https://zoo24.pl"
+      "publikacja zaakceptowanych artykułów przez gateway na https://zoo24.pl (również nowe artykuły klasy standard, limit caps.new_articles_per_week)",
+      "build: wdrażanie małych zmian kodu na produkcję (gałąź -> testy, typecheck, build, skan sekretów -> preview -> merge do main), z rollbackiem przy błędzie (limit caps.low_risk_deployments_per_day)",
+      "seo: małe poprawki (meta, linki wewnętrzne, dane strukturalne, sitemap) i przekierowania wyłącznie z zatwierdzonej mapy (limit caps.seo_changed_urls_per_week)",
+      "social: publikacja zatwierdzonych postów FB/IG przez gateway — dopiero po podłączeniu konta Meta i ID w resources",
+      "karty faktów, kalendarz, raport dzienny i tygodniowy"
     ],
     "forbidden": [
-      "deploy produkcji i zmiana DNS bez osobnej zgody",
-      "publikacja na FB/IG (brak dostępu Meta; osobna zgoda)",
-      "treści zdrowotne/prawne/sponsorowane/ceny bez człowieka",
-      "e-mail/DM",
-      "wydatki ponad subskrypcję",
+      "zmiana DNS, domen, płatności, billingu i sekretów",
+      "masowe przekierowania, przekierowania spoza zatwierdzonej mapy, hurtowe zdejmowanie noindex",
+      "treści zdrowotne/prawne/sponsorowane/ceny oraz welfare/żywienie/środowisko/transport bez przeglądu człowieka",
+      "e-mail, DM, outreach i niezamówiona informacja handlowa",
+      "reklamy płatne i wydatki ponad subskrypcję",
+      "automatyczne odpowiedzi na skargi, reklamacje i prywatne wiadomości",
       "zmiana tej polityki przez agentów"
     ],
-    "approval_evidence": "właściciel w czacie Claude Code 2026-11-22: „możesz samodzielnie redagować, bez pilota. Ja będę sprawdzał już na wersji live. limit kosztów AI - róbmy tak aby mieścić się w limicie mojego konta.” | start serwisu: właściciel „GO” (czat orkiestratora 2026-11-22); publikacja artykułów: właściciel „Yes, publish when ready” (sesja zoo24-ops 2026-11-22) oraz „zacznijmy narazie od artykułów SEO pisanych przez Claude” (czat orkiestratora 2026-11-22; tylko klasa standard)."
+    "approval_evidence": "właściciel w czacie Claude Code 2026-11-25: „czemu agenci działają w trybie shadow? powinni pracować na wersji produkcyjnej i wdrażać realne zmiany w serwisie” + wybór w ankiecie: „Wdrażanie kodu (Rekom.), Poprawki SEO (Rekom.), Nowe artykuły standard, Publikacja social”. Wcześniej: „GO” (2026-11-22), „Yes, publish when ready”, „zacznijmy narazie od artykułów SEO pisanych przez Claude”."
   }
 }

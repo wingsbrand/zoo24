@@ -96,3 +96,15 @@ Status: Zaakceptowane (właściciel).
 - **Wdrożenie:** `SHOW_AI_IMAGE_BADGE = false` (components/ui/ai-badge.tsx) — plakietka „Ilustracja AI” zniknęła ze wszystkich obrazów (strona główna, nagłówki, okładki artykułów). 29 nowych ilustracji do artykułów (rejestr: docs/brand/ai-images.md).
 - **Granice:** regulamin i zasady redakcyjne nadal mówią ogólnie, że część ilustracji wygenerowano z użyciem AI i że nie przedstawiają rzeczywistych osób, firm ani konkretnych zwierząt (bez tego zdjęcia „salonu” lub „właścicielki salonu” mogłyby uchodzić za dokumentację). Rejestr pochodzenia zachowany; nie usuwamy metadanych plików. Ilustracji nie używamy jako zdjęć firm z katalogu.
 - **Ryzyko zgłoszone właścicielowi:** art. 50 AI Act (obrazy realistyczne). Odwracalne jedną flagą.
+
+## ADR-017 — 2026-11-25 — Polityka v4: agenci pracują na produkcji (decyzja właściciela)
+- **Decyzja właściciela (czat + ankieta):** „czemu agenci działają w trybie shadow? powinni pracować na wersji produkcyjnej i wdrażać realne zmiany w serwisie” — zaznaczone: wdrażanie kodu, poprawki SEO, nowe artykuły standard, publikacja social.
+- **Wdrożenie:** `ops/config/activation.json` → `LIVE_SCOPED_OPS_V4`, podpis `21a407a9…`. Autonomia: `auto_deploy_low_risk_code`, `apply_low_risk_seo_patch`, `publish_reviewed_social_versions`, `publish_human_reviewed_content` = true. Limity: 4 nowe artykuły/tydz., 4 aktualizacje/tydz., 2 wdrożenia/dzień, 5 URL SEO/tydz., social 3+3 posty/tydz. Zasoby: repo `wingsbrand/zoo24`, projekt Vercel.
+- **Granice bez zmian:** DNS/domeny/billing/sekrety, e-mail/DM/outreach, reklamy, treści welfare/zdrowie/prawo bez człowieka, przekierowania spoza zatwierdzonej mapy, zmiana polityki przez agentów. Social technicznie zablokowany, dopóki brak ID strony FB / konta IG (D-03/D-11).
+- **Uwaga wykonawcza:** polityka nie uruchamia agentów — potrzebne są harmonogramy (zadania zaplanowane) z limitami, kontrolą duplikatów i raportem; konfiguruje je sesja operacyjna.
+
+## ADR-018 — 2026-11-25 — Dispatcher hybrydowy: content/build/seo jako lokalne zadania live
+- Po potwierdzeniu właściciela w sesji operacyjnej („Tak, utwórz”) role content (pn/śr/pt 09:00), build (pn–pt 08:00) i seo (pn–pt 07:30) działają jako lokalne zadania zaplanowane Claude Desktop (`zoo24-ops-*-live`), każde we własnym git worktree, w limitach polityki v4. Odpowiadające im rutyny chmurowe wyłączone (jeden dispatcher na zadanie).
+- knowledge, social, growth — rutyny chmurowe w trybie shadow. Raport dzienny 18:00 (`zoo24-raport-dzienny-agentow`).
+- Ograniczenie: zadania lokalne działają tylko przy włączonym laptopie i otwartej aplikacji; przegapiony slot nie jest nadrabiany.
+- `ops/config/schedule.json`: `dispatcher: hybrid`, per zadanie `scheduled_task_id` albo `routine_id` (test pilnuje wyłączności).
