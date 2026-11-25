@@ -1,0 +1,40 @@
+{
+  "schema_version": "zoo24.ops.job-result.v1",
+  "job_id": "ops-build-20261125-localbusiness",
+  "role": "zoo24-ops-build",
+  "mode": "live_scoped",
+  "policy_version": "LIVE_SCOPED_OPS_V4",
+  "status": "succeeded",
+  "reason": "BACKLOG_V4 poz. 3 (A08/A15): LocalBusiness JSON-LD + indywidualne opisy meta profili firm wdrożone na produkcję",
+  "artifacts": [
+    { "type": "commit", "ref": "369ab92", "branch": "main", "note": "[ops-build] Profile firm: LocalBusiness JSON-LD + indywidualny opis meta (A08/A15)" },
+    { "type": "file", "ref": "lib/seo/business-seo.ts" },
+    { "type": "file", "ref": "app/firma/[slug]/page.tsx" },
+    { "type": "file", "ref": "tests/seo/business-seo.test.ts" },
+    { "type": "url", "ref": "https://zoo24.pl/firma/kudlate-historie-r02" }
+  ],
+  "checks": [
+    { "name": "npm run check (typecheck+vitest 379+scan:secrets)", "result": "pass" },
+    { "name": "next build", "result": "pass" },
+    { "name": "Vercel preview dpl_2e2NFfbVzns5YW4qVfD4zDQswpPh", "result": "READY; HTML preview nie odczytany, HTML zweryfikowano lokalnie (next start) i na produkcji" },
+    { "name": "https://zoo24.pl/", "http": 200 },
+    { "name": "https://zoo24.pl/sitemap.xml", "http": 200 },
+    { "name": "https://zoo24.pl/robots.txt", "http": 200 },
+    { "name": "https://zoo24.pl/firma/kudlate-historie-r02", "http": 200, "note": "w HTML: LocalBusiness JSON-LD + indywidualny meta description" },
+    { "name": "https://zoo24.pl/uslugi/groomer/krakow", "http": 200 }
+  ],
+  "external_actions": [],
+  "metrics": [],
+  "cost": { "value": null, "currency": null, "status": "unknown" },
+  "notes": [
+    "Limit wdrożeń dziś: 2 z 2 (z [ops-build] testy 07:53).",
+    "JSON-LD tylko dla profili opublikowanych, nie-DEMO, z checkedAt; bez adresu, telefonu, ocen, godzin; sameAs tylko https.",
+    "scripts/smoke-http.mjs przeznaczony dla lokalnego dev — nie użyty."
+  ],
+  "next_tasks": [
+    "Poz. 4: pomiar zdarzeń narzędzi, wyszukiwań bez wyników, kontrola /api/out",
+    "Poz. 6: pomiar wydajności",
+    "Zaktualizować wiersz A08/A15 w docs/BACKLOG_V4.md"
+  ],
+  "human_decisions_required": []
+}
