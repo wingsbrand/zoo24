@@ -144,6 +144,7 @@ describe("R08/R09 pauza", () => {
 
 describe("P04 polityka chroniona", () => {
   it("agent nie może zapisać polityki ani podnieść budżetu; polityka w repo podpisana live_scoped v4 (CMS, build, SEO, social po podłączeniu Meta)", () => {
+    fs.mkdirSync(path.join(process.cwd(), ".data"), { recursive: true });
     const dir = fs.mkdtempSync(path.join(process.cwd(), ".data", "policy-test-"));
     try {
       const p = testPolicy("live_scoped");
