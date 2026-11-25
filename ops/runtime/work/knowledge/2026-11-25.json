@@ -1,0 +1,59 @@
+{
+  "schema_version": "zoo24.ops.job-result.v1",
+  "job_id": null,
+  "role": "knowledge",
+  "mode": "shadow",
+  "policy_version": "unsigned (shadow)",
+  "status": "success",
+  "reason": null,
+  "artifacts": [
+    {
+      "id": "evidence-2026-11-25",
+      "type": "evidence_bundle",
+      "version": "1",
+      "path": "ops/runtime/work/knowledge/evidence/evidence-2026-11-25.json",
+      "note": "32 kart candidate: jamnik, shiba, shih-tzu, westie; weryfikacja agenta, nie human review"
+    }
+  ],
+  "checks": [
+    {
+      "name": "sources_fetched",
+      "status": "pass",
+      "detail": "8/8 (4 PDF FCI, 4 strony nomenklatury)"
+    },
+    {
+      "name": "source_limit",
+      "status": "pass",
+      "detail": "8 ≤ 10"
+    },
+    {
+      "name": "card_status_candidate_only",
+      "status": "pass",
+      "detail": "wszystkie candidate"
+    },
+    {
+      "name": "no_external_writes",
+      "status": "pass",
+      "detail": "tylko GET źródeł"
+    }
+  ],
+  "external_actions": [],
+  "metrics": [],
+  "cost": {
+    "value": null,
+    "currency": null,
+    "status": "unknown"
+  },
+  "findings": [
+    "31/32 kart confirmed, 1 partial (jamnik #4: opis pomiaru obwodu klatki w PDF nieprecyzyjny).",
+    "Westie: literówka w artykule „kopiować” zamiast „kupirować” (ogon) — do poprawki.",
+    "Wszystkie 4 artykuły to kategorie standardowe; fakty zgodne ze standardami FCI. Fragmenty o pielęgnacji/zdrowiu wymagają człowieka (ADR-013).",
+    "Licencja cytowania FCI nadal unknown."
+  ],
+  "next_tasks": [
+    "Karty FIFe dla kotów: bengalski, syberyjski, syjamski, maine coon, ragdoll.",
+    "Cardigan 038 oraz RSPCA (3 strony) dla twierdzeń wspólnych.",
+    "ZKwP/fci.be members, gdy limit i proxy pozwolą."
+  ],
+  "human_decisions_required": []
+}
