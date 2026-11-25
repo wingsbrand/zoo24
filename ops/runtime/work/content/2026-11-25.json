@@ -1,0 +1,25 @@
+﻿{
+  "schema_version": "zoo24.ops.job-result.v1",
+  "job_id": "content-live-2026-11-25",
+  "role": "zoo24-ops-content",
+  "mode": "live_scoped",
+  "policy_version": "LIVE_SCOPED_OPS_V4",
+  "status": "blocked",
+  "reason": "pause_global_true_and_weekly_cap_exhausted",
+  "artifacts": [],
+  "checks": [
+    {"name": "activation.json status/mode/enabled", "result": "pass", "note": "LIVE_SCOPED_OPS_V4, live_scoped, enabled=true (origin/main)"},
+    {"name": "pause.global", "result": "fail", "note": "pause.global == true w ops/config/activation.json na origin/main"},
+    {"name": "limit nowych artykułów 7 dni", "result": "fail", "note": "20 nowych plików content/blog w ostatnich 7 dniach (git log --diff-filter=A) vs caps.new_articles_per_week = 4"}
+  ],
+  "external_actions": [],
+  "metrics": [],
+  "cost": {"value": null, "currency": null, "status": "unknown"},
+  "next_tasks": [
+    "Ponowić po zdjęciu pauzy i gdy okno 7 dni zmieści się w limicie (pierwsze z 20 nowych artykułów wypadnie z okna ok. 2026-11-30)"
+  ],
+  "human_decisions_required": [
+    "Potwierdzić, czy pause.global=true jest zamierzone; agenci nie edytują ops/config/*",
+    "Zdecydować, czy 20 artykułów z 2026-11-23 miało być jednorazową partią poza limitem 4/tydz. (caps.new_articles_per_week)"
+  ]
+}
