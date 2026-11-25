@@ -1,0 +1,166 @@
+{
+ "schema": "zoo24.social.drafts-refresh.v2",
+ "mode": "shadow",
+ "generated": "2026-11-25",
+ "source": "docs/social/paczka-01.json (p01-08..p01-12) - uzupełnienie calendar-14d-refresh-2026-11-24.json (p01-01..07)",
+ "period": {
+  "start": "2026-12-16",
+  "end": "2026-12-28"
+ },
+ "items": [
+  {
+   "id": "p01-08",
+   "date_time_warsaw": "2026-12-16 18:30 Europe/Warsaw",
+   "platform": "instagram",
+   "format": "karuzela",
+   "topic": "Checklista: opieka nad ptakiem na czas wyjazdu",
+   "cta": "Link w bio",
+   "cta_mode": "link w bio",
+   "link": "https://zoo24.pl/poradniki/ptaki-opieka-na-czas-wyjazdu?utm_source=instagram&utm_medium=organic_social&utm_campaign=paczka01&utm_content=p01-08",
+   "utm_valid": true,
+   "copy": "Ptak zostaje w domu, a Ty wyjeżdżasz? Zapisz, o czym pamiętać.\n\nNa planszach: kogo wybrać, jak często opiekun powinien przychodzić i co zostawić na wypadek nagłej sytuacji. Każdy punkt ma źródło - RSPCA albo artykuł lekarki weterynarii Laurie Hess (Vetstreet).\n\nGatunki ptaków mają różne potrzeby, więc szczegóły ustal pod swojego ptaka.\n\nPoradnik: link w bio.\n\n#ptaki #papuga #opiekanadptakiem #zoo24",
+   "alt_text": "Karuzela pięciu plansz typograficznych: opiekun w domu zwykle sprawdza się najlepiej; wizyty codziennie, także w weekendy, z karmieniem i sprzątaniem; dane lekarza weterynarii i całodobowej lecznicy oraz pisemne upoważnienie; ptak poza zasięgiem wzroku i słuchu psów i kotów; znajome przedmioty.",
+   "asset_id": null,
+   "asset_license": "unknown - brak pliku i wpisu w asset-register",
+   "ai_label": "nie wymagana (ADR-015/016); asset typograficzny własny, prawa do logo do potwierdzenia",
+   "source_refs": [
+    "https://zoo24.pl/poradniki/ptaki-opieka-na-czas-wyjazdu",
+    "https://www.rspca.org.uk/adviceandwelfare/pets/general/holiday/leavingyourpet",
+    "https://www.rspca.org.uk/adviceandwelfare/pets/birds",
+    "https://www.vetstreet.com/our-pet-experts/bird-boarding-or-babysitting-what-every-pet-owner-should-ask"
+   ],
+   "gates": {
+    "A1_live_200": "N/A - runtime bez sieci (curl 000); sprawdzić w dniu publikacji",
+    "A2_copy_review": "open",
+    "A3_asset_rights": "open",
+    "A4_meta_access": "blocked (facebook_page_id/instagram_account_id=null)"
+   },
+   "status": "draft",
+   "scheduled_at_provider": null,
+   "note": "Redaktor potwierdza, że Laurie Hess jest lekarką weterynarii (autorka wskazana w źródle poradnika) - jeśli nie, usunąć określenie zawodu."
+  },
+  {
+   "id": "p01-09",
+   "date_time_warsaw": "2026-12-18 18:00 Europe/Warsaw",
+   "platform": "facebook",
+   "format": "post",
+   "topic": "Narzedzie: kalkulator objetosci akwarium",
+   "cta": "Policz objętość",
+   "cta_mode": "link w poście",
+   "link": "https://zoo24.pl/narzedzia/kalkulator-akwarium?utm_source=facebook&utm_medium=organic_social&utm_campaign=paczka01&utm_content=p01-09",
+   "utm_valid": true,
+   "copy": "„Akwarium 65 l” nie zawsze mieści 65 litrów wody.\n\nPrzykład z naszego poradnika: zbiornik o wymiarach zewnętrznych 60 × 30 × 36 cm to 64,8 l „brutto”. Po odjęciu szyb o grubości 6 mm i przy wodzie 3 cm poniżej krawędzi zostaje ok. 54,9 l. Podłoże i dekoracje zmniejszają tę ilość jeszcze bardziej.\n\nKalkulator ZOO24 liczy to za Was: prostopadłościan lub walec, centymetry lub cale, wymiary wewnętrzne albo zewnętrzne z grubością szkła, poziom wody i szacunek miejsca zajętego przez wystrój. Wymiary nie są wysyłane do ZOO24.\n\nWażne: objętość nie mówi, ile ryb zmieści się w zbiorniku. RSPCA podkreśla, że przeliczniki objętości na ryby są tylko orientacyjne.\n\nKalkulator: https://zoo24.pl/narzedzia/kalkulator-akwarium?utm_source=facebook&utm_medium=organic_social&utm_campaign=paczka01&utm_content=p01-09",
+   "alt_text": "Schemat akwarium z zaznaczonymi wymiarami zewnętrznymi 60 na 30 na 36 cm, grubością szyby i poziomem wody poniżej krawędzi. Napisy: 64,8 litra brutto, około 54,9 litra wody.",
+   "asset_id": null,
+   "asset_license": "unknown - brak pliku i wpisu w asset-register",
+   "ai_label": "nie wymagana (ADR-015/016); asset typograficzny własny, prawa do logo do potwierdzenia",
+   "source_refs": [
+    "https://zoo24.pl/poradniki/akwarium-objetosc-nominalna-a-rzeczywista",
+    "https://zoo24.pl/narzedzia/kalkulator-akwarium",
+    "https://www.msdvetmanual.com/multimedia/table/formulae-to-calculate-tank-volumes",
+    "https://www.rspca.org.uk/adviceandwelfare/pets/fish/environment"
+   ],
+   "gates": {
+    "A1_live_200": "N/A - runtime bez sieci (curl 000); sprawdzić w dniu publikacji",
+    "A2_copy_review": "open",
+    "A3_asset_rights": "open",
+    "A4_meta_access": "blocked (facebook_page_id/instagram_account_id=null)"
+   },
+   "status": "draft",
+   "scheduled_at_provider": null,
+   "note": "Liczby to arytmetyka przykładu, nie zalecenia hodowlane/żywieniowe. Silnik polityki: /narzedzia/* -> TARGET_NOT_PUBLISHED do czasu poprawki."
+  },
+  {
+   "id": "p01-10",
+   "date_time_warsaw": "2026-12-21 18:30 Europe/Warsaw",
+   "platform": "instagram",
+   "format": "reels-scenariusz",
+   "topic": "Reels: dlaczego akwarium ma mniej wody niz w opisie",
+   "cta": "Link w bio",
+   "cta_mode": "link w bio",
+   "link": "https://zoo24.pl/narzedzia/kalkulator-akwarium?utm_source=instagram&utm_medium=organic_social&utm_campaign=paczka01&utm_content=p01-10",
+   "utm_valid": true,
+   "copy": "Trzy powody, dla których w akwarium jest mniej wody, niż mówi opis:\n\n1. Szyby mają grubość, więc wnętrze jest mniejsze niż wymiary zewnętrzne.\n2. Wody nie nalewa się do samej krawędzi.\n3. Podłoże, kamienie i korzenie zajmują część miejsca.\n\nW nagraniu liczymy to w kalkulatorze ZOO24. Wynik jest orientacyjny i nie mówi, ile ryb zmieści się w zbiorniku.\n\nKalkulator: link w bio.\n\n#akwarystyka #akwarium #zoo24",
+   "alt_text": "Nagranie ekranu telefonu z kalkulatorem akwarium na zoo24.pl: wybór wymiarów zewnętrznych, wpisanie grubości szkła i poziomu wody, wynik w litrach. Napisy wymieniają trzy powody mniejszej ilości wody.",
+   "asset_id": null,
+   "asset_license": "unknown - brak pliku i wpisu w asset-register",
+   "ai_label": "nie wymagana (ADR-015/016); asset typograficzny własny, prawa do logo do potwierdzenia",
+   "source_refs": [
+    "https://zoo24.pl/poradniki/akwarium-objetosc-nominalna-a-rzeczywista",
+    "https://zoo24.pl/narzedzia/kalkulator-akwarium",
+    "https://www.rspca.org.uk/adviceandwelfare/pets/fish/environment"
+   ],
+   "gates": {
+    "A1_live_200": "N/A - runtime bez sieci (curl 000); sprawdzić w dniu publikacji",
+    "A2_copy_review": "open",
+    "A3_asset_rights": "open",
+    "A4_meta_access": "blocked (facebook_page_id/instagram_account_id=null)"
+   },
+   "status": "draft",
+   "scheduled_at_provider": null,
+   "note": "Silnik polityki: /narzedzia/* -> TARGET_NOT_PUBLISHED do czasu poprawki."
+  },
+  {
+   "id": "p01-11",
+   "date_time_warsaw": "2026-12-23 12:00 Europe/Warsaw",
+   "platform": "facebook",
+   "format": "post",
+   "topic": "Dzial Koty: kot zostaje w domu czy idzie do hotelu",
+   "cta": "Zobacz dział Koty",
+   "cta_mode": "link w poście",
+   "link": "https://zoo24.pl/zwierzeta/koty?utm_source=facebook&utm_medium=organic_social&utm_campaign=paczka01&utm_content=p01-11",
+   "utm_valid": true,
+   "copy": "Kot na święta: zostaje w domu czy jedzie do hotelu?\n\nCats Protection wskazuje, że koty mocno przywiązane do domu albo nerwowe zwykle najlepiej czują się u siebie, z zaufanym opiekunem. Koty, które dobrze znoszą obcych, mogą skorzystać ze starannie wybranego hotelu.\n\nW dziale Koty na zoo24.pl zebraliśmy w jednym miejscu poradnik o tym, co przekazać opiekunowi, listę do wydruku na czas wyjazdu i opisy ras kotów.\n\nDział Koty: https://zoo24.pl/zwierzeta/koty?utm_source=facebook&utm_medium=organic_social&utm_campaign=paczka01&utm_content=p01-11",
+   "alt_text": "Grafika z dwiema kolumnami: Zostaje w domu - koty przywiązane do domu lub nerwowe; Hotel - koty dobrze znoszące obcych, po starannym wyborze miejsca. Źródło: Cats Protection.",
+   "asset_id": null,
+   "asset_license": "unknown - brak pliku i wpisu w asset-register",
+   "ai_label": "nie wymagana (ADR-015/016); asset typograficzny własny, prawa do logo do potwierdzenia",
+   "source_refs": [
+    "https://zoo24.pl/zwierzeta/koty",
+    "https://zoo24.pl/poradniki/informacje-dla-opiekuna-kota",
+    "https://www.cats.org.uk/help-and-advice/home-and-environment/going-on-holiday"
+   ],
+   "gates": {
+    "A1_live_200": "N/A - runtime bez sieci (curl 000); sprawdzić w dniu publikacji",
+    "A2_copy_review": "open",
+    "A3_asset_rights": "open",
+    "A4_meta_access": "blocked (facebook_page_id/instagram_account_id=null)"
+   },
+   "status": "draft",
+   "scheduled_at_provider": null,
+   "note": "Nie przytaczamy twierdzeń z artykułów o rasach (/blog/*): mają akceptację wyłącznie redaktora-AI i część zdań bez przypisanego źródła. Silnik polityki: /zwierzeta/* -> TARGET_NOT_PUBLISHED do czasu poprawki."
+  },
+  {
+   "id": "p01-12",
+   "date_time_warsaw": "2026-12-28 18:30 Europe/Warsaw",
+   "platform": "instagram",
+   "format": "karuzela",
+   "topic": "Checklista: co sprawdzic przed zakupem wyposazenia dla gada",
+   "cta": "Link w bio",
+   "cta_mode": "link w bio",
+   "link": "https://zoo24.pl/poradniki/gady-wymagania-gatunku-przed-zakupem-wyposazenia?utm_source=instagram&utm_medium=organic_social&utm_campaign=paczka01&utm_content=p01-12",
+   "utm_valid": true,
+   "copy": "Myślisz o gadzie? Zanim kupisz terrarium i lampy, sprawdź te punkty.\n\nNa planszach: wymagania konkretnego gatunku, miejsce na terrarium dorosłego zwierzęcia, długość życia, dostęp do lekarza weterynarii znającego gady i ewentualne zezwolenia.\n\nPrzykład z RSPCA: gekon lamparci może żyć do 20 lat.\n\nRSPCA ostrzega też, że rzetelne informacje bywają trudne do znalezienia, a dane od sprzedawców mogą być niedokładne - dlatego w poradniku podajemy źródła.\n\nPoradnik: link w bio.\n\n#gady #terrarystyka #gekonlamparci #zoo24",
+   "alt_text": "Karuzela pięciu plansz typograficznych: poznaj wymagania gatunku; zmierz miejsce na terrarium dorosłego gada; policz lata opieki - gekon lamparci może żyć do 20 lat; znajdź lekarza weterynarii znającego gady; sprawdź, czy gatunek wymaga zezwolenia.",
+   "asset_id": null,
+   "asset_license": "unknown - brak pliku i wpisu w asset-register",
+   "ai_label": "nie wymagana (ADR-015/016); asset typograficzny własny, prawa do logo do potwierdzenia",
+   "source_refs": [
+    "https://zoo24.pl/poradniki/gady-wymagania-gatunku-przed-zakupem-wyposazenia",
+    "https://www.rspca.org.uk/adviceandwelfare/pets/other",
+    "https://www.rspca.org.uk/adviceandwelfare/pets/other/concerns",
+    "https://www.rspca.org.uk/adviceandwelfare/pets/other/leopardgecko",
+    "https://www.msdvetmanual.com/all-other-pets/reptiles/selecting-a-reptile"
+   ],
+   "gates": {
+    "A1_live_200": "N/A - runtime bez sieci (curl 000); sprawdzić w dniu publikacji",
+    "A2_copy_review": "open",
+    "A3_asset_rights": "open",
+    "A4_meta_access": "blocked (facebook_page_id/instagram_account_id=null)"
+   },
+   "status": "draft",
+   "scheduled_at_provider": null,
+   "note": "Termin po świętach celowo - bez motywu 'zwierzę na prezent'. Poradnik ma risk=standard; bez parametrów środowiskowych w social."
+  }
+ ]
+}

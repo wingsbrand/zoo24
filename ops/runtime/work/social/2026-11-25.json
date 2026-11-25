@@ -1,0 +1,37 @@
+{
+ "schema_version": "zoo24.ops.job-result.v1",
+ "job_id": null,
+ "role": "social",
+ "mode": "shadow",
+ "policy_version": "activation.json LIVE_SCOPED_OPS_V4 (zadanie uruchomione w trybie SHADOW; zero zapisów zewnętrznych)",
+ "status": "produced",
+ "reason": null,
+ "artifacts": [
+  {"id": "calendar-14d-refresh-part2", "path": "ops/runtime/work/social/drafts/calendar-14d-refresh-2026-11-25.json", "note": "5 pozycji (2 FB + 3 IG, 16-28.12.2026) z paczka-01 p01-08..12; uzupełnia 7 pozycji z 2026-11-24 (razem 12/12 paczka01); osobne copy FB/IG, status draft"}
+ ],
+ "checks": [
+  {"name": "utm_valid", "status": "pass", "detail": "5/5: source=facebook|instagram, medium=organic_social, campaign=paczka01, content=id"},
+  {"name": "ig_link_in_caption", "status": "pass", "detail": "0 linków w podpisach IG; CTA 'link w bio'"},
+  {"name": "banned_wording", "status": "pass", "detail": "brak wzmianek o sklepie/zamówieniach/dawnej formule/promocjach"},
+  {"name": "welfare_excluded", "status": "pass", "detail": "brak poradników królik/gryzonie; ptaki i gady risk=standard (decyzja redaktora-AI, nie człowieka)"},
+  {"name": "weekly_caps", "status": "pass", "detail": "max 3/tydz. łącznie i <=3/kanał; odstęp >=24h w kanale"},
+  {"name": "target_live_200", "status": "N/A", "detail": "curl zoo24.pl -> 000 (proxy 403 dla hosta); sprawdzić w dniu publikacji. W repo oba poradniki mają status needs_review i publishedAt=null; potwierdzenie publikacji wymaga read-backu z produkcji"},
+  {"name": "asset_rights", "status": "fail", "detail": "asset_id=null we wszystkich 12 pozycjach paczka01; brak plików i wpisów asset-register => ASSET_MISSING"},
+  {"name": "policy_engine_gap", "status": "warn", "detail": "isTargetLive nie obejmuje /narzedzia/* i /zwierzeta/* (p01-09,10,11 -> TARGET_NOT_PUBLISHED) - zadanie dla build"}
+ ],
+ "external_actions": [],
+ "metrics": [
+  {"name": "fb_ig_followers_engagement", "value": null, "unit": null, "source": null, "data_status": "unavailable", "note": "N/A; brak dostępu Meta"}
+ ],
+ "cost": {"value": null, "currency": null, "status": "unknown"},
+ "next_tasks": [
+  "Dostarczyć grafiki typograficzne i wpisać je do asset-register (prawa do logo)",
+  "Build: rozszerzyć isTargetLive o /narzedzia/* i /zwierzeta/*",
+  "Po zatwierdzeniu: przed publikacją 1.12 odczyt HTTP 200 stron docelowych"
+ ],
+ "human_decisions_required": [
+  "Paczka01 zastępuje V3 i drafts-14d.json (oznaczyć superseded)",
+  "ID i uprawnienia Meta dla FB/IG; włączenie publikacji social (can_publish) i budżet kanału",
+  "Prawa do logo/grafik typograficznych"
+ ]
+}
