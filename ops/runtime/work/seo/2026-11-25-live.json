@@ -1,0 +1,36 @@
+{
+  "schema_version": "zoo24.ops.job-result.v1",
+  "job_id": "seo-live-2026-11-25",
+  "role": "seo",
+  "mode": "live_scoped",
+  "policy_version": "LIVE_SCOPED_OPS_V4",
+  "status": "blocked",
+  "reason": "pause.global=true w ops/config/activation.json (origin/main b83b883): nowe zmiany zewnetrzne zablokowane (OPERATIONS.md: pauza blokuje publish/deploy). Wykonano wylacznie audyt odczytowy; brak commitow na main, brak wdrozen.",
+  "artifacts": [
+    {"type": "origin_main_commit", "ref": "b83b883", "note": "stan audytowany; zadnych commitow [ops-seo] w tym przebiegu"}
+  ],
+  "checks": [
+    {"name": "gate_activation", "result": "warn", "note": "status=LIVE_SCOPED_OPS_V4, mode=live_scoped, enabled=true, apply_low_risk_seo_patch=true, ALE pause.global=true -> poprawka nie zastosowana."},
+    {"name": "limits", "result": "ok", "note": "0 commitow [ops-seo]/[ops-build] z ostatnich 7 dni na origin/main; limity (5 URL/tydz., 2 deploye/dzien) niewyczerpane."},
+    {"name": "http_/", "result": "ok", "http": 200},
+    {"name": "http_/robots.txt", "result": "ok", "http": 200, "note": "Allow: /, Disallow: /admin i /api/, Sitemap wskazuje https://zoo24.pl/sitemap.xml"},
+    {"name": "http_/sitemap.xml", "result": "ok", "http": 200, "note": "48 wpisow <loc>"},
+    {"name": "seo-meta-check_vs_prod", "result": "warn", "note": "3 FAIL, wszystkie to rozjazd oczekiwan skryptu (fixture lokalne) vs produkcja: /blog/kot-syberyjski-n67 i /blog/kot-brytyjski-n66 skrypt oczekuje 404 (needs_review), produkcja daje 200 z canonical OK; /firma/salon-futrzak-d01 (DEMO) skrypt oczekuje 200, produkcja 404 (poprawnie). Canonical i noindex na stronach filtrow/utility PASS."},
+    {"name": "smoke-http_vs_prod", "result": "warn", "note": "13 FAIL wynikaja z asercji pod staging (X-Robots-Tag, Disallow: / , fixture DEMO), nie z regresji produkcji; robots.txt produkcji NIE zawiera Disallow: /. Skrypty wymagaja wersji 'prod' lub flagi trybu."},
+    {"name": "preflight_live", "result": "n/a", "note": "Nie uruchomiono: przebieg zablokowany pauza."},
+    {"name": "gsc_ga4", "result": "n/a", "note": "Brak property GSC/GA4; bez danych o pozycjach i ruchu."}
+  ],
+  "external_actions": [],
+  "metrics": [
+    {"name": "gsc_clicks", "value": null, "unit": "clicks", "source": null, "period_start": null, "period_end": null, "data_status": "unavailable", "note": "N/A: brak property GSC"}
+  ],
+  "cost": {"value": null, "currency": null, "status": "unknown"},
+  "next_tasks": [
+    "Po zdjeciu pauzy: poprawic fixture/oczekiwania seo-meta-check.mjs i smoke-http.mjs (tryb produkcyjny) - zadanie ops-build",
+    "Zweryfikowac, czy n66/n67 maja zatwierdzona publikacje (skrypt traktuje je jako needs_review)",
+    "Po zdjeciu pauzy: jedna mala poprawka SEO (meta/linkowanie wewnetrzne) w limicie 5 URL/tydz."
+  ],
+  "human_decisions_required": [
+    "Czy zdjac pause.global w ops/config/activation.json, aby agenci SEO mogli wdrazac poprawki? (agenci nie moga edytowac tego pliku)"
+  ]
+}
