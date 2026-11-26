@@ -32,7 +32,7 @@
   {
    "name": "asset_rights",
    "status": "fail",
-   "detail": "asset_id=null we wszystkich 12; asset-register nie zawiera pozycji paczka01. Logo v1 gotowe wg docs/brand/logo.md/asset-rights-status.md (deklaracja właściciela); brak plików grafik"
+   "detail": "asset_id=null we wszystkich 12; asset-register nie zawiera pozycji paczka01. Logo (v2 „serce”, docs/brand/logo.md; sygnet public/brand/zoo24-mark.svg) gotowe (deklaracja właściciela); brak plików grafik"
   },
   {
    "name": "meta_access",
@@ -62,7 +62,7 @@
   "status": "unknown"
  },
  "next_tasks": [
-  "Dostarczyć/wyrenderować grafiki typograficzne (logo v1) i wpisać do asset-register z licencją",
+  "Dostarczyć/wyrenderować grafiki typograficzne (logo v2) i wpisać do asset-register z licencją",
   "Content: publikacja 5 poradników docelowych (risk=standard) przed ich postami",
   "Przed publikacją: odczyt HTTP 200 stron docelowych"
  ],
