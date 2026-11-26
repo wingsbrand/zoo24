@@ -1,0 +1,140 @@
+{
+ "schema": "zoo24.social.gate-matrix.v1",
+ "mode": "shadow",
+ "generated": "2026-11-26",
+ "note": "Odswiezenie bramek 12 szkicow paczka01; tresci postow bez zmian (patrz calendar-14d-refresh-2026-11-24/25.json)",
+ "items": [
+  {
+   "id": "p01-01",
+   "platform": "facebook",
+   "date": "2026-12-01 18:00 Europe/Warsaw",
+   "target": "/poradniki",
+   "target_kind": "strona",
+   "A1_live_200": "N/A (brak sieci); policy isTargetLive=true w repo (narzedzia/zwierzeta/statyczne)",
+   "A3_asset_rights": "open (asset_id=null)",
+   "A4_meta_access": "blocked",
+   "status": "draft"
+  },
+  {
+   "id": "p01-02",
+   "platform": "instagram",
+   "date": "2026-12-02 18:30 Europe/Warsaw",
+   "target": "/poradniki",
+   "target_kind": "strona",
+   "A1_live_200": "N/A (brak sieci); policy isTargetLive=true w repo (narzedzia/zwierzeta/statyczne)",
+   "A3_asset_rights": "open (asset_id=null)",
+   "A4_meta_access": "blocked",
+   "status": "draft"
+  },
+  {
+   "id": "p01-03",
+   "platform": "facebook",
+   "date": "2026-12-04 18:00 Europe/Warsaw",
+   "target": "/narzedzia/lista-dla-opiekuna",
+   "target_kind": "narzedzie",
+   "A1_live_200": "N/A (brak sieci); policy isTargetLive=true w repo (narzedzia/zwierzeta/statyczne)",
+   "A3_asset_rights": "open (asset_id=null)",
+   "A4_meta_access": "blocked",
+   "status": "draft"
+  },
+  {
+   "id": "p01-04",
+   "platform": "instagram",
+   "date": "2026-12-07 18:30 Europe/Warsaw",
+   "target": "/poradniki/jak-wybrac-opieke-dla-psa-na-czas-wyjazdu",
+   "target_kind": "artykul",
+   "A1_live_200": "N/A (brak sieci w runtime); w repo artykul needs_review/publishedAt=null => policy: TARGET_NOT_PUBLISHED",
+   "A3_asset_rights": "open (asset_id=null)",
+   "A4_meta_access": "blocked",
+   "status": "draft"
+  },
+  {
+   "id": "p01-05",
+   "platform": "facebook",
+   "date": "2026-12-09 18:00 Europe/Warsaw",
+   "target": "/poradniki/informacje-dla-opiekuna-kota",
+   "target_kind": "artykul",
+   "A1_live_200": "N/A (brak sieci w runtime); w repo artykul needs_review/publishedAt=null => policy: TARGET_NOT_PUBLISHED",
+   "A3_asset_rights": "open (asset_id=null)",
+   "A4_meta_access": "blocked",
+   "status": "draft"
+  },
+  {
+   "id": "p01-06",
+   "platform": "instagram",
+   "date": "2026-12-11 18:30 Europe/Warsaw",
+   "target": "/narzedzia/lista-dla-opiekuna",
+   "target_kind": "narzedzie",
+   "A1_live_200": "N/A (brak sieci); policy isTargetLive=true w repo (narzedzia/zwierzeta/statyczne)",
+   "A3_asset_rights": "open (asset_id=null)",
+   "A4_meta_access": "blocked",
+   "status": "draft"
+  },
+  {
+   "id": "p01-07",
+   "platform": "facebook",
+   "date": "2026-12-14 18:00 Europe/Warsaw",
+   "target": "/poradniki/co-ustalic-przed-pierwsza-wizyta-u-groomera",
+   "target_kind": "artykul",
+   "A1_live_200": "N/A (brak sieci w runtime); w repo artykul needs_review/publishedAt=null => policy: TARGET_NOT_PUBLISHED",
+   "A3_asset_rights": "open (asset_id=null)",
+   "A4_meta_access": "blocked",
+   "status": "draft"
+  },
+  {
+   "id": "p01-08",
+   "platform": "instagram",
+   "date": "2026-12-16 18:30 Europe/Warsaw",
+   "target": "/poradniki/ptaki-opieka-na-czas-wyjazdu",
+   "target_kind": "artykul",
+   "A1_live_200": "N/A (brak sieci w runtime); w repo artykul needs_review/publishedAt=null => policy: TARGET_NOT_PUBLISHED",
+   "A3_asset_rights": "open (asset_id=null)",
+   "A4_meta_access": "blocked",
+   "status": "draft"
+  },
+  {
+   "id": "p01-09",
+   "platform": "facebook",
+   "date": "2026-12-18 18:00 Europe/Warsaw",
+   "target": "/narzedzia/kalkulator-akwarium",
+   "target_kind": "narzedzie",
+   "A1_live_200": "N/A (brak sieci); policy isTargetLive=true w repo (narzedzia/zwierzeta/statyczne)",
+   "A3_asset_rights": "open (asset_id=null)",
+   "A4_meta_access": "blocked",
+   "status": "draft"
+  },
+  {
+   "id": "p01-10",
+   "platform": "instagram",
+   "date": "2026-12-21 18:30 Europe/Warsaw",
+   "target": "/narzedzia/kalkulator-akwarium",
+   "target_kind": "narzedzie",
+   "A1_live_200": "N/A (brak sieci); policy isTargetLive=true w repo (narzedzia/zwierzeta/statyczne)",
+   "A3_asset_rights": "open (asset_id=null)",
+   "A4_meta_access": "blocked",
+   "status": "draft"
+  },
+  {
+   "id": "p01-11",
+   "platform": "facebook",
+   "date": "2026-12-23 12:00 Europe/Warsaw",
+   "target": "/zwierzeta/koty",
+   "target_kind": "strona",
+   "A1_live_200": "N/A (brak sieci); policy isTargetLive=true w repo (narzedzia/zwierzeta/statyczne)",
+   "A3_asset_rights": "open (asset_id=null)",
+   "A4_meta_access": "blocked",
+   "status": "draft"
+  },
+  {
+   "id": "p01-12",
+   "platform": "instagram",
+   "date": "2026-12-28 18:30 Europe/Warsaw",
+   "target": "/poradniki/gady-wymagania-gatunku-przed-zakupem-wyposazenia",
+   "target_kind": "artykul",
+   "A1_live_200": "N/A (brak sieci w runtime); w repo artykul needs_review/publishedAt=null => policy: TARGET_NOT_PUBLISHED",
+   "A3_asset_rights": "open (asset_id=null)",
+   "A4_meta_access": "blocked",
+   "status": "draft"
+  }
+ ]
+}

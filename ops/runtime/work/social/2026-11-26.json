@@ -1,0 +1,73 @@
+{
+ "schema_version": "zoo24.ops.job-result.v1",
+ "job_id": null,
+ "role": "social",
+ "mode": "shadow",
+ "policy_version": "activation.json LIVE_SCOPED_OPS_V4 (zadanie uruchomione w trybie SHADOW; zero zapisów zewnętrznych)",
+ "status": "produced",
+ "reason": null,
+ "artifacts": [
+  {
+   "id": "gate-matrix",
+   "path": "ops/runtime/work/social/drafts/gate-matrix-2026-11-26.json",
+   "note": "odświeżona macierz bramek A1/A3/A4 dla 12 szkiców paczka01 (1.12-28.12.2026); copy bez zmian względem 24-25.11"
+  }
+ ],
+ "checks": [
+  {
+   "name": "copy_unchanged",
+   "status": "pass",
+   "detail": "brak zmian w docs/social ani w treści poradników celowych od 25.11 — nie powtarzam pracy"
+  },
+  {
+   "name": "policy_engine_gap",
+   "status": "pass",
+   "detail": "RESOLVED: lib/social/workflow.ts isTargetLive obejmuje już TOOLS i /zwierzeta/* (zgłoszone 25.11)"
+  },
+  {
+   "name": "target_live_200",
+   "status": "N/A",
+   "detail": "brak sieci w runtime; w repo 5 poradników docelowych (p01-04,05,07,08,12) ma status needs_review i publishedAt=null => TARGET_NOT_PUBLISHED do czasu publikacji; narzędzia i strony statyczne OK wg polityki"
+  },
+  {
+   "name": "asset_rights",
+   "status": "fail",
+   "detail": "asset_id=null we wszystkich 12; asset-register nie zawiera pozycji paczka01. Logo v1 gotowe wg docs/brand/logo.md/asset-rights-status.md (deklaracja właściciela); brak plików grafik"
+  },
+  {
+   "name": "meta_access",
+   "status": "blocked",
+   "detail": "facebook_page_id/instagram_account_id=null, can_publish=false; pauza globalna=true"
+  },
+  {
+   "name": "first_post_deadline",
+   "status": "warn",
+   "detail": "p01-01 zaplanowany na 2026-12-01 (5 dni) — bez ID Meta i grafik nie wystartuje"
+  }
+ ],
+ "external_actions": [],
+ "metrics": [
+  {
+   "name": "fb_ig_followers_engagement",
+   "value": null,
+   "unit": null,
+   "source": null,
+   "data_status": "unavailable",
+   "note": "N/A; brak dostępu Meta"
+  }
+ ],
+ "cost": {
+  "value": null,
+  "currency": null,
+  "status": "unknown"
+ },
+ "next_tasks": [
+  "Dostarczyć/wyrenderować grafiki typograficzne (logo v1) i wpisać do asset-register z licencją",
+  "Content: publikacja 5 poradników docelowych (risk=standard) przed ich postami",
+  "Przed publikacją: odczyt HTTP 200 stron docelowych"
+ ],
+ "human_decisions_required": [
+  "ID strony FB i konta IG + uprawnienia Meta (D-03/D-11); bez tego start 1.12 niemożliwy",
+  "Zatwierdzenie paczka01 i oznaczenie drafts-14d/V3 jako superseded"
+ ]
+}
