@@ -1,5 +1,5 @@
 // Dashboard 28 dni (spec: docs/analytics/dashboard-28d-spec.md). Brak źródła => "N/A" + powód, nigdy 0.
-import type { AppState } from "../types";
+import type { AppState, DirectoryEvent } from "../types";
 import type { AccessStatus, AggregateResult, ReadSource, SourceId } from "../integrations/read-sources";
 
 export interface KpiTile {
@@ -94,7 +94,7 @@ export async function buildDashboard(state: AppState, sources: Record<SourceId, 
 
   // Zdarzenia katalogu: liczymy tylko rekordy nie-DEMO z okresu. Brak produkcyjnego pomiaru => N/A.
   const liveEvents = state.events.filter((e) => !e.demo && e.day >= p.start && e.day <= p.end);
-  const eventTile = (type: "business_site_outbound" | "business_phone_outbound" | "article_to_directory", label: string) =>
+  const eventTile = (type: DirectoryEvent["type"], label: string) =>
     liveEvents.length === 0
       ? naTile(type, label, "kliknięcia", "internal", "not_implemented", p, "brak produkcyjnego pomiaru (F1: tylko DEMO)")
       : internalTile(type, label, "kliknięcia", liveEvents.filter((e) => e.type === type).reduce((a, e) => a + e.count, 0), p, now);
@@ -129,6 +129,9 @@ export async function buildDashboard(state: AppState, sources: Record<SourceId, 
       eventTile("business_site_outbound", "Wyjścia na strony firm"),
       eventTile("business_phone_outbound", "Kliknięcia tel:"),
       eventTile("article_to_directory", "Poradnik → katalog"),
+      eventTile("tool_result", "Narzędzia: pokazany wynik kalkulatora"),
+      eventTile("tool_export", "Narzędzia: wydruk/pobranie listy"),
+      eventTile("search_no_results", "Wyszukiwania miast spoza pilotażu"),
       naTile("affiliate_outbound", "Kliknięcia afiliacyjne", "kliknięcia", "internal", "not_implemented", p, "afiliacja nieuruchomiona"),
     ],
     money: [

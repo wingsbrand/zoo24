@@ -96,7 +96,7 @@ export default function PolitykaPrywatnosci() {
       <p>W razie sporu możemy przetwarzać dane ze zgłoszeń i korespondencji w celu ustalenia, dochodzenia lub obrony roszczeń — art. 6 ust. 1 lit. f RODO.</p>
 
       <h3>Pomiar zbiorczy (bez danych osobowych)</h3>
-      <p>Zliczamy kliknięcia „Zadzwoń” i „Strona firmy”, przejścia z poradników do katalogu oraz wyszukiwania w katalogu wyłącznie jako dzienne sumy dla danej strony lub firmy. Nie używamy przy tym cookies, nie zapisujemy adresu IP ani identyfikatorów urządzeń czy użytkowników. Takie zbiorcze liczby nie pozwalają zidentyfikować osoby, dlatego nie są danymi osobowymi.</p>
+      <p>Zliczamy kliknięcia „Zadzwoń” i „Strona firmy”, przejścia z poradników do katalogu, wyszukiwania w katalogu (w tym te bez wyników — bez zapisywania wpisanych fraz) oraz użycie narzędzi (pokazanie wyniku kalkulatora, wydruk lub pobranie listy dla opiekuna — bez zapisywania wpisanych danych) wyłącznie jako dzienne sumy dla danej strony, firmy lub narzędzia. Nie używamy przy tym cookies, nie zapisujemy adresu IP ani identyfikatorów urządzeń czy użytkowników. Takie zbiorcze liczby nie pozwalają zidentyfikować osoby, dlatego nie są danymi osobowymi.</p>
 
       <h2>3. Bezpieczeństwo i ochrona przed nadużyciami</h2>
       <ul>

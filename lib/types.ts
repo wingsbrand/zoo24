@@ -213,7 +213,7 @@ export interface AuditEntry {
 
 export interface DirectoryEvent {
   day: string; // YYYY-MM-DD
-  type: "business_site_outbound" | "business_phone_outbound" | "article_to_directory" | "directory_search";
+  type: "business_site_outbound" | "business_phone_outbound" | "article_to_directory" | "directory_search" | "tool_result" | "tool_export" | "search_no_results";
   ref: string; // id firmy / slug artykułu (nie osoby)
   count: number;
   demo: boolean;
