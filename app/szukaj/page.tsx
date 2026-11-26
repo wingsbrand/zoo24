@@ -6,6 +6,7 @@ import { getStore } from "@/lib/store/file-store";
 import { CATEGORIES, CITIES } from "@/lib/site";
 import type { CategorySlug } from "@/lib/types";
 import { Alert, ButtonLink, Container, PageHeader } from "@/components/ui";
+import { EventBeacon } from "@/components/event-beacon";
 import { ServiceSearch } from "@/components/directory/search-form";
 import { resolveSearch } from "@/lib/directory/search";
 import { listingCounts, PILOT_CATEGORIES, PILOT_CITIES } from "@/lib/directory/stats";
@@ -50,6 +51,7 @@ export default async function SearchPage({ searchParams }: P) {
   if (r.kind === "outside_pilot") {
     return (
       <>
+        <EventBeacon type="search_no_results" eventRef={r.category ?? "any"} />
         <PageHeader title="Na razie działamy w 10 największych miastach" breadcrumbs={[{ href: "/", label: "ZOO24" }, { href: "/uslugi", label: "Usługi" }, { label: "Wyszukiwanie" }]}>
           <div className="mt-6">
             <ServiceSearch variant="compact" defaultCategory={r.category ?? undefined} />

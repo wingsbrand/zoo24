@@ -1,6 +1,7 @@
 "use client";
 // Orientacyjny kalkulator objętości akwarium — liczy wyłącznie w przeglądarce.
-import { useId, useMemo, useState, type ChangeEvent, type ReactNode } from "react";
+import { useEffect, useId, useMemo, useRef, useState, type ChangeEvent, type ReactNode } from "react";
+import { sendEvent } from "@/lib/analytics/beacon";
 import { Alert, Card, Field, Input, cn, describedBy } from "@/components/ui";
 import {
   CM_PER_INCH,
@@ -87,6 +88,11 @@ export function AquariumCalculator() {
 
   const u = unit === "in" ? "in" : "cm";
   const r = outcome.ok ? outcome.result : null;
+  // Pomiar: jeden agregat na wizytę, gdy narzędzie pierwszy raz pokaże wynik. Wymiary i wartości nie są wysyłane.
+  const resultSent = useRef(false);
+  useEffect(() => {
+    if (r && !resultSent.current) { resultSent.current = true; sendEvent("tool_result", "kalkulator-akwarium"); }
+  }, [r]);
 
   return (
     <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,24rem)] lg:items-start">
