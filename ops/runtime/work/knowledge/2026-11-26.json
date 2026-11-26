@@ -1,0 +1,40 @@
+{
+  "schema_version": "zoo24.ops.job-result.v1",
+  "job_id": null,
+  "role": "knowledge",
+  "mode": "shadow",
+  "policy_version": "unsigned (shadow)",
+  "status": "partial",
+  "reason": "cfa.org i pdsa.org.uk poza dozwolonymi domenami sieci sesji",
+  "artifacts": [
+    {
+      "id": "evidence-2026-11-26",
+      "type": "evidence_bundle",
+      "version": "1",
+      "path": "ops/runtime/work/knowledge/evidence/evidence-2026-11-26.json",
+      "note": "34 karty candidate (FIFe) dla 5 kotów: bengalski, syberyjski, syjamski, maine coon, ragdoll; weryfikacja agenta, nie human review"
+    }
+  ],
+  "checks": [
+    {"name": "sources_fetched", "status": "partial", "detail": "5/10 FIFe PDF OK (BEN, SIB-NEM, MCO, RAG, BAL-SIA-OLH-OSH); cfa.org x4 i pdsa.org.uk ENOTFOUND"},
+    {"name": "source_limit", "status": "pass", "detail": "5 pobranych ≤ 10"},
+    {"name": "card_status_candidate_only", "status": "pass", "detail": "wszystkie candidate"},
+    {"name": "no_external_writes", "status": "pass", "detail": "tylko GET źródeł"}
+  ],
+  "external_actions": [],
+  "metrics": [],
+  "cost": {"value": null, "currency": null, "status": "unknown"},
+  "findings": [
+    "34/34 twierdzeń opartych na FIFe zgodnych ze standardami (nagłówki: BEN 1999/kat.3, SIB 1997/kat.2, MCO 1982/kat.2, RAG 1991/kat.1, SIA 1949/kat.4).",
+    "Syberyjski: zakaz barw pointed dotyczy SIB; pointed jest dozwolone tylko w NEM — artykuł poprawnie rozróżnia (twierdzenie dotyczy SIB).",
+    "Niezweryfikowane: 26 twierdzeń z CFA i The Kitten Checklist (4+7+5+5+5) — brak dostępu do domen.",
+    "Pielęgnacja/zdrowie/zabawa — porady ogólne bez źródła pierwotnego; wymagają człowieka (ADR-013).",
+    "Licencja cytowania FIFe nadal unknown."
+  ],
+  "next_tasks": [
+    "Po dodaniu cfa.org i pdsa.org.uk do dozwolonych domen: zweryfikować 26 twierdzeń sourceIndex 1/2 dla 5 kotów.",
+    "Cardigan 038 (FCI) oraz RSPCA dla twierdzeń wspólnych.",
+    "Odświeżyć wygasające karty (valid_until) i ponownie sprawdzić kot-brytyjski (ev-bsh-002 partial: „pełne policzki”)."
+  ],
+  "human_decisions_required": ["Zezwolić sieci sesji na cfa.org i pdsa.org.uk (odczyt) — inaczej karty CFA/Kitten Checklist pozostaną niezweryfikowane."]
+}
