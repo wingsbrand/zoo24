@@ -6,11 +6,11 @@ const req = (auth?: string) => new Request("http://localhost/api/ops/publish", {
 
 describe("GET /api/ops/publish", () => {
   afterEach(() => { delete process.env.CRON_SECRET; });
-  it("brak CRON_SECRET => 503 NOT_CONFIGURED", async () => {
+  it("brak CRON_SECRET → 503 NOT_CONFIGURED", async () => {
     expect((await GET(req("Bearer x"))).status).toBe(503);
   });
   it("zły lub brakujący nagłówek => 401", async () => {
-    process.env.CRON_SECRET = "s".repeat(40);
+    process.env.CRON_SECRET = "TEST-" + "s".repeat(40);
     expect((await GET(req())).status).toBe(401);
     expect((await GET(req("Bearer " + "t".repeat(40)))).status).toBe(401);
   });

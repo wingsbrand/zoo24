@@ -10,6 +10,9 @@ import { CategoryTile } from "@/components/directory/category-icon";
 import { contactChannels, directionsHref, publicLocation } from "@/lib/directory/contact";
 import { listingOptions, publishedListing, sanitizeReturnQuery, type RawSearchParams } from "@/lib/directory/query";
 import { capitalize, formatDatePl } from "@/lib/directory/format";
+import { JsonLd } from "@/components/seo/json-ld";
+import { breadcrumbLd } from "@/lib/seo/structured-data";
+import { businessLd, businessMetaDescription } from "@/lib/seo/business-seo";
 
 export const dynamic = "force-dynamic";
 type P = { params: Promise<{ slug: string }>; searchParams: Promise<RawSearchParams> };
@@ -21,12 +24,11 @@ export async function generateMetadata({ params }: P): Promise<Metadata> {
   if (!b) return {};
   return {
     title: `${b.name} — ${CATEGORIES[b.category].name}, ${CITIES[b.city].name}`,
-    description: b.description.slice(0, 160),
+    description: businessMetaDescription(b),
     alternates: { canonical: `/firma/${b.slug}` }, // także dla ?z= (powrót do filtrów)
     // N1: DEMO nigdy nie jest indeksowane; N6: firma bez potwierdzenia danych przez redakcję — noindex do weryfikacji.
     robots: b.demo ? { index: false, follow: false } : !b.checkedAt ? { index: false, follow: true } : undefined,
   };
-  // JSON-LD celowo pominięty: brak potwierdzonych danych realnych firm.
 }
 
 const PET = { psy: { Icon: Dog, label: "Psy" }, koty: { Icon: Cat, label: "Koty" } } as const;
@@ -79,8 +81,23 @@ export default async function BusinessPage({ params, searchParams }: P) {
   const { serviceArea, address } = publicLocation(b);
   const checked = formatDatePl(b.checkedAt);
 
+  const ld = businessLd(b);
+
   return (
     <>
+      {ld && (
+        <JsonLd
+          nodes={[
+            ld,
+            breadcrumbLd([
+              { href: "/", label: "ZOO24" },
+              { href: "/uslugi", label: "Usługi" },
+              { href: `/uslugi/${b.category}/${b.city}`, label: `${cat.plural} — ${city.name}` },
+              { label: b.name },
+            ]),
+          ]}
+        />
+      )}
       <header className="border-b border-line bg-surface">
         <Container className="py-8 sm:py-10">
           <Breadcrumbs
