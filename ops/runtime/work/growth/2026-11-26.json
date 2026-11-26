@@ -1,0 +1,71 @@
+{
+  "schema_version": "zoo24.ops.job-result.v1",
+  "job_id": "growth-shadow-2026-11-26",
+  "role": "growth",
+  "mode": "shadow",
+  "policy_version": "21a407a9c7c64d97e39b5e1d1c9400ad90a8567dfac4e19fe8bf24abb3aec969",
+  "status": "produced",
+  "reason": "analiza lejka na danych z repo; pomiar eksperymentow nadal niedostepny (eksporty GA4/Meta bez zmian od 2026-11-22, brak GSC)",
+  "artifacts": ["ops/runtime/work/growth/2026-11-26.json"],
+  "checks": [
+    {"name": "vercel.json zawiera ops/** false", "result": "PASS"},
+    {"name": "merge origin/main bez konfliktow", "result": "PASS"},
+    {"name": "zewnetrzne zapisy", "result": "brak (shadow; zadanie wymusilo shadow mimo activation.json=live_scoped)"}
+  ],
+  "external_actions": [],
+  "metrics": [
+    {"name": "ga4_organic_sessions_28d", "value": 0, "unit": "sessions", "source": "data/exports/ga4-28d.json", "period_start": "2026-10-23", "period_end": "2026-11-19", "data_status": "export_manual", "note": "ten sam eksport co 2026-11-24, sprzed startu serwisu (live od 2026-11-23); nie jest baseline po starcie"},
+    {"name": "facebook_followers_total", "value": 43515, "unit": "followers", "source": "data/exports/meta_fb-28d.json", "period_start": "2026-10-23", "period_end": "2026-11-19", "data_status": "export_manual", "note": "followers != zasieg; interakcje 0"},
+    {"name": "facebook_reach_28d", "value": null, "unit": "people", "source": null, "period_start": null, "period_end": null, "data_status": "unavailable", "note": "N/A"},
+    {"name": "gsc_clicks_28d", "value": null, "unit": "clicks", "source": null, "period_start": null, "period_end": null, "data_status": "unavailable", "note": "N/A: brak property GSC"},
+    {"name": "article_to_directory_events", "value": null, "unit": "events", "source": null, "period_start": null, "period_end": null, "data_status": "unavailable", "note": "N/A: brak odczytu zdarzen z produkcji w tym przebiegu"}
+  ],
+  "delta_since_2026-11-24": [
+    "Build (b253fd2) dodal zdarzenia klienckie: article_to_directory, directory_search, tool_result, tool_export, search_no_results (lib/analytics/events.ts) - poprawia mierzalnosc S2 (licznik), ale nadal brak mianownika (wyswietlenia artykulu) i brak odczytu z produkcji.",
+    "Build (369ab92) dodal LocalBusiness JSON-LD i opisy meta profili firm - dotyczy SEO, nie zmienia podazy katalogu.",
+    "Zdarzenie dla S3 (provider_claim_submit) nadal brak w CLIENT_EVENT_TYPES; wymaga zatwierdzenia nazwy."
+  ],
+  "experiments": [
+    {
+      "id": "S1_nowa_formula",
+      "hypothesis": "Dawni odbiorcy FB nadal chca praktycznej wiedzy",
+      "metric": "sesje z Meta (UTM), interakcje wartosciowe, przejscia do poradnikow; nie liczba followerow",
+      "baseline": "N/A (FB sesje 0 w GA4 do 2026-11-19; zasieg i klikniecia N/A)",
+      "evaluation_condition": "pelne okno 28 dni po pierwszym opublikowanym poscie; wymaga ID strony i uprawnien publikacji Meta (can_publish=false)",
+      "cost_pln": 0,
+      "status": "blocked",
+      "result": "n/a",
+      "note": "Komunikat nalezy zgodzic z decyzja rebrandingu (serwis komunikuje sie jako nowy) - nie uzywac sformulowania 'dawny sklep'."
+    },
+    {
+      "id": "S2_checklista_katalog",
+      "hypothesis": "Uzytkownik po konkretnym poradniku szuka uslugi",
+      "metric": "article_to_directory / wyswietlenia artykulu; dalsze business_site_outbound",
+      "baseline": "N/A (brak odczytu zdarzen i mianownika)",
+      "evaluation_condition": "2 porownywalne okna 28 dni; sensowne dopiero przy >=3 realnych firmach w miescie x kategorii (MIN_REAL_LISTINGS=3, ostatnio 0 takich listingow)",
+      "cost_pln": 0,
+      "status": "implemented_not_measurable",
+      "result": "n/a"
+    },
+    {
+      "id": "S3_to_twoja_firma",
+      "hypothesis": "Realny uslugodawca chce uzupelnic wlasne dane",
+      "metric": "zweryfikowane zgloszenia przejecia, kompletnosc danych, zainteresowanie testem premium",
+      "baseline": "N/A (brak odczytu liczby zgloszen; brak zdarzenia w typach klienckich)",
+      "evaluation_condition": "min. 10 rozmow/zgloszen => >=2 deklaracje (E5); mniejsza proba = inconclusive",
+      "cost_pln": 0,
+      "status": "implemented_not_measurable",
+      "result": "n/a",
+      "note": "Tylko inbound; e-mail/DM do firm wylaczone polityka."
+    }
+  ],
+  "constraint_identified": "Brak pomiaru po starcie (GSC nie zalozony, brak odczytu GA4/zdarzen po 2026-11-23) oraz podaz katalogu. Ocena kazdego z 3 eksperymentow = n/a; nic nie zmienilo sie w danych wejsciowych od poprzedniego przebiegu.",
+  "recommended_next_experiment": {"id": "S2_checklista_katalog", "reason": "koszt 0 zl, wlasny serwis, bez zgod zewnetrznych; warunek: >=3 realne firmy w 1 miescie x kategoria", "artifact_requests": ["build: odczyt agregatow article_to_directory/directory_search + wyswietlen artykulow z produkcji do raportu", "knowledge: weryfikacja firm pilotazu B"]},
+  "cost": {"value": null, "currency": null, "status": "unknown"},
+  "next_tasks": [
+    "Po 2026-12-21 (pierwsze pelne okno 28 dni od startu) zapisac baseline z GA4/GSC",
+    "Build: dodac zdarzenie provider_claim_submit (nazwa do zatwierdzenia) i raport agregatow zdarzen",
+    "Knowledge: weryfikacja firm w pilocie B"
+  ],
+  "human_decisions_required": ["Zalozyc property GSC dla zoo24.pl", "Potwierdzic Facebook Page ID i uprawnienia publikacji Meta (odblokowuje S1)"]
+}
