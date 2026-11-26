@@ -1,0 +1,104 @@
+﻿{
+    "schema_version":  "zoo24.ops.job-result.v1",
+    "job_id":  "seo-live-2026-11-26",
+    "role":  "zoo24-ops-seo",
+    "mode":  "live_scoped",
+    "policy_version":  "LIVE_SCOPED_OPS_V4",
+    "status":  "no_change",
+    "reason":  "policy_pause_global_true",
+    "summary":  "Audyt read-only produkcji https://zoo24.pl. Zmian nie wdrożono: ops/config/activation.json (origin/main) ma pause.global=true mimo status LIVE_SCOPED_OPS_V4 — traktowane jako wstrzymanie wdrożeń. Limity: seo_changed_urls_per_week 0/5, wdrożenia dziś 0/2.",
+    "artifacts":  [
+
+                  ],
+    "external_actions":  [
+
+                         ],
+    "checks":  [
+                   {
+                       "detail":  "status=LIVE_SCOPED_OPS_V4, mode=live_scoped, enabled=true, apply_low_risk_seo_patch=true, ALE pause.global=true",
+                       "result":  "pass_with_pause",
+                       "name":  "gate_activation_json"
+                   },
+                   {
+                       "http":  200,
+                       "name":  "GET /"
+                   },
+                   {
+                       "detail":  "48 URL",
+                       "name":  "GET /sitemap.xml",
+                       "http":  200
+                   },
+                   {
+                       "detail":  "Allow /, Disallow /admin i /api/, Sitemap wskazany",
+                       "name":  "GET /robots.txt",
+                       "http":  200
+                   },
+                   {
+                       "http":  404,
+                       "name":  "GET /nie-istnieje-xyz"
+                   },
+                   {
+                       "result":  "48/48 HTTP 200",
+                       "name":  "sitemap_urls_http"
+                   },
+                   {
+                       "result":  "brak duplikatów title i meta description w sitemapie",
+                       "name":  "title_meta_unique"
+                   },
+                   {
+                       "result":  "47/48 zgodnych z loc; strona główna: canonical https://zoo24.pl (bez ukośnika) vs loc https://zoo24.pl/ — równoważne, bez działania",
+                       "name":  "canonical"
+                   },
+                   {
+                       "result":  "1 na każdej stronie",
+                       "name":  "h1"
+                   },
+                   {
+                       "result":  "obecny na wszystkich 48 URL (2-6 bloków)",
+                       "name":  "json_ld"
+                   },
+                   {
+                       "result":  "nie uruchomione sensownie: skrypty są fixture\u0027owe pod lokalny demo-serwer (localhost:3024), nie pod produkcję",
+                       "name":  "scripts_seo_meta_check_smoke_http"
+                   },
+                   {
+                       "result":  "nie weryfikowano (brak zmiany)",
+                       "name":  "preview_vercel"
+                   }
+               ],
+    "metrics":  [
+                    {
+                        "value":  null,
+                        "name":  "organic_sessions",
+                        "source":  null,
+                        "data_status":  "unavailable",
+                        "note":  "N/A: GSC/GA4 niepodłączone",
+                        "unit":  "sessions"
+                    }
+                ],
+    "findings":  [
+                     {
+                         "note":  "Meta description 68-91 znaków (krótkie, ogólne) — kandydat na jedną małą poprawkę po zdjęciu pauzy; to nie jest zmiana treści merytorycznej",
+                         "url_group":  "/zwierzeta/{akwarystyka,koty,ptaki,gady,psy}",
+                         "id":  "S1",
+                         "severity":  "low"
+                     },
+                     {
+                         "note":  "Skrypty seo-meta-check/smoke-http nie obsługują produkcji (oczekiwania demo) — rozważyć tryb prod w zadaniu build",
+                         "id":  "S2",
+                         "severity":  "info"
+                     }
+                 ],
+    "cost":  {
+                 "currency":  null,
+                 "status":  "unknown",
+                 "value":  null
+             },
+    "next_tasks":  [
+                       "Po zdjęciu pause.global: wydłużyć meta description pięciu stron /zwierzeta/* (5 URL = limit tygodniowy) z testem w tests/",
+                       "Zadanie build: tryb produkcyjny dla scripts/seo-meta-check.mjs"
+                   ],
+    "human_decisions_required":  [
+                                     "Czy pause.global=true w ops/config/activation.json jest zamierzone? Jeśli nie — właściciel zdejmuje pauzę (agenci nie mogą zapisywać tego pliku)."
+                                 ]
+}
