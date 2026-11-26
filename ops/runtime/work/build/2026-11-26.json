@@ -1,0 +1,31 @@
+{
+  "schema_version": "zoo24.ops.job-result.v1",
+  "job_id": "zoo24-ops-build-live-2026-11-26",
+  "role": "zoo24-ops-build",
+  "mode": "live_scoped",
+  "policy_version": "LIVE_SCOPED_OPS_V4",
+  "status": "completed",
+  "summary": "Backlog pozycja 4: pomiar zdarzeń narzędzi (wynik kalkulatora, wydruk/pobranie listy) i wyszukiwań bez wyników; polityka prywatności zaktualizowana. Pozycja 3 była już wdrożona 25.11 (369ab92).",
+  "artifacts": [
+    {"type": "commit", "hash": "b253fd28a5ce44da7298a1ba18132ac2773b2b38", "branch": "main", "note": "[ops-build] Pomiar: wynik kalkulatora, eksport listy, wyszukiwania bez wyników"},
+    {"type": "url", "url": "https://zoo24.pl/polityka-prywatnosci", "note": "zmiana widoczna w HTML (opis zliczanych zdarzeń)"},
+    {"type": "file", "path": "lib/analytics/events.ts", "note": "lista dozwolonych typów i ref; test tests/analytics/client-events.test.ts"}
+  ],
+  "checks": [
+    {"name": "npm run check (typecheck+vitest+scan:secrets)", "result": "pass", "detail": "382 testów + nowy test; skan sekretów PASS"},
+    {"name": "next build", "result": "pass"},
+    {"name": "Vercel preview", "result": "build READY (dpl_7qFsRC2Myc83FAVoY413xGnE42C9); HTTP preview NIE zweryfikowano; zamiast tego lokalny next start + smoke-http + seo-meta-check: PASS"},
+    {"name": "lokalnie POST /api/event", "result": "tool_result 204; search_no_results z frazą miasta 422 (fraza nie utrwalana)"},
+    {"name": "produkcja HTTP", "result": "pass", "detail": "/ 200, /sitemap.xml 200, /robots.txt 200, /szukaj 200, /polityka-prywatnosci 200 (zmiana w HTML), /narzedzia/kalkulator-akwarium 200"}
+  ],
+  "external_actions": [],
+  "metrics": [],
+  "cost": {"value": null, "currency": null, "status": "unknown"},
+  "limitations": [
+    "Endpoint /api/event na produkcji nie był testowany POST-em, by nie zawyżać liczników.",
+    "Trwałość zdarzeń zależy od store (patrz PILOT_B_KATALOG).",
+    "/api/out: przegląd kodu — prefetch i boty nie są liczone; brak osobnej deduplikacji kliknięć (agregat przybliżony)."
+  ],
+  "next_tasks": ["Pozycja 6: pomiar wydajności (PageSpeed/CrUX; lab ≠ field)", "Opcjonalnie: deduplikacja kliknięć /api/out"],
+  "human_decisions_required": []
+}
