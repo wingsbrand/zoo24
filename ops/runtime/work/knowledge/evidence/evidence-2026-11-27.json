@@ -1,0 +1,264 @@
+{
+ "schema_version": "zoo24.ops.evidence-bundle.v1",
+ "mode": "shadow",
+ "generated": "2026-11-27",
+ "cards": [
+  {
+   "evidence_id": "ev-038-001",
+   "article": "corgi-n107",
+   "claim_index_in_article": 2,
+   "source_url": "https://www.fci.be/Nomenclature/Standards/038g01-en.pdf",
+   "publisher": "FCI",
+   "title": "Standard FCI nr 38 Welsh Corgi (Cardigan) (PDF, 06.10.2026)",
+   "source_date": null,
+   "retrieved_at_utc": "2026-11-27T06:11:09Z",
+   "source_hash": "sha256:6104c397a18ce330c7a79bc363ae4ff747e67424cb81ba84d879b1ddb1a1745f",
+   "claim_text": "Cardigan: Wielka Brytania; oficjalna publikacja 08.09.2026; grupa 1, sekcja 2, bez prób pracy; pies pasterski i do towarzystwa.",
+   "scope": "Cardigan — metadane/klasyfikacja",
+   "license_basis": "unknown",
+   "allowed_use": "quote_summary_own_words",
+   "status": "candidate",
+   "source_verified_by_agent": true,
+   "verification_result": "confirmed",
+   "verification_note": "ORIGIN Great Britain; official valid standard 08.09.2026; Utilization Herding & companion; Group 1, Section 2 Cattledogs, without working trial.",
+   "reviewer_id": null,
+   "reviewed_at": null,
+   "valid_until": "2027-05-27",
+   "conflicts": [],
+   "used_by_artifact_versions": [
+    "corgi-n107@2026-11-22T20:04:17.544Z"
+   ]
+  },
+  {
+   "evidence_id": "ev-038-002",
+   "article": "corgi-n107",
+   "claim_index_in_article": 4,
+   "source_url": "https://www.fci.be/Nomenclature/Standards/038g01-en.pdf",
+   "publisher": "FCI",
+   "title": "Standard FCI nr 38 Welsh Corgi (Cardigan) (PDF, 06.10.2026)",
+   "source_date": null,
+   "retrieved_at_utc": "2026-11-27T06:11:09Z",
+   "source_hash": "sha256:6104c397a18ce330c7a79bc363ae4ff747e67424cb81ba84d879b1ddb1a1745f",
+   "claim_text": "Cardigan: idealna wysokość 30 cm; masa w proporcji do wielkości, bez liczby.",
+   "scope": "Cardigan — wymiary",
+   "license_basis": "unknown",
+   "allowed_use": "quote_summary_own_words",
+   "status": "candidate",
+   "source_verified_by_agent": true,
+   "verification_result": "confirmed",
+   "verification_note": "Ideal height at withers 30 cm; weight in proportion to size, overall balance prime consideration. Brak liczbowej masy.",
+   "reviewer_id": null,
+   "reviewed_at": null,
+   "valid_until": "2027-05-27",
+   "conflicts": [],
+   "used_by_artifact_versions": [
+    "corgi-n107@2026-11-22T20:04:17.544Z"
+   ]
+  },
+  {
+   "evidence_id": "ev-038-003",
+   "article": "corgi-n107",
+   "claim_index_in_article": 6,
+   "source_url": "https://www.fci.be/Nomenclature/Standards/038g01-en.pdf",
+   "publisher": "FCI",
+   "title": "Standard FCI nr 38 Welsh Corgi (Cardigan) (PDF, 06.10.2026)",
+   "source_date": null,
+   "retrieved_at_utc": "2026-11-27T06:11:09Z",
+   "source_hash": "sha256:6104c397a18ce330c7a79bc363ae4ff747e67424cb81ba84d879b1ddb1a1745f",
+   "claim_text": "Cardigan: ogon jak lisia kita, umiarkowanie długi, w linii tułowia.",
+   "scope": "Cardigan — ogon",
+   "license_basis": "unknown",
+   "allowed_use": "quote_summary_own_words",
+   "status": "candidate",
+   "source_verified_by_agent": true,
+   "verification_result": "confirmed",
+   "verification_note": "Tail like a fox's brush set in line with body, moderately long (touch or nearly touch ground); carried low, not curled over back.",
+   "reviewer_id": null,
+   "reviewed_at": null,
+   "valid_until": "2027-05-27",
+   "conflicts": [],
+   "used_by_artifact_versions": [
+    "corgi-n107@2026-11-22T20:04:17.544Z"
+   ]
+  },
+  {
+   "evidence_id": "ev-038-004",
+   "article": "corgi-n107",
+   "claim_index_in_article": 8,
+   "source_url": "https://www.fci.be/Nomenclature/Standards/038g01-en.pdf",
+   "publisher": "FCI",
+   "title": "Standard FCI nr 38 Welsh Corgi (Cardigan) (PDF, 06.10.2026)",
+   "source_date": null,
+   "retrieved_at_utc": "2026-11-27T06:11:09Z",
+   "source_hash": "sha256:6104c397a18ce330c7a79bc363ae4ff747e67424cb81ba84d879b1ddb1a1745f",
+   "claim_text": "Cardigan: czujny, aktywny, inteligentny, zrównoważony, ani lękliwy, ani agresywny.",
+   "scope": "Cardigan — temperament wzorca",
+   "license_basis": "unknown",
+   "allowed_use": "quote_summary_own_words",
+   "status": "candidate",
+   "source_verified_by_agent": true,
+   "verification_result": "confirmed",
+   "verification_note": "Alert, active and intelligent; steady, not shy nor aggressive. Zakres: opis wzorca, nie gwarancja zachowania konkretnego psa.",
+   "reviewer_id": null,
+   "reviewed_at": null,
+   "valid_until": "2027-05-27",
+   "conflicts": [],
+   "used_by_artifact_versions": [
+    "corgi-n107@2026-11-22T20:04:17.544Z"
+   ]
+  },
+  {
+   "evidence_id": "ev-038-005",
+   "article": "corgi-n107",
+   "claim_index_in_article": 10,
+   "source_url": "https://www.fci.be/Nomenclature/Standards/038g01-en.pdf",
+   "publisher": "FCI",
+   "title": "Standard FCI nr 38 Welsh Corgi (Cardigan) (PDF, 06.10.2026)",
+   "source_date": null,
+   "retrieved_at_utc": "2026-11-27T06:11:09Z",
+   "source_hash": "sha256:6104c397a18ce330c7a79bc363ae4ff747e67424cb81ba84d879b1ddb1a1745f",
+   "claim_text": "Cardigan: szata krótka lub średnia, twarda, z podszerstkiem; umaszczenia m.in. blue merle i pręgowane.",
+   "scope": "Cardigan — szata",
+   "license_basis": "unknown",
+   "allowed_use": "quote_summary_own_words",
+   "status": "candidate",
+   "source_verified_by_agent": true,
+   "verification_result": "confirmed",
+   "verification_note": "Hair short or medium, hard texture, weather-proof, good undercoat; colours blue merle, brindle, red, sable, tricolour (brindle/red points).",
+   "reviewer_id": null,
+   "reviewed_at": null,
+   "valid_until": "2027-05-27",
+   "conflicts": [],
+   "used_by_artifact_versions": [
+    "corgi-n107@2026-11-22T20:04:17.544Z"
+   ]
+  },
+  {
+   "evidence_id": "ev-038n-001",
+   "article": "corgi-n107",
+   "claim_index_in_article": 15,
+   "source_url": "https://www.fci.be/en/nomenclature/WELSH-CORGI-CARDIGAN-38.html",
+   "publisher": "FCI",
+   "title": "FCI — nomenklatura: Welsh Corgi (Cardigan) nr 38",
+   "source_date": null,
+   "retrieved_at_utc": "2026-11-27T06:11:09Z",
+   "source_hash": null,
+   "claim_text": "FCI uznaje dwie odrębne rasy: Welsh Corgi Pembroke (nr 39) i Welsh Corgi Cardigan (nr 38).",
+   "scope": "Cardigan — odrębna pozycja nomenklatury",
+   "license_basis": "unknown",
+   "allowed_use": "quote_summary_own_words",
+   "status": "candidate",
+   "source_verified_by_agent": true,
+   "verification_result": "confirmed",
+   "verification_note": "Strona (WebFetch, bez hasha): nr 38, grupa 1, sekcja 2, GB, standard EN 06.10.2026, obowiązujący 08.09.2026.",
+   "reviewer_id": null,
+   "reviewed_at": null,
+   "valid_until": "2027-05-27",
+   "conflicts": [],
+   "used_by_artifact_versions": [
+    "corgi-n107@2026-11-22T20:04:17.544Z"
+   ]
+  },
+  {
+   "evidence_id": "ev-039n-001",
+   "article": "corgi-n107",
+   "claim_index_in_article": 0,
+   "source_url": "https://www.fci.be/en/nomenclature/WELSH-CORGI-PEMBROKE-39.html",
+   "publisher": "FCI",
+   "title": "FCI — nomenklatura: Welsh Corgi (Pembroke) nr 39",
+   "source_date": null,
+   "retrieved_at_utc": "2026-11-27T06:11:09Z",
+   "source_hash": null,
+   "claim_text": "FCI uznaje dwie odrębne rasy: Welsh Corgi Pembroke (nr 39) i Welsh Corgi Cardigan (nr 38).",
+   "scope": "Pembroke — odrębna pozycja nomenklatury",
+   "license_basis": "unknown",
+   "allowed_use": "quote_summary_own_words",
+   "status": "candidate",
+   "source_verified_by_agent": true,
+   "verification_result": "confirmed",
+   "verification_note": "Strona (WebFetch, bez hasha): nr 39, grupa 1, sekcja 2, GB, standard EN 06.10.2026, obowiązujący 08.09.2026, akceptacja FCI 13.11.1963.",
+   "reviewer_id": null,
+   "reviewed_at": null,
+   "valid_until": "2027-05-27",
+   "conflicts": [],
+   "used_by_artifact_versions": [
+    "corgi-n107@2026-11-22T20:04:17.544Z"
+   ]
+  },
+  {
+   "evidence_id": "ev-bsh-001r",
+   "article": "kot-brytyjski-n66",
+   "claim_index_in_article": 0,
+   "source_url": "https://fifeweb.org/dnld/std/BLH-BSH.pdf",
+   "publisher": "FIFe",
+   "title": "FIFe — standard BLH-BSH (British Shorthair/Longhair), kat. III",
+   "source_date": null,
+   "retrieved_at_utc": "2026-11-27T06:11:09Z",
+   "source_hash": "sha256:c18677e1b5d18771b3e9d77ac71429a41046064173c4b5c995368b68f8a2be0a",
+   "claim_text": "Kot muskularny, zwarty („cobby”), szeroka klatka piersiowa, mocne krótkie łapy, gruby krótki ogon zaokrąglony na końcu.",
+   "scope": "budowa ciała",
+   "license_basis": "unknown",
+   "allowed_use": "quote_summary_own_words",
+   "status": "candidate",
+   "source_verified_by_agent": true,
+   "verification_result": "confirmed",
+   "verification_note": "Body: Muscular, cobby; broad chest, shoulders, back; Tail: short and thick, slightly rounded at tip. Hash identyczny z 22.11 (brak zmiany wersji).",
+   "reviewer_id": null,
+   "reviewed_at": null,
+   "valid_until": null,
+   "conflicts": [],
+   "used_by_artifact_versions": [
+    "kot-brytyjski-n66@2026-11-22T12:00:00Z"
+   ]
+  },
+  {
+   "evidence_id": "ev-bsh-002r",
+   "article": "kot-brytyjski-n66",
+   "claim_index_in_article": 1,
+   "source_url": "https://fifeweb.org/dnld/std/BLH-BSH.pdf",
+   "publisher": "FIFe",
+   "title": "FIFe — standard BLH-BSH (British Shorthair/Longhair), kat. III",
+   "source_date": null,
+   "retrieved_at_utc": "2026-11-27T06:11:09Z",
+   "source_hash": "sha256:c18677e1b5d18771b3e9d77ac71429a41046064173c4b5c995368b68f8a2be0a",
+   "claim_text": "Głowa okrągła i masywna, szeroka czaszka; uszy małe, lekko zaokrąglone, szeroko rozstawione; sierść BSH krótka, gęsta, nie przylega płasko, dobry podszerstek, faktura sprężysta (crisp).",
+   "scope": "głowa/uszy/sierść",
+   "license_basis": "unknown",
+   "allowed_use": "quote_summary_own_words",
+   "status": "candidate",
+   "source_verified_by_agent": true,
+   "verification_result": "confirmed",
+   "verification_note": "Head: round and massive with broad skull; Ears: small, slightly rounded, set wide apart; Coat BSH: short, dense, not lying flat, good undercoat, crisp texture. Rozwiązuje wątpliwość ev-bsh-002: aktualna treść artykułu nie zawiera już „pełnych policzków”; „pluszowa” jest w artykule jawnie określona jako potoczna.",
+   "reviewer_id": null,
+   "reviewed_at": null,
+   "valid_until": null,
+   "conflicts": [],
+   "used_by_artifact_versions": [
+    "kot-brytyjski-n66@2026-11-22T12:00:00Z"
+   ]
+  }
+ ],
+ "gaps": [
+  "corgi: twierdzenia 11–14 (RSPCA, fci.be/members) i 16 (ZKwP Systematyka_Ras.pdf, wcześniej proxy 403) nadal niesprawdzone; twierdzenia 11–13 to porady zdrowie/welfare — przegląd człowieka (ADR-013).",
+  "kot-brytyjski: WCF BRI_en_2023-07-16.pdf (lektura porównawcza) niesprawdzony; sekcje charakter/pielęgnacja/żywienie/zdrowie bez źródła pierwotnego — żywienie i zdrowie wyłącznie człowiek.",
+  "26 twierdzeń CFA/Kitten Checklist (5 kotów) nadal niezweryfikowanych — cfa.org i pdsa.org.uk poza dozwolonymi domenami sieci.",
+  "Licencja cytowania FCI/FIFe: unknown; tylko własne streszczenia.",
+  "Literówka w westie #5 („kopiować” zamiast „kupirować”) — nadal do poprawki przez redakcję (zgłoszone 25.11)."
+ ],
+ "sources_used": [
+  {
+   "url": "https://www.fci.be/Nomenclature/Standards/038g01-en.pdf",
+   "hash": "sha256:6104c397a18ce330c7a79bc363ae4ff747e67424cb81ba84d879b1ddb1a1745f"
+  },
+  {
+   "url": "https://www.fci.be/en/nomenclature/WELSH-CORGI-CARDIGAN-38.html"
+  },
+  {
+   "url": "https://www.fci.be/en/nomenclature/WELSH-CORGI-PEMBROKE-39.html"
+  },
+  {
+   "url": "https://fifeweb.org/dnld/std/BLH-BSH.pdf",
+   "hash": "sha256:c18677e1b5d18771b3e9d77ac71429a41046064173c4b5c995368b68f8a2be0a"
+  }
+ ]
+}

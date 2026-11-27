@@ -1,0 +1,69 @@
+{
+  "schema_version": "zoo24.ops.job-result.v1",
+  "job_id": null,
+  "role": "knowledge",
+  "mode": "shadow",
+  "policy_version": "unsigned (shadow)",
+  "status": "success",
+  "reason": null,
+  "artifacts": [
+    {
+      "id": "evidence-2026-11-27",
+      "type": "evidence_bundle",
+      "version": "1",
+      "path": "ops/runtime/work/knowledge/evidence/evidence-2026-11-27.json",
+      "note": "9 kart candidate: corgi (Cardigan FCI 38 + nomenklatura 38/39), kot-brytyjski (odświeżenie FIFe); weryfikacja agenta, nie human review"
+    }
+  ],
+  "checks": [
+    {
+      "name": "sources_fetched",
+      "status": "pass",
+      "detail": "4/4 (PDF FCI 038, PDF FIFe BLH-BSH, 2 strony nomenklatury FCI)"
+    },
+    {
+      "name": "source_limit",
+      "status": "pass",
+      "detail": "4 ≤ 10"
+    },
+    {
+      "name": "card_status_candidate_only",
+      "status": "pass",
+      "detail": "wszystkie candidate"
+    },
+    {
+      "name": "source_change_detection",
+      "status": "pass",
+      "detail": "hash BLH-BSH.pdf identyczny jak 22.11"
+    },
+    {
+      "name": "no_external_writes",
+      "status": "pass",
+      "detail": "tylko GET źródeł; cfa.org/pdsa.org.uk nie ponawiane"
+    }
+  ],
+  "external_actions": [],
+  "metrics": [],
+  "cost": {
+    "value": null,
+    "currency": null,
+    "status": "unknown"
+  },
+  "findings": [
+    "9/9 twierdzeń zgodnych ze źródłami; 0 sprzeczności.",
+    "Corgi: Cardigan (6 twierdzeń + nomenklatura 38/39) potwierdzone — zamyka lukę z 24.11 (twierdzenia 0,2,4,6,8,10,15).",
+    "kot-brytyjski: wątpliwość ev-bsh-002 („pełne policzki”) wygasła — obecny tekst artykułu nie zawiera tego sformułowania; opis głowy/uszu/sierści zgodny z FIFe.",
+    "Nadal niesprawdzone: RSPCA (corgi 11–13, welfare — człowiek), fci.be/members, ZKwP, WCF BRI, 26 twierdzeń CFA/Kitten Checklist.",
+    "Licencja cytowania FCI/FIFe nadal unknown."
+  ],
+  "next_tasks": [
+    "RSPCA (training/puppies/behaviour) i fci.be/members PL dla corgi i wspólnych twierdzeń psów.",
+    "WCF BRI_en_2023-07-16.pdf dla kot-brytyjski.",
+    "Po odblokowaniu cfa.org/pdsa.org.uk: 26 twierdzeń dla 5 kotów.",
+    "Odświeżyć karty z valid_until zbliżającym się (2027-05)."
+  ],
+  "human_decisions_required": [
+    "Zezwolić sieci sesji na cfa.org i pdsa.org.uk (odczyt) — inaczej karty CFA/Kitten Checklist pozostaną niezweryfikowane.",
+    "Redakcja: poprawić literówkę „kopiować”→„kupirować” w westie #5."
+  ]
+}
