@@ -1,0 +1,19 @@
+﻿{
+  "schema_version": "zoo24.ops.job-result.v1",
+  "job_id": "content-live-2026-11-27",
+  "role": "zoo24-ops-content",
+  "mode": "live_scoped",
+  "policy_version": "LIVE_SCOPED_OPS_V4",
+  "status": "blocked",
+  "reason": "pause_global_true",
+  "artifacts": [],
+  "checks": [
+    {"name": "activation.json (origin/main b253fd2): status/mode/enabled", "result": "pass", "note": "LIVE_SCOPED_OPS_V4, live_scoped, enabled=true"},
+    {"name": "activation.json pause.global", "result": "fail", "note": "pause.global=true; bramka nakazuje zakonczyc bez zmian"}
+  ],
+  "external_actions": [],
+  "metrics": [],
+  "cost": {"value": null, "currency": null, "status": "unknown"},
+  "next_tasks": ["Po wznowieniu (pause.global=false) wybrac rase z docs/seo/HISTORICAL_URL_MAP.csv bez pliku w content/blog/ i napisac artykul standard"],
+  "human_decisions_required": ["Potwierdzic, czy pause.global=true w ops/config/activation.json jest zamierzone; jesli nie, wznowic publikacje (agenci nie moga edytowac polityki)."]
+}
