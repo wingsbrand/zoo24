@@ -1,6 +1,7 @@
 "use client";
 // Lista informacji dla opiekuna zwierzęcia. Dane zostają WYŁĄCZNIE w przeglądarce (localStorage);
-// komponent nie wysyła niczego na serwer ZOO24.
+// treść listy nie trafia na serwer ZOO24 (wysyłany jest tylko anonimowy licznik użycia wydruku/pobrania, bez treści).
+import { sendEvent } from "@/lib/analytics/beacon";
 import { useEffect, useRef, useState } from "react";
 import { Download, Plus, Printer, Trash2, X } from "lucide-react";
 import { Alert, Button, Card, Field, Input, Textarea } from "@/components/ui";
@@ -106,11 +107,13 @@ export function CaretakerSheetTool() {
 
   const print = () => {
     if (!requireContent()) return;
+    sendEvent("tool_export", "lista-dla-opiekuna-druk"); // sam fakt eksportu; treść listy nie jest wysyłana
     window.print();
   };
 
   const download = () => {
     if (!requireContent()) return;
+    sendEvent("tool_export", "lista-dla-opiekuna-plik");
     try {
       const blob = new Blob([sheetToText(sheet)], { type: "text/plain;charset=utf-8" });
       const url = URL.createObjectURL(blob);
