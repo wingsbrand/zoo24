@@ -1,0 +1,49 @@
+{
+  "schema_version": "zoo24.ops.job-result.v1",
+  "job_id": "seo-live-2026-11-27",
+  "role": "zoo24-ops-seo",
+  "mode": "live_scoped",
+  "policy_version": "LIVE_SCOPED_OPS_V4",
+  "status": "completed",
+  "reason": null,
+  "artifacts": [
+    {"type": "commit", "ref": "c5762a6", "note": "[ops-seo] Opisy meta hubów /zwierzeta/{grupa}: 68–91 → 130–155 znaków; test tests/seo/group-meta-description.test.ts"},
+    {"type": "url", "ref": "https://zoo24.pl/zwierzeta/akwarystyka"},
+    {"type": "url", "ref": "https://zoo24.pl/zwierzeta/koty"},
+    {"type": "url", "ref": "https://zoo24.pl/zwierzeta/ptaki"},
+    {"type": "url", "ref": "https://zoo24.pl/zwierzeta/gady"},
+    {"type": "url", "ref": "https://zoo24.pl/zwierzeta/psy"}
+  ],
+  "checks": [
+    {"name": "limity: zmienione URL SEO/7 dni", "result": "0 przed + 5 teraz = 5/5 (limit wyczerpany do 2026-12-04)"},
+    {"name": "limity: low-risk deploymenty dziś", "result": "0 przed + 1 teraz = 1/2"},
+    {"name": "npm run check", "result": "pass (37 plików, 384 testów, skan sekretów PASS)"},
+    {"name": "next build", "result": "pass"},
+    {"name": "lokalny next start: 5 hubów", "result": "200, nowy opis widoczny; preview Vercel NIE zweryfikowano"},
+    {"name": "produkcja po wdrożeniu: 5 hubów", "http": 200, "result": "nowy opis w HTML (po ok. 50 s)"},
+    {"name": "produkcja /sitemap.xml", "http": 200, "result": "48 URL"},
+    {"name": "produkcja /robots.txt", "http": 200, "result": "Allow /, Disallow /admin, /api/, Sitemap OK"},
+    {"name": "audyt 48 URL z sitemap", "result": "wszystkie 200, canonical zgodny, 1×H1, JSON-LD parsowalny, 0 zduplikowanych title/description, brak noindex w sitemap"}
+  ],
+  "external_actions": [
+    {"action": "git push origin main", "ref": "c5762a6", "confirmed": true}
+  ],
+  "findings": [
+    "Skrypty scripts/seo-meta-check.mjs i smoke-http.mjs są pisane pod staging/lokalny seed (fixtury /blog/kot-*-n6x jako 404, profil DEMO /firma/salon-futrzak-d01, /poradniki/jak-wybrac-groomera): na produkcji dają fałszywe FAIL (3 i 13) — to nie regresje strony. Zadanie dla build: tryb --prod lub aktualizacja fixtur.",
+    "Strony /firma/kudlate-historie-r02, /firma/strefa-psa-r04, /firma/kudlatek-studio-psiej-urody-r10 są w sitemap, ale nie mają linków wewnętrznych z innych stron sitemap (sieroty) — kandydat na kolejną poprawkę (linki z /uslugi/groomer), po odnowieniu limitu URL.",
+    "Krótkie title: /o-nas (13 zn.), /uslugi (27 zn.) — niski priorytet.",
+    "Brak lastmod w sitemap dla stron statycznych (/, /uslugi, /poradniki, /o-nas itd.) — niski priorytet."
+  ],
+  "metrics": [
+    {"name": "organic_sessions", "value": null, "unit": "sessions", "source": null, "data_status": "unavailable", "note": "N/A; GSC/GA4 niepodłączone"},
+    {"name": "avg_position", "value": null, "unit": "position", "source": null, "data_status": "unavailable", "note": "N/A; GSC niepodłączone"}
+  ],
+  "cost": {"value": null, "currency": null, "status": "unknown"},
+  "next_tasks": [
+    "build: tryb produkcyjny dla seo-meta-check/smoke-http (usunięcie fałszywych FAIL)",
+    "seo (po 2026-12-04): linki wewnętrzne do 3 profili firm-sierot",
+    "seo: lastmod dla stron statycznych w sitemap",
+    "seo: ewaluacja zmian meta po podłączeniu GSC (cooldown 28 dni na 5 URL do 2026-12-25)"
+  ],
+  "human_decisions_required": []
+}
