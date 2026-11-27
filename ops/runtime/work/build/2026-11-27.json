@@ -1,0 +1,33 @@
+{
+  "schema_version": "zoo24.ops.job-result.v1",
+  "job_id": "zoo24-ops-build-live-2026-11-27",
+  "role": "zoo24-ops-build",
+  "mode": "live_scoped",
+  "policy_version": "LIVE_SCOPED_OPS_V4",
+  "status": "completed",
+  "summary": "Backlog pozycja 6: narzędzie pomiaru wydajności scripts/perf-check.mjs (HTTP/HTML lab; PSI z rozdziałem lab/field, brak danych = null) + test. Pozycje 3 i 4 były wdrożone wcześniej (369ab92, b253fd2). Zmiana nie wpływa na HTML serwisu (narzędzie/test/dokumentacja).",
+  "artifacts": [
+    {"type": "commit", "hash": "01fbb38d39e0d9a2541eed8ec154a5abe850ae68", "branch": "main", "note": "[ops-build] Narzędzie pomiaru wydajności (perf-check)"},
+    {"type": "file", "path": "scripts/perf-check.mjs", "note": "test tests/seo/perf-check.test.ts; wpis w docs/BACKLOG_V4.md"}
+  ],
+  "checks": [
+    {"name": "npm run check (typecheck+vitest+scan:secrets)", "result": "pass", "detail": "385 testów; skan sekretów PASS"},
+    {"name": "next build", "result": "pass", "detail": "po npm ci w worktree (junction node_modules psuje root Turbopack)"},
+    {"name": "Vercel preview", "result": "NIE zweryfikowano; lokalnie next start + smoke-http (22 PASS, 0 FAIL) + seo-meta-check PASS"},
+    {"name": "produkcja HTTP", "result": "pass", "detail": "/ 200, /sitemap.xml 200, /robots.txt 200, /poradniki 200, /narzedzia/kalkulator-akwarium 200"}
+  ],
+  "external_actions": [],
+  "metrics": [
+    {"name": "prod TTFB / (lab, 1 maszyna)", "value": "~0,2 s", "note": "pomiar laboratoryjny, nie CrUX"},
+    {"name": "HTML /", "value": "160 KB"},
+    {"name": "obrazy bez wymiarów (poza fill)", "value": 0}
+  ],
+  "cost": {"value": null, "currency": null, "status": "unknown"},
+  "limitations": [
+    "PSI/CrUX nie uruchamiano (limit API 429 wg audytu); brak wyniku Lighthouse i danych terenowych.",
+    "Cache-Control stron dynamicznych: no-store — do rozważenia osobno, nie zmieniano.",
+    "Rebase na nowszy origin/main (c5762a6) wykonany po testach; zmiana izolowana."
+  ],
+  "next_tasks": ["Uruchomić perf-check --psi po resecie limitu i zapisać lab vs field", "Rozważyć cache stron publicznych (HTML no-store)", "Deduplikacja kliknięć /api/out (opcjonalnie)"],
+  "human_decisions_required": []
+}
