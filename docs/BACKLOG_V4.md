@@ -35,4 +35,4 @@
 3. LocalBusiness/ProfessionalService + indywidualne opisy meta dla 3 indeksowalnych profili firm (A08/A15).
 4. Pomiar: zdarzenia narzędzi (wynik kalkulatora, eksport listy — bez treści), wyszukiwania bez wyników (bez utrwalania fraz z danymi osobowymi), sprawdzenie /api/out bez dubli.
 5. Redirecty 301 — tylko po D-05; odtworzenia treści pod dawnymi adresami (kolejka w `docs/seo/HISTORICAL_URL_MAP.csv`).
-6. Pomiar wydajności (PageSpeed/CrUX — lab ≠ field).
+6. Pomiar wydajności — **narzędzie gotowe** (`node scripts/perf-check.mjs [url] [--psi]`: TTFB/rozmiar HTML/obrazy/cache; PSI rozdziela lab i field). Pierwszy pomiar prod 27.11: / 200, ~0,2 s TTFB, HTML 160 KB, 0 obrazów bez wymiarów (poza trybem fill). Brak danych CrUX/PSI (limit API) — nie deklarujemy wyniku Lighthouse.
