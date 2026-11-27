@@ -7,7 +7,7 @@ import { ArticleGrid, KnowledgeSourceNote, NonPublicBanner, ToolList } from "@/c
 import { portalVisibility, storeServiceLinks } from "@/lib/portal/queries";
 import { groupSections } from "@/lib/portal/visibility";
 import { sortArticles } from "@/lib/content/topics";
-import { getGroup, isGroupSlug, type GroupSlug } from "@/lib/taxonomy/animals";
+import { getGroup, groupMetaDescription, isGroupSlug, type GroupSlug } from "@/lib/taxonomy/animals";
 import { CATEGORIES, CITIES, IS_PRODUCTION } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: P): Promise<Metadata> {
   const g = v.group;
   return {
     title: `${g.name} — wiedza dla opiekunów`,
-    description: g.intro,
+    description: groupMetaDescription(g),
     alternates: { canonical: `/zwierzeta/${g.slug}` },
     robots: v.isPublic ? undefined : { index: false, follow: false },
   };
