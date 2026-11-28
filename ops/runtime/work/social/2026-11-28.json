@@ -1,0 +1,62 @@
+{
+ "schema_version": "zoo24.ops.job-result.v1",
+ "job_id": null,
+ "role": "social",
+ "mode": "shadow",
+ "policy_version": "activation.json LIVE_SCOPED_OPS_V4 (zadanie w trybie SHADOW; zero zapisów zewnętrznych)",
+ "status": "no_change",
+ "reason": "Brak zmian w docs/social, treściach docelowych i konfiguracji od 27.11 (main: tylko perf-check i meta opisy hubów SEO). Macierz bramek z 26.11 aktualna; nie powtarzam pracy.",
+ "artifacts": [],
+ "checks": [
+  {
+   "name": "copy_unchanged",
+   "status": "pass",
+   "detail": "git diff od 27.11: brak zmian w docs/social, ops/config"
+  },
+  {
+   "name": "target_live_200",
+   "status": "N/A",
+   "detail": "brak sieci w runtime; artykuły docelowe wg repo nadal bez publikacji (patrz macierz 26.11)"
+  },
+  {
+   "name": "asset_rights",
+   "status": "fail",
+   "detail": "asset_id=null we wszystkich 12 szkicach paczka01; brak plików grafik i wpisów w asset-register"
+  },
+  {
+   "name": "meta_access",
+   "status": "blocked",
+   "detail": "facebook_page_id/instagram_account_id=null, can_publish=false, pauza globalna=true"
+  },
+  {
+   "name": "first_post_deadline",
+   "status": "warn",
+   "detail": "p01-01 zaplanowany na 2026-12-01 18:00 (za 3 dni) — bez ID Meta, grafik i pauzy globalnej=false nie wystartuje"
+  }
+ ],
+ "external_actions": [],
+ "metrics": [
+  {
+   "name": "fb_ig_followers_engagement",
+   "value": null,
+   "unit": null,
+   "source": null,
+   "data_status": "unavailable",
+   "note": "N/A; brak dostępu Meta"
+  }
+ ],
+ "cost": {
+  "value": null,
+  "currency": null,
+  "status": "unknown"
+ },
+ "next_tasks": [
+  "Grafiki typograficzne (logo v2) + wpis do asset-register z licencją",
+  "Content: publikacja 5 poradników docelowych przed odpowiadającymi postami",
+  "Przed publikacją: odczyt HTTP 200 stron docelowych"
+ ],
+ "human_decisions_required": [
+  "ID strony FB i konta IG + uprawnienia Meta (D-03/D-11) — bez tego start 1.12 niemożliwy",
+  "Zatwierdzenie paczka01; oznaczenie drafts-14d/V3 jako superseded"
+ ]
+}
