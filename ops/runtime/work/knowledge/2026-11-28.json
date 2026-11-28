@@ -1,0 +1,33 @@
+{
+  "schema_version": "zoo24.ops.job-result.v1",
+  "job_id": null,
+  "role": "knowledge",
+  "mode": "shadow",
+  "policy_version": "unsigned (shadow)",
+  "status": "partial",
+  "reason": "3 z 4 prób źródeł zablokowane przez sieć sesji (rspca.org.uk, wcf.de)",
+  "artifacts": [
+    {"id": "evidence-2026-11-28", "type": "evidence_bundle", "version": "1", "path": "ops/runtime/work/knowledge/evidence/evidence-2026-11-28.json", "note": "1 karta candidate (członkostwo ZKwP w FCI) dla artykułów psów; weryfikacja agenta, nie human review"}
+  ],
+  "checks": [
+    {"name": "sources_fetched", "status": "partial", "detail": "1/4 (fci.be members OK; 2x rspca.org.uk i wcf.de — ENOTFOUND; trzeci rspca nie ponawiany)"},
+    {"name": "source_limit", "status": "pass", "detail": "4 ≤ 10"},
+    {"name": "card_status_candidate_only", "status": "pass", "detail": "candidate"},
+    {"name": "no_external_writes", "status": "pass", "detail": "tylko odczyty GET"}
+  ],
+  "external_actions": [],
+  "metrics": [],
+  "cost": {"value": null, "currency": null, "status": "unknown"},
+  "findings": [
+    "Twierdzenie o ZKwP jako pełnoprawnym członku FCI potwierdzone; 0 sprzeczności.",
+    "RSPCA i WCF niedostępne — bez zmian względem luk z 27.11."
+  ],
+  "next_tasks": [
+    "Po zezwoleniu sieci: RSPCA, WCF, cfa.org, pdsa.org.uk.",
+    "Odświeżyć karty z valid_until 2027-05."
+  ],
+  "human_decisions_required": [
+    "Zezwolić sieci sesji na rspca.org.uk, wcf.de, cfa.org, pdsa.org.uk (odczyt).",
+    "Redakcja: poprawić literówkę w westie #5."
+  ]
+}

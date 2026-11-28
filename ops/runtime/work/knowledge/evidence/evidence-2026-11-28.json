@@ -1,0 +1,39 @@
+{
+ "schema_version": "zoo24.ops.evidence-bundle.v1",
+ "mode": "shadow",
+ "generated": "2026-11-28",
+ "cards": [
+  {
+   "evidence_id": "ev-fci-members-pl-001",
+   "articles": ["basenji-n78", "border-collie-n61", "chihuahua-n99", "corgi-n107", "dalmatynczyk-n76", "doberman-n60", "jack-russell-terrier-n95", "jamnik-n112", "owczarek-niemiecki-n96", "shiba-inu--n100", "shih-tzu-n62", "west-highland-white-terrier-n79"],
+   "source_url": "https://www.fci.be/en/members/members.aspx?iso=PL",
+   "publisher": "FCI",
+   "title": "FCI — członkowie: Polska",
+   "source_date": null,
+   "retrieved_at_utc": "2026-11-28T06:10:29Z",
+   "source_hash": "N/A (WebFetch zwraca streszczenie, bez surowego pliku)",
+   "claim_text": "W Polsce pełnoprawnym członkiem FCI jest Związek Kynologiczny w Polsce (ZKwP).",
+   "scope": "członkostwo krajowe, Polska",
+   "license_basis": "unknown",
+   "allowed_use": "quote_summary_own_words",
+   "status": "candidate",
+   "source_verified_by_agent": true,
+   "verification_result": "confirmed",
+   "verification_note": "Strona wymienia Zwiazek Kynologiczny w Polsce, status Full member.",
+   "reviewer_id": null,
+   "reviewed_at": null,
+   "valid_until": "2027-02-26",
+   "conflicts": []
+  }
+ ],
+ "gaps": [
+  "RSPCA (training/puppies/behaviour): www.rspca.org.uk nieosiągalne (ENOTFOUND) — domena poza dozwolonymi w sieci sesji. Twierdzenia welfare/szkolenie nadal niesprawdzone; welfare = tylko człowiek.",
+  "WCF BRI_en_2023-07-16.pdf: wcf.de nieosiągalne (ENOTFOUND).",
+  "cfa.org, pdsa.org.uk: wg poprzednich przebiegów też zablokowane; 26 twierdzeń CFA/Kitten Checklist niezweryfikowanych.",
+  "Licencja cytowania FCI/FIFe: unknown; tylko własne streszczenia.",
+  "Literówka w westie #5 („kopiować” → „kupirować”) nadal do poprawki przez redakcję."
+ ],
+ "sources_used": [
+  {"url": "https://www.fci.be/en/members/members.aspx?iso=PL"}
+ ]
+}
