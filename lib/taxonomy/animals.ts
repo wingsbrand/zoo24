@@ -49,6 +49,8 @@ export const GROUPS: readonly AnimalGroup[] = [
 const GROUP_BY_SLUG = new Map(GROUPS.map((g) => [g.slug, g]));
 export const isGroupSlug = (s: unknown): s is GroupSlug => typeof s === "string" && GROUP_BY_SLUG.has(s as GroupSlug);
 export const getGroup = (slug: GroupSlug): AnimalGroup => GROUP_BY_SLUG.get(slug)!;
+/** Opis meta huba grupy: intro + stałe doprecyzowanie (min. ~120 znaków, max 160); treść strony nie jest zmieniana. */
+export const groupMetaDescription = (g: Pick<AnimalGroup, "intro">): string => `${g.intro} Poradniki ze źródłami, bez sprzedaży i porad weterynaryjnych.`;
 export function findSpecies(group: GroupSlug, slug: string): Species | null {
   return getGroup(group).species.find((s) => s.slug === slug) ?? null;
 }
